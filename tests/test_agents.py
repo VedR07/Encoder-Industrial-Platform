@@ -40,7 +40,26 @@ def test_compliance_routing():
         assert response is not None
         print("✅ Test 2 Passed: Compliance routing works correctly.")
 
+# ─── Test 3: Copilot Agent Routing ───────────────────────────────────────────
+def test_copilot_routing():
+    """
+    A general how-to or knowledge query should be classified and routed to the Copilot agent.
+    """
+    with patch("app.router.route_query") as mock_route:
+        mock_route.return_value = "Here is a step-by-step explanation..."
+
+        from app.router import process_query_with_agents
+        query = "How do I configure a data block in TIA Portal?"
+        context = "Source: S7-1500_manual.pdf\nData blocks store data used by the PLC program."
+
+        response = process_query_with_agents(query=query, context=context)
+
+        mock_route.assert_called_once()
+        assert response is not None
+        print("✅ Test 3 Passed: Copilot routing works correctly.")
+
 if __name__ == "__main__":
     test_rca_routing()
     test_compliance_routing()
+    test_copilot_routing()
 
