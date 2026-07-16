@@ -4,10 +4,10 @@ from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
-# Import the specialized agent chains
+# Import all three specialized agent chains
 from app.agents.rca_agent import get_rca_chain
-# from app.agents.compliance_agent import get_compliance_chain
-# from app.agents.copilot_agent import get_copilot_chain
+from app.agents.compliance_agent import get_compliance_chain
+from app.agents.copilot_agent import get_copilot_chain
 
 # TODO: Insert Google API Key here later or export as environment variable
 os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY", "YOUR_GOOGLE_API_KEY_HERE")
@@ -15,11 +15,12 @@ os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY", "YOUR_GOOGLE_API_KEY_
 # Initialize LLM with low temperature for reduced hallucination
 llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", temperature=0.1)
 
-# Initialize chains
+# Initialize all three agent chains
 rca_chain = get_rca_chain(llm)
-# compliance_chain = get_compliance_chain(llm)
-# copilot_chain = get_copilot_chain(llm)
+compliance_chain = get_compliance_chain(llm)
+copilot_chain = get_copilot_chain(llm)
 
+# Router Prompt
 router_prompt = ChatPromptTemplate.from_template("""
 You are an intelligent router for an industrial automation support system.
 Classify the following user query into exactly one of three categories: 
@@ -44,9 +45,10 @@ def route_query(info: Dict[str, Any]) -> str:
     if category == "RCA":
         return rca_chain.invoke(info)
     elif category == "COMPLIANCE":
-        return "Compliance agent temporarily disabled." # compliance_chain.invoke(info)
+        return compliance_chain.invoke(info)
     else:
-        return "Copilot agent temporarily disabled." # copilot_chain.invoke(info)
+        # Default to copilot for general queries or unclear classifications
+        return copilot_chain.invoke(info)
 
 def process_query_with_agents(query: str, context: str) -> str:
     """
