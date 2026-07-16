@@ -1,16 +1,15 @@
-import os
 from typing import Dict, Any
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
+# Load API key securely from .env
+from app.config import GOOGLE_API_KEY
+
 # Import all three specialized agent chains
 from app.agents.rca_agent import get_rca_chain
 from app.agents.compliance_agent import get_compliance_chain
 from app.agents.copilot_agent import get_copilot_chain
-
-# TODO: Insert Google API Key here later or export as environment variable
-os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY", "YOUR_GOOGLE_API_KEY_HERE")
 
 # Initialize LLM with low temperature for reduced hallucination
 llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", temperature=0.1)
