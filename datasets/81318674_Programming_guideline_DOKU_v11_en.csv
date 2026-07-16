@@ -1,0 +1,2050 @@
+chunk_id,source_file,doc_title,doc_type,product_family,entry_id,version,language,page,chunk_index,page_chunk_count,chunk_text,char_count,word_count,is_boilerplate
+81318674_Programming_guideline_DOKU_v11_en_p1_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,1,1,1,"Applications & Tools
+Answers for industry.
+Programming Guideline for
+S7-1200/S7-1500
+STEP 7 (TIA Portal)
+Background and system description y October 2013",153,21,False
+81318674_Programming_guideline_DOKU_v11_en_p2_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,2,1,4,"Warranty and Liability
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 2
+Copyright ¤ Siemens AG 2013 All rights reserved
+Warranty and Liability
+Note The Application Examples are not binding and do not claim to be complete
+regarding the circuits shown, equipping and any eventuality. The application
+examples do not represent customer-specific solutions. You are responsible for
+ensuring that the described products are used correctly. These Application
+Examples do not relieve you of your responsibility to use safe practices in
+application, installation, operation and maintenance. When using these
+application examples, you recognize that we cannot be made liable for any
+damage/claims beyond the liability clause described. We reserve the right to
+make changes to these Application Examples at any time and without prior
+notice. If there are any deviations between the recommendations provided in this
+application example and other Siemens publications – e.g.",978,143,True
+81318674_Programming_guideline_DOKU_v11_en_p2_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,2,2,4,"thout prior
+notice. If there are any deviations between the recommendations provided in this
+application example and other Siemens publications – e.g. catalogs – the
+contents of the other documents have priority.
+We do not accept any liability for the information contained in this document.
+Any claims against us – based on whatever legal reason – resulting from the use of
+the examples, information, programs, engineering and performance data etc.,
+described in this application example will be excluded. Such an exclusion will not
+apply in the case of mandatory liability, e.g. under the German Product Liability Act
+(“Produkthaftungsgesetz”), in case of intent, gross negligence, or injury of life, body
+or health, guarantee for the quality of a product, fraudulent concealment of a
+deficiency or breach of a condition which goes to the root of the contract
+(“wesentliche Vertragspflichten”).",896,138,False
+81318674_Programming_guideline_DOKU_v11_en_p2_c3,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,2,3,4,"f a product, fraudulent concealment of a
+deficiency or breach of a condition which goes to the root of the contract
+(“wesentliche Vertragspflichten”). The damages for a breach of a substantial
+contractual obligation are, however, limited to the foreseeable damage, typical for
+the type of contract, except in the event of intent or gross negligence or injury to
+life, body or health. The above provisions do not imply a change of the burden of
+proof to your detriment.
+Any form of duplication or distribution of these application examples or excerpts
+hereof is prohibited without the expressed consent of Siemens Industry Sector.
+Caution
+The functions and solutions described in this entry are mainly limited to the
+realization of the automation task. Please furthermore take into account that
+corresponding protective measures have to be taken in the context of industrial
+security when connecting your equipment to other parts of the plant, the enterprise
+network or the Internet.",982,155,False
+81318674_Programming_guideline_DOKU_v11_en_p2_c4,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,2,4,4,"to be taken in the context of industrial
+security when connecting your equipment to other parts of the plant, the enterprise
+network or the Internet. Further information can be found under the Entry ID
+50203404.
+http://support.automation.siemens.com/WW/view/en/50203404
+Siemens Industry Online Support
+This document is an article from the Siemens Industry Online Support. The
+following link takes you directly to the download page of this document:
+http://support.automation.siemens.com/WW/view/en/81318674",506,65,False
+81318674_Programming_guideline_DOKU_v11_en_p3_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,3,1,7,"Table of Contents
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 3
+Copyright ¤ Siemens AG 2013 All rights reserved
+Table of Contents
+Warranty and Liability ................................................................................................. 2
+1 Preface ................................................................................................................ 5
+2 S7-1200/1500 Innovations ................................................................................. 6
+2.1 Introduction ........................................................................................... 6
+2.2 Programming languages ...................................................................... 7
+2.3 Optimized machine code ...................................................................... 8
+2.4 Block creation .......................................................................................",925,56,True
+81318674_Programming_guideline_DOKU_v11_en_p3_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,3,2,7,"......................................... 8
+2.4 Block creation ....................................................................................... 8
+2.5 Optimized blocks .................................................................................. 9
+2.5.1 S7-1200: Setup of optimized blocks ................................................... 10
+2.5.2 S7-1500: Setup of optimized blocks ................................................... 10
+2.5.3 Best possible data storage in the processor on S7-1500 .................. 11
+2.6 Block sizes ......................................................................................... 14
+2.7 New data types for S7-1200/1500 ...................................................... 15
+2.7.1 Elementary data types ........................................................................ 15
+2.7.2 Date_Time_Long data type ................................................................",936,64,False
+81318674_Programming_guideline_DOKU_v11_en_p3_c3,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,3,3,7,"................................................... 15
+2.7.2 Date_Time_Long data type ................................................................ 15
+2.7.3 VARIANT data type ............................................................................ 16
+2.8 New CALCULATE instruction ............................................................ 17
+2.9 Symbolic and comments .................................................................... 17
+2.10 System constants ............................................................................... 19
+2.11 Internal reference ID for controller and HMI tags ............................... 20
+2.12 STOP mode in the event of errors ..................................................... 21
+3 General Programming ..................................................................................... 23
+3.1 Operating system and user program ..................................................",939,64,False
+81318674_Programming_guideline_DOKU_v11_en_p3_c4,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,3,4,7,".......................................................... 23
+3.1 Operating system and user program .................................................. 23
+3.2 Program blocks .................................................................................. 23
+3.2.1 Organization blocks (OB) ................................................................... 24
+3.2.2 Functions (FC) .................................................................................... 26
+3.2.3 Function blocks (FB) .......................................................................... 28
+3.2.4 Instance data block ............................................................................ 28
+3.2.5 Multi-instances ................................................................................... 29
+3.2.6 Global data blocks (DB) ..................................................................... 31
+3.2.7 Downloading without reinitialization ...................................................",987,54,False
+81318674_Programming_guideline_DOKU_v11_en_p3_c5,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,3,5,7,".................................................... 31
+3.2.7 Downloading without reinitialization ................................................... 32
+3.2.8 Reusability of blocks ........................................................................... 35
+3.3 Block interface types .......................................................................... 36
+3.3.1 Call-by-value with In interface type .................................................... 36
+3.3.2 Call-by-reference with InOut interface type ........................................ 37
+3.4 Storage concept ................................................................................. 37
+3.4.1 Block interfaces as data exchange .................................................... 37
+3.4.2 Global memory ................................................................................... 38
+3.4.3 Local memory .....................................................................................",970,58,False
+81318674_Programming_guideline_DOKU_v11_en_p3_c6,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,3,6,7,".......................................... 38
+3.4.3 Local memory ..................................................................................... 39
+3.4.4 Access speed of memory areas ......................................................... 40
+3.5 Retentivity ........................................................................................... 41
+3.6 Symbolic addressing .......................................................................... 42
+3.6.1 Symbolic instead of absolute addressing ........................................... 42
+3.6.2 ARRAY data type and indirect field accesses .................................... 44
+3.6.3 STRUCT data type and PLC data types ............................................ 46
+3.6.4 Slice access ....................................................................................... 47
+3.7 Libraries ..............................................................................................",954,60,False
+81318674_Programming_guideline_DOKU_v11_en_p3_c7,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,3,7,7,"...................................... 47
+3.7 Libraries .............................................................................................. 48
+3.7.1 Types of libraries and library elements .............................................. 48
+3.7.2 Type concept ...................................................................................... 50
+3.7.3 Differences for typifiable objects for controller and HMI .................... 50
+3.7.4 Versioning of a block .......................................................................... 51
+3.8 Process interrupts .............................................................................. 56
+3.9 Other performance recommendations ............................................... 58",746,49,False
+81318674_Programming_guideline_DOKU_v11_en_p4_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,4,1,2,"Table of Contents
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 4
+Copyright ¤ Siemens AG 2013 All rights reserved
+3.10 SCL programming language: Tips and tricks ..................................... 59
+3.10.1 Using call templates ........................................................................... 59
+3.10.2 What instruction parameters are mandatory? .................................... 60
+3.10.3 Drag & drop with entire tag names ..................................................... 60
+3.10.4 Efficiently inserting CASE instruction ................................................. 61
+3.10.5 No manipulation of loop counters for FOR loop ................................. 61
+3.10.6 FOR loop backwards .......................................................................... 62
+3.10.7 Simple creating of instances for calls .................................................",903,85,False
+81318674_Programming_guideline_DOKU_v11_en_p4_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,4,2,2,"................................................... 62
+3.10.7 Simple creating of instances for calls ................................................. 62
+3.10.8 Handling of time tags .......................................................................... 62
+4 Hardware-Independent Programming ........................................................... 64
+4.1 Data types of S7-300/400 and S7-1200/1500 .................................... 64
+4.2 No bit memory but global data blocks ................................................ 65
+4.3 Programming of ""clock bits"" ............................................................... 66
+5 The Most Important Recommendations ........................................................ 68
+6 Related Literature ............................................................................................ 69
+7 History............................................................................................................... 69",974,64,False
+81318674_Programming_guideline_DOKU_v11_en_p5_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,5,1,3,"1 Preface
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 5
+Copyright ¤ Siemens AG 2013 All rights reserved
+1 Preface
+Aims for the development of the new SIMATIC control generation
+x An engineering framework for all automation components (controller, HMI,
+drives, etc.)
+x Uniform programming
+x Increased performance
+x Full set of commands for every language
+x Fully symbolic program generation
+x Data handling even without pointer
+x Reusability of created blocks
+Aim of the guideline
+The new control generation SIMATIC S7-1200 and S7-1500 has an up-to-date
+system architecture, and together with the TIA Portal offers new and efficient
+options of programming and configuration. It is no longer the resources of the
+controller (e.g. data storage in the memory) that are paramount but the actual
+automation solution.
+This document gives you many recommendations and tips on the optimal
+programming of S7-1200/1500 controllers.",940,143,False
+81318674_Programming_guideline_DOKU_v11_en_p5_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,5,2,3,"ount but the actual
+automation solution.
+This document gives you many recommendations and tips on the optimal
+programming of S7-1200/1500 controllers. Some differences in the system
+architecture of the S7-300/400, as well as the thus connected new programming
+options are explained in an easy to understand way. This helps you to create a
+standardized and optimal programming of your automation solutions.
+The examples described can be universally used for the controllers S7-1200 and
+S7-1500.
+Core content of this programming guideline
+The following key issues on the TIA Portal are dealt with in this document:
+x S7-1200/1500 innovations
+– Programming languages
+– Optimized blocks
+x Recommendation on general programming
+– Operating system and user program
+– Storage concept
+– Symbolic addressing
+– Libraries
+x Recommendations on hardware-independent programming
+Advantages and benefits
+Numerous advantages arise by applying these recommendations and tips:
+x Powerful user program
+x Clear program",998,146,False
+81318674_Programming_guideline_DOKU_v11_en_p5_c3,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,5,3,3,"dent programming
+Advantages and benefits
+Numerous advantages arise by applying these recommendations and tips:
+x Powerful user program
+x Clear program structures
+x Intuitive and effective programming solutions",209,28,False
+81318674_Programming_guideline_DOKU_v11_en_p6_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,6,1,2,"2 S7-1200/1500 Innovations
+2.1 Introduction
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 6
+Copyright ¤ Siemens AG 2013 All rights reserved
+2 S7-1200/1500 Innovations
+2.1 Introduction
+In general, the programming of SIMATIC controllers has stayed the same from S7-
+300/400 to S7-1500. There are the familiar programming languages such as LAD,
+FBD, STL, SCL or graph and blocks such as organization blocks (OBs), function
+blocks (FBs), functions (FCs) or data blocks (DBs). I.e. already created S7-300/400
+programs can be implemented on S7-1500 and already created LAD, FBD and
+SCL programs on S7-1200 controller without any problems.
+Additionally, there are many innovations that make programming easier for you and
+which allow a powerful and storage-saving code.
+We not only recommend implementing programs that are implemented for S7-
+1200/1500 controllers 1:1 but also to check them for the new options and where
+applicable, to use them.",957,145,False
+81318674_Programming_guideline_DOKU_v11_en_p6_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,6,2,2,"ementing programs that are implemented for S7-
+1200/1500 controllers 1:1 but also to check them for the new options and where
+applicable, to use them. The additional effort is often limited and you get a program
+code that is, for example,
+optimal in terms of memory and runtime for the newer CPUs
+easier to understand,
+and easier to maintain.
+Terms
+Some terms have changed in order to make better handling with the TIA Portal
+possible.
+Figure 2-1: New terms in the TIA Portal
+Symbol table PLC tags
+STEP 7 V5.x STEP 7 (TIA Portal)
+Tag table Monitoring table
+UDT PLC data types",575,102,False
+81318674_Programming_guideline_DOKU_v11_en_p7_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,7,1,3,"2 S7-1200/1500 Innovations
+2.2 Programming languages
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 7
+Copyright ¤ Siemens AG 2013 All rights reserved
+Note You will find further information in the following entries:
+What entries are available on the internet for the migration to STEP 7 (TIA
+Portal) and WinCC (TIA Portal)?
+http://support.automation.siemens.com/WW/view/en/58879602
+What prerequisites have to be fulfilled in order to migrate a STEP 7 V5.x project
+into STEP 7 Professional (TIA Portal)?
+http://support.automation.siemens.com/WW/view/en/62101406
+PLC migration for S7-1500 with STEP 7 (TIA Portal) V12
+http://support.automation.siemens.com/WW/view/en/67858106
+Programming recommendations for S7-1200 and S7-1500 with STEP 7 (TIA
+Portal) V12
+http://support.automation.siemens.com/WW/view/en/67582299
+Why is it not possible to mix register passing and explicit parameter transfer with
+the S7-1500 in STEP 7 (TIA Portal) V12?
+Among others, the migration of STL programs to",999,129,False
+81318674_Programming_guideline_DOKU_v11_en_p7_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,7,2,3,"le to mix register passing and explicit parameter transfer with
+the S7-1500 in STEP 7 (TIA Portal) V12?
+Among others, the migration of STL programs to S7-1500 is described in this
+entry.
+http://support.automation.siemens.com/WW/view/en/67655405
+2.2 Programming languages
+For the programming of a user program, various different programming languages
+are available. Each language has its own advantages, which can be variably used,
+depending on the application.",460,64,False
+81318674_Programming_guideline_DOKU_v11_en_p7_c3,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,7,3,3,"various different programming languages
+are available. Each language has its own advantages, which can be variably used,
+depending on the application. Every block in the user program can therefore be
+created in any programming language.
+x Contact plan (KOP or LAD)
+x Function plan (FUP or FBD)
+x Structured Control Language (SCL)
+x Graph, only S7-1500, planned for S7-1200
+x Instruction list (AWL or STL), only S7-1500
+Note You will find further information in the following entries:
+What has to be observed when migrating a S7-SCL program in STEP 7 (TIA
+Portal)?
+http://support.automation.siemens.com/WW/view/en/59784006
+What instructions cannot be used in STEP 7 V11 in an SCL program?
+http://support.automation.siemens.com/WW/view/en/58002710
+How can the constants be defined under STEP 7 V11 in a S7-SCL program?
+http://support.automation.siemens.com/WW/view/en/58065411",874,122,False
+81318674_Programming_guideline_DOKU_v11_en_p8_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,8,1,2,"2 S7-1200/1500 Innovations
+2.3 Optimized machine code
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 8
+Copyright ¤ Siemens AG 2013 All rights reserved
+2.3 Optimized machine code
+TIA Portal and S7-1200/1500 allow an optimized runtime performance in any
+programming language. All languages are compiled the same, directly into the
+machine code.
+Advantages
+x All programming languages have the same high performance (with the same
+access types)
+x No reduced performance through additional compiling with an intermediate
+step via STL
+Properties
+The following figure displays the difference of the compilation of S7 programs into
+machine code.
+Figure 2-2: Machine code generation with S7-300/400 and S7-1200/1500
+Maschine code
+S7-300/400/WinAC
+S7-300
+S7-400
+WinACS7-300/400/WinAC
+SCL
+LAD
+FBD
+STL
+S7-1200/1500
+Maschine code
+S7-1200/1500
+LAD
+FBD
+SCL STL
+(only S7-1500)
+S7-1500
+S7-1200
+x For S7-300/400 controllers LAD and FDP programs are first of all compiled in
+STL before the machine",996,145,False
+81318674_Programming_guideline_DOKU_v11_en_p8_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,8,2,2,"0
+LAD
+FBD
+SCL STL
+(only S7-1500)
+S7-1500
+S7-1200
+x For S7-300/400 controllers LAD and FDP programs are first of all compiled in
+STL before the machine code is created.
+x For S7-1200/1500 controllers all programming languages are directly compiled
+into machine code.
+2.4 Block creation
+All blocks such as OBs, FBs and FCs can be programmed directly in the desired
+programming language. Thus no source has to be created for SCL programming.
+You only select the block, and SCL as programming language. The block can then
+be directly programmed.",541,90,False
+81318674_Programming_guideline_DOKU_v11_en_p9_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,9,1,2,"2 S7-1200/1500 Innovations
+2.5 Optimized blocks
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 9
+Copyright ¤ Siemens AG 2013 All rights reserved
+Figure 2-3: “Add new block” dialog
+2.5 Optimized blocks
+S7-1200/1500 controllers have optimized data storage. In optimized blocks all data
+types are automatically sorted. The sorting ensures that the data gaps between the
+data types are reduced to a minimum and that they are stored access-optimized for
+the processor.
+Non-optimized blocks only exist for reasons of compatibility in S7-1200/1500.
+Advantages
+x The access is always as fast as possible, since the file storage is optimized by
+the system and is independent of the declaration.
+x No danger of inconsistencies due to faulty, absolute accesses since the access
+is generally symbolic.
+x Declaration changes do not lead to access errors since, for example, HMI
+accesses are performed symbolically.
+x Individual tags can be specifically defined as “retain”.
+x No settings in the",998,154,False
+81318674_Programming_guideline_DOKU_v11_en_p9_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,9,2,2,"ss errors since, for example, HMI
+accesses are performed symbolically.
+x Individual tags can be specifically defined as “retain”.
+x No settings in the instance data block are necessary. Everything is set in the
+assigned FB (e.g. retentivity).
+x Memory reserves in the data block make it possible to change the actual
+values without any loss (see chapter 3.2.7 Downloading without reinitialization)",397,62,False
+81318674_Programming_guideline_DOKU_v11_en_p10_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,10,1,1,"2 S7-1200/1500 Innovations
+2.5 Optimized blocks
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 10
+Copyright ¤ Siemens AG 2013 All rights reserved
+2.5.1 S7-1200: Setup of optimized blocks
+Figure 2-4: Optimized block of S7-1200
+B
+y
+t
+e
+s
+Bits
+0 1 2 3 4 5 6 7
+W1
+W2
+B1
+X1 X2 X3 X4
+B
+y
+t
+e
+s
+Bits
+0 1 2 3 4 5 6 7
+0 X1
+1 B1
+2 X2 X3
+3
+4
+W1
+5
+6 X3
+7
+8
+W2
+9
+OptimizedStandard
+Standard block Optimized block
+Properties
+x No data gaps are formed since larger data types are located at the beginning
+of the block and smaller ones at the end.
+x Only the symbolic access exists for optimized blocks.
+2.5.2 S7-1500: Setup of optimized blocks
+Figure 2-5: Optimized block of S7-1500
+B
+y
+t
+e
+s
+Bits
+0 1 2 3 4 5 6 7
+W1
+W2
+B1
+X1
+X2
+X3
+X4
+B
+y
+t
+e
+s
+Bits
+0 1 2 3 4 5 6 7
+0 X1
+1 B1
+2 X2 X3
+3
+4
+W1
+5
+6 X4
+7
+8
+W2
+9
+Standard block Optimized block
+Standard
+Reserve
+Optimized
+Properties
+x No data gaps are formed since larger data types are located at the beginning
+of the block and smaller ones at the end.",997,222,False
+81318674_Programming_guideline_DOKU_v11_en_p11_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,11,1,4,"2 S7-1200/1500 Innovations
+2.5 Optimized blocks
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 11
+Copyright ¤ Siemens AG 2013 All rights reserved
+x Fast access due the best possible storage in the processor (All data is stored
+in a way so that the processor of the S7-1500 can directly read or write all data
+with just one machine command).
+x Boolean tags are stored as byte for faster access.",410,70,False
+81318674_Programming_guideline_DOKU_v11_en_p11_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,11,2,4,"the processor of the S7-1500 can directly read or write all data
+with just one machine command).
+x Boolean tags are stored as byte for faster access. The controller therefore
+does not have to mask the access.
+x Optimized blocks have a memory reserves for reloading in running operation
+(see chapter 3.2.7 Downloading without reinitialization).
+x Only the symbolic access exists for optimized blocks.
+2.5.3 Best possible data storage in the processor on S7-1500
+For reasons of compatibility to the first SIMATIC controllers the “Big-Endian”
+principle of data storage was adopted in the S7-300/400 controllers.
+The new S7-1500 controller generation always accesses 4 byte (32 bit) in “Little-
+Endian” sequence due to the changed processor architecture. This results in the
+following system-specific properties.
+Figure 2-6: Data access of a S7-1500 controller
+B
+y
+t
+e
+s
+Bits
+01234567
+0 BYTE
+1
+2
+REAL
+3
+4
+5
+6XX
+7
+8
+WORD
+9
+B
+y
+t
+e
+s
+Bits
+01234567
+REAL
+WORD
+BYTE
+X
+X
+Standard block
+max.",980,166,False
+81318674_Programming_guideline_DOKU_v11_en_p11_c3,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,11,3,4,"ss of a S7-1500 controller
+B
+y
+t
+e
+s
+Bits
+01234567
+0 BYTE
+1
+2
+REAL
+3
+4
+5
+6XX
+7
+8
+WORD
+9
+B
+y
+t
+e
+s
+Bits
+01234567
+REAL
+WORD
+BYTE
+X
+X
+Standard block
+max. 64kB
+Optimized block
+max. 16MB
+Standard
+Reserve
+1
+0 Little Endian
+Copying requires time due to resorting!
+Optimized
+0
+1 Big Endian
+0
+1
+2
+3 Big Endian
+Conversion for
+processor access:
+Big ÆLittle Endian
+Best possible processor
+data storage:
+No conversion
+required.
+3
+2
+1
+0 Little Endian
+1
+2
+1
+2
+Table 2-1: Data access of a S7-1500 controller
+Standard block Optimized block
+1. In the event of an unfavorable offset,
+the controller needs 2x16 bit accesses
+in order to be able to read a 4 byte
+value (e.g. REAL value).
+In addition the bytes have to be
+changed.
+The controller stores the tags, access
+optimized. An access is performed with
+32 bit (REAL).
+A changing of the bytes is not
+necessary.
+2.",845,165,False
+81318674_Programming_guideline_DOKU_v11_en_p11_c4,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,11,4,4,"be
+changed.
+The controller stores the tags, access
+optimized. An access is performed with
+32 bit (REAL).
+A changing of the bytes is not
+necessary.
+2. The complete byte is read and masked
+per bit access.
+The complete byte is blocked for any
+other access.
+Each bit is assigned a byte.
+When accessing, the controller does not
+have to mask the byte.
+3. Maximum block size is 64kB. Maximum block size can be up to
+16MB.",414,76,False
+81318674_Programming_guideline_DOKU_v11_en_p12_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,12,1,2,"2 S7-1200/1500 Innovations
+2.5 Optimized blocks
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 12
+Copyright ¤ Siemens AG 2013 All rights reserved
+Recommendation
+x Always only use optimized blocks.
+– They do not require absolute addressing and can always be addressed
+with symbolic data (object related). Indirect addressing is also possible with
+symbolic data (see chapter 3.6.2 ARRAY data type and indirect field
+accesses).
+– The processing of optimized blocks in the controller is much faster than
+with standard blocks.
+x Avoid the copying of data between optimized and non-optimized blocks. The
+required conversion between source and destination format requires high
+processing time.
+x Avoid the assignment of optimized to non-optimized tags. Here, the storage
+formats are also converted.
+Example: Setting optimized block access
+The optimized block accesses for all newly created blocks for S7-1200/1500 is
+enabled by default. Block access can be set for OBs, FBs and global DBs.",999,151,False
+81318674_Programming_guideline_DOKU_v11_en_p12_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,12,2,2,"The optimized block accesses for all newly created blocks for S7-1200/1500 is
+enabled by default. Block access can be set for OBs, FBs and global DBs. For
+instance DBs, the setting depends on the respective FB.
+The block access is not reset automatically when a block is migrated from a
+S7-300/400 controller to a S7-1200/1500. You can change the block access later
+on to “optimized block access”. You need to recompile the program after changing
+the block access. If you change the FBs to “optimized block access”, the assigned
+instance data blocks are automatically updated.
+Follow the instructions below, in order to set the optimized block access.
+Table 2-2: Setting optimized block access
+Step Instruction
+1. Click the “Maximizes/minimizes the Overview” button in the project navigation.
+2. Navigate to “Program blocks“.",825,131,False
+81318674_Programming_guideline_DOKU_v11_en_p13_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,13,1,2,"2 S7-1200/1500 Innovations
+2.5 Optimized blocks
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 13
+Copyright ¤ Siemens AG 2013 All rights reserved
+Step Instruction
+3. This is where you see all blocks in the program and whether they are optimized
+or not. In this overview the “Optimized block access” status can be conveniently
+changed.
+Note: Instance data blocks (here “Function_block_1_DB”) inherit the “optimized”
+status from the respective FB. This is why the “optimized” setting can only be
+changed on the FB.",529,82,False
+81318674_Programming_guideline_DOKU_v11_en_p13_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,13,2,2,"(here “Function_block_1_DB”) inherit the “optimized”
+status from the respective FB. This is why the “optimized” setting can only be
+changed on the FB. After the compilation of the project the DB accepts the
+status depending on the respective FB.
+Display of optimized and non-optimized blocks in the TIA Portal
+In the two following figures the differences between an optimized and a non-
+optimized instance DB can be seen.
+For a global DB there are the same differences.
+Figure 2-7: Optimized data block (without offset)
+Figure 2-8: Non-optimized data blocks (with offset)
+Table 2-3: Difference: optimized and non-optimized data block
+Optimized data block Non-optimized data block
+Optimized data blocks do not have an
+“offset” of the tags since the addressing is
+only symbolic.
+Non-optimized blocks have an “offset” and
+can be addressed directly.
+In optimized blocks every tag can be
+declared with “Retain”.
+However, in non-optimized blocks only all
+or no tags can be declared with “Retain”.",990,156,False
+81318674_Programming_guideline_DOKU_v11_en_p14_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,14,1,2,"2 S7-1200/1500 Innovations
+2.6 Block sizes
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 14
+Copyright ¤ Siemens AG 2013 All rights reserved
+If you want to declare a tag in a global DB with retain, you can set this directly in
+the global DB. No data is retentive by default.
+If you want to declare a tag in a global DB with retain, you can set this directly in
+the global DB.
+Access types for optimized and non-optimized blocks
+The following table displays all access types to blocks.
+Table 2-4: Access types
+Access type Optimized block Non-optimized
+block
+Symbolic 9 9
+Indexed (fields) 9 9
+Slice accesses 9 9
+AT instruction 8
+(Alternatively: slice access)
+9
+Direct absolute 8
+(Alternatively: ARRAY with
+index)
+9
+Indirect absolute (pointer) 8
+(Alternatively: VARIANT /
+ARRAY with index)
+9
+Downloading without
+reinitialization
+9 8
+Note You will find further information in the following entry:
+What properties do you have to pay attention to in STEP 7 V11 for the
+instructions",992,167,False
+81318674_Programming_guideline_DOKU_v11_en_p14_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,14,2,2,"9 8
+Note You will find further information in the following entry:
+What properties do you have to pay attention to in STEP 7 V11 for the
+instructions ""READ_DBL"" and ""WRIT_DBL"", when you are using DBs with
+optimized access?
+http://support.automation.siemens.com/WW/view/en/51434748
+2.6 Block sizes
+For S7-1200/1500 controllers the maximum size of blocks was significantly
+increased in the main memory.
+Table 2-5: Block sizes
+Max. size and number
+(regardless of the main memory
+size)
+S7 -300/400 S7-1200 S7-1500
+DB Max. size 64 kB 64 kB 64 kB (non-optimized)
+16 MB (optimized)
+Max. number 16.000 59.999 59.999
+FC/FB Max. size 64 kB 64 kB 512 kB
+Max. number 7.999 65.535 65.535
+FC / FB / DB Max. number 4.096 (CPU319)
+6.000 (CPU412)
+1.024 6.000 (CPU1516)",751,122,False
+81318674_Programming_guideline_DOKU_v11_en_p15_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,15,1,2,"2 S7-1200/1500 Innovations
+2.7 New data types for S7-1200/1500
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 15
+Copyright ¤ Siemens AG 2013 All rights reserved
+Recommendation
+x Use the DBs for S7-1500 controllers as data container of very large data
+volumes.
+x Data volumes of > 64 kB can be stored in an optimized DB (max. size 16 MB)
+with S7-1500 controllers.
+2.7 New data types for S7-1200/1500
+S7-1200/1500 controllers support new data types in order to make programming
+more convenient. With the new 64 bit data types considerably larger and more
+accurate values can be used.
+Note
+You will find further information in the following entry:
+How is the conversion of data types performed in the TIA Portal for the
+S7-1200/1500?
+http://support.automation.siemens.com/WW/view/en/60546567
+2.7.1 Elementary data types
+Table 2-6: Integer data types
+Type Size Value range
+USint 8 bit 0 .. 255
+SInt 8 bit -128 .. 127
+UInt 16 bit 0 .. 65535
+UDInt 32 bit 0 ..",970,160,False
+81318674_Programming_guideline_DOKU_v11_en_p15_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,15,2,2,"ry data types
+Table 2-6: Integer data types
+Type Size Value range
+USint 8 bit 0 .. 255
+SInt 8 bit -128 .. 127
+UInt 16 bit 0 .. 65535
+UDInt 32 bit 0 .. 4.3 million
+ULInt* 64 bit 0 .. 18.4 billion
+LInt* 64 bit -9.2 billion .. 9.2 billion
+* only for S7-1500
+Table 2-7: Floating-point decimal data types
+Type Size Value range
+Real 32 bit (1 bit signs, 8 bit exponent, 23 bit mantissa),
+8 digits
+-3.40e+38 .. 3.40e+38
+LReal 64 bit (1 bit signs, 11 bit exponent, 23 bit
+mantissa), 16 digits
+-1.79e+308 .. 1.79e+308
+2.7.2 Date_Time_Long data type
+Table 2-8: Structure of DTL (Date_Time_Long)
+Year Month Day Weekday Hour Minute Second Nanosecond
+DTL always reads the current system time. Access to the individual values is
+through the symbolic names (e.g. My_Timestamp.Hour)
+Advantages
+x All partial areas (e.g. Year, Month, ...) can be addressed symbolically.",852,150,False
+81318674_Programming_guideline_DOKU_v11_en_p16_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,16,1,2,"2 S7-1200/1500 Innovations
+2.7 New data types for S7-1200/1500
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 16
+Copyright ¤ Siemens AG 2013 All rights reserved
+Recommendation
+Use the new DTL data type instead of LDT and address symbolically.
+2.7.3 VARIANT data type
+A parameter of the VARIANT type is a pointer that can point to tags of different
+data types. In contrast to the ANY pointer the VARIANT is a pointer with type test.
+I.e. the target structure and source structure are checked at runtime and have to be
+identical.
+VARIANT is used, for example, as input for communication blocks (TSEND_C).
+Figure 2-9: VARIANT data type as input parameter for the TSEND_C instruction
+VARIANT
+In this case includes the check of the
+structure TCON_IP_v4
+Advantages
+x Integrated type test
+x Symbolic addressing for optimized blocks
+Recommendation
+x Use the VARIANT data type instead of the ANY pointer.",912,148,False
+81318674_Programming_guideline_DOKU_v11_en_p16_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,16,2,2,"v4
+Advantages
+x Integrated type test
+x Symbolic addressing for optimized blocks
+Recommendation
+x Use the VARIANT data type instead of the ANY pointer. Due to the integrated
+type test, errors are detected early on and due to the symbolic addressing the
+program code can be easily interpreted.
+x As another alternative you can use the indexed ARRAYs for the ANY pointer
+(see chapter 3.6.2 ARRAY data type and indirect field accesses).
+Note You will find further information in the following entry:
+How can memory areas be copied in STEP 7 (TIA Portal)?
+http://support.automation.siemens.com/WW/view/en/59886704
+How do you program the ""VARIANT"" data type for indirect addressing for the S7-
+1200 in STEP 7 (TIA Portal) V11?
+http://support.automation.siemens.com/WW/view/en/42603286",778,116,False
+81318674_Programming_guideline_DOKU_v11_en_p17_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,17,1,2,"2 S7-1200/1500 Innovations
+2.8 New CALCULATE instruction
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 17
+Copyright ¤ Siemens AG 2013 All rights reserved
+2.8 New CALCULATE instruction
+With the CALCULATE instruction you can carry out mathematical calculations (e.g.
+(IN1 + IN2) * IN3) that are independent from the data type. The mathematical
+formula is programmed in the formula editor of the instruction.
+Figure 2-10: CALCULATE instruction with formula editor
+Note For more information refer to the Online Help of the TIA Portal with the
+“CALCULATE” instruction.
+Advantages
+x A mathematical formula only needs one instruction
+x Time saving due to simple configuration
+x In SCL mathematical formula can be programmed even more clearly and
+efficiently
+Properties
+x Supports bit sequences, integers, floating-point numbers
+x Supports numerous mathematical functions (all basic arithmetic operations,
+trigonometric functions, rounding, logarithm, etc.)
+x Supports any number of",992,143,False
+81318674_Programming_guideline_DOKU_v11_en_p17_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,17,2,2,"upports numerous mathematical functions (all basic arithmetic operations,
+trigonometric functions, rounding, logarithm, etc.)
+x Supports any number of inputs
+Recommendation
+x Always use the CALCULATE instruction for mathematical calculations instead
+of many calls of instructions, such as, e.g. ADD, SUB, etc.
+2.9 Symbolic and comments
+Advantages
+You can make the code easy to understand and readable for your colleagues with
+the use of symbolic names and comments in your program.
+The complete symbolic is saved together with the program code during the
+download to the controller and allows fast maintenance of the plant when no offline
+project is at hand.",658,100,False
+81318674_Programming_guideline_DOKU_v11_en_p18_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,18,1,1,"2 S7-1200/1500 Innovations
+2.9 Symbolic and comments
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 18
+Copyright ¤ Siemens AG 2013 All rights reserved
+Recommendation
+x Use the comments in the programs in order to improve readability.
+x Design the program code in a way so that other users can understand the
+program straight away.
+In the following example you can see the extensive options for commenting the
+program editors.
+Example
+In the following figure you can see the options for commenting in the LAD editor
+(same functionality in FDB).
+Figure 2-11: Commenting in the user program (LAD)
+4
+3
+2
+1
+The following comments are possible:
+1. Block comment
+2. Network title comment
+3. Network comment
+4. Comment on instructions, blocks and functions (open, close, etc.)
+In the programming languages SCL and STL, it can be commented with // in every
+row.
+Example
+Filling level:= Radius * Radius * PI * height; //
+calculation of the filling level for medium tank",976,162,False
+81318674_Programming_guideline_DOKU_v11_en_p19_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,19,1,2,"2 S7-1200/1500 Innovations
+2.10 System constants
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 19
+Copyright ¤ Siemens AG 2013 All rights reserved
+2.10 System constants
+For S7-300/400 controllers the identification of hardware and software components
+is performed by logic address or diagnostic addresses.
+For S7-1200/1500 the identification is by system constants. All hardware and
+software components (e.g. interfaces, modules, OBs, ...) of the S7-1200/1500
+controllers have their own system constants. The system constants are
+automatically created during the setup of the device configuration for the central
+and distributed I/O.
+Advantages
+x You can address via module names instead of hardware identification.
+Recommendation
+x Assign function-related module names in order to identify them easily during
+programming.
+Example
+In the following example you can see how system constants are used in the user
+program.
+Figure 2-12: “System constants” in the user program
+1
+2
+3
+1.",996,145,False
+81318674_Programming_guideline_DOKU_v11_en_p19_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,19,2,2,"e
+In the following example you can see how system constants are used in the user
+program.
+Figure 2-12: “System constants” in the user program
+1
+2
+3
+1. System constants of a controller can be found in the “PLC tags –
+Default tag table” folder.
+2. The system constants are in a separate list in the “Default tag table”.
+3. In this example the symbolic name “Robot_arm_left” was assigned for a DI
+module.
+You can also find the module under this name in the system constant table.
+In the user program “Robot_arm_left” is interconnected with the “GET_DIAG”
+diagnostic block.",569,100,False
+81318674_Programming_guideline_DOKU_v11_en_p20_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,20,1,3,"2 S7-1200/1500 Innovations
+2.11 Internal reference ID for controller and HMI tags
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 20
+Copyright ¤ Siemens AG 2013 All rights reserved
+Note You will find further information in the following entry:
+What meaning do the system constants have for the S7-1200/1500 in STEP 7
+(TIA Portal)?
+http://support.automation.siemens.com/WW/view/en/78782836
+2.11 Internal reference ID for controller and HMI tags
+STEP 7, WinCC, Startdrive, Safety and others integrate into the joint data base of
+the TIA Portal engineering framework. Changes of data are automatically accepted
+in all the locations in the user program, independent from whether this happens in
+a controller, a panel or a drive. Therefore no data inconsistencies can occur.
+If you create a tag, the TIA Portal automatically creates a unique reference ID. The
+reference ID cannot be viewed or programmed by you. This procedure is internal
+referencing.",962,145,False
+81318674_Programming_guideline_DOKU_v11_en_p20_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,20,2,3,"IA Portal automatically creates a unique reference ID. The
+reference ID cannot be viewed or programmed by you. This procedure is internal
+referencing. When changing tags (address), the reference ID remains unchanged.
+Advantages
+x You can rewire tags without changing internal relations. The communication
+between controller, HMI and drive also remains unchanged.
+x The volume of the transferred data and the usage of main memory is
+independent from the length of the symbolic tag names.
+x The length of the symbolic name does not have an influence on the
+communication load between controller and HMI.
+Properties
+If you change addresses of PLC tags, you only have to reload the controller.",689,110,False
+81318674_Programming_guideline_DOKU_v11_en_p20_c3,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,20,3,3,"nfluence on the
+communication load between controller and HMI.
+Properties
+If you change addresses of PLC tags, you only have to reload the controller. It is
+not necessary to reload the HMI devices, since internally, the system addresses
+with the reference IDs (see Figure 2-13: Changing address or adding row).
+Figure 2-13: Changing address or adding row
+Changing address
+& PLC
+Adding row
+& PLC
+PLC Tags
+DB Elements
+Motor_1 Motor_1%I0.0 %I2.0
+In the figure below the internal reference to the data is displayed schematically.",525,85,False
+81318674_Programming_guideline_DOKU_v11_en_p21_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,21,1,3,"2 S7-1200/1500 Innovations
+2.12 STOP mode in the event of errors
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 21
+Copyright ¤ Siemens AG 2013 All rights reserved
+Figure 2-14: Internal reference ID for PLC and HMI
+PLC_1
+Internal HMI
+reference ID
+HMI Symbol
+name
+Access
+mode
+Connection
+with PLC
+009876 Motor_1 <symbolic
+access>
+PLC_1
+000578 Valve_2 <symbolic
+access>
+PLC_1
+PLC Symbol
+name
+Absolute
+address
+Internal PLC
+reference ID
+Motor_1 I0.0 000123
+Valve_2 Q0.3 000138
+HMI_1
+NOTE The ID will be invalid if the name is changed, type is changed or tag is deleted
+2.12 STOP mode in the event of errors
+In comparison to S7-300/400 there are fewer criteria with the S7-1200/1500 that
+lead to the “STOP” mode.
+Due to the changed consistency check in the TIA Portal, the “STOP” mode for S7-
+1200/1500 controllers can already be excluded in advance in most cases. The
+consistency of program blocks is already checked when compiling in the
+TIA Portal.",961,159,False
+81318674_Programming_guideline_DOKU_v11_en_p21_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,21,2,3,"0 controllers can already be excluded in advance in most cases. The
+consistency of program blocks is already checked when compiling in the
+TIA Portal. This approach makes the S7-1200/1500 controllers more fault tolerant
+to errors than their predecessors.
+Advantages
+There are only three fault situations that put the S7-1200/1500 controllers into the
+STOP mode. This makes the programming of the error management clearer and
+easier.
+Properties
+Table 2-9: Responses to errors of S7-1200/1500
+Error S7-1200 S7-1500
+1. Cycle monitoring time
+exceeded once
+RUN STOP, when OB80 is
+not configured
+2. Cycle monitoring time
+exceeded twice
+STOP STOP
+3.",642,99,False
+81318674_Programming_guideline_DOKU_v11_en_p21_c3,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,21,3,3,"rror S7-1200 S7-1500
+1. Cycle monitoring time
+exceeded once
+RUN STOP, when OB80 is
+not configured
+2. Cycle monitoring time
+exceeded twice
+STOP STOP
+3. Programming errors RUN STOP, when OB121 is
+not configured
+Error OBs:
+x OB80 “Time error interrupt” is called by the operating system when the
+maximum cycle time of the controller is exceeded.
+x OB121 “Programming error” is called by the operating system when an error
+occurs during program execution.
+For every error, in addition, an entry is automatically created in the diagnostic
+buffer.",541,88,False
+81318674_Programming_guideline_DOKU_v11_en_p22_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,22,1,1,"2 S7-1200/1500 Innovations
+2.12 STOP mode in the event of errors
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 22
+Copyright ¤ Siemens AG 2013 All rights reserved
+Note For S7-1200/1500 controllers there are other programmable error OBs
+(diagnostic error, module rack failure, etc.).
+More information on error responses of S7-1200/1500 can be found in the online
+help of the TIA Portal under “Events and OBs”.",425,66,False
+81318674_Programming_guideline_DOKU_v11_en_p23_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,23,1,3,"3 General Programming
+3.1 Operating system and user program
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 23
+Copyright ¤ Siemens AG 2013 All rights reserved
+3 General Programming
+3.1 Operating system and user program
+SIMATIC controllers consist of operating system and user program.
+x The operating system organizes all functions and sequences of the controller
+that are not connected with a specific control task (e.g. handling of restart,
+updating of process image, calling the user program, error handling, memory
+management, etc.). The operating system is an integral part of the controller.
+x The user program includes all blocks that are required for the processing of
+your specific automation task.",723,110,False
+81318674_Programming_guideline_DOKU_v11_en_p23_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,23,2,3,"m is an integral part of the controller.
+x The user program includes all blocks that are required for the processing of
+your specific automation task. The user program is programmed with program
+blocks and loaded onto the controller.
+Figure 3-1: Operating system and user program
+Hardware
+User
+program
+OB
+Main
+Operating
+system
+cyclic
+call Global
+FCFB
+Local
+FC
+FC
+For SIMATIC controllers the user program is always executed cyclically. The
+“Main” cycle OP already exists in the “Program blocks” folder after a controller was
+created in STEP 7.",542,89,False
+81318674_Programming_guideline_DOKU_v11_en_p23_c3,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,23,3,3,"ser program is always executed cyclically. The
+“Main” cycle OP already exists in the “Program blocks” folder after a controller was
+created in STEP 7. The block is processed by the controller and recalled in an
+infinite loop.
+3.2 Program blocks
+In STEP 7 (TIA Portal) there are all familiar block types from the previous STEP 7
+versions:
+x Organization blocks
+x Function blocks
+x Functions
+x Data blocks
+Experienced STEP 7 users will know their way around straight away and new
+users can very easily get familiar with the programming.
+Advantages
+x You can give your program a good and clear structure with the different block
+types.
+x Due to a good and structured program you get many function units that can be
+multiply reused within a project and also in other projects. These function units
+then usually only differ by a different configuration (see chapter
+3.2.8 Reusability of blocks).",890,151,False
+81318674_Programming_guideline_DOKU_v11_en_p24_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,24,1,2,"3 General Programming
+3.2 Program blocks
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 24
+Copyright ¤ Siemens AG 2013 All rights reserved
+x You project or your plant becomes more transparent. I.e. error states in a plant
+can be more easily detected, analyzed and removed. I.e. the maintainability of
+your plant becomes easier. This is also the case for errors in programming.
+Recommendation
+x Structure your automation task.
+x Divide the entire function of your plant into individual areas and form sub-
+function units. Divide these function units again into smaller units and
+functions. Divide until you get functions that you can use several times with
+different parameters.
+x Specify the interfaces between the function units.",747,117,False
+81318674_Programming_guideline_DOKU_v11_en_p24_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,24,2,2,"nctions. Divide until you get functions that you can use several times with
+different parameters.
+x Specify the interfaces between the function units. Define the unique interfaces
+for functionalities that are to be delivered by “external companies”.
+All organization blocks, function blocks and functions can be programmed with the
+following languages:
+x Contact plan (KOP or LAD)
+x Function plan (FUP or FBD)
+x Structured Control Language (SCL)
+x Graph (GRAPH), only S7-1500, planned for S7-1200
+x Instruction list (AWL or STL), only S7-1500
+3.2.1 Organization blocks (OB)
+Figure 3-2: “Add new block” dialog (OB)
+OBs are the interface between the operating system and the user program. They
+are called by the operating system and control, e.g. the following processes:
+x Startup behavior of the controller
+x Cyclic program processing
+x Interrupt-controlled program processing
+x Error handling",893,137,False
+81318674_Programming_guideline_DOKU_v11_en_p25_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,25,1,2,"3 General Programming
+3.2 Program blocks
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 25
+Copyright ¤ Siemens AG 2013 All rights reserved
+Depending on the controller a number of different OB types are available.
+Properties
+x OBs are called by the operating system of the controller
+x Several Main OBs can be created in a program. The OBs are processed
+sequentially by OB number.
+Figure 3-3: Using several Main OBs
+Main_1
+OB1
+FB
+Local
+FC
+User program
+Main_y
+OB200
+Main_x
+OB300
+FB
+Local
+FC
+FB
+Local
+FC
+Recommendation
+x Encapsulate the different program parts which should maybe be replaceable
+from controller to controller, into several Main OBs.
+x Avoid the communication between the different Main OBs. They can then be
+used independent from each other.",771,126,False
+81318674_Programming_guideline_DOKU_v11_en_p25_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,25,2,2,"ler to controller, into several Main OBs.
+x Avoid the communication between the different Main OBs. They can then be
+used independent from each other. If you nevertheless exchange data
+between the individual main OBs, use the global DBs (see chapter 4.2 No bit
+memory but global data blocks).
+x Divide all program parts that belong to each other into folders and store them
+for reusability in the project or global library.
+Figure 3-4: Storing program parts in order in the project library
+For further information, please refer to chapter 3.7 Libraries.",553,92,False
+81318674_Programming_guideline_DOKU_v11_en_p26_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,26,1,2,"3 General Programming
+3.2 Program blocks
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 26
+Copyright ¤ Siemens AG 2013 All rights reserved
+Note You will find further information in the following entry:
+Which organization blocks can be used in STEP 7 (TIA Portal)?
+http://support.automation.siemens.com/WW/view/en/58235745
+3.2.2 Functions (FC)
+Figure 3-5: “Add new block” dialog (FC)
+FCs are blocks without cyclic data storages. This is why the values of block
+parameters cannot be saved until the next call and have to be provided with actual
+parameters when called.
+Properties
+x FCs are blocks without cyclic data storages.
+x Temporary and out tags are lost after the processing of the function.",713,109,False
+81318674_Programming_guideline_DOKU_v11_en_p26_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,26,2,2,"ameters when called.
+Properties
+x FCs are blocks without cyclic data storages.
+x Temporary and out tags are lost after the processing of the function. They are
+preassigned with an undefined value when calling the function in non-
+optimized blocks, and for optimized blocks they are preassigned with “0”
+(S7-1500 and S7-1200 firmware V4).
+x In order to permanently save the data of an FC, the functions of the global data
+blocks are available.
+x FCs can have several outputs.
+x The function value can be directly reused in SCL in a formula.
+Recommendation
+x Use the functions for continuously recurring applications that are called several
+times in different locations of the user program.
+x Use the option to directly reuse the function value in SCL.
+<Operand> := <FC name> (parameter list)
+Example
+In the following example a mathematical formula is programmed in a FC. The result
+of the calculation is directly declared as return value and the function value can be
+directly reused.",983,164,False
+81318674_Programming_guideline_DOKU_v11_en_p27_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,27,1,1,"3 General Programming
+3.2 Program blocks
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 27
+Copyright ¤ Siemens AG 2013 All rights reserved
+Table 3-1: Reusing function value
+Step Instruction
+1. Create an FC with the mathematical formula (circular segment) and define the
+“Return” value as the result for the formula.
+FC
+2. Call the FC with the circular segment calculation in any block (SCL).
+<Operand> := <FC name> (parameter list);",449,71,False
+81318674_Programming_guideline_DOKU_v11_en_p28_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,28,1,2,"3 General Programming
+3.2 Program blocks
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 28
+Copyright ¤ Siemens AG 2013 All rights reserved
+3.2.3 Function blocks (FB)
+Figure 3-6: “Add new block” dialog (FB)
+FBs are blocks with cyclic data storage, in which values are permanently stored.
+The cyclic data storage is realized in an instance DB.
+Figure 3-7: Calling a function block
+Call of a function block in the
+block editor
+Instance DB
+Properties
+x FCs are blocks with cyclic data storage.
+x Temporary and out tags are lost after the processing of the function. They are
+preassigned with an undefined value when calling the function in non-
+optimized blocks, and for optimized blocks they are preassigned with “0”
+(S7-1500 and S7-1200 firmware V4).
+x Static tags keep the value from cycle to cycle
+Recommendation
+x Use the function blocks in order to create subprograms and structure the user
+program.",918,151,False
+81318674_Programming_guideline_DOKU_v11_en_p28_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,28,2,2,"Static tags keep the value from cycle to cycle
+Recommendation
+x Use the function blocks in order to create subprograms and structure the user
+program. A function block can also be called several times in different locations
+of the user program. This makes programming of frequently recurring program
+parts easier.
+3.2.4 Instance data block
+The call of a function block is called instance. The data with which the instance is
+working is saved in an instance DB.",460,77,False
+81318674_Programming_guideline_DOKU_v11_en_p29_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,29,1,3,"3 General Programming
+3.2 Program blocks
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 29
+Copyright ¤ Siemens AG 2013 All rights reserved
+Instance DBs are always created according to the specifications in the FB interface
+and can therefore not be changed in the instance DB.
+Figure 3-8: Structure of the interfaces of an FB
+Temp
+L - Stack
+Instance_DB
+Input
+Output
+InOut
+Static
+The instance DB consists of a permanent memory with the interfaces input, output,
+InOut and static. In a volatile memory (L stack) temporary tags are stored. The
+L stack is always only valid for one cycle. I.e.",605,101,False
+81318674_Programming_guideline_DOKU_v11_en_p29_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,29,2,3,"rfaces input, output,
+InOut and static. In a volatile memory (L stack) temporary tags are stored. The
+L stack is always only valid for one cycle. I.e. temporary tags have to be initialized
+in each cycle.
+Properties
+x Instance DBs are always assigned to a FB.
+x Instance DBs do not have to be created manually in the TIA Portal and are
+created automatically when calling an FB.
+x The structure of the instance DB is specified in the appropriate FB and can
+only be changed there.
+Recommendation
+x Program it in a way so that the data of the instance DB can only be changed by
+the appropriate FB. This is how you can guarantee that the block can be used
+universally in all kinds of projects.
+For further information, please refer to chapter 3.4 Block interfaces as data
+exchange.
+3.2.5 Multi-instances
+With multi-instances called function blocks can store their data in the instance data
+block of the called function block. I.e.",925,163,False
+81318674_Programming_guideline_DOKU_v11_en_p29_c3,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,29,3,3,".
+3.2.5 Multi-instances
+With multi-instances called function blocks can store their data in the instance data
+block of the called function block. I.e. if another function block is called in a function
+block, it saves its data in the instance DB of the higher-level FBs.
+The following figure shows an FB that uses another FB (“IEC Timer”). All data is
+saved in a multi instance DB.",380,66,False
+81318674_Programming_guideline_DOKU_v11_en_p30_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,30,1,1,"3 General Programming
+3.2 Program blocks
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 30
+Copyright ¤ Siemens AG 2013 All rights reserved
+Figure 3-9: Multi-instances
+Multi-instance DB
+FB Statics
+TOF_TIME
+FB Parameter
+FB
+Switch-on
+delay call
+Advantages
+x Reusability
+x Multiple calls are possible
+x Clearer program with fewer instance DBs
+x Simple copying of programs
+x Good options for structuring during programming
+Properties
+x Multi-instances are memory areas within instance DBs.
+Recommendation
+x Use multi-instances in order to reduce the number of instances. You can
+therefore create reusable and clear user programs.
+Example
+If you require the time and counter function, use the “IEC Timer” blocks and the
+“IEC Counter” blocks instead of the absolutely addressed SIMATIC Timer. If
+possible, also always use multi-instances here. This keeps the number of blocks in
+the user program low.",910,138,False
+81318674_Programming_guideline_DOKU_v11_en_p31_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,31,1,1,"3 General Programming
+3.2 Program blocks
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 31
+Copyright ¤ Siemens AG 2013 All rights reserved
+Figure 3-10: Library of the IEC Timer
+Note You will find further information in the following entry:
+How do you declare the timers and counters for the S7-1500 in STEP 7
+(TIA Portal) V12?
+http://support.automation.siemens.com/WW/view/en/67585220
+3.2.6 Global data blocks (DB)
+Figure 3-11: “Add new block” dialog (DB
+Variable data is located in data blocks that are available to the entire user program.",558,85,False
+81318674_Programming_guideline_DOKU_v11_en_p32_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,32,1,2,"3 General Programming
+3.2 Program blocks
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 32
+Copyright ¤ Siemens AG 2013 All rights reserved
+Figure 3-12: Global DB as central data memory
+DB
+OB
+FC
+FB
+Local
+Advantages
+x Well structured memory area
+x High access speed
+Properties
+x All blocks in the user program can access global DBs.
+x The structure of the global DBs can be arbitrarily made up of all data types.
+x Global DBs are either created via the program editor or according to a
+previously created “user-defined PLC data type"" (see chapter 3.6.3 STRUCT
+data type and PLC data types).
+Recommendation
+x Use the global DBs when data is used in different program parts or blocks.
+x Use the PLC data types in order to specify a structure for a data block. The
+PLC data type can be used for any number of DBs.",825,148,False
+81318674_Programming_guideline_DOKU_v11_en_p32_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,32,2,2,"ogram parts or blocks.
+x Use the PLC data types in order to specify a structure for a data block. The
+PLC data type can be used for any number of DBs. You can easily and
+conveniently create as many DBs of the same structure and adjust them
+centrally on the PLC data type (see chapter 3.6.3 STRUCT data type and PLC
+data types).
+Note
+You will find further information in the following entry:
+What access types, value columns and operating options are there for the global
+data blocks in STEP 7 V12?
+http://support.automation.siemens.com/WW/view/en/68015631
+3.2.7 Downloading without reinitialization
+In order to change user programs that already run in a controller, S7-1200
+(firmware V4.0) and S7-1500 controllers offer the option to expand the interfaces of
+optimized function or data blocks during operation. You can load the changed
+blocks without setting the controller to STOP and without influencing the actual
+values of already loaded tags.",947,153,False
+81318674_Programming_guideline_DOKU_v11_en_p33_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,33,1,3,"3 General Programming
+3.2 Program blocks
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 33
+Copyright ¤ Siemens AG 2013 All rights reserved
+Figure 3-13: Downloading without reinitialization
+Name
+Tag1
+Value
+3.4
+Tag3
+Tag4
+23
+0
+Name
+Tag1
+Tag2
+Value
+3.4
+451
+Tag3 23
+Tag5 0
+Block
+in project
+Name
+Tag1
+Tag3
+Tag4
+Tag5
+Tag2 451Tag2
+Block in
+the controller
+Block in
+the controller
+1
+3
+2
+Execute the following steps whilst the controller is in RUN mode.
+1. Enable “Downloading without reinitialization”
+2. Insert tags in existing block
+3. Load block into controller
+Advantages
+x Reloading of tags without interrupting the running process.",644,104,False
+81318674_Programming_guideline_DOKU_v11_en_p33_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,33,2,3,"nitialization”
+2. Insert tags in existing block
+3. Load block into controller
+Advantages
+x Reloading of tags without interrupting the running process. The controller stays
+in “RUN” mode.
+Properties
+x It is assumed that a memory reserve has been defined for block.
+x Downloading without reinitialization is only possible for optimized blocks.
+x The current values are not initialized and maintain the current value.
+x A block with reserve requires more memory space in the controller.
+x The memory reserve depends on the work memory of the controller; however it
+is max. 2 MB.
+x By default the memory reserve is set to 100 byte.
+x The memory reserve is defined individually for every block.
+Recommendation
+x Define a memory reserve for blocks that are to be expanded during
+commissioning (e.g. test blocks). The commissioning process is therefore not
+interrupted.",862,140,False
+81318674_Programming_guideline_DOKU_v11_en_p33_c3,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,33,3,3,"e a memory reserve for blocks that are to be expanded during
+commissioning (e.g. test blocks). The commissioning process is therefore not
+interrupted. The blocks can be variably expanded.
+Example
+The following table describes how you can set the memory reserve for the
+downloading without reinitializing.",304,46,False
+81318674_Programming_guideline_DOKU_v11_en_p34_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,34,1,1,"3 General Programming
+3.2 Program blocks
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 34
+Copyright ¤ Siemens AG 2013 All rights reserved
+Table 3-2: Setting memory reserve
+Step Instruction
+1. Right-click any optimized block in the project navigator and select “Properties”.
+2.
+1
+2
+3
+1. Click “Download without reinitialization”.
+2. Enter the desired memory reserve for “Memory reserve”.
+3. Confirm with ""OK"".
+In the following example it is displayed how to download without reinitialization.
+Table 3-3 Downloading without reinitialization
+Step Instruction
+1. Requirement: a memory reserve has to be set (see above)
+2. Open, e.g. an optimized global DB.",670,101,False
+81318674_Programming_guideline_DOKU_v11_en_p35_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,35,1,2,"3 General Programming
+3.2 Program blocks
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 35
+Copyright ¤ Siemens AG 2013 All rights reserved
+Step Instruction
+3. Click the “Download without reinitialization” button and confirm the dialog with
+“OK”
+4. Add a new tag (retentive tags are also possible).
+5. Download the block to the controller.
+6. Result:
+x Actual values of the block remain
+Note Further information can be found in the online help of the TIA Portal under
+“Loading block extensions without reinitialization”.
+3.2.8 Reusability of blocks
+The block concept offers you a number of options to program in a structured and
+effective way.
+Advantages
+x Blocks can be used universally in any location of the user program.
+x Blocks can be used universally in different projects.
+x When every block receives an independent task, a clear and well structured
+user program is automatically created.
+x There are clearly fewer sources of errors and is makes simple error",982,159,False
+81318674_Programming_guideline_DOKU_v11_en_p35_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,35,2,2,"pendent task, a clear and well structured
+user program is automatically created.
+x There are clearly fewer sources of errors and is makes simple error diagnostic
+possible.
+Recommendation
+If you want to reuse the block, please note the following recommendations:
+x Always look at blocks as encapsulated functions. I.e. each block represents a
+completed partial task of the entire user program.
+x Use several cyclic Main OBs to group the plant parts.
+x Always execute a data exchange between the blocks via its interfaces and not
+via its instances (see chapter 3.4.1 Block interfaces as data exchange).
+x Do not use project-specific data and avoid the following block contents:",675,109,False
+81318674_Programming_guideline_DOKU_v11_en_p36_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,36,1,2,"3 General Programming
+3.3 Block interface types
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 36
+Copyright ¤ Siemens AG 2013 All rights reserved
+– Access to global DBs and use of individual instance DBs
+– Access to tags
+– Access to global constants
+x Reusable blocks have the same requirements as know-how-protected blocks
+in libraries. This is why you have to check the blocks for reusability based on
+the “Block can be used as know-how protected library element” block property.
+Compile the block before the check.
+Figure 3-14: Block attributes
+3.3 Block interface types
+FBs and FCs have three different interface types: In, InOut and Out. Via these
+interface types the blocks are provided with parameters. The parameters are
+processed and output again in the block.",786,127,False
+81318674_Programming_guideline_DOKU_v11_en_p36_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,36,2,2,"pes: In, InOut and Out. Via these
+interface types the blocks are provided with parameters. The parameters are
+processed and output again in the block. There are two different options for this
+parameter transfer.
+3.3.1 Call-by-value with In interface type
+When calling the block, the value of the actual parameter is copied onto the input
+parameter of the block for the In interface type. For this, additional memory is
+required.
+Figure 3-15: Copying of the value to the input parameter
+„My_string“
+value: 'test'
+FC / FB
+IN
+value: 'test'
+Properties
+x Each block displays the same behavior with connected parameters
+x Values are copied when calling the block",656,108,False
+81318674_Programming_guideline_DOKU_v11_en_p37_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,37,1,3,"3 General Programming
+3.4 Storage concept
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 37
+Copyright ¤ Siemens AG 2013 All rights reserved
+3.3.2 Call-by-reference with InOut interface type
+When calling the block the address of the actual parameter of the Input parameter
+is referenced for the InOut interface type. For this, no additional memory is
+required.
+Figure 3-16: Referencing the value (pointer to data storage of the parameter)
+FC / FB
+IN/OUT
+Reference to ""My_string""
+""My_string""
+value: 'test'
+Properties
+x Each block displays the same behavior with connected parameters
+x Actual parameters are referenced with the block call
+Recommendation
+x Generally use the InOut interface type for structured tags (e.g. of the ARRAY,
+STRUCT, STRING, type...) in order to avoid enlarging the required data
+memory unnecessarily.
+3.4 Storage concept
+For STEP 7 there is generally the difference between the global and local memory
+area.",948,145,False
+81318674_Programming_guideline_DOKU_v11_en_p37_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,37,2,3,"ing the required data
+memory unnecessarily.
+3.4 Storage concept
+For STEP 7 there is generally the difference between the global and local memory
+area. The global memory area is available for each block in the user program. The
+local memory area is only available within the respective block.
+3.4.1 Block interfaces as data exchange
+If you are encapsulating the functions and program the data exchange between the
+blocks only via the interfaces, you will clearly have advantages.
+Advantages
+x Program code is easier to read since there are no hidden cross accesses.
+x Program can be made up modularly from ready blocks with partial tasks.
+x Program is easy to expand and maintain.
+Recommendation
+x If possible, only use the tags locally. This is how the blocks can be used
+universally and modularly.
+x Use the data exchange via the block interfaces (In, Out, InOut), when tags are
+used in several blocks.
+x Only use the instance data blocks as local memory for the respective function
+block.",990,167,False
+81318674_Programming_guideline_DOKU_v11_en_p37_c3,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,37,3,3,"erfaces (In, Out, InOut), when tags are
+used in several blocks.
+x Only use the instance data blocks as local memory for the respective function
+block. Other blocks must not be written into instance data blocks.",210,36,False
+81318674_Programming_guideline_DOKU_v11_en_p38_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,38,1,2,"3 General Programming
+3.4 Storage concept
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 38
+Copyright ¤ Siemens AG 2013 All rights reserved
+Figure 3-17: Avoiding accesses to instance data blocks
+OB
+FB
+Local
+FC FB
+Local
+If only the block interfaces are used for the data exchange it can be ensured that
+all blocks can be used independent from each other.
+Figure 3-18: Block interfaces for data exchange
+OB
+FB
+Local
+FC
+FB
+Local
+3.4.2 Global memory
+Memories are called global when they can be accessed from any location of the
+user program. There are hardware-dependent memories (e.g. bit memory, times,
+counters, etc.) and global DBs. For hardware-dependent memory areas there is the
+danger that the program may not be portable to any controller because the areas
+there may already be used.",805,133,False
+81318674_Programming_guideline_DOKU_v11_en_p38_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,38,2,2,"ardware-dependent memory areas there is the
+danger that the program may not be portable to any controller because the areas
+there may already be used. This is why you should use global DBs instead of
+hardware-dependent memory areas.
+Advantages
+x User programs can be used universally and independent from the hardware.
+x The user program can be structured modularly without having to define bit
+memory address areas for different users.
+x Optimized global DBs are clearly more powerful than the bit memory address
+area that is not optimized for reasons of compatibility.
+Recommendation
+x Do not use any bit memory and use global DBs instead.
+x Avoid hardware-dependent memory, such as, for example, clock memory or
+counter. Use the IEC counter and timer in connection with multi-instances
+instead (see chapter 3.2.5 Multi-instances). The IEC timers can be found under
+“Instructions – Basic Instructions – Timer operations”.",923,146,False
+81318674_Programming_guideline_DOKU_v11_en_p39_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,39,1,1,"3 General Programming
+3.4 Storage concept
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 39
+Copyright ¤ Siemens AG 2013 All rights reserved
+Figure 3-19: IEC Timers
+3.4.3 Local memory
+x Static tags
+x Temporary tags
+Recommendation
+x Use the static tags if the tag values are required for the next cycle.
+x Use the temporary tags if tags are only required for the current cycle as
+intermediate memory. The access time for temporary tags is shorter than for
+static ones.
+Note Optimized blocks: Temporary tags are initialized in any block call with the
+value “0” (S7-1500 und S7-1200 Firmware V4).
+Non-optimized blocks: Temporary tags are undefined for each call of the block.",688,113,False
+81318674_Programming_guideline_DOKU_v11_en_p40_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,40,1,2,"3 General Programming
+3.4 Storage concept
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 40
+Copyright ¤ Siemens AG 2013 All rights reserved
+3.4.4 Access speed of memory areas
+STEP 7 offers different options of memory accesses. For system-related reasons
+there are faster and slower accesses to different memory areas.
+Figure 3-20: Different memory accesses
+Access speed fast intermediate slow
+1
+Temporary tags
+1
+Non-retain tags
+1
+Non-structured
+elementary data type FC
+parameter
+2
+Accesses to checks for at
+runtime require
+(register, indirect and
+indirect DB accesses)
+3
+Access to non-optimized
+blocks
+Indexed accesses with
+runtime tindex 4
+5
+5
+5
+6
+Access to optimized DBs
+Retentive tags
+Copying between optimized
+and non-optimized blocks
+2
+Fastest accesses in the S7-1200/1500 in descending order
+1. Optimized blocks: Temporary tags, parameters of an FC and FB, non-retentive
+static tags
+2.",908,138,False
+81318674_Programming_guideline_DOKU_v11_en_p40_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,40,2,2,"Fastest accesses in the S7-1200/1500 in descending order
+1. Optimized blocks: Temporary tags, parameters of an FC and FB, non-retentive
+static tags
+2. Optimized blocks whose accesses for compiling are known:
+– Retentive FB tags
+– Optimized global DBs
+3. Access to non-optimized blocks
+4. Indexed accesses with index that was calculated at runtime (e.g. Motor [i])
+5. Accesses that require checks at runtime
+– Accesses to DBs that are created at runtime or which were opened
+indirectly (e.g. OPN DB[i])
+– Register access or indirect memory access
+6. Copying of structures between optimized and non-optimized blocks (apart from
+Array of Bytes)",641,102,False
+81318674_Programming_guideline_DOKU_v11_en_p41_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,41,1,3,"3 General Programming
+3.5 Retentivity
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 41
+Copyright ¤ Siemens AG 2013 All rights reserved
+3.5 Retentivity
+In the event of a failure of the power supply, the controller copies the retentive data
+with its buffer energy from the controller’s work memory to a non-volatile memory.
+After restarting the controller, the program processing is resumed with the retentive
+data.",431,66,False
+81318674_Programming_guideline_DOKU_v11_en_p41_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,41,2,3,"rom the controller’s work memory to a non-volatile memory.
+After restarting the controller, the program processing is resumed with the retentive
+data. Depending on the controller, the data volume for retentivity has different
+sizes.
+Table 3-4: Retentive memory for S7-1200/1500
+Controller
+Usable retentive memory for bit memory,
+times, counters, DBs and technology
+objects
+CPU 1215C 10 Kbytes
+CPU 1215C 10 Kbytes
+CPU 1214C 10 Kbytes
+CPU 1215C 10 Kbytes
+CPU 1511-1 PN 88 Kbytes
+CPU 1513-1 PN 88 Kbytes
+CPU 1516-3 PN/DP 472 Kbytes
+Table 3-5: Differences of S7-1200 and S7-1500
+S7-1200 S7-1500
+Retentivity can only be set for bit memory Retentivity can be set for bit memory, times
+and counters
+Advantages
+x Retentive data maintain their value when the controller goes to STOP and back
+to RUN or in the event of a power failure and a restart of the controller.
+Properties
+For elementary tags of an optimized DB the retentivity can be set separately.",946,156,False
+81318674_Programming_guideline_DOKU_v11_en_p41_c3,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,41,3,3,"the event of a power failure and a restart of the controller.
+Properties
+For elementary tags of an optimized DB the retentivity can be set separately. Non-
+optimized data blocks can only be defined completely retentive or non-retentive.
+The retentive data can be deleted with the actions ""memory reset"" or ""Reset to
+factory settings"" via:
+x Operating switch on the controller (MRES)
+x Display of the controller
+x Online via STEP 7 (TIA Portal)
+Recommendation
+x Avoid the setting “Set in IDB”. Always set the retentive data in the function
+block and not in the instance data block.
+The “Set in IDB” setting increases the processing time of the program
+sequence. Always either select “Non-retain” or “Retain” for the interfaces in the
+FB.",736,123,False
+81318674_Programming_guideline_DOKU_v11_en_p42_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,42,1,2,"3 General Programming
+3.6 Symbolic addressing
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 42
+Copyright ¤ Siemens AG 2013 All rights reserved
+Figure 3-21: Program editor (Functions block interfaces)
+Example
+The setting of the retentive data is performed in the tables of the PLC data types,
+function blocks and data blocks.
+Figure 3-22: Setting of the retentive tags in the table of PLC data types
+Retentivity can be set from
+address 0 onward!
+e.g. from MB0, T0 or C0
+3.6 Symbolic addressing
+3.6.1 Symbolic instead of absolute addressing
+The TIA Portal is optimized for symbolic programming. This results in many
+advantages. Due to the symbolic addressing you can program without having to
+pay attention to the internal data storage. The controller handles where the best
+possible storage is for the data.",824,132,False
+81318674_Programming_guideline_DOKU_v11_en_p42_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,42,2,2,"you can program without having to
+pay attention to the internal data storage. The controller handles where the best
+possible storage is for the data. You can therefore completely concentrate on the
+solution for your application task.
+Advantages
+x Easier to read programs through symbolic tag names
+x Automatic update of tag names at all usage locations in the user program
+x Memory storage of the program data does not have to be manually managed
+(absolute addressing)
+x Powerful data access",491,81,False
+81318674_Programming_guideline_DOKU_v11_en_p43_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,43,1,1,"3 General Programming
+3.6 Symbolic addressing
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 43
+Copyright ¤ Siemens AG 2013 All rights reserved
+x No manual optimization for performance or program size reasons required
+x IntelliSense for fast symbol input
+x Fewer program errors due to type safety (validity of data types is checked for
+all accesses)
+Recommendation
+x “Think” symbolically. Enter the “descriptive” name for each function, tag or
+data, such as, for example, Pump_boiler_1, heater_room_4, etc. This is how a
+generated program can easily be read without requiring many comments.
+x Give all the tags used a direct symbolic name and define it afterwards with a
+right-click.
+Example
+Table 3-6: Example for creating symbolic tags
+Step Instruction
+1. Open the program editor and open any block.
+2. Enter a symbolic name directly at the input of an instruction.
+3. Right-click next to the block and select “Define tag...” in the context menu.",965,154,False
+81318674_Programming_guideline_DOKU_v11_en_p44_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,44,1,1,"3 General Programming
+3.6 Symbolic addressing
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 44
+Copyright ¤ Siemens AG 2013 All rights reserved
+Step Instruction
+4. Define the tag.
+There is an elegant method to save time, if you want to define several tags in a
+network. Assign all tag names first of all. Then define all tags at the same time with
+the dialog of step 4.
+Note You will find further information in the following entry:
+Why is universal definition and utilization of symbols in STEP 7 (TIA Portal) V12
+obligatory for the S7-1500?
+http://support.automation.siemens.com/WW/view/en/67598995
+3.6.2 ARRAY data type and indirect field accesses
+The ARRAY data type is suitable, for example, for the storage of recipes, material
+tracking in a queue, cyclic process acquisition, protocols, etc.
+Figure 3-23: ARRAY with 9 elements of the Integer (INT) data type
+You can indirectly access individual elements in the ARRAY with a runtime tag
+(array [“index”]).",978,155,False
+81318674_Programming_guideline_DOKU_v11_en_p45_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,45,1,2,"3 General Programming
+3.6 Symbolic addressing
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 45
+Copyright ¤ Siemens AG 2013 All rights reserved
+Figure 3-24: Indirect field access
+SCL:
+0123456789
+KOP / FUP:
+Advantages
+x Simple access since the data type of the ARRAY elements is irrelevant for the
+access.
+x No complicated pointer creation required
+x Fast creation and expansion possible
+x Useable in all programming languages
+Properties
+x Structured data type
+x Data structure made of fixed number of elements of the same data type
+x ARRAYs can be created nested or also multi-dimensional
+x Possible indirect access with runtime tag with dynamic index calculation at
+runtime
+Recommendation
+x Use ARRAY for indexed accesses instead of pointer (e.g. ANY pointer).",778,122,False
+81318674_Programming_guideline_DOKU_v11_en_p45_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,45,2,2,"cess with runtime tag with dynamic index calculation at
+runtime
+Recommendation
+x Use ARRAY for indexed accesses instead of pointer (e.g. ANY pointer). This
+makes it easier to read the program since an ARRAY is more meaningful with
+a symbolic name than a pointer in a memory area.
+x As run tag use the INT data type as temporary tag for highest performance.
+x Use the “MOVE_BLK” instruction to copy parts of an ARRAY into another one.
+x Use the “GET_ERR_ID” instruction to catch access errors within the Array.
+Note You will find further information in the following entry:
+How do you implement an array access with an S7-1500 with variable index?
+http://support.automation.siemens.com/WW/view/en/67598676",704,113,False
+81318674_Programming_guideline_DOKU_v11_en_p46_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,46,1,2,"3 General Programming
+3.6 Symbolic addressing
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 46
+Copyright ¤ Siemens AG 2013 All rights reserved
+3.6.3 STRUCT data type and PLC data types
+The STRUCT data type represents a data structure which is made up of elements
+of different data types. The declaration of a structure is performed in the respective
+block.
+Figure 3-25: Structure with elements with different data types
+In comparison to structures, PLC data types are defined across the controller in the
+TIA Portal and can be centrally changed.",563,90,False
+81318674_Programming_guideline_DOKU_v11_en_p46_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,46,2,2,"ith different data types
+In comparison to structures, PLC data types are defined across the controller in the
+TIA Portal and can be centrally changed. All usage locations are automatically
+updated.
+PLC data types are declared in the “PLC data types” folder in the project navigation
+before being used.
+Figure 3-26: PLC data types
+Advantages
+x A change in a PLC data type is automatically updated in all usage locations in
+the user program.
+Recommendation
+x Use the PLC data types to summarize several associated data, such as, e.g.
+frames or motor data (setpoint, speed, rotational direction, temperature, etc.)
+x Always use PLC data types instead of structures for the multiple uses in the
+user program.
+x Use the PLC data types for structuring into data blocks.",763,127,False
+81318674_Programming_guideline_DOKU_v11_en_p47_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,47,1,2,"3 General Programming
+3.6 Symbolic addressing
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 47
+Copyright ¤ Siemens AG 2013 All rights reserved
+Note You will find further information in the following entries:
+How do you initialize structures into optimized memory areas for the S7-1500
+STEP 7 (TIA Portal)?
+http://support.automation.siemens.com/WW/view/en/78678761
+How do you create a PLC data type for an S7-1500 controller?
+http://support.automation.siemens.com/WW/view/en/67599090
+In STEP 7 (TIA Portal) V12, how do you apply your own data types (UDT)?
+http://support.automation.siemens.com/WW/view/en/67582844
+Why should whole structures instead of many single components be transferred
+for the S7-1500 when a block is called?
+http://support.automation.siemens.com/WW/view/en/67585079
+3.6.4 Slice access
+For S7-1200/1500 controllers, you can access the memory area of tags of the Byte,
+Word, DWord or LWord data type. The division of a memory area (e.g.",974,129,False
+81318674_Programming_guideline_DOKU_v11_en_p47_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,47,2,2,"For S7-1200/1500 controllers, you can access the memory area of tags of the Byte,
+Word, DWord or LWord data type. The division of a memory area (e.g. byte or
+word) into a smaller memory area (e.g. Bool) is also called slice. In the figure below
+displays the symbolic bit, byte and word accesses to the operands.
+Figure 3-27: Slice access
+Advantages
+x High programming efficiency
+x No additional definition in the tag declaration required
+x Simple access (e.g. control bits)
+Recommendation
+x Use the slice access rather than AT construct via accessing certain data areas
+in operands.
+Note You will find further information in the following entry:
+How in STEP 7 (TIA Portal) can you access the unstructured data types bit-by-
+bit, byte-by-byte or word-by-word and symbolically?
+http://support.automation.siemens.com/WW/view/en/57374718",833,128,False
+81318674_Programming_guideline_DOKU_v11_en_p48_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,48,1,2,"3 General Programming
+3.7 Libraries
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 48
+Copyright ¤ Siemens AG 2013 All rights reserved
+3.7 Libraries
+With the TIA Portal you can create independent libraries from different project
+elements that can be easily reused.
+Advantages
+x Simple storage for the data configured in the TIA Portal:
+– Complete devices (controller, HMI, drive, etc.)
+– Controller programs, blocks, tags, monitoring tables
+– HMI image, HMI tags, scripts, etc.
+x Cross-project exchange via libraries
+x Central update function of library elements
+x Versioning library elements
+x Fewer error sources when using control blocks through system-supported
+consideration of dependencies
+Recommendations
+x Create the master copies for easy reusability of blocks, hardware
+configurations, HMI images, etc.
+x Create the types for the system-supported reusability of library elements:
+– Versioning of blocks
+– Central update function of all usage locations
+x Use the global",994,147,False
+81318674_Programming_guideline_DOKU_v11_en_p48_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,48,2,2,"pes for the system-supported reusability of library elements:
+– Versioning of blocks
+– Central update function of all usage locations
+x Use the global library for the exchange with other users or as central storage
+for the simultaneous use of several users.
+3.7.1 Types of libraries and library elements
+Generally there are two different types of libraries:
+x ""Project library""
+x ""Global library"".
+The content consists of two storage types each:
+x ""Types""
+x ""Master Copies""",473,76,False
+81318674_Programming_guideline_DOKU_v11_en_p49_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,49,1,2,"3 General Programming
+3.7 Libraries
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 49
+Copyright ¤ Siemens AG 2013 All rights reserved
+Figure 3-28: Libraries in the TIA Portal
+1
+2
+3
+4
+x (1) ""Project library""
+– Integrated in the project and managed with the project
+– Allows the reusability within the project
+x (2) ""Global library""
+– Independent library
+– Use within several projects possible
+A library includes two different types of storage of library elements:
+x (3) ""Master copies""
+– Copy of configuration elements in the library (e.g. blocks, hardware, PLC
+tag tables, etc.)
+– Copies are not connected with the elements in the project.
+– Master copies can also be made up several configuration elements.
+x (4) ""Types""
+– Types are connected with your usage locations in the project.",802,133,False
+81318674_Programming_guideline_DOKU_v11_en_p49_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,49,2,2,"ect.
+– Master copies can also be made up several configuration elements.
+x (4) ""Types""
+– Types are connected with your usage locations in the project. When types
+are changed, the usage locations in the project can be updated
+automatically.
+– Supported types are controller blocks (FCs, FBs), PLC data types, HMI
+images, HMI faceplates, HMI UDT, scripts).
+– Subordinate elements are automatically typified.
+– Types are versioned: Changes can be made by creating a newer version.
+– There can only be one version of a used type within a controller.",545,91,False
+81318674_Programming_guideline_DOKU_v11_en_p50_c1,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,50,1,3,"3 General Programming
+3.7 Libraries
+Programming Guideline for S7-1200/1500
+V1.1, Entry ID: 81318674 50
+Copyright ¤ Siemens AG 2013 All rights reserved
+3.7.2 Type concept
+The type concept allows the creation of standardized automation functions that you
+can use in several plants or machines. The type concept supports you with
+versioning and updating functions.
+You can use types from the library in the user program.",417,65,False
+81318674_Programming_guideline_DOKU_v11_en_p50_c2,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,50,2,3,"eral plants or machines. The type concept supports you with
+versioning and updating functions.
+You can use types from the library in the user program. This offers the following
+advantages:
+Advantages
+x Central update of all usage locations in the project
+x Unwanted modifications of usage locations of types are not possible.
+x The system guarantees that types always remain consistent by hindering
+unwanted delete operations.
+x If a type is deleted, all usage locations in the user program are deleted.
+Properties
+By using types you can make the changes centrally and update them in the
+complete project.
+Figure 3-29: Typifying with user libraries
+User libraryProject
+Typ V1
+Typ V2
+Use V2
+Use V2
+Use V2
+Central update to
+newer version
+Master copy
+Update
+Use
+Use
+Use
+without
+typification
+with typification
+x Types are always marked in the project for better identification
+3.7.3 Differences for typifiable objects for controller and HMI
+There are system-related differences between the typifiable",996,158,False
+81318674_Programming_guideline_DOKU_v11_en_p50_c3,81318674_Programming_guideline_DOKU_v11_en.csv,"Programming Guideline for S7-1200/S7-1500 (STEP 7, TIA Portal)",Programming Guideline,S7-1200/S7-1500,81318674,1.1,en,50,3,3,"for better identification
+3.7.3 Differences for typifiable objects for controller and HMI
+There are system-related differences between the typifiable objects for controllers
+and HMI:
+Table 3-7: Differences of types for controller and HMI
+Controller HMI
+Subordinate control elements are typified. Subordinate HMI elements are not typified.
+Subordinate control elements are
+instanced.
+Subordinate HMI elements are not
+instanced.
+Control elements are edited in a test
+environment.
+HMI images and HMI scripts are edited in a
+test environment. Faceplates and HMI -
+UDTs are directly edited in the library
+without test environment.",625,90,False

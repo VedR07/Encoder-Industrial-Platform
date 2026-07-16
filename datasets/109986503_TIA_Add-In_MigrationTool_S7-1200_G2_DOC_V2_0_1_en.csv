@@ -1,0 +1,427 @@
+chunk_id,source_file,doc_title,doc_type,product_family,entry_id,version,language,page,chunk_index,page_chunk_count,chunk_text,char_count,word_count,is_boilerplate
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p1_c1,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,1,1,1,"S7-1200 G2 Migration
+Tool Documentation
+Add-In / TIA Portal V21 / V2.0.1
+Siemens
+Industry
+Online
+Support",104,16,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p2_c1,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,2,1,7,"Entry ID: 109986503 | V2.0.1 | 06/2026 Generated with Code2Docu © Siemens 2026 | 2
+Legal information
+Use of application examples
+Application examples illustrate the solution of automation tasks through an interaction of several components in the form of text,
+graphics and/or software modules. The application examples are a free service by Siemens AG and/or a subsidiary of Siemens AG
+(""Siemens""). They are non-binding and make no claim to completeness or functionality regarding configuration and equipment. The
+application examples merely offer help with typical tasks; they do not constitute customer-specific solutions. The application examples
+are not subject to standard tests and quality inspections of a chargeable product and may contain functional and performance
+defects or other faults and security vulnerabilities.",828,120,True
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p2_c2,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,2,2,7,"tests and quality inspections of a chargeable product and may contain functional and performance
+defects or other faults and security vulnerabilities. You are responsible for the proper and safe operation of the products in
+accordance with all applicable regulations, including checking and customizing the application example for your system, and
+ensuring that only trained personnel use it in a way that prevents property damage or injury to persons. You are solely
+responsible for any productive use.
+Siemens grants you the non-exclusive, non-sublicensable and non-transferable right to have the application examples used by technically
+trained personnel. Any change to the application examples is your responsibility. Sharing the application examples with third parties or
+copying the application examples or excerpts thereof is permitted only in combination with your own products. Any further use of the
+application examples is explicitly not permitted and further rights are not granted.",994,145,True
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p2_c3,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,2,3,7,"nly in combination with your own products. Any further use of the
+application examples is explicitly not permitted and further rights are not granted. You are not allowed to use application examples in
+any other way, including, without limitation, for any direct or indirect training or enhancements of AI models.
+
+Disclaimer of liability
+Siemens shall not assume any liability, for any legal reason whatsoever, including, without limitation, liability for the usability,
+availability, completeness and freedom from defects of the application examples as well as for related information, configuration and
+performance data and any damage caused thereby. This shall not apply in cases of mandatory liability, for example under the German
+Product Liability Act, or in cases of intent, gross negligence, or culpable loss of life, bodily injury or damage to health, non-compliance
+with a guarantee, fraudulent non-disclosure of a defect, or culpable breach of material contractual obligations.",989,147,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p2_c4,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,2,4,7,"y or damage to health, non-compliance
+with a guarantee, fraudulent non-disclosure of a defect, or culpable breach of material contractual obligations. Claims for damages
+arising from a breach of material contractual obligations shall however be limited to the foreseeable damage typical of the type of
+agreement, unless liability arises from intent or gross negligence or is based on loss of life, bodily injury or damage to health. The
+foregoing provisions do not imply any change in the burden of proof to your detriment. You shall indemnify Siemens against existing or
+future claims of third parties in this connection except where Siemens is mandatorily liable.
+By using the application examples you acknowledge that Siemens cannot be held liable for any damage beyond the liability provisions
+described.",808,125,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p2_c5,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,2,5,7,"liable.
+By using the application examples you acknowledge that Siemens cannot be held liable for any damage beyond the liability provisions
+described.
+
+Other information
+Siemens reserves the right to make changes to the application examples at any time without notice and to terminate your use of the
+application examples at any time. In case of discrepancies between the suggestions in the application examples and other Siemens
+publications such as catalogs, the content of the other documentation shall have precedence.
+The Siemens terms of use (https://www.siemens.com/global/en/general/terms-of-use) shall also apply.",622,88,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p2_c6,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,2,6,7,"of the other documentation shall have precedence.
+The Siemens terms of use (https://www.siemens.com/global/en/general/terms-of-use) shall also apply.
+
+Cybersecurity information
+Siemens provides products and solutions with industrial cybersecurity functions that support the secure operation of plants, systems,
+machines and networks.
+In order to protect plants, systems, machines and networks against cyber threats, it is necessary to implement – and continuously
+maintain – a holistic, state-of-the-art industrial cybersecurity concept. Siemens’ products and solutions constitute one element of such a
+concept.
+Customers are responsible for preventing unauthorized access to their plants, systems, machines and networks. Such systems, machines
+and components should only be connected to an enterprise network or the internet if and to the extent such a connection is necessary
+and only when appropriate security measures (e.g.",927,124,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p2_c7,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,2,7,7,"nnected to an enterprise network or the internet if and to the extent such a connection is necessary
+and only when appropriate security measures (e.g. firewalls and/or network segmentation) are in place.
+For additional information on industrial cybersecurity measures that may be implemented, please visit www.siemens.com/cybersecurity-
+industry.
+Siemens’ products and solutions undergo continuous development to make them more secure. Siemens strongly recommends that
+product updates are applied as soon as they are available and that the latest product versions are used. Use of product versions that are
+no longer supported, and failure to apply the latest updates may increase customer’s exposure to cyber threats.
+To stay informed about product updates, subscribe to the Siemens Industrial Cybersecurity RSS Feed under
+https://www.siemens.com/cert.",853,120,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p3_c1,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,3,1,4,"Table of contents
+Entry ID: 109986503 | V2.0.1 | 06/2026 Generated with Code2Docu © Siemens 2026 | 3
+Table of contents
+1. Introduction ................................ ................................ ................................ ................................ ...4
+1.1. Overview ................................ ................................ ................................ ................................ ..................... 4
+2. Handling ................................ ................................ ................................ ................................ ........5
+2.1. Installation ................................ ................................ ................................ ................................ ................... 5
+2.2. Migration Check ................................ ................................ ................................ ................................ ........... 5
+2.3.",939,61,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p3_c2,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,3,2,4,"................................ ................................ ................................ ................................ ........... 5
+2.3. Extension of Migration Tool ................................ ................................ ................................ .......................... 6
+2.4. System properties ................................ ................................ ................................ ................................ ......... 6
+3. Operation ................................ ................................ ................................ ................................ .......7
+3.1. Execution of SIMATIC S7-1200 G2 Migration Tool ................................ ................................ .......................... 7
+3.2. Result window after execution of migration function ................................ ................................ ................... 10
+3.3. Log file of Migration Tool ................................",985,63,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p3_c3,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,3,3,4,"............................. ................................ ................... 10
+3.3. Log file of Migration Tool ................................ ................................ ................................ ............................ 10
+3.4. Undoing Migration Steps ................................ ................................ ................................ ............................ 11
+4. Troubleshooting ................................ ................................ ................................ ...........................12
+4.1. Limitations ................................ ................................ ................................ ................................ ................. 12
+4.2. Hints ................................ ................................ ................................ ................................ .......................... 14
+4.3. Components used ................................ ................................",986,51,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p3_c4,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,3,4,4,"................................ .......................... 14
+4.3. Components used ................................ ................................ ................................ ................................ ...... 15
+4.4. General Troubleshooting of TIA Add-Ins ................................ ................................ ................................ ....... 15
+5. Service and support ................................ ................................ ................................ ......................16
+5.1. Links and literature ................................ ................................ ................................ ................................ ..... 17
+5.2. Change documentation ................................ ................................ ................................ .............................. 17",852,49,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p4_c1,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,4,1,1,"Introduction
+Entry ID: 109986503 | V2.0.1 | 06/2026 Generated with Code2Docu © Siemens 2026 | 4
+1. Introduction
+1.1. Overview
+The TIA Portal Add-In “S7-1200 G2 Migration Tool” automates a TIA Portal project migration, from a S7-1200 classic to the
+newer S7-1200 G2. The Migration Tool consists of a Migration Checker and the Migration Add-In. The Migration checker
+will check the existing S7-1200 TIA Portal project and give suggestions based on hardware and software compatibility
+between the S7-1200 and the S7-1200 G2. The Add-In supports the migration process of software and hardware
+configurations from an S7-1200 PLC to a S7-1200 G2 PLC inside the same TIA Portal project instance.
+
+Figure 1‐1: Migration Tool executing area",731,115,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p5_c1,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,5,1,2,"Handling
+Entry ID: 109986503 | V2.0.1 | 06/2026 Generated with Code2Docu © Siemens 2026 | 5
+2. Handling
+2.1. Installation
+1. Integrate the Add-In file “Siemens.S7-1200G2MigrationTool.addin” by selecting it over the Add-Ins Tab and the button
+“Add User Add-Ins”.
+2. Activate the Add-In in the “Add-Ins” task card (Add-Ins are deactivated by default).
+3. For information on how to install Add-Ins and integrate them into the TIA Portal V21 environment, refer to the TIA
+Portal Online Help or the general TIA Add-Ins page in the region ""Installation"".
+By deleting the “Siemens.S7-1200G2MigrationTool.addin” file from the stored location of the local device the Add-In can
+be removed.
+2.2. Migration Check
+1. Right click on the source CPU and select “S7-1200 G2 Migration Tool” in the context menu.
+2. Select “Check Migration” option.",830,130,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p5_c2,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,5,2,2,"2.2. Migration Check
+1. Right click on the source CPU and select “S7-1200 G2 Migration Tool” in the context menu.
+2. Select “Check Migration” option.
+
+Figure 2‐1: Execution of “Check migration”
+3. The Migration Tool will generate a CSV file that lists which components can and cannot be migrated. Based on the
+existing hardware devices in the project, the tool suggests suitable target devices and modules.
+4. After successful generation of the report a dialogue box will appear. With selecting “yes” in the dialogue box, it will
+directly navigate to the reports stored location within the “UserFiles” of the project.",617,100,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p6_c1,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,6,1,1,"Handling
+Entry ID: 109986503 | V2.0.1 | 06/2026 Generated with Code2Docu © Siemens 2026 | 6
+Note During Migration Check, the CSV file (Migration check report in User Files under project folder) should
+be kept closed.
+
+2.3. Extension of Migration Tool
+With the V2.0 of S7-1200 G2 Migration Tool it is possible to migrate the following:
+1. Just Hardware (for HW which is available during the release of “Current Version”)
+Network and Topology are set automatically according to existing settings. Refer to chapter 4.1.
+2. Just Software (consider changes in configuration of function in the target CPU)
+3. Software and Hardware both (consider HW availability and changes in SW)
+2.4. System properties
+- Windows operating system with TIA Portal V21 and TIA Portal Openness V21 installed.
+- .NET-Framework 4.8.
+This application is developed in Visual Studio 2022 IDE with .NET Framework 4.8.",886,142,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p7_c1,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,7,1,3,"Operation
+Entry ID: 109986503 | V2.0.1 | 06/2026 Generated with Code2Docu © Siemens 2026 | 7
+3. Operation
+3.1. Execution of SIMATIC S7-1200 G2 Migration Tool
+1. Inside the Project tree of a TIA Portal project, right-click the source S7-1200 PLC from which you want to migrate. In
+the context menu the entry “S7-1200 G2 Migration Tool” is listed under the Add-Ins section.
+2. Select the option “Migrate”. The Add-In will open its user interface.
+3. After the required Add-In permissions are granted, the Add-In will look like this:",530,89,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p7_c2,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,7,2,3,"t the option “Migrate”. The Add-In will open its user interface.
+3. After the required Add-In permissions are granted, the Add-In will look like this:
+
+Figure 3‐1: S7-1200 G2 Migration Tool User Interface
+The pop-up GUI has three sections, the Source information, the Migration Options section and the Select Target section.
+The Source information gives the name of the selected source S7-1200 PLC. Within the Migration Options section it is
+possible to choose between Hardware and/or Software.
+For the Hardware migration the user can optionally select to migrate the S7-1200 onboard analogue input and outputs.
+First the target PLC, under “Select Target” needs to be selected. Based on the target device and its available slots, the
+dropdown menus for Slot 1 and Slot 2 will be enabled. Each menu offers two options: reuse the existing S7-1200 board
+and/or automatically insert a mixed analog I/O board as a replacement for the onboard peripherals.",949,152,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p7_c3,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,7,3,3,"ffers two options: reuse the existing S7-1200 board
+and/or automatically insert a mixed analog I/O board as a replacement for the onboard peripherals. Also, the option of
+attaching a new analogue signal module is possible (recommended if all board slots are occupied). Selecting a mixed
+AI/AQ signal board together with a signal module is not permitted, and the tool will prevent further execution, entries will
+be highlighted in red.",434,69,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p8_c1,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,8,1,2,"Operation
+Entry ID: 109986503 | V2.0.1 | 06/2026 Generated with Code2Docu © Siemens 2026 | 8
+
+Figure 3-2: Dropdown menu entries for Optional Migrate Onboard IOs
+With the “Optional: Migrate Onboard IOs” feature users can choice if the analogue onboard periphery needs to be reused
+on the S7-1200 G2. Please check the S7-1200 configuration before optional selecting the migration of onboard IOs.
+For the Software migration the user can choose between two options:
+1. Skip existing elements: Existing elements in the target CPU will be ignored
+2. Overwrite existing elements: Existing elements in the target CPU will be Overwritten",628,99,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p8_c2,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,8,2,2,"elements: Existing elements in the target CPU will be ignored
+2. Overwrite existing elements: Existing elements in the target CPU will be Overwritten
+
+Figure 3‐3: Migration Options
+With these two options the migrated content on the target PLC will be influenced.
+With the Select Target, the user needs to select a target device of interest. The selected target device for the software can
+be different from the selected one for the hardware. If the hardware is selected for a target device, all the hardware is
+automatically transferred. Already existing Hardware devices on a S7-1200 G2 can be overwritten. During the Migration a
+Pop-Up Window will appear for confirmation.",674,108,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p9_c1,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,9,1,3,"Operation
+Entry ID: 109986503 | V2.0.1 | 06/2026 Generated with Code2Docu © Siemens 2026 | 9
+
+Figure 3‐4: “PLC not empty” Dialog box
+
+Note Some pre-requirements need to be met before executing the Add-In:
+- The target PLC needs to be implemented in the hardware network from the hardware catalogue
+- Configuration of hardware properties of the target PLC
+
+Note Hardware Migration Option of onboard IOs for S7-1200 G2 SIPLUS and RAIL CPUs is not supported.
+While selecting mixed AI/AQ signal boards in the dropdown is possible, it will result in an unsuccessful
+migration, and a corresponding entry will be logged.",613,101,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p9_c2,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,9,2,3,"electing mixed AI/AQ signal boards in the dropdown is possible, it will result in an unsuccessful
+migration, and a corresponding entry will be logged.
+
+The workflow is the following:
+- Launch the Add-In on the source PLC
+- All the S7-1200 G2 available in the project are proposed as target PLC
+- The target devices proposed are just S7-1200 G2 (all the devices from the project are filtered, to offer to the user just
+all the available S7-1200 G2 in the current project).
+- Select the appropriate target S7-1200 G2 CPU
+- For “Migrate Hardware” choose to optionally migrate onboard IOs
+- For “Migrate Software” choose to either override or skip existing elements
+- To further execute the Migration Tool Add-In select the “Migrate” button
+Button Function
+
+Initiate the migration process. By default, everything will be copied from source
+PLC to target PLCs.
+
+Navigates you to SiePortal page ""SIMATIC S7-1200 G2 Migration Tool"".
+Table 3-1: Button to select within S7-1200 G2 Migration Tool UI",989,164,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p9_c3,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,9,3,3,"to target PLCs.
+
+Navigates you to SiePortal page ""SIMATIC S7-1200 G2 Migration Tool"".
+Table 3-1: Button to select within S7-1200 G2 Migration Tool UI
+
+Note For the migration of Software elements, it is recommended to use the “Overwrite existing elements”
+option. This will guarantee that automatic generated blocks (e.g. MainOB1) are overwritten.",346,52,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p10_c1,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,10,1,2,"Operation
+Entry ID: 109986503 | V2.0.1 | 06/2026 Generated with Code2Docu © Siemens 2026 | 10
+3.2. Result window after execution of migration function
+After the successful execution of the migration function of the “SIMATIC G2 Migration Tool” a dialogue box will appear.
+This dialogue box will summarize the results and show which hardware devices and program elements were
+migrated/ignored.
+
+Figure 3‐5: S7-1200 G2 Migration Tool result window
+The “Show Logfile” button will redirect to the “UserFiles” section where the log report is stored. The log report summarizes
+the results of the migration process in more detail. With “Close” the dialogue box can be closed.
+3.3. Log file of Migration Tool
+The log file of the Migration Tool is saved within the “UserFiles” directory of the TIA Portal project. The migration checker
+as well as the migration option will create a summary of the elements within the project. One CSV file will be created for
+the hardware and another for the software.",991,162,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p10_c2,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,10,2,2,"migration option will create a summary of the elements within the project. One CSV file will be created for
+the hardware and another for the software. The log file will contain information about the block name, the block path,
+the implementation of migration and a solution. Based on the result of the migration checker a suitable solution is
+suggested for the user.
+
+Figure 3‐6: Result log file after execution of Migration Tool",429,72,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p11_c1,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,11,1,1,"Operation
+Entry ID: 109986503 | V2.0.1 | 06/2026 Generated with Code2Docu © Siemens 2026 | 11
+3.4. Undoing Migration Steps
+It is possible to undo certain migration steps. To undo the whole migration at once, please select the items mentioned in
+Figure 3‐7. The first step related to the latest migration is named as the tool.
+An example of the undo of a complete migration process is shown here:
+
+Figure 3‐7: Undo migration steps
+Furthermore, it is possible to roll back to single migration steps, e.g. roll back the software changes but keep the
+hardware migration. Therefore, just select the wished fields.",608,102,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p12_c1,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,12,1,6,"Troubleshooting
+Entry ID: 109986503 | V2.0.1 | 06/2026 Generated with Code2Docu © Siemens 2026 | 12
+4. Troubleshooting
+4.1. Limitations
+- The Migration Checker software report lists the blocks that can be migrated, as well as those that cannot. Any
+elements not mentioned in the report are generally considered not migratable. These exceptions are outside of the
+scope of the migration tool (see elements within scope of migration tool down below).
+- The default tag table from S7-1200 will be migrated to the S7-1200 Generation 2. If not required, it can be deleted by
+the user. S7-1200 G2 default tag table will not be substituted by S7-1200 default tag table.
+- In case there are modules (AI, AO, DI, DO modules, ...) in the rack on the source S7-1200 PLC that has a new
+correspondent module in the catalog of the S7-1200 G2 controller, the Add-In will create and plug these modules to
+the target S7-1200 G2.",911,157,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p12_c2,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,12,2,6,"at has a new
+correspondent module in the catalog of the S7-1200 G2 controller, the Add-In will create and plug these modules to
+the target S7-1200 G2. Here it always occupies the first three slots for communication modules, followed by signal
+modules.
+For S7-1200 G2 modules not available in the hardware catalogue of the TIA Portal, the S7-1200 module will not be
+converted, and the user will be warned accordingly in the final summary.
+- Network and topology are transferred from existing S7-1200 PLCs to the S7-1200 G2 together with the hardware
+transfer.",558,93,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p12_c3,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,12,3,6,"rdingly in the final summary.
+- Network and topology are transferred from existing S7-1200 PLCs to the S7-1200 G2 together with the hardware
+transfer. Although, due to Openness API limitations, the hardware properties will not be copied.
+- Technology Objects of type “TO_CommandTable” are ignored during the migration.
+- HMI connections cannot be transferred onto the migrated device.
+- Traces are ignored during the migration.
+- Watch tables (source PLC) with variables from data blocks having connection to an error element (FB, FC,...) must not
+be migrated.
+- The Migration Tool will not change existing software / program code, all program structures will remain the same.
+- The HW properties will not be Migrated.",718,114,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p12_c4,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,12,4,6,"igration Tool will not change existing software / program code, all program structures will remain the same.
+- The HW properties will not be Migrated. The user must reconfigure hardware properties manually.
+- The safety blocks are not supported yet.
+- Know-How protected blocks (OBs, FCs, FBs) cannot be migrated
+- In the current version, a single selection of program items, such as Tag Tables or program blocks, is not supported.
+- If some elements are not copied do check if in hardware configuration access control is enabled / disabled.
+If enabled the user should have at least PLC administrator rights.
+- In target PLC, the elements of the project libraries should be replaced with new ones from the project library to
+generate a new connection.
+- If the local port name of Figure 4-1 the source PLC is changed from its default value (“PROFINET interface_1”) to a
+custom name, any existing PROFINET connection cannot be considered during the migration process.",966,161,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p12_c5,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,12,5,6,"from its default value (“PROFINET interface_1”) to a
+custom name, any existing PROFINET connection cannot be considered during the migration process. As a result, the
+Migration Tool displays an error dialog box Figure 4-2 indicating that the connection could not be resolved due to the
+modified port name. Either revert the local port name to its default value and restart the migration process or
+manually configure the PROFINET connection in the “Network View”.
+- Migration of MainOB1 when motion functions are directly implemented within it is for now not supported.",569,90,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p12_c6,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,12,6,6,"e PROFINET connection in the “Network View”.
+- Migration of MainOB1 when motion functions are directly implemented within it is for now not supported. Must be
+migrated manually.
+- After the migrationprocess the ""Extended Parameters"" within the TO_PositioningAxis_PTO have to be implemented
+manually.
+- For Migration of S7-1200 TO_PositioningAxis, the migration tool does not support PROFIdrive connections.
+- For S7-1200 a single TO_PositioningAxis supported both motion control as well as motion control PTO.
+S7-1200 G2 now has these two functionalities separated and hence to be configured in two different TOs. For MC_X
+functions are also sepearated accordingly.
+- Only if the homing option for S7-1200 PLC is not set within Technology Object then for migrated TO_PositioningAxis
+functionality in S7-1200 G2, Homing via zero mark of PROFIdrive telegram will be selected automatically (Figure 4-3).",900,133,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p13_c1,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,13,1,1,"Troubleshooting
+Entry ID: 109986503 | V2.0.1 | 06/2026 Generated with Code2Docu © Siemens 2026 | 13
+
+Figure 4-1: Hardware properties section for local port configuration
+
+Figure 4-2: Error dialog box for renamed local port
+
+Figure 4-3: Default selection of homing mode",268,41,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p14_c1,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,14,1,1,"Troubleshooting
+Entry ID: 109986503 | V2.0.1 | 06/2026 Generated with Code2Docu © Siemens 2026 | 14
+4.2. Hints
+User rights:
+If the Project protection (under the “Security settings” in the TIA Portal project tree) is enabled, it is required to assign the
+“Edit project via Openness API” engineering rights to a user. This configuration can be found under the “Users and roles”
+section. If this is not assigned, the Migration Tool Add-In cannot be executed.
+
+Figure 4‐4: Location to set up “Edit project via Openness API” rights
+
+Configuration comparison on startup:
+For S7-1200 G2 the default option selected upon startup is: ""Startup CPU only if compatible"". For both failsafe and
+standard CPU do select an appropriate option as per the user program. Option ""Startup CPU even if mismatch"" is
+recommended when using central IO configuration.",840,135,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p15_c1,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,15,1,2,"Troubleshooting
+Entry ID: 109986503 | V2.0.1 | 06/2026 Generated with Code2Docu © Siemens 2026 | 15
+
+Figure 4-5: Startup comparison preset to actual configuration
+
+PLC default tag tables:
+
+Figure 4-6: Double PLC tag tables
+After migration in S7-1200 G2 PLC delete the unwanted/double migrated PLC Tag tables. This is to avoid multiple copies
+of the PLC tags.
+4.3. Components used
+This application example has been created with the following software components:
+Component Article Number Note
+SIMATIC STEP7 Basic 21 6ES7822-0AA06-0YA5 TIA Openness option needs to be activated
+You can purchase these components from the Siemens Industry Mall.
+4.4.",646,98,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p15_c2,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,15,2,2,"TIC STEP7 Basic 21 6ES7822-0AA06-0YA5 TIA Openness option needs to be activated
+You can purchase these components from the Siemens Industry Mall.
+4.4. General Troubleshooting of TIA Add-Ins
+For general troubleshooting of TIA Add-Ins, see the general “TIA Add-Ins for TIA Portal” documentation.
+In case of unexpected exceptions or errors please re-activate the “S7-1200 G2 Migration Tool” Add-In and restart the
+migration process.
+Logs:
+A log report will be created inside the UserFiles directory of the TIA Portal project. Two separate log reports in CSV format
+(one for hardware and one for software) with all the copied or ignored objects will be created after each successful
+migration process.",697,108,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p16_c1,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,16,1,3,"Service and support
+Entry ID: 109986503 | V2.0.1 | 06/2026 Generated with Code2Docu © Siemens 2026 | 16
+5. Service and support
+SiePortal
+The integrated platform for product selection, purchasing and support - and connection of Industry Mall and Online
+support. The SiePortal home page replaces the previous home pages of the Industry Mall and the Online Support Portal
+(SIOS) and combines them.
+- Products & Services
+In Products & Services, you can find all our offerings as previously available in Mall Catalog.
+- Support
+In Support, you can find all information helpful for resolving technical issues with our products.
+- mySieportal
+mySiePortal collects all your personal data and processes, from your account to current orders, service requests and
+more.",758,120,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p16_c2,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,16,2,3,"our products.
+- mySieportal
+mySiePortal collects all your personal data and processes, from your account to current orders, service requests and
+more. You can only see the full range of functions here after you have logged in.
+You can access SiePortal via this address: sieportal.siemens.com
+Technical Support
+The Technical Support of Siemens Industry provides you fast and competent support regarding all technical queries with
+numerous tailor-made offers - ranging from basic support to individual support contracts.
+Please send queries to Technical Support via Web form:
+support.industry.siemens.com/cs/my/src
+SITRAIN - Digital Industry Academy
+We support you with our globally available training courses for industry with practical experience, innovative learning
+methods and a concept that's tailored to the customer's specific needs.
+For more information on our offered trainings and courses, as well as their locations and dates, refer to our web page:
+siemens.com/sitrain
+Industry Online",995,142,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p16_c3,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,16,3,3,"ore information on our offered trainings and courses, as well as their locations and dates, refer to our web page:
+siemens.com/sitrain
+Industry Online Support app
+You will receive optimum support wherever you are with the “Siemens Industry Online Support” app. The app is available
+for iOS and Android:",302,48,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p17_c1,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,17,1,2,"Service and support
+Entry ID: 109986503 | V2.0.1 | 06/2026 Generated with Code2Docu © Siemens 2026 | 17
+5.1. Links and literature
+No. Topic
+\1\ SiePortal https://sieportal.siemens.com
+\2\ Link to this entry page of this application example
+https://support.industry.siemens.com/cs/ww/en/view/109986503
+\3\ TIA Add-In Overview for Developers https://support.industry.siemens.com/cs/ww/en/view/109817270
+5.2. Change documentation
+Version Date Modification
+V2.0.0 12/2025 Add-In for TIA Portal V21
+New UI Elements: “Optionally: Migrate Onboard IOs”
+Added option for migrating AI and AO of S7-1200 to S7-1200 G2
+Added option for selecting slots for signal boards migration and placement
+Fully supported migration of Technology Objects for PID Control
+New hardware added SIPLUS/RAIL Portfolio elements, CP1243-1, mixed 32 Ch.",819,107,False
+109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en_p17_c2,109986503_TIA_Add-In_MigrationTool_S7-1200_G2_DOC_V2_0_1_en.csv,S7-1200 G2 Migration Tool Documentation (TIA Portal Add-In),Add-In / Migration Tool Documentation,S7-1200,109986503,2.0.1,en,17,2,2,"nd placement
+Fully supported migration of Technology Objects for PID Control
+New hardware added SIPLUS/RAIL Portfolio elements, CP1243-1, mixed 32 Ch. Digital modules,
+Battery board
+Add-In implementation position changes
+V2.0.1 06/2026 Migration support of motion control functionalities (TO_PositioningAxis and MC Instructions)
+Added new hardware according to the supported MLFBs (Communication processors and mixed
+F-Module)",426,54,False

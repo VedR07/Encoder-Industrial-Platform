@@ -1,0 +1,2908 @@
+chunk_id,source_file,doc_title,doc_type,product_family,entry_id,version,language,page,chunk_index,page_chunk_count,chunk_text,char_count,word_count,is_boilerplate
+s71200_system_manual_en-US_en-US_p1_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,1,1,1,"S7- 1200 Programmable controller
+
+SIMATIC
+S7
+S7-1200 Programmable controller
+System Manual
+
+04/2012
+A5E02486680-06
+Preface
+
+Product overview
+
+1
+STEP 7 programming
+software
+
+2
+Installation
+
+3
+PLC concepts
+
+4
+Device configuration
+
+5
+Programming concepts
+
+6
+Basic instructions
+
+7
+Extended instructions
+
+8
+Technology instructions
+
+9
+Communication
+
+10
+Web server
+
+11
+Communication processor
+
+12
+Teleservice communication
+(SMTP email)
+
+13
+Online and diagnostic tools
+
+14
+Technical specifications
+
+A
+Calculating a power budget
+
+B
+Order numbers
+
+C",539,71,False
+s71200_system_manual_en-US_en-US_p2_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,2,1,4,"Legal information
+
+Legal information
+Warning notice system
+This manual contains notices you have to observe in order to ensure your personal safety, as well as to prevent
+damage to property. The notices referring to your personal safety are highlighted in the manual by a safety alert
+symbol, notices referring only to property damage have no safety alert symbol. These notices shown below are
+graded according to the degree of danger.
+DANGER
+indicates that death or severe personal injury will result if proper precautions are not taken.
+WARNING
+indicates that death or severe personal injury may result if proper precautions are not taken.
+CAUTION
+with a safety alert symbol, indicates that minor personal injury can result if proper precautions are not taken.
+CAUTION
+without a safety alert symbol, indicates that property damage can result if proper precautions are not taken.
+NOTICE
+indicates that an unintended result or situation can occur if the relevant information is not taken into",992,157,True
+s71200_system_manual_en-US_en-US_p2_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,2,2,4,"t if proper precautions are not taken.
+NOTICE
+indicates that an unintended result or situation can occur if the relevant information is not taken into account.
+If more than one degree of danger is present, the warning notice representing the highest degree of danger will
+be used. A notice warning of injury to persons with a safety alert symbol may also include a warning relating to
+property damage.
+Qualified Personnel
+The product/system described in this documentation may be operated only by personnel qualified for the specific
+task in accordance with the relevant documentation, in particular its warning notices and safety instructions.
+Qualified personnel are those who, based on their training and experience, are capable of identifying risks and
+avoiding potential hazards when working with these products/systems.
+Proper use of Siemens products
+Note the following:
+WARNING
+Siemens products may only be used for the applications described in the catalog and in the relevant",984,152,False
+s71200_system_manual_en-US_en-US_p2_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,2,3,4,"se of Siemens products
+Note the following:
+WARNING
+Siemens products may only be used for the applications described in the catalog and in the relevant technical
+documentation. If products and components from other manufacturers are used, these must be recommended
+or approved by Siemens. Proper transport, storage, installation, assembly, commissioning, operation and
+maintenance are required to ensure that the products operate safely and without any problems. The permissible
+ambient conditions must be complied with. The information in the relevant documentation must be observed.
+Trademarks
+All names identified by ® are registered trademarks of Siemens AG. The remaining trademarks in this publication
+may be trademarks whose use by third parties for their own purposes could violate the rights of the owner.
+Disclaimer of Liability
+We have reviewed the contents of this publication to ensure consistency with the hardware and software
+described.",951,140,False
+s71200_system_manual_en-US_en-US_p2_c4,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,2,4,4,"f the owner.
+Disclaimer of Liability
+We have reviewed the contents of this publication to ensure consistency with the hardware and software
+described. Since variance cannot be precluded entirely, we cannot guarantee full consistency. However, the
+information in this publication is reviewed regularly and any necessary corrections are included in subsequent
+editions.
+
+Siemens AG
+Industry Sector
+Postfach 48 48
+90026 NÜRNBERG
+GERMANY
+Order number: 6ES7298-8FA30-8BH0
+P 05/2012 Technical data subject to change
+Copyright © Siemens AG 2012.
+All rights reserved",558,80,False
+s71200_system_manual_en-US_en-US_p3_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,3,1,3,"S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 3
+Preface
+Purpose of the manual
+The S7-1200 series is a line of programmable logic controllers (PLCs) that can control a
+variety of automation applications. Compact design, low cost, and a powerful instruction set
+make the S7-1200 a perfect solution for controlling a wide variety of applications. The S7-
+1200 models and the Windows-based programming tool give you the flexibility you need to
+solve your automation problems.
+This manual provides information about installing and programming the S7-1200 PLCs and
+is designed for engineers, programmers, installers, and electricians who have a general
+knowledge of programmable logic controllers.
+Required basic knowledge
+To understand this manual, it is necessary to have a general knowledge of automation and
+programmable logic controllers.
+Scope of the manual
+This manual describes the following products:
+● STEP 7 V11 Basic and Professional
+● S7-1200 CPU firmware release",995,146,False
+s71200_system_manual_en-US_en-US_p3_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,3,2,3,"ogic controllers.
+Scope of the manual
+This manual describes the following products:
+● STEP 7 V11 Basic and Professional
+● S7-1200 CPU firmware release V3.0
+For a complete list of the S7-1200 products described in this manual, refer to the technical
+spe
+cifications (Page 699).
+Certification, CE label, C-Tick, and other standards
+Refer to the technical specifications (Page 699) for more information.
+Service and support
+In addition to our documentation, we offer our technical expertise on the Internet on the
+customer support web site (http://www.siemens.com/automation/).
+Contact your Siemens distributor or sales office for assistance in answering any technical
+questions, for training, or for ordering S7 products.",719,106,False
+s71200_system_manual_en-US_en-US_p3_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,3,3,3,"on/).
+Contact your Siemens distributor or sales office for assistance in answering any technical
+questions, for training, or for ordering S7 products. Because your sales representatives are
+technically trained and have the most specific knowledge about your operations, process
+and industry, as well as about the individual Siemens products that you are using, they can
+provide the fastest and most efficient answers to any problems you might encounter.",453,68,False
+s71200_system_manual_en-US_en-US_p4_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,4,1,5,"Preface
+
+S7-1200 Programmable controller
+4 System Manual, 04/2012, A5E02486680-06
+Documentation and information
+S7-1200 and STEP 7 provide a variety of documentation and other resources for finding the
+technical information that you require.
+● The S7-1200 system manual provides specific information about the operation,
+programming and the specifications for the complete S7-1200 product family. In addition
+to the system manual, the S7-1200 Easy Book provides a more general overview to the
+capabilities of the S7-1200 family.
+Both the system manual and the Easy Book are available as electronic (PDF) and printed
+manuals.",624,91,False
+s71200_system_manual_en-US_en-US_p4_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,4,2,5,"al overview to the
+capabilities of the S7-1200 family.
+Both the system manual and the Easy Book are available as electronic (PDF) and printed
+manuals. The electronic manuals can be downloaded from the customer support web site
+and can also be found on the companion disk that ships with every S7-1200 CPU.
+● The online information system of STEP 7 provides immediate access to the conceptual
+information and specific instructions that describe the operation and functionality of the
+programming package and basic operation of SIMATIC CPUs.
+● My Documentation Manager accesses the electronic (PDF) versions of the SIMATIC
+documentation set, including the system manual, the Easy Book and the information
+system of STEP 7.",720,114,False
+s71200_system_manual_en-US_en-US_p4_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,4,3,5,"esses the electronic (PDF) versions of the SIMATIC
+documentation set, including the system manual, the Easy Book and the information
+system of STEP 7. With My Documentation Manager, you can drag and drop topics from
+various documents to create your own custom manual.
+The customer support entry portal (http://support.automation.siemens.com
+) provides a
+link to My Documentation Manager under mySupport.
+● The customer support web site also provides podcasts, FAQs, and other helpful
+documents for S7-1200 and STEP 7. The podcasts utilize short educational video
+presentations that focus on specific features or scenarios in order to demonstrate the
+interactions, convenience and efficiency provided by STEP 7.",710,105,False
+s71200_system_manual_en-US_en-US_p4_c4,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,4,4,5,"eo
+presentations that focus on specific features or scenarios in order to demonstrate the
+interactions, convenience and efficiency provided by STEP 7. Visit the following web sites
+to access the collection of podcasts:
+– STEP 7 Basic web page (http://www.automation.siemens.com/mcms/simatic-
+controller-software/en/step7/step7-basic/Pages/Default.aspx)
+– STEP 7 Professional web page (http://www.automation.siemens.com/mcms/simatic-
+controller-software/en/step7/step7-professional/Pages/Default.aspx)
+● You can also follow or join product discussions on the Service & Support technical forum
+(https://www.automation.siemens.com/WW/fo rum/guests/Conferences.aspx?Language=e
+n&siteid=csius&treeLang=en&groupid=4000002&extranet=standard&viewreg=WW&nodei
+d0=34612486).",764,69,False
+s71200_system_manual_en-US_en-US_p4_c5,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,4,5,5,"n.siemens.com/WW/fo rum/guests/Conferences.aspx?Language=e
+n&siteid=csius&treeLang=en&groupid=4000002&extranet=standard&viewreg=WW&nodei
+d0=34612486). These forums allow you to interact with various product experts.
+– Forum for S7-1200
+(https://www.automation.siemens.com/WW/fo rum/guests/Conference.aspx?SortField=
+LastPostDate&SortOrder=Descending&ForumID=258&Language=en&onlyInternet=Fa
+lse)
+– Forum for STEP 7 Basic
+(https://www.automation.siemens.com/WW/fo
+rum/guests/Conference.aspx?SortField=
+LastPostDate&SortOrder=Descending&ForumID=265&Language=en&onlyInternet=Fa
+lse)",578,32,False
+s71200_system_manual_en-US_en-US_p5_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,5,1,8,"S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 5
+Table of contents
+
+Preface ...................................................................................................................................................... 3
+1
+Product overview .....................................................................................................................................",405,18,False
+s71200_system_manual_en-US_en-US_p5_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,5,2,8,"Product overview ..................................................................................................................................... 19
+1.1
+Introducing the S7-1200 PLC.......................................................................................................19
+1.2
+Expansion capability of the CPU..................................................................................................22
+1.3
+S7-1200 modules.........................................................................................................................24
+1.4
+New features................................................................................................................................25
+1.5
+Basic HMI panels .........................................................................................................................26
+2
+STEP 7 programming",882,30,False
+s71200_system_manual_en-US_en-US_p5_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,5,3,8,"anels .........................................................................................................................26
+2
+STEP 7 programming software................................................................................................................ 29
+2.1
+System requirements ...................................................................................................................29
+2.2
+Different views to make the work easier ......................................................................................30
+2.3
+Easy-to-use tools .........................................................................................................................31
+2.3.1
+Inserting instructions into your user program...............................................................................31
+2.3.2
+Accessing instructions from the ""Favorites"" toolbar.....................................................................32
+2.3.3
+Creating a complex equation with a",998,46,False
+s71200_system_manual_en-US_en-US_p5_c4,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,5,4,8,"tructions from the ""Favorites"" toolbar.....................................................................32
+2.3.3
+Creating a complex equation with a simple instruction................................................................33
+2.3.4
+Adding inputs or outputs to a LAD or FBD instruction .................................................................35
+2.3.5
+Expandable instructions...............................................................................................................35
+2.3.6
+Selecting a version for an instruction...........................................................................................36
+2.3.7
+Modifying the appearance and configuration of STEP 7 .............................................................36
+2.3.8
+Dragging and dropping between editors......................................................................................37
+2.3.9
+Changing the operating mode of the",939,59,False
+s71200_system_manual_en-US_en-US_p5_c5,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,5,5,8,"pping between editors......................................................................................37
+2.3.9
+Changing the operating mode of the CPU...................................................................................37
+2.3.10
+Changing the call type for a DB ...................................................................................................39
+2.3.11
+Temporarily disconnecting devices from a network.....................................................................40
+2.3.12
+Virtual unplugging of devices from the configuration...................................................................41
+3
+Installation ...............................................................................................................................................",795,38,False
+s71200_system_manual_en-US_en-US_p5_c6,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,5,6,8,"lation ............................................................................................................................................... 43
+3.1
+Guidelines for installing S7-1200 devices....................................................................................43
+3.2
+Power budget...............................................................................................................................44
+3.3
+Installation and removal procedures............................................................................................46
+3.3.1
+Mounting dimensions for the S7-1200 devices............................................................................46
+3.3.2
+Installing and removing the CPU .................................................................................................49
+3.3.3
+Installing and removing an SB, CB or BB ....................................................................................51
+3.3.4
+Installing and removing an",997,46,False
+s71200_system_manual_en-US_en-US_p5_c7,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,5,7,8,"g and removing an SB, CB or BB ....................................................................................51
+3.3.4
+Installing and removing an SM.....................................................................................................52
+3.3.5
+Installing and removing a CM or CP ............................................................................................53
+3.3.6
+Removing and reinstalling the S7-1200 terminal block connector...............................................55
+3.3.7
+Installing and removing the expansion cable...............................................................................56
+3.3.8
+TS (teleservice) adapter...............................................................................................................57
+3.3.8.1
+Connecting the TeleService Adapter ...........................................................................................57
+3.3.8.2
+Installing the SIM card",954,55,False
+s71200_system_manual_en-US_en-US_p5_c8,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,5,8,8,"the TeleService Adapter ...........................................................................................57
+3.3.8.2
+Installing the SIM card .................................................................................................................58
+3.3.8.3
+Installing the TS adapter unit .......................................................................................................59
+3.3.8.4
+Installing the TS adapter on a wall...............................................................................................60",551,25,False
+s71200_system_manual_en-US_en-US_p6_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,6,1,9,"Table of contents
+
+S7-1200 Programmable controller
+6 System Manual, 04/2012, A5E02486680-06
+3.4 Wiring guidelines.......................................... ...............................................................................61
+4
+PLC concepts .......................................................................................................................................... 67
+4.1
+Execution of the user program....................................................................................................67
+4.1.1
+Operating modes of the CPU......................................................................................................69
+4.1.2
+Processing the scan cycle in RUN mode....................................................................................",795,40,False
+s71200_system_manual_en-US_en-US_p6_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,6,2,9,"....................69
+4.1.2
+Processing the scan cycle in RUN mode.................................................................................... 72
+4.1.3
+Organization blocks (OBs) ..........................................................................................................73
+4.1.4
+Event execution priorities and queuing.......................................................................................75
+4.1.5
+Monitoring the cycle time ............................................................................................................80
+4.1.6
+CPU memory...............................................................................................................................82
+4.1.6.1
+System and clock memory..........................................................................................................84
+4.1.7
+Diagnostics buffer",882,38,False
+s71200_system_manual_en-US_en-US_p6_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,6,3,9,"and clock memory..........................................................................................................84
+4.1.7
+Diagnostics buffer .......................................................................................................................86
+4.1.8
+Time of day clock ........................................................................................................................86
+4.1.9
+Configuring the outputs on a RUN-to-STOP transition ...............................................................87
+4.2
+Data storage, memory areas, I/O and addressing......................................................................87
+4.2.1
+Accessing the data of the S7-1200 .............................................................................................87
+4.3
+Processing of analog values .......................................................................................................92
+4.4
+Data types",954,47,False
+s71200_system_manual_en-US_en-US_p6_c4,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,6,4,9,"3
+Processing of analog values .......................................................................................................92
+4.4
+Data types ...................................................................................................................................93
+4.4.1
+Bool, Byte, Word, and DWord data types ...................................................................................",413,19,False
+s71200_system_manual_en-US_en-US_p6_c5,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,6,5,9,"...................93
+4.4.1
+Bool, Byte, Word, and DWord data types ................................................................................... 94
+4.4.2
+Integer data types .......................................................................................................................95
+4.4.3
+Floating-point real data types......................................................................................................95
+4.4.4
+Time and Date data types...........................................................................................................96
+4.4.5
+Character and String data types .................................................................................................97
+4.4.6
+Array data type............................................................................................................................99
+4.4.7
+Data structure data",893,42,False
+s71200_system_manual_en-US_en-US_p6_c6,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,6,6,9,"..........................................................................................................................99
+4.4.7
+Data structure data type............................................................................................................100
+4.4.8
+PLC data type ...........................................................................................................................100
+4.4.9
+Pointer data types .....................................................................................................................101
+4.4.9.1
+""Pointer"" pointer data type ........................................................................................................101
+4.4.9.2
+""Any"" pointer data type..............................................................................................................102
+4.4.9.3
+""Variant"" pointer data type",884,32,False
+s71200_system_manual_en-US_en-US_p6_c7,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,6,7,9,"e..............................................................................................................102
+4.4.9.3
+""Variant"" pointer data type ........................................................................................................103
+4.4.10
+Accessing a ""slice"" of a tagged data type .................................................................................104
+4.4.11
+Accessing a tag with an AT overlay ..........................................................................................105
+4.5
+Using a memory card................................................................................................................107
+4.5.1
+Inserting a memory card in the CPU.........................................................................................108
+4.5.2
+Configuring the startup parameter of the CPU before copying the project to the memory
+card",897,55,False
+s71200_system_manual_en-US_en-US_p6_c8,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,6,8,9,"..................................................108
+4.5.2
+Configuring the startup parameter of the CPU before copying the project to the memory
+card ...........................................................................................................................................110
+4.5.3
+Transfer card.............................................................................................................................110
+4.5.4
+Program card ............................................................................................................................112
+4.5.5
+Firmware update .......................................................................................................................115
+4.6
+Recovery from a lost password.................................................................................................118
+5
+Device configuration",890,38,False
+s71200_system_manual_en-US_en-US_p6_c9,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,6,9,9,"covery from a lost password.................................................................................................118
+5
+Device configuration .............................................................................................................................. 119
+5.1
+Inserting a CPU.........................................................................................................................120
+5.2
+Detecting the configuration for an unspecified CPU .................................................................121
+5.3
+Adding modules to the configuration.........................................................................................122
+5.4
+Configuring the operation of the CPU ....................................................................................... 123
+5.5
+Configuring the parameters of the modules..............................................................................125",941,45,False
+s71200_system_manual_en-US_en-US_p7_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,7,1,8,"Table of contents
+
+S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 7
+5.6 Configuring the CP U for communication ...................................................................................126
+5.6.1
+Creating a network connection ..................................................................................................126
+5.6.2
+Configuring the Local/Partner connection path..........................................................................127
+5.6.3
+Parameters for the PROFINET connection ...............................................................................129
+5.6.4
+Assigning Internet Protocol (IP) addresses ...............................................................................132
+5.6.4.1
+Assigning IP addresses to programming and network devices.................................................132
+5.6.4.2
+Checking the IP address of your programming",918,62,False
+s71200_system_manual_en-US_en-US_p7_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,7,2,8,"P addresses to programming and network devices.................................................132
+5.6.4.2
+Checking the IP address of your programming device..............................................................134
+5.6.4.3
+Assigning an IP address to a CPU online..................................................................................134
+5.6.4.4
+Configuring an IP address for a CPU in your project.................................................................136
+5.6.5
+Testing the PROFINET network ................................................................................................139
+5.6.6
+Locating the Ethernet (MAC) address on the CPU....................................................................140
+5.6.7
+Configuring Network Time Protocol synchronization.................................................................141
+5.6.8
+PROFINET device start-up time, naming, and address assignment.........................................142
+6
+Programming",992,68,False
+s71200_system_manual_en-US_en-US_p7_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,7,3,8,".....................141
+5.6.8
+PROFINET device start-up time, naming, and address assignment.........................................142
+6
+Programming concepts.......................................................................................................................... 145
+6.1
+Guidelines for designing a PLC system.....................................................................................145
+6.2
+Structuring your user program ...................................................................................................146
+6.3
+Using blocks to structure your program .....................................................................................148
+6.3.1
+Organization block (OB).............................................................................................................148
+6.3.2
+Function (FC) .............................................................................................................................150
+6.3.3
+Function block",996,46,False
+s71200_system_manual_en-US_en-US_p7_c4,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,7,4,8,".............................................................................................................................150
+6.3.3
+Function block (FB)....................................................................................................................150
+6.3.4
+Data block (DB)..........................................................................................................................151
+6.4
+Understanding data consistency................................................................................................153
+6.5
+Programming language..............................................................................................................154
+6.5.1
+Ladder logic (LAD) .....................................................................................................................155
+6.5.2
+Function Block Diagram (FBD) ..................................................................................................156
+6.5.3
+SCL",985,29,False
+s71200_system_manual_en-US_en-US_p7_c5,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,7,5,8,"155
+6.5.2
+Function Block Diagram (FBD) ..................................................................................................156
+6.5.3
+SCL ............................................................................................................................................156
+6.5.4
+EN and ENO for LAD, FBD and SCL.........................................................................................163
+6.6
+Protection...................................................................................................................................164
+6.6.1
+Access protection for the CPU...................................................................................................164
+6.6.2
+Know-how protection .................................................................................................................165
+6.6.3
+Copy",865,33,False
+s71200_system_manual_en-US_en-US_p7_c6,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,7,6,8,".2
+Know-how protection .................................................................................................................165
+6.6.3
+Copy protection..........................................................................................................................166
+6.7
+Downloading the elements of your program..............................................................................168
+6.8
+Uploading from the CPU ............................................................................................................168
+6.8.1
+Copying elements of the project ................................................................................................168
+6.8.2
+Using the compare function .......................................................................................................170
+6.9
+Debugging and testing the program ..........................................................................................170
+6.9.1
+Monitor and modify data in the",998,47,False
+s71200_system_manual_en-US_en-US_p7_c7,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,7,7,8,"testing the program ..........................................................................................170
+6.9.1
+Monitor and modify data in the CPU..........................................................................................170
+6.9.2
+Watch tables and force tables....................................................................................................170
+6.9.3
+Cross reference to show usage .................................................................................................171
+6.9.4
+Call structure to examine the calling hierarchy..........................................................................172
+7
+Basic instructions........................................... ........................................................................................",807,37,False
+s71200_system_manual_en-US_en-US_p7_c8,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,7,8,8,"Basic instructions........................................... ........................................................................................ 175
+7.1
+Bit logic.......................................................................................................................................175
+7.1.1
+Bit logic contacts and coils.........................................................................................................175
+7.1.2
+Set and reset instructions ..........................................................................................................178
+7.1.3
+Positive and negative edge instructions ....................................................................................180
+7.2
+Timers ........................................................................................................................................182",877,29,False
+s71200_system_manual_en-US_en-US_p8_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,8,1,11,"Table of contents
+
+S7-1200 Programmable controller
+8 System Manual, 04/2012, A5E02486680-06
+7.3 Counters................................................... .................................................................................190
+7.4
+Compare....................................................................................................................................196
+7.4.1
+Compare....................................................................................................................................196
+7.4.2
+In-range and Out-of-range instructions .....................................................................................197
+7.4.3
+OK and Not OK instructions......................................................................................................197
+7.5
+Math ..........................................................................................................................................198
+7.5.1
+Calculate",975,35,False
+s71200_system_manual_en-US_en-US_p8_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,8,2,11,"...................................................................................................................................198
+7.5.1
+Calculate instruction..................................................................................................................198
+7.5.2
+Add, subtract, multiply and divide instructions..........................................................................",407,11,False
+s71200_system_manual_en-US_en-US_p8_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,8,3,11,"...................198
+7.5.2
+Add, subtract, multiply and divide instructions.......................................................................... 199
+7.5.3
+Modulo instruction .....................................................................................................................200
+7.5.4
+Negation instruction ..................................................................................................................201
+7.5.5
+Increment and decrement instructions......................................................................................202
+7.5.6
+Absolute value instruction .........................................................................................................202
+7.5.7
+Minimum and Maximum instructions.........................................................................................",847,32,False
+s71200_system_manual_en-US_en-US_p8_c4,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,8,4,11,"...................202
+7.5.7
+Minimum and Maximum instructions......................................................................................... 203
+7.5.8
+Limit instruction .........................................................................................................................204
+7.5.9
+Floating-point math instructions ................................................................................................205
+7.6
+Move..........................................................................................................................................207
+7.6.1
+Move and block move instructions............................................................................................207
+7.6.2
+FieldRead and FieldWrite instructions ......................................................................................209
+7.6.3
+Fill instructions",884,33,False
+s71200_system_manual_en-US_en-US_p8_c5,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,8,5,11,"ieldRead and FieldWrite instructions ......................................................................................209
+7.6.3
+Fill instructions ..........................................................................................................................211
+7.6.4
+Swap instruction........................................................................................................................212
+7.7
+Convert......................................................................................................................................213
+7.7.1
+CONV instruction ......................................................................................................................213
+7.7.2
+Conversion instructions for SCL ...............................................................................................214
+7.7.3
+Round and truncate instructions",891,29,False
+s71200_system_manual_en-US_en-US_p8_c6,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,8,6,11,"tions for SCL ...............................................................................................214
+7.7.3
+Round and truncate instructions ...............................................................................................217
+7.7.4
+Ceiling and floor instructions.....................................................................................................218
+7.7.5
+Scale and normalize instructions ..............................................................................................219
+7.8
+Program control.........................................................................................................................222
+7.8.1
+Overview of SCL program control statements ..........................................................................222
+7.8.2
+IF-THEN statement ...................................................................................................................223
+7.8.3
+CASE",952,38,False
+s71200_system_manual_en-US_en-US_p8_c7,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,8,7,11,".2
+IF-THEN statement ...................................................................................................................223
+7.8.3
+CASE statement........................................................................................................................224
+7.8.4
+FOR statement..........................................................................................................................225
+7.8.5
+WHILE-DO statement ...............................................................................................................226
+7.8.6
+REPEAT-UNTIL statement .......................................................................................................227
+7.8.7
+CONTINUE statement...............................................................................................................227
+7.8.8
+EXIT statement",864,24,False
+s71200_system_manual_en-US_en-US_p8_c8,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,8,8,11,"TINUE statement...............................................................................................................227
+7.8.8
+EXIT statement .........................................................................................................................228
+7.8.9
+GOTO statement.......................................................................................................................229
+7.8.10
+RETURN statement ..................................................................................................................229
+7.8.11
+Jump and label instructions.......................................................................................................230
+7.8.12
+JMP_LIST instruction ................................................................................................................230
+7.8.13
+SWITCH",859,24,False
+s71200_system_manual_en-US_en-US_p8_c9,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,8,9,11,"JMP_LIST instruction ................................................................................................................230
+7.8.13
+SWITCH instruction...................................................................................................................231
+7.8.14
+RET execution control instruction .............................................................................................233
+7.8.15
+Re-trigger scan cycle watchdog instruction ..............................................................................",547,19,False
+s71200_system_manual_en-US_en-US_p8_c10,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,8,10,11,"..................233
+7.8.15
+Re-trigger scan cycle watchdog instruction .............................................................................. 234
+7.8.16
+Stop scan cycle instruction........................................................................................................235
+7.8.17
+Get Error instructions ................................................................................................................235
+7.9
+Word logic operations ...............................................................................................................239
+7.9.1
+AND, OR, and XOR instructions ...............................................................................................239
+7.9.2
+Invert instruction........................................................................................................................240
+7.9.3
+Encode and decode",890,38,False
+s71200_system_manual_en-US_en-US_p8_c11,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,8,11,11,"ion........................................................................................................................240
+7.9.3
+Encode and decode instructions...............................................................................................240
+7.9.4
+Select, Multiplex, and Demultiplex instructions.........................................................................242",391,12,False
+s71200_system_manual_en-US_en-US_p9_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,9,1,10,"Table of contents
+
+S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 9
+7.10 Shift and Rotate .......................................... ...............................................................................244
+7.10.1
+Shift instructions.........................................................................................................................244
+7.10.2
+Rotate instructions .....................................................................................................................245
+8
+Extended instructions ............................................................................................................................",686,28,False
+s71200_system_manual_en-US_en-US_p9_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,9,2,10,"5
+8
+Extended instructions ............................................................................................................................ 247
+8.1
+Date and time-of-day .................................................................................................................247
+8.1.1
+Date and time instructions .........................................................................................................247
+8.1.2
+Set and read system clock.........................................................................................................249
+8.1.3
+Run-time meter instruction.........................................................................................................251
+8.1.4
+SET_TIMEZONE instruction ......................................................................................................252
+8.2
+String and",871,34,False
+s71200_system_manual_en-US_en-US_p9_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,9,3,10,".1.4
+SET_TIMEZONE instruction ......................................................................................................252
+8.2
+String and character...................................................................................................................254
+8.2.1
+String data overview ..................................................................................................................254
+8.2.2
+S_MOVE instruction...................................................................................................................254
+8.2.3
+String conversion instructions....................................................................................................255
+8.2.3.1
+String to value and value to string conversions .........................................................................255
+8.2.3.2
+String-to-characters and characters-to-string conversions........................................................263
+8.2.3.3
+ASCII to Hex and Hex to",996,42,False
+s71200_system_manual_en-US_en-US_p9_c4,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,9,4,10,"2
+String-to-characters and characters-to-string conversions........................................................263
+8.2.3.3
+ASCII to Hex and Hex to ASCII conversions.............................................................................265
+8.2.4
+String operation instructions ......................................................................................................267
+8.2.4.1
+LEN ............................................................................................................................................267
+8.2.4.2
+CONCAT....................................................................................................................................268
+8.2.4.3
+LEFT, RIGHT, and MID .............................................................................................................269
+8.2.4.4
+DELETE",853,32,False
+s71200_system_manual_en-US_en-US_p9_c5,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,9,5,10,"3
+LEFT, RIGHT, and MID .............................................................................................................269
+8.2.4.4
+DELETE .....................................................................................................................................270
+8.2.4.5
+INSERT......................................................................................................................................271
+8.2.4.6
+REPLACE ..................................................................................................................................272
+8.2.4.7 FIND
+...........................................................................................................................................273
+8.3
+Distributed I/O (PROFINET, PROFIBUS, or AS-i).....................................................................274
+8.3.1
+Distributed I/O",889,27,False
+s71200_system_manual_en-US_en-US_p9_c6,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,9,6,10,"...273
+8.3
+Distributed I/O (PROFINET, PROFIBUS, or AS-i).....................................................................274
+8.3.1
+Distributed I/O Instructions.........................................................................................................274
+8.3.2
+RDREC and WRREC.................................................................................................................275
+8.3.3
+RALRM.......................................................................................................................................278
+8.3.4
+STATUS parameter for RDREC, WRREC, and RALRM...........................................................280
+8.3.5
+DPRD_DAT and",691,29,False
+s71200_system_manual_en-US_en-US_p9_c7,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,9,7,10,"...............278
+8.3.4
+STATUS parameter for RDREC, WRREC, and RALRM...........................................................280
+8.3.5
+DPRD_DAT and DPWR_DAT....................................................................................................284
+8.3.6
+DPNRM_DG...............................................................................................................................286
+8.4
+Interrupts....................................................................................................................................288
+8.4.1
+Attach and detach instructions...................................................................................................288
+8.4.2
+Cyclic interrupts..........................................................................................................................291
+8.4.2.1
+SET_CINT (Set cyclic",874,29,False
+s71200_system_manual_en-US_en-US_p9_c8,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,9,8,10,"......................................................................................................................291
+8.4.2.1
+SET_CINT (Set cyclic interrupt).................................................................................................291
+8.4.2.2
+QRY_CINT (Query cyclic interrupt)............................................................................................293
+8.4.3
+Time delay interrupts .................................................................................................................294
+8.4.4
+Asynchronous event interrupts ..................................................................................................296
+8.5
+Diagnostics (PROFINET or PROFIBUS) ...................................................................................297
+8.5.1
+Diagnostic instructions ...............................................................................................................297
+8.5.2
+Diagnostic events for distributed",992,36,False
+s71200_system_manual_en-US_en-US_p9_c9,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,9,9,10,"...........................................................................................................297
+8.5.2
+Diagnostic events for distributed I/O..........................................................................................297
+8.5.3
+LED instruction...........................................................................................................................298
+8.5.4
+DeviceStates instruction ............................................................................................................299
+8.5.5
+ModuleStates instruction............................................................................................................301
+8.5.6
+GET_DIAG instruction................................................................................................................302
+8.6
+Pulse ..........................................................................................................................................309
+8.6.1
+CTRL_PWM",989,25,False
+s71200_system_manual_en-US_en-US_p9_c10,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,9,10,10,"....................................................................................................................................309
+8.6.1
+CTRL_PWM instruction..............................................................................................................309
+8.6.2
+Operation of the pulse outputs...................................................................................................311
+8.6.3
+Configuring a pulse channel for PWM .......................................................................................312",547,18,False
+s71200_system_manual_en-US_en-US_p10_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,10,1,10,"Table of contents
+
+S7-1200 Programmable controller
+10 System Manual, 04/2012, A5E02486680-06
+8.7 Data l ogging ..............................................................................................................................313
+8.7.1
+Data log record structure...........................................................................................................314
+8.7.2
+Program instructions that control Data logs..............................................................................",510,28,False
+s71200_system_manual_en-US_en-US_p10_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,10,2,10,"...................314
+8.7.2
+Program instructions that control Data logs.............................................................................. 315
+8.7.2.1
+DataLogCreate..........................................................................................................................315
+8.7.2.2
+DataLogOpen............................................................................................................................318
+8.7.2.3
+DataLogClose ...........................................................................................................................319
+8.7.2.4
+DataLogWrite ............................................................................................................................320
+8.7.2.5
+DataLogNewFile........................................................................................................................322
+8.7.3
+Working with data",915,25,False
+s71200_system_manual_en-US_en-US_p10_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,10,3,10,"ile........................................................................................................................322
+8.7.3
+Working with data logs..............................................................................................................324
+8.7.4
+Limits to the size of data log files ..............................................................................................325
+8.7.5
+Data log example program........................................................................................................327
+8.8
+Data block control .....................................................................................................................332
+8.8.1
+READ_DBL, WRIT_DBL (Read from or write to a DB in load memory) ...................................332
+8.9
+Common error codes for the ""Extended"" instructions...............................................................335
+9
+Technology instructions",946,51,False
+s71200_system_manual_en-US_en-US_p10_c4,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,10,4,10,"332
+8.9
+Common error codes for the ""Extended"" instructions...............................................................335
+9
+Technology instructions ......................................................................................................................... 337
+9.1
+High-speed counter...................................................................................................................337
+9.1.1
+Operation of the high-speed counter ........................................................................................339
+9.1.2
+Configuration of the HSC ..........................................................................................................345
+9.2
+PID control.................................................................................................................................346
+9.2.1
+Inserting the PID instruction and technological object ..............................................................348
+9.2.2
+PID_Compact",985,44,False
+s71200_system_manual_en-US_en-US_p10_c5,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,10,5,10,"..346
+9.2.1
+Inserting the PID instruction and technological object ..............................................................348
+9.2.2
+PID_Compact instruction...........................................................................................................350
+9.2.3
+PID_Compact instruction ErrorBit parameters..........................................................................354
+9.2.4
+PID_3STEP instruction..............................................................................................................355
+9.2.5
+PID_3STEP instruction ErrorBit parameters.............................................................................362
+9.2.6
+Configuring the PID controller...................................................................................................363
+9.2.7
+Commissioning the PID controller.............................................................................................365
+9.3
+Motion",953,38,False
+s71200_system_manual_en-US_en-US_p10_c6,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,10,6,10,".363
+9.2.7
+Commissioning the PID controller.............................................................................................365
+9.3
+Motion control............................................................................................................................366
+9.3.1
+Configuring the axis ..................................................................................................................370
+9.3.2
+Configuring the TO_CommandTable_PTO...............................................................................372
+9.3.3
+Motion control instructions ........................................................................................................375
+9.3.3.1
+MC_Power instruction ...............................................................................................................375
+9.3.3.2
+MC_Reset",857,29,False
+s71200_system_manual_en-US_en-US_p10_c7,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,10,7,10,"_Power instruction ...............................................................................................................375
+9.3.3.2
+MC_Reset instruction................................................................................................................378
+9.3.3.3
+MC_Home instruction................................................................................................................379
+9.3.3.4
+MC_Halt instruction ...................................................................................................................381
+9.3.3.5
+MC_MoveAbsolute instruction ..................................................................................................383
+9.3.3.6
+MC_MoveRelative instruction....................................................................................................385
+9.3.3.7
+MC_MoveVelocity",868,22,False
+s71200_system_manual_en-US_en-US_p10_c8,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,10,8,10,"oveRelative instruction....................................................................................................385
+9.3.3.7
+MC_MoveVelocity instruction....................................................................................................387
+9.3.3.8
+MC_MoveJog instruction...........................................................................................................390
+9.3.3.9
+MC_CommandTable instruction................................................................................................392
+9.3.3.10
+MC_ChangeDynamic ................................................................................................................394
+9.3.4
+Operation of motion control for S7-1200...................................................................................396
+9.3.4.1
+CPU outputs used for motion control ........................................................................................396
+9.3.4.2
+Hardware and software limit switches",996,35,False
+s71200_system_manual_en-US_en-US_p10_c9,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,10,9,10,"otion control ........................................................................................396
+9.3.4.2
+Hardware and software limit switches for motion control..........................................................397
+9.3.4.3
+Homing......................................................................................................................................401
+9.3.4.4
+Jerk limit ....................................................................................................................................406
+9.3.5
+Commissioning..........................................................................................................................407
+9.3.6
+Monitoring active commands ....................................................................................................410
+9.3.6.1
+Monitoring MC instructions with a ""Done"" output parameter ....................................................410
+9.3.6.2
+Monitoring the MC_Velocity",976,39,False
+s71200_system_manual_en-US_en-US_p10_c10,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,10,10,10,"1
+Monitoring MC instructions with a ""Done"" output parameter ....................................................410
+9.3.6.2
+Monitoring the MC_Velocity instruction.....................................................................................414",250,15,False
+s71200_system_manual_en-US_en-US_p11_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,11,1,9,"Table of contents
+
+S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 11
+9.3.6.3 Monitoring the MC_MoveJog instruction.................................................................................... 418
+10
+Communication............................................... ....................................................................................... 423
+10.1
+Number of asynchronous communication connections supported ............................................424
+10.2
+PROFINET.................................................................................................................................425
+10.2.1
+Local/Partner connection ...........................................................................................................425
+10.2.2
+Open user communication.........................................................................................................427
+10.2.2.1
+Connection IDs for the PROFINET",963,45,False
+s71200_system_manual_en-US_en-US_p11_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,11,2,9,"n.........................................................................................................427
+10.2.2.1
+Connection IDs for the PROFINET instructions.........................................................................427
+10.2.2.2
+Protocols ....................................................................................................................................430
+10.2.2.3
+Ad hoc mode..............................................................................................................................431
+10.2.2.4
+TCP and ISO on TCP ................................................................................................................431
+10.2.2.5
+UDP............................................................................................................................................446
+10.2.2.6
+T_CONFIG",862,26,False
+s71200_system_manual_en-US_en-US_p11_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,11,3,9,".................................................................................................................................446
+10.2.2.6
+T_CONFIG .................................................................................................................................451
+10.2.2.7
+Common parameters for instructions.........................................................................................458
+10.2.3
+Communication with a programming device..............................................................................460
+10.2.3.1
+Establishing the hardware communications connection............................................................460
+10.2.3.2
+Configuring the devices .............................................................................................................461
+10.2.3.3
+Assigning Internet Protocol (IP) addresses ...............................................................................462
+10.2.3.4
+Testing your PROFINET network",991,38,False
+s71200_system_manual_en-US_en-US_p11_c4,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,11,4,9,"rnet Protocol (IP) addresses ...............................................................................462
+10.2.3.4
+Testing your PROFINET network ..............................................................................................462
+10.2.4
+HMI-to-PLC communication.......................................................................................................462
+10.2.4.1
+Configuring logical net work connections between two devices.................................................463
+10.2.5
+PLC-to-PLC communication ......................................................................................................464
+10.2.5.1
+Configuring logical net work connections between two devices.................................................465
+10.2.5.2
+Configuring the Local/Partner connection path between two devices.......................................465
+10.2.5.3
+Configuring transmit (send) and receive",934,51,False
+s71200_system_manual_en-US_en-US_p11_c5,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,11,5,9,"uring the Local/Partner connection path between two devices.......................................465
+10.2.5.3
+Configuring transmit (send) and receive parameters.................................................................465
+10.2.6
+Configuring a CPU and PROFINET IO device ..........................................................................468
+10.2.7
+Diagnostics.................................................................................................................................471
+10.2.8
+Distributed I/O Instructions.........................................................................................................472
+10.2.9
+Diagnostic instructions ...............................................................................................................472
+10.2.10
+Diagnostic events for distributed",838,39,False
+s71200_system_manual_en-US_en-US_p11_c6,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,11,6,9,".........................................................................................................472
+10.2.10
+Diagnostic events for distributed I/O..........................................................................................472
+10.3
+PROFIBUS.................................................................................................................................472
+10.3.1
+Communications modules PROFIBUS ......................................................................................474
+10.3.1.1
+Connecting to PROFIBUS .........................................................................................................474
+10.3.1.2
+Communications services of the PROFIBUS CMs....................................................................474
+10.3.1.3
+Other properties of the PROFIBUS CMs ...................................................................................476
+10.3.1.4
+Configuration examples for PROFIBUS",965,39,False
+s71200_system_manual_en-US_en-US_p11_c7,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,11,7,9,"f the PROFIBUS CMs ...................................................................................476
+10.3.1.4
+Configuration examples for PROFIBUS ....................................................................................477
+10.3.2
+Configuring a DP master and slave device................................................................................478
+10.3.2.1
+Adding the CM 1243-5 (DP master) module and a DP slave....................................................478
+10.3.2.2
+Configuring logical net work connections between two PROFIBUS devices .............................478
+10.3.2.3
+Assigning PROFIBUS add resses to the CM 1243-5 module and DP slave..............................479
+10.3.3
+Distributed I/O Instructions.........................................................................................................480
+10.3.4
+Diagnostic instructions",884,62,False
+s71200_system_manual_en-US_en-US_p11_c8,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,11,8,9,"nstructions.........................................................................................................480
+10.3.4
+Diagnostic instructions ...............................................................................................................480
+10.3.5
+Diagnostic events for distributed................................................................................................481
+10.4
+AS-i ............................................................................................................................................481
+10.4.1
+Configuring an AS-i master and slave device............................................................................481
+10.4.1.1
+Adding the AS-i master CM 1243-2 and AS-i slave...................................................................482
+10.4.1.2
+Configuring logical net work connections between two AS-i devices.........................................482
+10.4.1.3
+Configuring the properties of the AS-i master CM1243-2",999,50,False
+s71200_system_manual_en-US_en-US_p11_c9,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,11,9,9,"work connections between two AS-i devices.........................................482
+10.4.1.3
+Configuring the properties of the AS-i master CM1243-2 ..........................................................483
+10.4.1.4
+Assigning an AS-i address to an AS-i slave ..............................................................................483
+10.4.2
+Exchanging data between t he user program and AS-i slaves...................................................484
+10.4.2.1
+STEP 7 basic configuration........................................................................................................484",607,42,False
+s71200_system_manual_en-US_en-US_p12_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,12,1,10,"Table of contents
+
+S7-1200 Programmable controller
+12 System Manual, 04/2012, A5E02486680-06
+10.4.2.2 Configuring slaves with STEP 7........................ ........................................................................486
+10.4.3
+Distributed I/O Instructions........................................................................................................488
+10.4.4
+Working with AS-i online tools...................................................................................................488
+10.5
+S7 communication.....................................................................................................................489
+10.5.1
+GET and PUT instructions ........................................................................................................489
+10.5.2
+Creating an S7 connection........................................................................................................493
+10.5.3
+Configuring the Local/Partner connection path between",998,49,False
+s71200_system_manual_en-US_en-US_p12_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,12,2,10,"......................................................................................493
+10.5.3
+Configuring the Local/Partner connection path between tw o devices ......................................493
+10.5.4
+GET/PUT connection parameter assignment ...........................................................................494
+10.5.4.1
+Connection parameters.............................................................................................................494
+10.5.4.2
+Configuring a CPU-to-CPU S7 connection ...............................................................................497
+11
+Web server ............................................................................................................................................",760,32,False
+s71200_system_manual_en-US_en-US_p12_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,12,3,10,"eb server ............................................................................................................................................ 503
+11.1
+Enabling the Web server...........................................................................................................504
+11.2
+Standard web pages .................................................................................................................505
+11.2.1
+Accessing the standard Web pages from the PC .....................................................................505
+11.2.2
+Layout of the standard Web pages ...........................................................................................506
+11.2.3
+Introduction",714,34,False
+s71200_system_manual_en-US_en-US_p12_c4,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,12,4,10,".2
+Layout of the standard Web pages ...........................................................................................506
+11.2.3
+Introduction ...............................................................................................................................508
+11.2.4
+Start...........................................................................................................................................509
+11.2.5
+Identification ..............................................................................................................................510
+11.2.6
+Diagnostic Buffer.......................................................................................................................510
+11.2.7
+Module Information ...................................................................................................................511
+11.2.8
+Communication",901,25,False
+s71200_system_manual_en-US_en-US_p12_c5,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,12,5,10,"nformation ...................................................................................................................511
+11.2.8
+Communication .........................................................................................................................513
+11.2.9
+Variable Status..........................................................................................................................515
+11.2.10
+Data Logs..................................................................................................................................516
+11.2.11
+Update Firmware.......................................................................................................................519
+11.3
+User-defined web pages ...........................................................................................................521
+11.3.1
+Creating HTML",880,22,False
+s71200_system_manual_en-US_en-US_p12_c6,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,12,6,10,"-defined web pages ...........................................................................................................521
+11.3.1
+Creating HTML pages...............................................................................................................521
+11.3.2
+AWP commands supported by the S7-1200 Web server .........................................................522
+11.3.2.1
+Reading variables .....................................................................................................................523
+11.3.2.2
+Writing variables........................................................................................................................524
+11.3.2.3
+Reading special variables .........................................................................................................526
+11.3.2.4
+Writing special variables ...........................................................................................................527
+11.3.2.5
+Using an alias",999,39,False
+s71200_system_manual_en-US_en-US_p12_c7,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,12,7,10,"ecial variables ...........................................................................................................527
+11.3.2.5
+Using an alias for a variable reference .....................................................................................529
+11.3.2.6
+Defining enum types .................................................................................................................529
+11.3.2.7
+Referencing CPU variables with an enum type ........................................................................530
+11.3.2.8
+Creating fragments....................................................................................................................532
+11.3.2.9
+Importing fragments ..................................................................................................................533
+11.3.2.10
+Combining definitions...........................................................................................................533
+11.3.2.11
+Handling tag",998,39,False
+s71200_system_manual_en-US_en-US_p12_c8,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,12,8,10,"ining definitions...........................................................................................................533
+11.3.2.11
+Handling tag names that contain special characters ... ........................................................534
+11.3.3
+Configuring use of user-defined Web pages.............................................................................535
+11.3.4
+Programming the WWW instru ction for user-defined web pages.............................................",493,29,False
+s71200_system_manual_en-US_en-US_p12_c9,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,12,9,10,"...................................535
+11.3.4
+Programming the WWW instru ction for user-defined web pages............................................. 537
+11.3.5
+Downloading the program blocks to the CPU...........................................................................538
+11.3.6
+Accessing the user-defined web pages from the PC................................................................539
+11.3.7
+Constraints specific to user-defined Web pages ......................................................................539
+11.3.8
+Example of a user-defined web page .......................................................................................540
+11.3.8.1
+Web page for monitoring and controlling a wind turbine ...........................................................540
+11.3.8.2
+Reading and displaying controller data.....................................................................................542
+11.3.8.3
+Using an enum type",956,67,False
+s71200_system_manual_en-US_en-US_p12_c10,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,12,10,10,"ing and displaying controller data.....................................................................................542
+11.3.8.3
+Using an enum type ..................................................................................................................543
+11.3.8.4
+Writing user input to the controller ............................................................................................544
+11.3.8.5
+Writing a special variable ..........................................................................................................545
+11.3.8.6
+Reference: HTML listing of remote wind turbine monitor Web page ........................................545",673,37,False
+s71200_system_manual_en-US_en-US_p13_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,13,1,9,"Table of contents
+
+S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 13
+11.3.8.7 Configuration in ST EP 7 of the example Web page ..................................................................549
+11.3.9
+Setting up user-defined Web pages in multiple languages . ......................................................551
+11.3.9.1
+Creating the folder structure ......................................................................................................551
+11.3.9.2
+Programming the language switch.............................................................................................552
+11.3.9.3
+Configuring STEP 7 to u se a multi-language page structure ....................................................554
+11.3.10
+Advanced user-defined Web page",788,62,False
+s71200_system_manual_en-US_en-US_p13_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,13,2,9,"figuring STEP 7 to u se a multi-language page structure ....................................................554
+11.3.10
+Advanced user-defined Web page control.................................................................................555
+11.4
+Constraints.................................................................................................................................558
+11.4.1
+Features restricted when JavaScript is disabled .......................................................................558
+11.4.2
+Features restricted when cookies are not allowed.....................................................................560
+11.4.3
+Importing the Siemens security certificate .................................................................................560
+11.4.4
+Importing CSV format data logs to non-USA/UK versions of Microsoft Excel...........................561
+12
+Communication processor",921,57,False
+s71200_system_manual_en-US_en-US_p13_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,13,3,9,"..........560
+11.4.4
+Importing CSV format data logs to non-USA/UK versions of Microsoft Excel...........................561
+12
+Communication processor ..................................................................................................................... 563
+12.1
+Using the serial communication interfaces ................................................................................563
+12.2
+Biasing and terminating an RS485 network connector..............................................................564
+12.3
+Point-to-Point (PtP) communication...........................................................................................565
+12.3.1
+Point-to-Point instructions..........................................................................................................566
+12.3.1.1
+Common parameters for Point-to-Point instructions..................................................................566
+12.3.1.2
+PORT_CFG instruction",960,49,False
+s71200_system_manual_en-US_en-US_p13_c4,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,13,4,9,"1
+Common parameters for Point-to-Point instructions..................................................................566
+12.3.1.2
+PORT_CFG instruction ..............................................................................................................568
+12.3.1.3
+SEND_CFG instruction ..............................................................................................................569
+12.3.1.4
+RCV_CFG instruction.................................................................................................................571
+12.3.1.5
+SEND_PTP instruction...............................................................................................................575
+12.3.1.6
+RCV_PTP instruction .................................................................................................................578
+12.3.1.7
+RCV_RST instruction",872,27,False
+s71200_system_manual_en-US_en-US_p13_c5,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,13,5,9,"tion .................................................................................................................578
+12.3.1.7
+RCV_RST instruction .................................................................................................................580
+12.3.1.8
+SGN_GET instruction.................................................................................................................581
+12.3.1.9
+SGN_SET instruction .................................................................................................................582
+12.3.2
+Configuring the communication ports ........................................................................................583
+12.3.2.1
+Managing flow control ................................................................................................................585
+12.3.3
+Configuring the transmit (send) and receive parameters ..",905,33,False
+s71200_system_manual_en-US_en-US_p13_c6,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,13,6,9,"..................................................................................585
+12.3.3
+Configuring the transmit (send) and receive parameters .. ........................................................586
+12.3.3.1
+Configuring transmit (send) parameters ....................................................................................586
+12.3.3.2
+Configuring receive parameters.................................................................................................587
+12.3.4
+Programming the PtP communications .....................................................................................594
+12.3.4.1
+Polling architecture ....................................................................................................................595
+12.3.5
+Example: Point-to-Point communication....................................................................................596
+12.3.5.1
+Configuring the communication module",945,40,False
+s71200_system_manual_en-US_en-US_p13_c7,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,13,7,9,"int communication....................................................................................596
+12.3.5.1
+Configuring the communication module ....................................................................................597
+12.3.5.2
+Configuring the RS422 and RS485 ...........................................................................................599
+12.3.5.3
+Programming the STEP 7 program ...........................................................................................602
+12.3.5.4
+Configuring the terminal emulator..............................................................................................603
+12.3.5.5
+Running the example program...................................................................................................604
+12.4
+Universal serial interface (USS) communication .......................................................................604
+12.4.1
+Requirements for using the USS protocol",962,46,False
+s71200_system_manual_en-US_en-US_p13_c8,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,13,8,9,"nterface (USS) communication .......................................................................604
+12.4.1
+Requirements for using the USS protocol .................................................................................605
+12.4.2
+USS_DRV instruction.................................................................................................................608
+12.4.3
+USS_PORT instruction ..............................................................................................................610
+12.4.4
+USS_RPM instruction ................................................................................................................611
+12.4.5
+USS_WPM instruction................................................................................................................612
+12.4.6
+USS status codes ......................................................................................................................614
+12.4.7
+General drive setup",978,35,False
+s71200_system_manual_en-US_en-US_p13_c9,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,13,9,9,"s ......................................................................................................................614
+12.4.7
+General drive setup information.................................................................................................616
+12.5
+Modbus communication .............................................................................................................619
+12.5.1
+Overview of Modbus RTU and TCP communication .................................................................619
+12.5.2
+Modbus TCP ..............................................................................................................................622",670,24,False
+s71200_system_manual_en-US_en-US_p14_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,14,1,8,"Table of contents
+
+S7-1200 Programmable controller
+14 System Manual, 04/2012, A5E02486680-06
+12.5.2.1 MB_CLIENT (Modbus TCP)................................ ......................................................................622
+12.5.2.2
+MB_SERVER (Modbus TCP)....................................................................................................628
+12.5.2.3
+MB_SERVER example: Multiple TCP connections ..................................................................633
+12.5.2.4
+MB_CLIENT example 1: Mul tiple requests with common TCP connection ..............................634
+12.5.2.5
+MB_CLIENT example 2: Multiple requests with different TCP connections .............................635
+12.5.2.6
+MB_CLIENT example 3: Output image write request ...............................................................636
+12.5.2.7
+MB_CLIENT example 4: Coordinating multiple requests..........................................................",953,66,False
+s71200_system_manual_en-US_en-US_p14_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,14,2,8,"............................636
+12.5.2.7
+MB_CLIENT example 4: Coordinating multiple requests.......................................................... 636
+12.5.3
+Modbus RTU .............................................................................................................................637
+12.5.3.1
+MB_COMM_LOAD ....................................................................................................................638
+12.5.3.2
+MB_MASTER ............................................................................................................................641
+12.5.3.3
+MB_SLAVE ...............................................................................................................................647
+12.5.3.4
+Modbus RTU master example program....................................................................................653
+12.5.3.5
+Modbus RTU slave example program ......................................................................................",998,35,False
+s71200_system_manual_en-US_en-US_p14_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,14,3,8,"..................653
+12.5.3.5
+Modbus RTU slave example program ...................................................................................... 654
+12.6
+Telecontrol and TeleService with the CP 1242-7......................................................................655
+12.6.1
+Connection to a GSM network ..................................................................................................655
+12.6.2
+Applications of the CP 1242-7 ..................................................................................................657
+12.6.3
+Other properties of the CP ........................................................................................................658
+12.6.4
+Accessories...............................................................................................................................659
+12.6.5
+Configuration examples for telecontrol .....................................................................................660
+13
+Teleservice",996,48,False
+s71200_system_manual_en-US_en-US_p14_c4,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,14,4,8,"12.6.5
+Configuration examples for telecontrol .....................................................................................660
+13
+Teleservice communication (SMTP email)............................................................................................. 665
+13.1
+TM_Mail transfer email instruction ............................................................................................665
+14
+Online and diagnostic tools................................. ...................................................................................",557,24,False
+s71200_system_manual_en-US_en-US_p14_c5,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,14,5,8,"65
+14
+Online and diagnostic tools................................. ................................................................................... 673
+14.1
+Status LEDs ..............................................................................................................................673
+14.2
+Going online and connecting to a CPU.....................................................................................675
+14.3
+Assigning a name to a PROFINET IO device online ................................................................676
+14.4
+Setting the IP address and time of day.....................................................................................678
+14.5
+Resetting to factory settings......................................................................................................678
+14.6
+CPU operator panel for the online CPU....................................................................................679
+14.7
+Monitoring the cycle time and memory",996,60,False
+s71200_system_manual_en-US_en-US_p14_c6,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,14,6,8,"el for the online CPU....................................................................................679
+14.7
+Monitoring the cycle time and memory usage ..........................................................................680
+14.8
+Displaying diagnostic events in the CPU ..................................................................................680
+14.9
+Comparing offline and online CPUs..........................................................................................681
+14.10
+Monitoring and modifying values in the CPU............................................................................682
+14.10.1
+Going online to monitor the values in the CPU.........................................................................683
+14.10.2
+Displaying status in the program editor.....................................................................................684
+14.10.3
+Capturing the online valu es of a DB to reset the start",955,66,False
+s71200_system_manual_en-US_en-US_p14_c7,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,14,7,8,"...................................................................................684
+14.10.3
+Capturing the online valu es of a DB to reset the start values................................................... 684
+14.10.4
+Using a watch table to monitor and modify values in the CPU................................................. 685
+14.10.4.1
+Using a trigger when monitoring or modifying PLC tags .....................................................686
+14.10.4.2
+Enabling outputs in STOP mode..........................................................................................687
+14.10.5
+Forcing values in the CPU ........................................................................................................688
+14.10.5.1
+Using the force table ............................................................................................................688
+14.10.5.2
+Operation of the Force function",915,66,False
+s71200_system_manual_en-US_en-US_p14_c8,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,14,8,8,".........................................................................................................688
+14.10.5.2
+Operation of the Force function ...........................................................................................689
+14.11
+Downloading in RUN mode.......................................................................................................690
+14.11.1
+Prerequisites for ""Download in RUN mode""..............................................................................691
+14.11.2
+Changing your program in RUN mode...................................................................................... 692
+14.11.3
+Downloading selected blocks....................................................................................................693",782,32,False
+s71200_system_manual_en-US_en-US_p15_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,15,1,9,"Table of contents
+
+S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 15
+14.11.4 Downloading a single select ed block with a compile error in another block..............................694
+14.11.5
+System reaction if the download process fails...........................................................................695
+14.11.6
+Downloading the program in RUN mode ...................................................................................696
+A
+Technical sp ecifications..................................... ....................................................................................",621,46,False
+s71200_system_manual_en-US_en-US_p15_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,15,2,9,"A
+Technical sp ecifications..................................... .................................................................................... 699
+A.1
+General Technical Specifications ..............................................................................................699
+A.2
+CPU 1211C................................................................................................................................705
+A.2.1
+General specifications and features ..........................................................................................705
+A.2.2
+Timers, counters and code blocks supported by CPU 1211C...................................................707
+A.2.3
+Digital inputs and outputs...........................................................................................................709
+A.2.4
+Analog inputs .............................................................................................................................710
+A.2.4.1
+Step",990,41,False
+s71200_system_manual_en-US_en-US_p15_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,15,3,9,"g inputs .............................................................................................................................710
+A.2.4.1
+Step response of the built-in analog inputs of the CPU.............................................................711
+A.2.4.2
+Sample time for the built-in analog ports of the CPU ................................................................711
+A.2.5
+CPU 1211C Wiring diagrams.....................................................................................................712
+A.3
+CPU 1212C................................................................................................................................715
+A.3.1
+General specifications and features ..........................................................................................715
+A.3.2
+Timers, counters and code blocks supported by CPU 1212C...................................................716
+A.3.3
+Digital inputs and",951,54,False
+s71200_system_manual_en-US_en-US_p15_c4,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,15,4,9,"......715
+A.3.2
+Timers, counters and code blocks supported by CPU 1212C...................................................716
+A.3.3
+Digital inputs and outputs...........................................................................................................718
+A.3.4
+Analog inputs .............................................................................................................................720
+A.3.4.1
+Step response of the built-in analog inputs of the CPU.............................................................720
+A.3.4.2
+Sample time for the built-in analog ports of the CPU ................................................................721
+A.3.5
+CPU 1212C Wiring diagrams.....................................................................................................721
+A.4
+CPU 1214C................................................................................................................................724
+A.4.1
+General specifications and features",996,56,False
+s71200_system_manual_en-US_en-US_p15_c5,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,15,5,9,".........................................................................................................724
+A.4.1
+General specifications and features ..........................................................................................724
+A.4.2
+Timers, counters and code blocks supported by CPU 1214C...................................................725
+A.4.3
+Digital inputs and outputs...........................................................................................................727
+A.4.4
+Analog inputs .............................................................................................................................729
+A.4.4.1
+Step response of the built-in analog inputs of the CPU.............................................................730
+A.4.4.2
+Sample time for the built-in analog ports of the CPU ................................................................730
+A.4.5
+CPU 1214C Wiring Diagrams",940,54,False
+s71200_system_manual_en-US_en-US_p15_c6,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,15,6,9,"mple time for the built-in analog ports of the CPU ................................................................730
+A.4.5
+CPU 1214C Wiring Diagrams ....................................................................................................731
+A.5
+CPU 1215C................................................................................................................................734
+A.5.1
+General specifications and features ..........................................................................................734
+A.5.2
+Timers, counters and code blocks supported by CPU 1215C...................................................735
+A.5.3
+Digital inputs and outputs...........................................................................................................737
+A.5.4
+Analog inputs and outputs .........................................................................................................739
+A.5.4.1
+Analog input specifications",971,51,False
+s71200_system_manual_en-US_en-US_p15_c7,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,15,7,9,"tputs .........................................................................................................739
+A.5.4.1
+Analog input specifications ........................................................................................................739
+A.5.4.2
+Step response of built-in analog inputs of the CPU...................................................................740
+A.5.4.3
+Sample time for the built-in analog ports of the CPU ................................................................740
+A.5.4.4
+Analog output specifications ......................................................................................................740
+A.5.5
+CPU 1215C Wiring Diagrams ....................................................................................................741
+A.6
+Digital signal modules (SMs) .....................................................................................................745
+A.6.1
+SM 1221 digital input",961,51,False
+s71200_system_manual_en-US_en-US_p15_c8,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,15,8,9,"nal modules (SMs) .....................................................................................................745
+A.6.1
+SM 1221 digital input specifications...........................................................................................745
+A.6.2
+SM 1222 8-Point Digital Output Specifications..........................................................................747
+A.6.3
+SM 1222 16-Point Digital Output Specifications........................................................................749
+A.6.4
+SM 1223 Digital Input/Output VDC Specifications.....................................................................753
+A.6.5
+SM 1223 Digital Input/Output AC Specifications .......................................................................757
+A.7
+Analog signal modules (SMs) ....................................................................................................760
+A.7.1
+SM 1231 analog input module specifications",955,52,False
+s71200_system_manual_en-US_en-US_p15_c9,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,15,9,9,"..................................................................................................760
+A.7.1
+SM 1231 analog input module specifications ............................................................................760
+A.7.2
+SM 1232 analog output module specifications ..........................................................................764",358,17,False
+s71200_system_manual_en-US_en-US_p16_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,16,1,9,"Table of contents
+
+S7-1200 Programmable controller
+16 System Manual, 04/2012, A5E02486680-06
+A.7.3 SM 1234 analog input/output module specifications ........ ........................................................766
+A.7.4
+Step response of the analog inputs ..........................................................................................769
+A.7.5
+Sample time and update times for the analog inputs................................................................769
+A.7.6
+Measurement ranges of the analog inputs for voltage..............................................................770
+A.7.7
+Measurement ranges of the analog inputs for current ..............................................................770
+A.7.8
+Output (AQ) measurement ranges for voltage and current (SB and SM).................................",829,69,False
+s71200_system_manual_en-US_en-US_p16_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,16,2,9,".........................................770
+A.7.8
+Output (AQ) measurement ranges for voltage and current (SB and SM)................................. 771
+A.8
+Thermocouple and RTD signal modules (SMs)........................................................................772
+A.8.1
+SM 1231 Thermocouple............................................................................................................772
+A.8.1.1
+Basic operation for a thermocouple ..........................................................................................775
+A.8.1.2
+Selection tables for the SM 1231 thermocouple .......................................................................776
+A.8.2
+SM 1231 RTD ...........................................................................................................................778
+A.8.2.1
+Selection tables for the SM 1231 RTD......................................................................................781
+A.9
+Digital signal boards",984,58,False
+s71200_system_manual_en-US_en-US_p16_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,16,3,9,"election tables for the SM 1231 RTD......................................................................................781
+A.9
+Digital signal boards (SBs)........................................................................................................784
+A.9.1
+SB 1221 200 kHz digital input specifications ............................................................................784
+A.9.2
+SB 1222 200 kHz digital output specifications..........................................................................786
+A.9.3
+SB 1223 200 kHz digital input / output specifications ...............................................................789
+A.9.4
+SB 1223 2 X 24 VDC input / 2 X 24 VDC output specifications................................................792
+A.10
+Analog signal boards (SBs).......................................................................................................794
+A.10.1
+SB 1231 1 analog input specifications",950,67,False
+s71200_system_manual_en-US_en-US_p16_c4,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,16,4,9,"......................................................................................................794
+A.10.1
+SB 1231 1 analog input specifications ......................................................................................794
+A.10.2
+SB 1232 1 analog output specifications....................................................................................796
+A.10.3
+Measurement ranges for analog inputs and outputs ................................................................798
+A.10.3.1
+Step response of the analog inputs ..........................................................................................798
+A.10.3.2
+Sample time and update times for the analog inputs................................................................799
+A.10.3.3
+Measurement ranges of the analog inputs for voltage..............................................................799
+A.10.3.4
+Measurement ranges of the analog inputs for current",949,61,False
+s71200_system_manual_en-US_en-US_p16_c5,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,16,5,9,"nalog inputs for voltage..............................................................799
+A.10.3.4
+Measurement ranges of the analog inputs for current ..............................................................800
+A.10.3.5
+Output (AQ) measurement ranges for voltage and current (SB and SM)................................. 800
+A.10.4
+Thermocouple SBs....................................................................................................................801
+A.10.4.1
+SB 1231 1 analog thermocouple input specifications ...............................................................801
+A.10.4.2
+Basic operation for a thermocouple ..........................................................................................803
+A.10.5
+RTD SBs ...................................................................................................................................805
+A.10.5.1
+SB 1231 1 analog RTD input",923,57,False
+s71200_system_manual_en-US_en-US_p16_c6,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,16,6,9,"...............................................................................................................805
+A.10.5.1
+SB 1231 1 analog RTD input specifications..............................................................................805
+A.10.5.2
+Selection tables for the SB 1231 RTD ......................................................................................808
+A.11
+BB 1297 Battery Board .............................................................................................................810
+A.12
+Communication interfaces.........................................................................................................812
+A.12.1
+PROFIBUS................................................................................................................................812
+A.12.1.1
+CM 1242-5.................................................................................................................................812
+A.12.1.2
+CM",970,34,False
+s71200_system_manual_en-US_en-US_p16_c7,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,16,7,9,"1242-5.................................................................................................................................812
+A.12.1.2
+CM 1243-5.................................................................................................................................813
+A.12.2 GPRS
+........................................................................................................................................815
+A.12.2.1
+CP 1242-7 .................................................................................................................................815
+A.12.3
+CM 1243-2 AS-i Master.............................................................................................................818
+A.12.3.1
+Technical data for the AS-i master CM 1243-2.........................................................................818
+A.12.3.2
+Electrical connections of the AS-i master CM 1243-2",925,34,False
+s71200_system_manual_en-US_en-US_p16_c8,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,16,8,9,"ter CM 1243-2.........................................................................818
+A.12.3.2
+Electrical connections of the AS-i master CM 1243-2 ..............................................................819
+A.12.4
+RS232, RS422, and RS485 ......................................................................................................821
+A.12.4.1
+CB 1241 RS485 Specifications.................................................................................................821
+A.12.4.2
+CM 1241 RS232 Specifications ................................................................................................823
+A.12.4.3
+CM 1241 RS422/485 Specifications .........................................................................................824
+A.13
+TeleService (TS Adapter and TS Adapter modular) .................................................................826
+A.14
+SIMATIC memory",906,48,False
+s71200_system_manual_en-US_en-US_p16_c9,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,16,9,9,".....824
+A.13
+TeleService (TS Adapter and TS Adapter modular) .................................................................826
+A.14
+SIMATIC memory cards............................................................................................................826",267,14,False
+s71200_system_manual_en-US_en-US_p17_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,17,1,4,"Table of contents
+
+S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 17
+A.15 Input simulators.......................................... ................................................................................826
+A.16
+I/O expansion cable ...................................................................................................................827
+A.17
+Companion products..................................................................................................................828
+A.17.1
+PM 1207 power module .............................................................................................................828
+A.17.2
+CSM 1277 compact switch module ...........................................................................................828
+B
+Calculating a power budget ...................................................................................................................",944,42,False
+s71200_system_manual_en-US_en-US_p17_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,17,2,4,"..828
+B
+Calculating a power budget ................................................................................................................... 829
+C
+Order numbers ...................................................................................................................................... 833
+C.1
+CPU modules.............................................................................................................................833
+C.2
+Signal modules (SMs), signal boards (SBs) and battery board s (BB).......................................833
+C.3
+Communication ..........................................................................................................................834
+C.4
+Other modules............................................................................................................................835
+C.5
+Memory cards",872,37,False
+s71200_system_manual_en-US_en-US_p17_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,17,3,4,"odules............................................................................................................................835
+C.5
+Memory cards ............................................................................................................................836
+C.6
+Basic HMI devices .....................................................................................................................836
+C.7
+Spare parts and other hardware ................................................................................................836
+C.8
+Programming software...............................................................................................................837
+C.9
+Documentation...........................................................................................................................837",839,22,False
+s71200_system_manual_en-US_en-US_p17_c4,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,17,4,4,"...837
+C.9
+Documentation...........................................................................................................................837
+
+Index......................................................... ............................................................................................. 839",312,6,False
+s71200_system_manual_en-US_en-US_p18_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,18,1,1,"Table of contents
+
+S7-1200 Programmable controller
+18 System Manual, 04/2012, A5E02486680-06",92,11,False
+s71200_system_manual_en-US_en-US_p19_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,19,1,3,"S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 19
+Product overview 1
+1.1 Introducing the S7-1200 PLC
+The S7-1200 controller provides the flexibility and power to control a wide variety of devices
+in support of your automation needs. The compact design, flexible configuration, and
+powerful instruction set combine to make the S7-1200 a perfect solution for controlling a
+wide variety of applications.
+The CPU combines a microprocessor, an integrated power supply, input and output circuits,
+built-in PROFINET, high-speed motion control I/O, and on-board analog inputs in a compact
+housing to create a powerful controller. After you download your program, the CPU contains
+the logic required to monitor and control the devices in your application.",770,113,False
+s71200_system_manual_en-US_en-US_p19_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,19,2,3,"te a powerful controller. After you download your program, the CPU contains
+the logic required to monitor and control the devices in your application. The CPU monitors
+the inputs and changes the outputs according to the logic of your user program, which can
+include Boolean logic, counting, timing, complex math operations, and communications with
+other intelligent devices.
+The CPU provides a PROFINET port for communication over a PROFINET network.
+Additional modules are available for communicating over PROFIBUS, GPRS, RS485 or
+RS232 networks.
+
+1 Power connector
+2 Memory card slot under top door
+3 Removable user wiring connectors
+(behind the doors)
+4 Status LEDs for the on-board I/O
+5 PROFINET connector (on the bottom of
+the CPU)
+཰
+ཱ
+ུ
+ི
+ཱི",748,121,False
+s71200_system_manual_en-US_en-US_p19_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,19,3,3,"or
+3 Removable user wiring connectors
+(behind the doors)
+4 Status LEDs for the on-board I/O
+5 PROFINET connector (on the bottom of
+the CPU)
+཰
+ཱ
+ུ
+ི
+ཱི
+
+Several security features help protect access to both the CPU and the control program:
+● Every CPU provides password protection (Page 164) that allows you to configu re access
+to the CPU functions.
+● You can use ""know-how protection"" (Page 165) to hide the code within a specific block.
+● You can u
+se copy protection (Page 166) to bind your program to a specific memory card
+or CP
+U.",536,100,False
+s71200_system_manual_en-US_en-US_p20_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,20,1,3,"Product overview
+1.1 Introducing the S7-1200 PLC
+S7-1200 Programmable controller
+20 System Manual, 04/2012, A5E02486680-06
+Table 1- 1 Comparing the CPU models
+Feature CPU 1211C CPU 1212C CPU 1214C CPU 1215C
+Physical size (mm) 90 x 100 x 75 90 x 100 x 75 110 x 100 x 75 130 x 100 x 75
+Work 30 Kbytes 50 Kbytes 75 Kbytes 100 Kbytes
+Load 1 Mbyte 1 Mbyte 4 Mbytes 4 Mbytes
+User memory
+Retentive 10 Kbytes 10 Kbyt es 10 Kbytes 10 Kbytes
+Digital 6 inputs/4 outputs 8 inp uts/6 outputs 14 inputs/10 outputs 14 inputs/10 outputs Local on-board
+I/O Analog 2 inputs 2 inputs 2 inputs 2 inputs / 2 outputs
+Inputs (I) 1024 bytes 1024 bytes 1024 bytes 1024 bytes Process image
+size Outputs (Q) 1024 bytes 1024 bytes 1024 bytes 1024 bytes
+Bit memory (M) 4096 bytes 4096 bytes 8192 bytes 8192 bytes
+Signal module (SM) expansion None 2 8 8
+Signal board (SB), Battery board
+(BB), or communication board (CB)
+1 1 1 1
+Communication module (CM)
+(left-side expansion)
+3 3 3 3
+Total 3 built-in I/O, 5
+with SB
+4 built-in",997,187,False
+s71200_system_manual_en-US_en-US_p20_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,20,2,3,"ery board
+(BB), or communication board (CB)
+1 1 1 1
+Communication module (CM)
+(left-side expansion)
+3 3 3 3
+Total 3 built-in I/O, 5
+with SB
+4 built-in I/O, 6
+with SB
+6 6
+Single phase 3 at 100 kHz
+SB: 2 at 30 kHz
+3 at 100 kHz
+1 at 30 kHz
+SB: 2 at 30 kHz
+3 at 100 kHz
+3 at 30 kHz
+3 at 100 kHz
+3 at 30 kHz
+High-speed
+counters
+Quadrature phase 3 at 80 kHz
+SB: 2 at 20 kHz
+3 at 80 kHz
+1 at 20 kHz
+SB: 2 at 20 kHz
+3 at 80 kHz
+3 at 20 kHz
+3 at 80 kHz
+3 at 20 kHz
+Pulse outputs1 4 4 4 4
+Memory card SIMATIC Memory card (optional)
+Real time clock retention time 20 days, typ. / 12 day min. at 4 0 degrees C (maintenance-free Super Capicator)
+PROFINET 1 Ethernet communication port 2 Ethernet
+communication ports
+Real math execution speed 2.3 μs/instruction
+Boolean execution speed 0.08 μs/instruction
+1 For CPU models with relay out puts, you must install a digital signal board (SB) to use the pulse outputs.
+Each CPU provides dedicated HMI connections to support up to 3 HMI devices.",976,203,False
+s71200_system_manual_en-US_en-US_p20_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,20,3,3,"ts, you must install a digital signal board (SB) to use the pulse outputs.
+Each CPU provides dedicated HMI connections to support up to 3 HMI devices. The total
+number of HMI is affected by the types of HMI panels in your configuration. For example,
+you could have up to three SIMATIC Basic panels connected to your CPU, or you could
+have up to two SIMATIC Comfort panels with one additional Basic panel.
+The different CPU models provide a diversity of features and capabilities that help you create
+effective solutions for your varied applications. For detailed information about a specific
+CPU, see the technical specifications (Page 699).",641,107,False
+s71200_system_manual_en-US_en-US_p21_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,21,1,2,"Product overview
+1.1 Introducing the S7-1200 PLC
+S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 21
+Table 1- 2 Blocks, timers and counters support ed by S7-1200
+Element Description
+Type OB, FB, FC, DB
+Size 30 Kbytes (CPU 1211C)
+50 Kbytes (CPU 1212C)
+64 Kbytes (CPU 1214C and CPU 1215C)
+Quantity Up to 1024 blocks total (OBs + FBs + FCs + DBs)
+Address range for FBs, FCs,
+and DBs
+1 to 65535 (such as FB 1 to FB 65535)
+Nesting depth 16 from the program cycle or start up OB; 4 from the time delay
+interrupt, time-of-day interrupt, cyclic interrupt, hardware interrupt,
+time error interrupt, or diagnostic error interrupt OB
+Blocks
+Monitoring Status of 2 code blo cks can be monitored simultaneously
+Program cycle Multiple: OB 1, OB 200 to OB 65535
+Startup Multiple: OB 100, OB 200 to OB 65535
+Time-delay interrupts and
+cyclic interrupts
+4
+1 (1 per event): OB 200 to OB 65535
+Hardware interrupts (edges
+and HSC)
+50 (1 per event): OB 200 to OB 65535
+Time error interrupts 1: OB",996,175,False
+s71200_system_manual_en-US_en-US_p21_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,21,2,2,"interrupts
+4
+1 (1 per event): OB 200 to OB 65535
+Hardware interrupts (edges
+and HSC)
+50 (1 per event): OB 200 to OB 65535
+Time error interrupts 1: OB 80
+OBs
+Diagnostic error interrupts 1: OB 82
+Type IEC
+Quantity Limited only by memory size
+Timers
+Storage Structure in D B, 16 bytes per timer
+Type IEC
+Quantity Limited only by memory size
+Counters
+Storage Structure in DB, size dependent upon count type
+- SInt, USInt: 3 bytes
+- Int, UInt: 6 bytes
+- DInt, UDInt: 12 bytes
+1 Time-delay and cyclic interrupt s use the same resources in the CPU. You can have only a total of 4 of these interrupts
+(time-delay plus cyclic interrupts). You cannot have 4 time-delay interrupts and 4 cyclic interrupts.",694,127,False
+s71200_system_manual_en-US_en-US_p22_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,22,1,2,"Product overview
+1.2 Expansion capability of the CPU
+S7-1200 Programmable controller
+22 System Manual, 04/2012, A5E02486680-06
+1.2 Expansion capability of the CPU
+The S7-1200 family provides a variety of modules and plug-in boards for expanding the
+capabilities of the CPU with additional I/O or other communication protocols. For detailed
+information about a specific module, see the technical specifications (Page 699).
+ཱ
+ཱིི
+཰",429,63,False
+s71200_system_manual_en-US_en-US_p22_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,22,2,2,"dditional I/O or other communication protocols. For detailed
+information about a specific module, see the technical specifications (Page 699).
+ཱ
+ཱིི
+཰
+
+1 Communication module (CM), communcation processor (CP), or TS Adapter
+2 C P U
+3 Signal board (SB), communicati on board (CB), or Battery Board (BB)
+4 Signal module (SM)
+Table 1- 3 Digital signal modules and signal boards
+Type Input only Output o nly Combination In/Out
+3 digital SB - 4 x 24VDC In,
+200 kHz
+- 4 x 5VDC In,
+200 kHz
+- 4 x 24VDC Out,
+200 kHz
+- 4 x 5VDC Out,
+200 kHz
+- 2 x 24VDC In / 2 x 24VDC Out
+- 2 x 24VDC In / 2 x 24VDC Out,
+200 kHz
+- 2 x 5VDC In / 2 x 5VDC Out,
+200 kHz
+- 8 x 24VDC In - 8 x 24VDC Out
+- 8 x Relay Out
+- 8 x Relay Out
+(Changeover)
+- 8 x 24VDC In / 8 x 24VDC Out
+- 8 x 24VDC In / 8 x Relay Out
+- 8 x 120/230VAC In / 8 x Relay Out
+4 digital SM
+- 16 x 24VDC In - 16 x 24VDC Out
+- 16 x Relay Out
+- 16 x 24VDC In / 16 x 24VDC Out
+- 16 x 24VDC In / 16 x Relay Out",943,223,False
+s71200_system_manual_en-US_en-US_p23_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,23,1,3,"Product overview
+1.2 Expansion capability of the CPU
+S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 23
+Table 1- 4 Analog signal m odules and signal boards
+Type Input only Output o nly Combination In/Out
+3 analog SB - 1 x 12 bit Analog In
+- 1 x 16 bit RTD
+- 1 x 16 bit Thermocouple
+- 1 x Analog Out -
+4 analog SM - 4 x Analog In
+- 4 x Analog In x 16 bit
+- 8 x Analog In
+- Thermocouple:
+– 4 x 16 bit TC
+– 8 x 16 bit TC
+- RTD:
+– 4 x 16 bit RTD
+– 8 x 16 bit RTD
+- 2 x Analog Out
+- 4 x Analog Out
+- 4 x Analog In / 2 x Analog Out",548,131,False
+s71200_system_manual_en-US_en-US_p23_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,23,2,3,"rmocouple:
+– 4 x 16 bit TC
+– 8 x 16 bit TC
+- RTD:
+– 4 x 16 bit RTD
+– 8 x 16 bit RTD
+- 2 x Analog Out
+- 4 x Analog Out
+- 4 x Analog In / 2 x Analog Out
+
+Table 1- 5 Communication interfaces
+Module Type Description
+RS232 Full-duplex
+RS422/485 Full-duplex (RS422)
+Half-duplex (RS485)
+PROFIBUS Master DPV1
+PROFIBUS Slave DPV1
+1 Communication module (CM)
+AS-i Master (CM 1243-2) AS-Interface
+1 Communication processor (CP) Modem connectivity GPRS
+1 Communication board (CB) RS485 Half-duplex
+TS Adapter IE Basic1 Connection to CPU
+TS Adapter GSM GSM/GPRS
+TS Adapter Modem Modem
+TS Adapter ISDN ISDN
+1 TeleService
+TS Adapter RS232 RS232
+1 The TS Adapter allows you to connect various communication int erfaces to the PROFINET port of the CPU. You install
+the TS Adapter on the left side of the CPU and connect the TS Adapter modular (up to 3) onto the TS Adapter.",856,159,False
+s71200_system_manual_en-US_en-US_p23_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,23,3,3,"the PROFINET port of the CPU. You install
+the TS Adapter on the left side of the CPU and connect the TS Adapter modular (up to 3) onto the TS Adapter.
+
+Table 1- 6 Other boards
+Module Description
+3 Battery board Plugs into expansion board interface on front of CPU. Provides long term
+backup of realtime clock",308,57,False
+s71200_system_manual_en-US_en-US_p24_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,24,1,2,"Product overview
+1.3 S7-1200 modules
+S7-1200 Programmable controller
+24 System Manual, 04/2012, A5E02486680-06
+1.3 S7-1200 modules
+Table 1- 7 S7-1200 expansion modules
+Type of module Description
+1 Status LEDs on
+the SB
+The CPU supports one plug-in
+expansion board:
+- A signal board (SB) provides
+additional I/O for your CPU.
+The SB connects on the front of
+the CPU.
+- A communication board (CB)
+allows you to add another
+communication port to your
+CPU.
+- A battery board (BB) allows you
+to provide long term backup of
+the realtime clock.
+཰
+ཱ
+
+2 Removable user
+wiring connector
+1 Status LEDs
+2 Bus connector
+Signal modules (SMs) add
+additional functionality to the CPU.
+SMs connect to the right side of the
+CPU.
+- Digital I/O
+- Analog I/O
+- RTD and thermocouple
+཰
+ཱ
+ི",766,134,False
+s71200_system_manual_en-US_en-US_p24_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,24,2,2,"dules (SMs) add
+additional functionality to the CPU.
+SMs connect to the right side of the
+CPU.
+- Digital I/O
+- Analog I/O
+- RTD and thermocouple
+཰
+ཱ
+ི
+
+3 Removable user
+wiring connector
+1 Status LEDs Communication modules (CMs)
+and communications processors
+(CPs) add communication options
+to the CPU, such as for
+PROFIBUS or RS232 / RS485
+connectivity (for PtP, Modbus or
+USS), or the AS-i master. A CP
+provides capabilities for other types
+of communication, such as to
+connect the CPU over a GPRS
+network.
+- The CPU supports up to 3 CMs
+or CPs
+- Each CM or CP connects to the
+left side of the CPU (or to the
+left side of another CM or CP)
+཰
+ཱ
+
+2 Communication
+connector",671,126,False
+s71200_system_manual_en-US_en-US_p25_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,25,1,2,"Product overview
+1.4 New features
+S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 25
+1.4 New features
+The following features are new in this release:
+● A standard Web server page for performi ng a CPU firmware update (Page 519)
+● The ability to
+use three PROFIBUS DP CM 1243-5 master modules or three AS-i CM
+1243-2 master modules
+Note
+To use three AS-i modules as masters, you must update the firmware of the AS-i
+modules.
+New modules for the S7-1200
+A variety of new modules expand the power of the S7-1200 CPU and provide the flexibility to
+meet your automation needs:
+● New and improved CPUs:
+– New CPU 1215C DC/DC/DC, CPU 1215C DC/DC/Relay, and CPU 1215C
+AC/DC/Relay offer 100 Kbytes of work memory, dual Ethernet, and analog outputs.
+– New and improved CPU 1211Cs, CPU 1212Cs, and CPU 1214Cs have faster
+processing time, the possibility of 4 PTOs (the CPU 1211C requires a signal board),
+increased retentive memory (10 Kbytes), and increased time-of-day hold up time",995,167,False
+s71200_system_manual_en-US_en-US_p25_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,25,2,2,"ime, the possibility of 4 PTOs (the CPU 1211C requires a signal board),
+increased retentive memory (10 Kbytes), and increased time-of-day hold up time (20
+days).
+● New I/O signal module: SM 1231 AI 4 x 16 bit provides higher sample rate and increased
+number of bits.
+● New battery board (BB 1297) offers long term backup of the realtime clock. The BB 1297
+is pluggable in the signal board slot of the S7-1200 CPU (firmware 3.0 and later
+versions).
+To use the new modules you must use STEP 7 V11 SP2 Update 3 or later (Basic or
+Professional) and you must download the hardware support package (HSP) for new modules
+from the STEP 7 Options > Support Packages menu command. Follow the instructions for
+adding modules to the hardware catalog for STEP 7 (TIA Portal) from the Siemens Service
+and Support Site (http://support.automation.siemens.com
+).",845,145,False
+s71200_system_manual_en-US_en-US_p26_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,26,1,2,"Product overview
+1.5 Basic HMI panels
+S7-1200 Programmable controller
+26 System Manual, 04/2012, A5E02486680-06
+1.5 Basic HMI panels
+Because visualization is becoming a standard component for most machine designs, the
+SIMATIC HMI Basic Panels provide touch-screen devices for basic operator control and
+monitoring tasks. All panels have a protection rating for IP65 and have CE, UL, cULus, and
+NEMA 4x certification.
+
+Basic HMI Panel Description Technical data
+
+KP 300 Basic PN
+3.6"" membrane keyboard with 10 freely
+configurable tactile keys
+- Mono (STN, black/white)
+- 87 mm x 31 mm (3.6"")
+- Backlight color programmed (white,
+green, yellow or red)
+- Resolution: 240 x 80
+- 250 tags
+- 50 process screens
+- 200 alarms
+- 25 curves
+- 40 KB recipe memory
+- 5 recipes, 20 data records, 20 entries",792,131,False
+s71200_system_manual_en-US_en-US_p26_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,26,2,2,"or red)
+- Resolution: 240 x 80
+- 250 tags
+- 50 process screens
+- 200 alarms
+- 25 curves
+- 40 KB recipe memory
+- 5 recipes, 20 data records, 20 entries
+
+KTP 400 Basic PN
+4"" touch screen with 4 tactile keys
+- Mono (STN, gray scale)
+- 76.79 mm x 57.59 mm (3.8"")
+Portrait or landscape
+- Resolution: 320 x 240
+- 250 tags
+- 50 process screens
+- 200 alarms
+- 25 curves
+- 40 KB recipe memory
+- 5 recipes, 20 data records, 20 entries
+
+KTP 600 Basic PN
+6"" touch screen with 6 tactile keys
+- Color (TFT, 256 colors) or Mono
+(STN, gray scales)
+- 115.2 mm x 86.4 mm (5.7"")
+Portrait or landscape
+- Resolution: 320 x 240
+- 500 tags
+- 50 process screens
+- 200 alarms
+- 25 curves
+- 40 KB recipe memory
+- 5 recipes, 20 data records, 20 entries",725,152,False
+s71200_system_manual_en-US_en-US_p27_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,27,1,1,"Product overview
+1.5 Basic HMI panels
+S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 27
+Basic HMI Panel Description Technical data
+
+KTP 1000 Basic PN
+10"" touch screen with 8 tactile keys
+- Color (TFT, 256 colors)
+- 211.2 mm x 158.4 mm (10.4"")
+- Resolution: 640 x 480
+- 500 tags
+- 50 process screens
+- 200 alarms
+- 25 curves
+- 40 KB recipe memory
+- 5 recipes, 20 data records, 20 entries
+
+TP 1500 Basic PN
+15"" touch screen
+- Color (TFT, 256 colors)
+- 304.1 mm x 228.1 mm (15.1"")
+- Resolution: 1024 x 768
+- 500 tags
+- 50 process screens
+- 200 alarms
+- 25 curves
+- 40 KB recipe memory (integrated
+flash)
+- 5 recipes, 20 data records, 20 entries",665,126,False
+s71200_system_manual_en-US_en-US_p28_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,28,1,1,"Product overview
+1.5 Basic HMI panels
+S7-1200 Programmable controller
+28 System Manual, 04/2012, A5E02486680-06",111,14,False
+s71200_system_manual_en-US_en-US_p29_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,29,1,3,"S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 29
+STEP 7 programming software 2
+
+STEP 7 provides a user-friendly environment to develop, edit, and monitor the logic needed
+to control your application, including the tools for managing and configuring all of the devices
+in your project, such as controllers and HMI devices. To help you find the information you
+need, STEP 7 provides an extensive online help system.
+STEP 7 provides standard programming languages for convenience and efficiency in
+developing the control program for your application.
+● LAD (ladder logic) is a graphical programming language.",630,94,False
+s71200_system_manual_en-US_en-US_p29_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,29,2,3,"uages for convenience and efficiency in
+developing the control program for your application.
+● LAD (ladder logic) is a graphical programming language. The representation is based on
+circuit diagrams (Page 155).
+● FBD (Fu
+nction Block Diagram) is a programming language that is based on the graphical
+logic symbols used in Boolean algebra (Page 156).
+● SCL (stru
+ctured control language) is a text-based, high-level programming language.
+When you create a code block, you select the programming language to be used by that
+block. Your user program can utilize code blocks created in any or all of the programming
+languages.
+
+Note
+STEP 7 is the programming and configuration software component of the TIA Portal. The
+TIA Portal, in addition to STEP 7, also includes WinCC for designing and executing runtime
+process visualization, and includes online help for WinCC as well as STEP 7.",882,143,False
+s71200_system_manual_en-US_en-US_p29_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,29,3,3,"dition to STEP 7, also includes WinCC for designing and executing runtime
+process visualization, and includes online help for WinCC as well as STEP 7.
+
+2.1 System requirements
+To install the STEP 7 software on a PC running Windows XP or Windows 7 operating
+system, you must log in with Administrator privileges.
+Table 2- 1 System requirements
+Hardware/software Requirements
+Processor type Pentium M, 1.6 GHz or similar
+RAM 1 GB
+Available hard disk space 2 GB on system drive C:\
+Operating systems - Windows XP Professional SP3
+- Windows 2003 Server R2 StdE SP2
+- Windows 7 Home Premium (STEP 7 Basic only, not
+supported for STEP 7 Professional)
+- Windows 7 (Professional, Enterprise, Ultimate)
+- Windows 2008 Server StdE R2",723,121,False
+s71200_system_manual_en-US_en-US_p30_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,30,1,2,"STEP 7 programming software
+2.2 Different views to make the work easier
+S7-1200 Programmable controller
+30 System Manual, 04/2012, A5E02486680-06
+Hardware/software Requirements
+Graphics card 32 MB RAM
+24-bit color depth
+Screen resolution 1024 x 768
+Network 20 Mbit/s Ethernet or faster
+Optical drive DVD-ROM
+2.2 Different views to make the work easier
+STEP 7 provides a user-friendly environment to develop controller logic, configure HMI
+visualization, and setup network communication. To help increase your productivity, STEP 7
+provides two different views of the project: a task-oriented set of portals that are organized
+on the functionality of the tools (Portal view), or a project-oriented view of the elements within
+the project (Project view). Choose which view helps you work most efficiently. With a single
+click, you can toggle between the Portal view and the Project view.",884,134,False
+s71200_system_manual_en-US_en-US_p30_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,30,2,2,"t (Project view). Choose which view helps you work most efficiently. With a single
+click, you can toggle between the Portal view and the Project view.
+
+Portal view
+1 Portals for the different tasks
+2 Tasks for the selected portal
+3 Selection panel for the selected
+action
+
+4 Changes to the Project view
+Project view
+1 Menus and toolbar
+2 Project navigator
+3 Work area
+4 Task cards
+5 Inspector window
+6 Changes to the Portal view
+
+7 Editor bar
+With all of these components in one place, you have easy access to every aspect of your
+project. For example, the inspector window shows the properties and information for the
+object that you have selected in the work area. As you select different objects, the inspector
+window displays the properties that you can configure. The inspector window includes tabs
+that allow you to see diagnostic information and other messages.",868,149,False
+s71200_system_manual_en-US_en-US_p31_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,31,1,1,"STEP 7 programming software
+2.3 Easy-to-use tools
+S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 31
+By showing all of the editors that are open, the editor bar helps you work more quickly and
+efficiently. To toggle between the open editors, simply click the different editor. You can also
+arrange two editors to appear together, arranged either vertically or horizontally. This feature
+allows you to drag and drop between editors.
+2.3 Easy-to-use tools
+2.3.1 Inserting instructions into your user program
+
+STEP 7 provides task cards that contain the instructions for your
+program. The instructions are grouped according to function.
+
+To create your program, you drag instructions from the task card
+onto a network.",738,112,False
+s71200_system_manual_en-US_en-US_p32_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,32,1,1,"STEP 7 programming software
+2.3 Easy-to-use tools
+S7-1200 Programmable controller
+32 System Manual, 04/2012, A5E02486680-06
+2.3.2 Accessing instructions from the ""F avorites"" toolbar
+
+STEP 7 provides a ""Favorites"" toolbar to give you quick access to the instructions that you
+frequently use. Simply click the icon for the instruction to insert it into your network!
+
+(For the ""Favorites"" in the instruction tree, double-
+click the icon.)
+
+You can easily customize the
+""Favorites"" by adding new
+instructions.
+Simply drag and drop an
+instruction to the ""Favorites"".
+The instruction is now just a click
+away!",605,92,False
+s71200_system_manual_en-US_en-US_p33_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,33,1,1,"STEP 7 programming software
+2.3 Easy-to-use tools
+S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 33
+2.3.3 Creating a complex equation with a s imple instruction
+
+The Calculate instruction lets you create a math function that operates on multiple input
+parameters to produce the result, according to the equation that you define.
+
+In the Basic instruction tree, expand the Math functions folder.
+Double-click the Calculate instruction to insert the instruction
+into your user program.
+
+The unconfigured Calculate
+instruction provides two input
+parameters and an output
+parameter.
+
+Click the ""???"" and select the data types for the input and output
+parameters. (The input and output parameters must all be the same
+data type.)
+For this example, select the ""Real"" data type.
+
+Click the ""Edit equation"" icon to enter the equation.",850,128,False
+s71200_system_manual_en-US_en-US_p34_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,34,1,2,"STEP 7 programming software
+2.3 Easy-to-use tools
+S7-1200 Programmable controller
+34 System Manual, 04/2012, A5E02486680-06
+
+For this example, enter the following equation for scaling a raw analog value. (The ""In"" and
+""Out"" designations correspond to the parameters of the Calculate instruction.)
+Out value = ( ( O u t high - Out low) / (In high - In low)) * (In value - In low) + Out low
+Out = ((in4 - in5) / (in2 - in 3)) * (in1 - in3) + in5
+Where: Out value (Out) Scaled output value
+I n value (in1) Analog input value
+I n high (in2) Upper limit for the scaled input value
+I n low (in3) Lower limit for the scaled input value
+O u t high (in4) Upper limit for the scaled output value
+O ut low (in5) Lower limit for the scaled ouput value
+In the ""Edit Calculate"" box, enter the equation with the parameter names:
+OUT = ((in4 - in5) / (in2 - in3)) * (in1 - in3) + in5
+
+When you click ""OK"", the Calculate
+instruction creates the inputs
+required for the instruction.",964,184,False
+s71200_system_manual_en-US_en-US_p34_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,34,2,2,"OUT = ((in4 - in5) / (in2 - in3)) * (in1 - in3) + in5
+
+When you click ""OK"", the Calculate
+instruction creates the inputs
+required for the instruction.
+
+Enter the tag names for the values
+that correspond to the parameters.",221,41,False
+s71200_system_manual_en-US_en-US_p35_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,35,1,1,"STEP 7 programming software
+2.3 Easy-to-use tools
+S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 35
+2.3.4 Adding inputs or outputs to a LAD or FBD instruction
+
+Some of the instructions allow you to create additional inputs or outputs.
+● To add an input or output, click the ""Create"" icon or right-click on an input stub for one of
+the existing IN or OUT parameters and select the ""Insert input"" command.
+● To remove an input or output, right-click on the stub for one of the existing IN or OUT
+parameters (when there are more than the original two inputs) and select the ""Delete""
+command.
+2.3.5 Expandable instructions
+
+Some of the more complex instructions are expandable, displaying only the key inputs and
+outputs. To display the inputs and outputs, click the arrow at the bottom of the instruction.",826,137,False
+s71200_system_manual_en-US_en-US_p36_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,36,1,1,"STEP 7 programming software
+2.3 Easy-to-use tools
+S7-1200 Programmable controller
+36 System Manual, 04/2012, A5E02486680-06
+2.3.6 Selecting a version for an instruction
+The development and release cycles for certain sets of instructions (such as Modbus, PID
+and motion) have created multiple released versions for these instructions. To help ensure
+compatibility and migration with older projects, STEP 7 allows you to choose which version
+of instruction to insert into your user program.
+
+Click the icon on the instruction tree task card to enable the
+headers and columns of the instruction tree.
+
+To change the version of the instruction, select the
+appropriate version from the drop-down list.
+2.3.7 Modifying the appearance and conf iguration of STEP 7
+
+You can select a variety of settings,
+such as the appearance of the
+interface, language, or the folder for
+saving your work.
+Select the ""Settings"" command from
+the ""Options"" menu to change these
+settings.",962,149,False
+s71200_system_manual_en-US_en-US_p37_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,37,1,2,"STEP 7 programming software
+2.3 Easy-to-use tools
+S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 37
+2.3.8 Dragging and dropping between editors
+
+To help you perform tasks quickly and easily,
+STEP 7 allows you to drag and drop elements
+from one editor to another. For example, you
+can drag an input from the CPU to the address
+of an instruction in your user program.
+You must zoom in at least 200% to select the
+inputs or outputs of the CPU.
+Notice that the tag names are displayed not
+only in the PLC tag table, but also are
+displayed on the CPU.
+To display two editors at one time, use the
+""Split editor"" menu commands or buttons in
+the toolbar.
+
+To toggle between the editors that have been opened, click the icons in the editor bar.
+
+2.3.9 Changing the operating mode of the CPU
+Refer to
+The CPU does not have a physical switch for changing the operating mode (STOP or RUN).
+
+Use the ""Start CPU"" and ""Stop CPU"" toolbar buttons to change the operating
+mode of the CPU.",994,177,False
+s71200_system_manual_en-US_en-US_p37_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,37,2,2,"cal switch for changing the operating mode (STOP or RUN).
+
+Use the ""Start CPU"" and ""Stop CPU"" toolbar buttons to change the operating
+mode of the CPU.
+
+When you configure the CPU in the device configuration, you configure the start-up behavior
+in the properties of the CPU.",273,47,False
+s71200_system_manual_en-US_en-US_p38_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,38,1,1,"STEP 7 programming software
+2.3 Easy-to-use tools
+S7-1200 Programmable controller
+38 System Manual, 04/2012, A5E02486680-06
+The ""Online and diagnostics"" portal also provides an operator panel for changing the
+operating mode of the online CPU. To use the CPU operator panel, you must be connected
+online to the CPU. The ""Online tools"" task card displays an operator panel that shows the
+operating mode of the online CPU. The operator panel also allows you to change the
+operating mode of the online CPU.
+
+Use the button on the operator panel to change the operating mode
+(STOP or RUN). The operator panel also provides an MRES button for
+resetting the memory.
+The color of the RUN/STOP indicator shows the current operating mode of the CPU. Yellow
+indicates STOP mode, and green indicates RUN mode.
+Refer to Operating Modes of the CPU in the S7-120 0 System Manual (Page 69) for
+config
+uring the default operating mode on power up.",930,156,False
+s71200_system_manual_en-US_en-US_p39_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,39,1,1,"STEP 7 programming software
+2.3 Easy-to-use tools
+S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 39
+2.3.10 Changing the call type for a DB
+
+STEP 7 allows you to easily create or change the
+association of a DB for an instruction or an FB that is in
+an FB.
+- You can switch the association between different DBs.
+- You can switch the association between a single-
+instance DB and a multi-instance DB.
+- You can create an instance DB (if an instance DB is
+missing or not available).
+You can access the ""Change call type"" command either
+by right-clicking the instruction or FB in the program
+editor or by selecting the ""Block call"" command from the
+""Options"" menu.
+
+The ""Call options"" dialog allows
+you to select a single-instance
+or multi-instance DB. You can
+also select specific DBs from a
+drop-down list of available DBs.",845,144,False
+s71200_system_manual_en-US_en-US_p40_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,40,1,1,"STEP 7 programming software
+2.3 Easy-to-use tools
+S7-1200 Programmable controller
+40 System Manual, 04/2012, A5E02486680-06
+2.3.11 Temporarily disconnecting devices from a network
+You can disconnect individual network devices from the subnet. Because the configuration of
+the device is not removed from the project, you can easily restore the connection to the
+device.
+
+Right-click the interface port of the network
+device and select the ""Disconnect from
+subnet"" command from the context menu.
+STEP 7 reconfigures the network connections, but does not remove the disconnected device
+from the project. While the network connection is deleted, the interface addresses are not
+changed.
+
+When you download the new network connections, the CPU must be set to STOP mode.
+To reconnect the device, simply create a new network connection to the port of the device.",855,130,False
+s71200_system_manual_en-US_en-US_p41_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,41,1,1,"STEP 7 programming software
+2.3 Easy-to-use tools
+S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 41
+2.3.12 Virtual unplugging of dev ices from the configuration
+
+STEP 7 provides a storage area for
+""unplugged"" modules. You can drag a
+module from the rack to save the
+configuration of that module. These
+unplugged modules are saved with your
+project, allowing you to reinsert the
+module in the future without having to
+reconfigure the parameters.
+One use of this feature is for temporary
+maintenance. Consider a scenario where
+you might be waiting for a replacement
+module and plan to temporarily use a
+different module as a short-term
+replacement. You could drag the
+configured module from the rack to the
+""Unplugged modules"" and then insert the
+temporary module.",786,123,False
+s71200_system_manual_en-US_en-US_p42_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,42,1,1,"STEP 7 programming software
+2.3 Easy-to-use tools
+S7-1200 Programmable controller
+42 System Manual, 04/2012, A5E02486680-06",123,15,False
+s71200_system_manual_en-US_en-US_p43_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,43,1,3,"S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 43
+Installation 3
+3.1 Guidelines for installing S7-1200 devices
+The S7-1200 equipment is designed to be easy to install. You can install an S7-1200 either
+on a panel or on a standard rail, and you can orient the S7-1200 either horizontally or
+vertically. The small size of the S7-1200 allows you to make efficient use of space.
+
+WARNING
+The SIMATIC S7-1200 PLCs are Open Type Controllers. It is required that you install the
+S7-1200 in a housing, cabinet, or electric control room. Entry to the housing, cabinet, or
+electric control room should be limited to authorized personnel.
+Failure to follow these installation requirements could result in death, severe personal injury
+and/or property damage.
+Always follow these requirements when installing S7-1200 PLCs.",834,128,False
+s71200_system_manual_en-US_en-US_p43_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,43,2,3,"tion requirements could result in death, severe personal injury
+and/or property damage.
+Always follow these requirements when installing S7-1200 PLCs.
+
+Separate the S7-1200 devices from heat, high voltage, and electrical noise
+As a general rule for laying out the devices of your system, always separate the devices that
+generate high voltage and high electrical noise from the low-voltage, logic-type devices such
+as the S7-1200.
+When configuring the layout of the S7-1200 inside your panel, consider the heat-generating
+devices and locate the electronic-type devices in the cooler areas of your cabinet. Reducing
+the exposure to a high-temperature environment will extend the operating life of any
+electronic device.
+Consider also the routing of the wiring for the devices in the panel.",788,119,False
+s71200_system_manual_en-US_en-US_p43_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,43,3,3,"temperature environment will extend the operating life of any
+electronic device.
+Consider also the routing of the wiring for the devices in the panel. Avoid placing low-voltage
+signal wires and communications cables in the same tray with AC power wiring and high-
+energy, rapidly-switched DC wiring.
+Provide adequate clearance for cooling and wiring
+S7-1200 devices are designed for natural convection cooling. For proper cooling, you must
+provide a clearance of at least 25 mm above and below the devices. Also, allow at least 25
+mm of depth between the front of the modules and the inside of the enclosure.
+
+CAUTION
+For vertical mounting, the maximum allowable ambient temperature is reduced by 10
+degrees C. Orient a vertically mounted S7-1200 system as shown in the following figure.",787,126,False
+s71200_system_manual_en-US_en-US_p44_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,44,1,2,"Installation
+3.2 Power budget
+S7-1200 Programmable controller
+44 System Manual, 04/2012, A5E02486680-06
+When planning your layout for the S7-1200 system, allow enough clearance for the wiring
+and communications cable connections.
+཰
+PP
+ི
+ཱི
+ཱི
+ཱི
+PP
+ཱ
+ཱི
+PP
+PP
+ཱི
+
+1 Side view 3 Vertical installation
+2 Horizontal installation 4 Clearance area
+
+3.2 Power budget
+Your CPU has an internal power supply that provides power for the CPU, the signal
+modules, signal board and communication modules and for other 24 VDC user power
+requirements.
+Refer to the technical specifications (Page 699) for information about the 5 VDC logic budget
+supplied by your CPU and the 5 VDC power requirements of the signal modules, signal
+boards, and communication modules.",749,120,False
+s71200_system_manual_en-US_en-US_p44_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,44,2,2,"on about the 5 VDC logic budget
+supplied by your CPU and the 5 VDC power requirements of the signal modules, signal
+boards, and communication modules. Refer to the ""Calculating a power budget"" (Page 829)
+to determin
+e how much power (or current) the CPU can provide for your configuration.
+The CPU provides a 24 VDC sensor supply that can supply 24 VDC for input points, for relay
+coil power on the signal modules, or for other requirements. If your 24 VDC power
+requirements exceed the budget of the sensor supply, then you must add an external
+24 VDC power supply to your system. Refer to the technical specifications (Page 699) for the
+24 VDC
+sensor supply power budget for your particular CPU.
+
+Note
+The CM 1243-5 (PROFIBUS master module) requires power from the 24 VDC sensor supply
+of the CPU.",799,141,False
+s71200_system_manual_en-US_en-US_p45_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,45,1,3,"Installation
+3.2 Power budget
+S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 45
+If you require an external 24 VDC power supply, ensure that the power supply is not
+connected in parallel with the sensor supply of the CPU. For improved electrical noise
+protection, it is recommended that the commons (M) of the different power supplies be
+connected.
+
+WARNING
+Connecting an external 24 VDC power supply in parallel with the 24 VDC sensor supply
+can result in a conflict between the two supplies as each seeks to establish its own
+preferred output voltage level.
+The result of this conflict can be shortened lifetime or immediate failure of one or both
+power supplies, with consequent unpredictable operation of the PLC system. Unpredictable
+operation could result in death, severe personal injury and/or property damage.
+The DC sensor supply and any external power supply should provide power to different
+points.",934,146,False
+s71200_system_manual_en-US_en-US_p45_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,45,2,3,"in death, severe personal injury and/or property damage.
+The DC sensor supply and any external power supply should provide power to different
+points.
+
+Some of the 24 VDC power input ports in the S7-1200 system are interconnected, with a
+common logic circuit connecting multiple M terminals. For example, the following circuits are
+interconnected when designated as ""not isolated"" in the data sheets: the 24 VDC power
+supply of the CPU, the power input for the relay coil of an SM, or the power supply for a non-
+isolated analog input. All non-isolated M terminals must connect to the same external
+reference potential.",618,102,False
+s71200_system_manual_en-US_en-US_p45_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,45,3,3,"il of an SM, or the power supply for a non-
+isolated analog input. All non-isolated M terminals must connect to the same external
+reference potential.
+
+WARNING
+Connecting non-isolated M terminals to different reference potentials will cause unintended
+current flows that may cause damage or unpredictable operation in the PLC and any
+connected equipment.
+Failure to comply with these guidelines could cause damage or unpredictable operation
+which could result in death or severe personal injury and/or property damage.
+Always ensure that all non-isolated M terminals in an S7-1200 system are connected to the
+same reference potential.",634,96,False
+s71200_system_manual_en-US_en-US_p46_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,46,1,1,"Installation
+3.3 Installation and removal procedures
+S7-1200 Programmable controller
+46 System Manual, 04/2012, A5E02486680-06
+3.3 Installation and removal procedures
+3.3.1 Mounting dimensions for the S7-1200 devices
+$ $$
+% %%%
+$
+
+&38 & &38 & &38 &
+&38 &
+
+Table 3- 1 Mount ing dimensions (mm)
+S7-1200 Devices Width A (mm) Width B (mm) Width C (mm)
+CPU 1211C and CPU 1212C 90 45 -- CPU
+CPU 1214C 110 55 --",404,71,False
+s71200_system_manual_en-US_en-US_p47_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,47,1,2,"Installation
+3.3 Installation and removal procedures
+S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 47
+S7-1200 Devices Width A (mm) Width B (mm) Width C (mm)
+CPU 1215C 130 65 (top) Bottom:
+C1: 32.5
+C2: 65
+C3: 32.5
+Digital 8 and 16 point
+Analog 2, 4, and 8 point
+Thermocouple 4 and 8 point
+RTD 4 point
+45 22.5 --
+Digital DQ 8 x Relay (Changeover) 70 22.5 --
+Signal modules
+Analog 16 point
+RTD 8 point
+70 35 --
+CM 1241 RS232, and
+CM 1241 RS422/485
+CM 1243-5 PROFIBUS master and
+CM 1242-5 PROFIBUS slave
+CM 1242-2 AS-i Master
+CP 1242-7 GPRS
+30 15 --
+Communication
+interfaces
+TS AdapterIE Basic 60 1 15 --
+1 Because you must install a TS Adapter modular with the TS Adapter, the total width (""width A"") is 60 mm.
+Each CPU, SM, CM, and CP supports mounting on either a DIN rail or on a panel. Use the
+DIN rail clips on the module to secure the device on the rail.",882,167,False
+s71200_system_manual_en-US_en-US_p47_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,47,2,2,"Each CPU, SM, CM, and CP supports mounting on either a DIN rail or on a panel. Use the
+DIN rail clips on the module to secure the device on the rail. These clips also snap into an
+extended position to provide screw mounting positions to mount the unit directly on a panel.
+The interior dimension of the hole for the DIN clips on the device is 4.3 mm.
+A 25 mm thermal zone must be provided above and below the unit for free air circulation.
+Installing and removing the S7-1200 devices
+The CPU can be easily installed on a standard DIN rail or on a panel. DIN rail clips are
+provided to secure the device on the DIN rail. The clips also snap into an extended position
+to provide a screw mounting position for panel-mounting the unit.
+11
+12
+13
+4
+
+1 DIN rail installation 3 Panel installation
+2 DIN rail clip in latched position 4 Clip in extended position for panel mounting",871,164,False
+s71200_system_manual_en-US_en-US_p48_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,48,1,3,"Installation
+3.3 Installation and removal procedures
+S7-1200 Programmable controller
+48 System Manual, 04/2012, A5E02486680-06
+Before you install or remove any electrical device, ensure that the power to that equipment
+has been turned off. Also, ensure that the power to any related equipment has been turned
+off.
+
+WARNING
+Installation or removal of S7-1200 or related equipment with the power applied could cause
+electric shock or unexpected operation of equipment.
+Failure to disable all power to the S7-1200 and related equipment during installation or
+removal procedures could result in death, severe personal injury and/or property damage
+due to electric shock or unexpected equipment operation.
+Always follow appropriate safety precautions and ensure that power to the S7-1200 is
+disabled before attempting to install or remove S7-1200 CPUs or related equipment.
+
+Always ensure that whenever you replace or install an S7-1200 device you use the correct
+module or equivalent device.",987,146,False
+s71200_system_manual_en-US_en-US_p48_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,48,2,3,"1200 CPUs or related equipment.
+
+Always ensure that whenever you replace or install an S7-1200 device you use the correct
+module or equivalent device.
+
+WARNING
+Incorrect installation of an S7-1200 module may cause the program in the S7-1200 to
+function unpredictably.
+Failure to replace an S7-1200 device with the same model, orientation, or order could result
+in death, severe personal injury and/or property damage due to unexpected equipment
+operation.
+Replace an S7-1200 device with the same model, and be sure to orient and position it
+correctly.
+
+WARNING
+Do not disconnect equipment when a flammable or combustible atmosphere is present.
+Disconnection of equipment when a flammable or combustible atmosphere is present may
+cause a fire or explosion which could result in death, serious injury and/or property
+damage.",822,126,False
+s71200_system_manual_en-US_en-US_p48_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,48,3,3,"hen a flammable or combustible atmosphere is present may
+cause a fire or explosion which could result in death, serious injury and/or property
+damage.
+
+CAUTION
+Electrostatic discharge can damage the device or the receptacle on the CPU.
+Make contact with a grounded conductive pad and/or wear a grounded wrist strap
+whenever you handle the device.",346,55,False
+s71200_system_manual_en-US_en-US_p49_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,49,1,3,"Installation
+3.3 Installation and removal procedures
+S7-1200 Programmable controller
+System Manual, 04/2012, A5E02486680-06 49
+3.3.2 Installing and removing the CPU
+You can install the CPU on a panel or on a DIN rail.
+
+Note
+Attach any communication modules to the CPU and install the assembly as a unit. Install
+signal modules separately after the CPU has been installed.
+
+Consider the following when installing the units on the DIN rail or on a panel:
+● For DIN rail mounting, make sure the upper DIN rail clip is in the latched (inner) position
+and that the lower DIN rail clip is in the extended position for the CPU and attached CMs.
+● After installing the devices on the DIN rail, move the lower DIN rail clips to the latched
+position to lock the devices on the DIN rail.
+● For panel mounting, make sure the DIN rail clips are pushed to the extended position.
+To install the CPU on a panel, follow these steps:
+1.",918,163,False
+s71200_system_manual_en-US_en-US_p49_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,49,2,3,"IN rail.
+● For panel mounting, make sure the DIN rail clips are pushed to the extended position.
+To install the CPU on a panel, follow these steps:
+1. Locate, drill, and tap the mounting holes (M4), using the dimensions shown in table,
+Mounting di
+mensions (mm) (Page 46).
+2. Ensu
+re that the CPU and all S7-1200 equipment are disconnected from electrical power.
+3. Extend the mounting clips from the module. Make sure the DIN rail clips on the top and
+bottom of the CPU are in the extended position.
+4. Secure the module to the panel, using a Pan Head M4 screw with spring and flat washer.
+Do not use a flat head screw.
+Note
+The type of screw will be determined by the material upon which it is mounted. You
+should apply appropriate torque until the spring washer becomes flat. Avoid applying
+excessive torque to the mounting screws.",834,151,False
+s71200_system_manual_en-US_en-US_p49_c3,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,49,3,3,"which it is mounted. You
+should apply appropriate torque until the spring washer becomes flat. Avoid applying
+excessive torque to the mounting screws. Do not use a flat head screw.
+Note
+If your system is subject to a high vibration environment, or is mounted vertically, panel
+mounting the S7-1200 will provide a greater level of protection.",341,56,False
+s71200_system_manual_en-US_en-US_p50_c1,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,50,1,2,"Installation
+3.3 Installation and removal procedures
+S7-1200 Programmable controller
+50 System Manual, 04/2012, A5E02486680-06
+Table 3- 2 Installing the CPU on a DIN rail
+Task Procedure
+
+1. Install the DIN rail. Secure the rail to the mounting panel every 75 mm.
+2. Ensure that the CPU and all S7-1200 equipment are disconnected from electrical
+power.
+3. Hook the CPU over the top of the DIN rail.
+4. Pull out the DIN rail clip on the bottom of the CPU to allow the CPU to fit over the
+rail.
+5. Rotate the CPU down into position on the rail.
+6. Push in the clips to latch the CPU to the rail.
+
+Table 3- 3 Removing the CPU from a DIN rail
+Task Procedure",652,122,False
+s71200_system_manual_en-US_en-US_p50_c2,s71200_system_manual_en-US_en-US.csv,S7-1200 Programmable Controller System Manual (2012 Edition),System Manual,S7-1200,,3.0,en,50,2,2,"the CPU down into position on the rail.
+6. Push in the clips to latch the CPU to the rail.
+
+Table 3- 3 Removing the CPU from a DIN rail
+Task Procedure
+
+1. Ensure that the CPU and all S7-1200 equipment are
+disconnected from electrical power.
+2. Disconnect the I/O connectors, wiring, and cables from
+the CPU (Pag
+e 55).
+3. Remov
+e the CPU and any attached communication
+modules as a unit. All signal modules should remain
+installed.
+4. If an SM is connected to the CPU, retract the bus
+connector:
+– Place a screwdriver beside the tab on the top of the
+signal module.
+– Press down to disengage the connector from the
+CPU.
+– Slide the tab fully to the right.
+5. Remove the CPU:
+– Pull out the DIN rail clip to release the CPU from the
+rail.
+– Rotate the CPU up and off the rail, and remove the
+CPU from the system.",811,158,False

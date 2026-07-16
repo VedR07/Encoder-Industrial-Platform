@@ -1,0 +1,2324 @@
+chunk_id,source_file,doc_title,doc_type,product_family,entry_id,version,language,page,chunk_index,page_chunk_count,chunk_text,char_count,word_count,is_boilerplate
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p1_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,1,1,1,"APPLICATION EXAMPLE
+Libraries for
+Communication for
+SIMATIC Controllers
+SIMATIC Controllers, TIA Portal
+Siemens
+Industry
+Online
+Support",135,16,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p2_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,2,1,7,"Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 2
+Legal information
+Use of application examples
+Application examples illustrate the solution of automation tasks through an interaction of several components in the form of text,
+graphics and/or software modules. The application examples are a free service by Siemens AG and/or a subsidiary of Siemens AG
+(""Siemens""). They are non-binding and make no claim to completeness or functionality regarding configuration and equipment. The
+application examples merely offer help with typical tasks; they do not constitute customer-specific solutions. The application examples
+are not subject to standard tests and quality inspections of a chargeable product and may contain functional and performance
+defects or other faults and security vulnerabilities.",803,117,True
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p2_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,2,2,7,"tests and quality inspections of a chargeable product and may contain functional and performance
+defects or other faults and security vulnerabilities. You are responsible for the proper and safe operation of the products in
+accordance with all applicable regulations, including checking and customizing the application example for your system, and
+ensuring that only trained personnel use it in a way that prevents property damage or injury to persons. You are solely
+responsible for any productive use.
+Siemens grants you the non-exclusive, non-sublicensable and non-transferable right to have the application examples used by technically
+trained personnel. Any change to the application examples is your responsibility. Sharing the application examples with third parties or
+copying the application examples or excerpts thereof is permitted only in combination with your own products. Any further use of the
+application examples is explicitly not permitted and further rights are not granted.",994,145,True
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p2_c3,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,2,3,7,"nly in combination with your own products. Any further use of the
+application examples is explicitly not permitted and further rights are not granted. You are not allowed to use application examples in
+any other way, including, without limitation, for any direct or indirect training or enhancements of AI models.
+
+Disclaimer of liability
+Siemens shall not assume any liability, for any legal reason whatsoever, including, without limitation, liability for the usability,
+availability, completeness and freedom from defects of the application examples as well as for related information, configuration and
+performance data and any damage caused thereby. This shall not apply in cases of mandatory liability, for example under the German
+Product Liability Act, or in cases of intent, gross negligence, or culpable loss of life, bodily injury or damage to health, non-compliance
+with a guarantee, fraudulent non-disclosure of a defect, or culpable breach of material contractual obligations.",989,147,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p2_c4,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,2,4,7,"y or damage to health, non-compliance
+with a guarantee, fraudulent non-disclosure of a defect, or culpable breach of material contractual obligations. Claims for damages
+arising from a breach of material contractual obligations shall however be limited to the foreseeable damage typical of the type of
+agreement, unless liability arises from intent or gross negligence or is based on loss of life, bodily injury or damage to health. The
+foregoing provisions do not imply any change in the burden of proof to your detriment. You shall indemnify Siemens against existing or
+future claims of third parties in this connection except where Siemens is mandatorily liable.
+By using the application examples you acknowledge that Siemens cannot be held liable for any damage beyond the liability provisions
+described.",808,125,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p2_c5,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,2,5,7,"liable.
+By using the application examples you acknowledge that Siemens cannot be held liable for any damage beyond the liability provisions
+described.
+
+Other information
+Siemens reserves the right to make changes to the application examples at any time without notice and to terminate your use of the
+application examples at any time. In case of discrepancies between the suggestions in the application examples and other Siemens
+publications such as catalogs, the content of the other documentation shall have precedence.
+The Siemens terms of use (https://www.siemens.com/global/en/general/terms-of-use.html) shall also apply.",627,88,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p2_c6,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,2,6,7,"he other documentation shall have precedence.
+The Siemens terms of use (https://www.siemens.com/global/en/general/terms-of-use.html) shall also apply.
+
+Cybersecurity information
+Siemens provides products and solutions with industrial cybersecurity functions that support the secure operation of plants, systems,
+machines and networks.
+In order to protect plants, systems, machines and networks against cyber threats, it is necessary to implement – and continuously
+maintain – a holistic, state-of-the-art industrial cybersecurity concept. Siemens’ products and solutions constitute one element of such a
+concept.
+Customers are responsible for preventing unauthorized access to their plants, systems, machines and networks. Such systems, machines
+and components should only be connected to an enterprise network or the internet if and to the extent such a connection is necessary
+and only when appropriate security measures (e.g.",928,123,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p2_c7,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,2,7,7,"nnected to an enterprise network or the internet if and to the extent such a connection is necessary
+and only when appropriate security measures (e.g. firewalls and/or network segmentation) are in place.
+For additional information on industrial cybersecurity measures that may be implemented, please visit www.siemens.com/cybersecurity-
+industry.
+Siemens’ products and solutions undergo continuous development to make them more secure. Siemens strongly recommends that
+product updates are applied as soon as they are available and that the latest product versions are used. Use of product versions that are
+no longer supported, and failure to apply the latest updates may increase customer’s exposure to cyber threats.
+To stay informed about product updates, subscribe to the Siemens Industrial Cybersecurity RSS Feed under
+https://www.siemens.com/cert.",853,120,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p3_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,3,1,8,"Table of Contents
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 3
+Table of Contents
+1. Introduction ................................ ................................ ................................ ................................ ...8
+2. LCom ................................ ................................ ................................ ................................ ............10
+2.1. Overview ................................ ................................ ................................ ................................ ................... 10
+2.1.1. Range of Functions ................................ ................................ ................................ ................................ ..... 10
+2.1.2. Components of the Library ................................ ................................ ................................ .......................... 13
+2.1.3. Validity ................................ ................................",981,64,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p3_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,3,2,8,"..... ................................ .......................... 13
+2.1.3. Validity ................................ ................................ ................................ ................................ ...................... 13
+2.2. LCom_Communication ................................ ................................ ................................ ............................... 14
+2.3. PLC Data Types ................................ ................................ ................................ ................................ ........... 16
+2.4. Integration into the User Project ................................ ................................ ................................ .................. 21
+2.5. Error Handling ................................ ................................ ................................ ................................ ............ 21
+2.5.1. Status Outputs ................................ ................................",983,54,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p3_c3,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,3,3,8,"............. ................................ ............ 21
+2.5.1. Status Outputs ................................ ................................ ................................ ................................ ........... 21
+2.5.2. Status Messages ................................ ................................ ................................ ................................ ......... 23
+3. LFTP ................................ ................................ ................................ ................................ .............34
+3.1. Overview ................................ ................................ ................................ ................................ ................... 34
+3.1.1. Range of Functions ................................ ................................ ................................ ................................ ..... 34
+3.1.2. Components of the Library ................................ ................................",990,54,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p3_c4,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,3,4,8,"......... ................................ ..... 34
+3.1.2. Components of the Library ................................ ................................ ................................ .......................... 35
+3.1.3. Validity ................................ ................................ ................................ ................................ ...................... 35
+3.2. LFTP_Client ................................ ................................ ................................ ................................ ................ 36
+3.2.1. Interface Description ................................ ................................ ................................ ................................ .. 36
+3.2.2. Error Handling ................................ ................................ ................................ ................................ ............ 37
+3.3. PLC Data Types ................................ ................................",979,54,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p3_c5,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,3,5,8,"............... ................................ ............ 37
+3.3. PLC Data Types ................................ ................................ ................................ ................................ ........... 39
+3.4. Integration into the user project ................................ ................................ ................................ .................. 39
+4. LHTTP ................................ ................................ ................................ ................................ ...........40
+4.1. Overview ................................ ................................ ................................ ................................ ................... 40
+4.1.1. Range of Functions ................................ ................................ ................................ ................................ ..... 40
+4.1.2. Components of the Library ................................ ................................",981,57,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p3_c6,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,3,6,8,"......... ................................ ..... 40
+4.1.2. Components of the Library ................................ ................................ ................................ .......................... 41
+4.1.3. Validity ................................ ................................ ................................ ................................ ...................... 41
+4.2. LHTTP_Get ................................ ................................ ................................ ................................ ................. 42
+4.2.1. Interface Description ................................ ................................ ................................ ................................ .. 42
+4.2.2. Operation ................................ ................................ ................................ ................................ .................. 43
+4.3. LHTTP_PostPut................................ ................................",977,50,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p3_c7,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,3,7,8,"........... ................................ .................. 43
+4.3. LHTTP_PostPut................................ ................................ ................................ ................................ ............ 45
+4.3.1. Interface Description ................................ ................................ ................................ ................................ .. 45
+4.3.2. Operation ................................ ................................ ................................ ................................ .................. 46
+4.4. LHTTP_FindStringInArray ................................ ................................ ................................ ............................ 48
+4.5. LHTTP_ExtractStringFromArray ................................ ................................ ................................ .................... 48
+4.6. LHTTP_ExtractStringFromArrayExt ................................ ................................",990,46,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p3_c8,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,3,8,8,"....................... .................... 48
+4.6. LHTTP_ExtractStringFromArrayExt ................................ ................................ ................................ ............... 49",202,10,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p4_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,4,1,8,"Table of Contents
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 4
+4.7. PLC Data Types ................................ ................................ ................................ ................................ ........... 50
+4.8. Error Handling ................................ ................................ ................................ ................................ ............ 50
+5. LMQTT ................................ ................................ ................................ ................................ ..........53
+5.1. Overview ................................ ................................ ................................ ................................ ................... 53
+5.1.1. Range of Functions ................................ ................................ ................................ ................................ ..... 53
+5.1.2. Components of the Library ................................ ................................",999,66,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p4_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,4,2,8,"......... ................................ ..... 53
+5.1.2. Components of the Library ................................ ................................ ................................ .......................... 53
+5.1.3. Validity ................................ ................................ ................................ ................................ ...................... 53
+5.2. LMQTT_Client ................................ ................................ ................................ ................................ ............. 54
+5.2.1. Interface Description ................................ ................................ ................................ ................................ .. 54
+5.2.2. Error Handling ................................ ................................ ................................ ................................ ............ 56
+5.3. LMQTT_ConvertToUtf8 ................................ ................................",982,52,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p4_c3,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,4,3,8,".......... ................................ ............ 56
+5.3. LMQTT_ConvertToUtf8 ................................ ................................ ................................ ............................... 59
+5.4. PLC Data Types ................................ ................................ ................................ ................................ ........... 59
+5.5. Tips and tricks ................................ ................................ ................................ ................................ ............ 60
+5.6. Integration into the User Project ................................ ................................ ................................ .................. 60
+6. LOpcUa ................................ ................................ ................................ ................................ ........61
+6.1. Overview ................................ ................................ ................................",980,54,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p4_c4,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,4,4,8,".......................... ........61
+6.1. Overview ................................ ................................ ................................ ................................ ................... 61
+6.1.1. Range of Functions ................................ ................................ ................................ ................................ ..... 61
+6.1.2. Components of the Library ................................ ................................ ................................ .......................... 62
+6.1.3. Validity ................................ ................................ ................................ ................................ ...................... 63
+6.2. PubSub via UDP ................................ ................................ ................................ ................................ .......... 64
+6.2.1. Principle of Operation ................................ ................................",971,54,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p4_c5,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,4,5,8,"....... ................................ .......... 64
+6.2.1. Principle of Operation ................................ ................................ ................................ ................................ . 64
+6.2.2. LOpcUa_PubUdp................................ ................................ ................................ ................................ ......... 66
+6.2.3. LOpcUa_SubUdp................................ ................................ ................................ ................................ ......... 67
+6.2.4. Error Handling ................................ ................................ ................................ ................................ ............ 68
+6.2.5. Integration into the User Project ................................ ................................ ................................ .................. 68
+6.3. PubSub via MQTT ................................ ................................",970,54,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p4_c6,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,4,6,8,"........ ................................ .................. 68
+6.3. PubSub via MQTT ................................ ................................ ................................ ................................ ....... 69
+6.3.1. Principle of Operation ................................ ................................ ................................ ................................ . 69
+6.3.2. LOpcUa_PubMqtt ................................ ................................ ................................ ................................ ....... 71
+6.3.3. LOpcUa_SubMqtt ................................ ................................ ................................ ................................ ....... 72
+6.3.4. LOpcUa_PubMqttJson ................................ ................................ ................................ ................................ . 73
+6.3.5. LOpcUa_SubMqttJson ................................ ................................",979,52,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p4_c7,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,4,7,8,".................... ................................ . 73
+6.3.5. LOpcUa_SubMqttJson ................................ ................................ ................................ ................................ . 75
+6.3.6. Error Handling ................................ ................................ ................................ ................................ ............ 76
+6.3.7. Integration into the User Project ................................ ................................ ................................ .................. 76
+6.4. PLC Data Types ................................ ................................ ................................ ................................ ........... 76
+7. LSNMP................................ ................................ ................................ ................................ ..........82
+7.1. Overview ................................ ................................ ................................",986,53,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p4_c8,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,4,8,8,"........................ ..........82
+7.1. Overview ................................ ................................ ................................ ................................ ................... 82
+7.1.1. Range of Functions ................................ ................................ ................................ ................................ ..... 82
+7.1.2. Components of the Library ................................ ................................ ................................ .......................... 84",535,30,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p5_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,5,1,8,"Table of Contents
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 5
+7.1.3. Validity ................................ ................................ ................................ ................................ ...................... 84
+7.2. LSNMP_Get ................................ ................................ ................................ ................................ ................ 85
+7.3. LSNMP_GetBulk ................................ ................................ ................................ ................................ .......... 86
+7.4. LSNMP_Set ................................ ................................ ................................ ................................ ................. 88
+7.5. LSNMP_SendTrap ................................ ................................ ................................ ................................ ....... 89
+7.6. LSNMP_ReceiveTrap................................",967,57,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p5_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,5,2,8,".................. ................................ ................................ ....... 89
+7.6. LSNMP_ReceiveTrap................................ ................................ ................................ ................................ .... 90
+7.7. PLC Data Types ................................ ................................ ................................ ................................ ........... 91
+7.8. Integration into the User Project ................................ ................................ ................................ .................. 92
+7.9. Error Handling ................................ ................................ ................................ ................................ ............ 92
+8. LSNTP ................................ ................................ ................................ ................................ ...........94
+8.1. Overview ................................ ................................",987,53,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p5_c3,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,5,3,8,"....................... ................................ ...........94
+8.1. Overview ................................ ................................ ................................ ................................ ................... 94
+8.1.1. Range of Functions ................................ ................................ ................................ ................................ ..... 94
+8.1.2. Components of the Library ................................ ................................ ................................ .......................... 95
+8.1.3. Validity ................................ ................................ ................................ ................................ ...................... 95
+8.2. LSNTP_Server ................................ ................................ ................................ ................................ ............. 96
+8.2.1. Interface Description ................................",971,51,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p5_c4,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,5,4,8,"..... ................................ ................................ ............. 96
+8.2.1. Interface Description ................................ ................................ ................................ ................................ .. 96
+8.2.2. Error Handling ................................ ................................ ................................ ................................ ............ 97
+9. LSQL ................................ ................................ ................................ ................................ .............98
+9.1. Overview ................................ ................................ ................................ ................................ ................... 98
+9.1.1. Range of Functions ................................ ................................ ................................ ................................ ..... 98
+9.1.2. Components of the library ................................",983,54,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p5_c5,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,5,5,8,"......... ................................ ................................ ..... 98
+9.1.2. Components of the library ................................ ................................ ................................ .......................... 98
+9.1.3. Validity ................................ ................................ ................................ ................................ ...................... 98
+9.2. LSQL_Microsoft ................................ ................................ ................................ ................................ .......... 99
+9.2.1. Interface Description ................................ ................................ ................................ ................................ .. 99
+9.2.2. Error handling ................................ ................................ ................................ ................................ .......... 100
+9.3. PLC Data Types ................................",975,54,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p5_c6,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,5,6,8,"................ ................................ ................................ .......... 100
+9.3. PLC Data Types ................................ ................................ ................................ ................................ ......... 101
+9.4. Integration into the User Project ................................ ................................ ................................ ................ 101
+10. LSyslog ................................ ................................ ................................ ................................ ...... 102
+10.1. Overview ................................ ................................ ................................ ................................ ................. 102
+10.1.1. Range of Functions ................................ ................................ ................................ ................................ ... 102
+10.1.2. Components of the Library ................................",980,58,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p5_c7,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,5,7,8,"......... ................................ ................................ ... 102
+10.1.2. Components of the Library ................................ ................................ ................................ ........................ 103
+10.1.3. Validity ................................ ................................ ................................ ................................ .................... 103
+10.2. LSyslog_Send ................................ ................................ ................................ ................................ ........... 104
+10.2.1. Interface Description ................................ ................................ ................................ ................................ 104
+10.2.2. Error Handling ................................ ................................ ................................ ................................ .......... 105
+10.3. PLC Data Types ................................",976,53,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p5_c8,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,5,8,8,"............... ................................ ................................ .......... 105
+10.3. PLC Data Types ................................ ................................ ................................ ................................ ......... 106
+10.4. Integration into the User Project ................................ ................................ ................................ ................ 106
+11. LCoAP................................ ................................ ................................ ................................ ......... 107",578,33,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p6_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,6,1,8,"Table of Contents
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 6
+11.1. Overview ................................ ................................ ................................ ................................ ................. 107
+11.1.1. Range of functions ................................ ................................ ................................ ................................ ... 107
+11.1.2. CoAP Protocol Overview ................................ ................................ ................................ ............................ 107
+11.1.3. Components of the library ................................ ................................ ................................ ........................ 109
+11.1.4. Validity ................................ ................................ ................................ ................................ .................... 110
+11.2. LCoAP_ClientServer ................................",968,63,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p6_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,6,2,8,". ................................ ................................ .................... 110
+11.2. LCoAP_ClientServer ................................ ................................ ................................ ................................ .. 111
+11.2.1. Interface description ................................ ................................ ................................ ................................ . 111
+11.2.2. Operation ................................ ................................ ................................ ................................ ................ 112
+11.2.3. Error handling ................................ ................................ ................................ ................................ .......... 116
+11.3. LCoAP_EncodeHeader ................................ ................................ ................................ ............................... 117
+11.3.1. Interface description ................................",988,50,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p6_c3,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,6,3,8,".................. ................................ ............................... 117
+11.3.1. Interface description ................................ ................................ ................................ ................................ . 117
+11.3.2. Operation ................................ ................................ ................................ ................................ ................ 118
+11.3.3. Auxiliar functions ................................ ................................ ................................ ................................ ..... 119
+11.3.3.1. LCoAP_EncodeOptionLengthDelta ................................ ................................ ................................ ............. 119
+11.3.3.2. LCoAP_EncodeOptionString ................................ ................................ ................................ ...................... 120
+11.3.3.3. LCoAP_EncodeOptionUInt ................................",979,47,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p6_c4,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,6,4,8,"........................ ................................ ...................... 120
+11.3.3.3. LCoAP_EncodeOptionUInt ................................ ................................ ................................ ......................... 121
+11.3.3.4. LCoAP_EncodePayloadMarker ................................ ................................ ................................ ................... 122
+11.3.4. Error handling ................................ ................................ ................................ ................................ .......... 122
+11.4. LCoAP_DecodeHeader ................................ ................................ ................................ .............................. 123
+11.4.1. Interface description ................................ ................................ ................................ ................................ . 123
+11.4.2. Operation ................................ ................................",986,47,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p6_c5,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,6,5,8,"........................... ................................ . 123
+11.4.2. Operation ................................ ................................ ................................ ................................ ................ 124
+11.4.3. Auxiliar functions ................................ ................................ ................................ ................................ ..... 125
+11.4.3.1. LCoAP_DecodeType ................................ ................................ ................................ ................................ .. 125
+11.4.3.2. LCoAP_DecodeCode ................................ ................................ ................................ ................................ .. 125
+11.4.3.3. LCoAP_DecodeToken ................................ ................................ ................................ ................................ 126
+11.4.3.4. LCoAP_DecodeOptionLengthDelta ................................",975,47,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p6_c6,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,6,6,8,"....... ................................ ................................ 126
+11.4.3.4. LCoAP_DecodeOptionLengthDelta ................................ ................................ ................................ ............. 126
+11.4.3.5. LCoAP_DecodeOptionString ................................ ................................ ................................ ...................... 127
+11.4.3.6. LCoAP_DecodeOptionUInt ................................ ................................ ................................ ......................... 128
+11.4.3.7. LCoAP_DecodePayloadMarker ................................ ................................ ................................ ................... 129
+11.4.4. Error handling ................................ ................................ ................................ ................................ .......... 130
+11.5. Utilities ................................ ................................",968,45,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p6_c7,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,6,7,8,".................... ................................ .......... 130
+11.5. Utilities ................................ ................................ ................................ ................................ .................... 131
+11.5.1. LCoAP_GenerateMessageID ................................ ................................ ................................ ...................... 131
+11.5.2. LCoAP_GenerateToken................................ ................................ ................................ .............................. 131
+11.5.3. LCoAP_TokenCompare ................................ ................................ ................................ .............................. 131
+11.6. PLC Data types ................................ ................................ ................................ ................................ .......... 133
+12. LDNS ................................ ................................ ................................",997,47,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p6_c8,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,6,8,8,"........................... .......... 133
+12. LDNS ................................ ................................ ................................ ................................ .......... 137
+12.1. Overview ................................ ................................ ................................ ................................ ................. 137
+12.1.1. Range of functions ................................ ................................ ................................ ................................ ... 137
+12.1.2. Components of the library ................................ ................................ ................................ ........................ 138",696,39,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p7_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,7,1,6,"Table of Contents
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 7
+12.1.3. Validity ................................ ................................ ................................ ................................ .................... 138
+12.2. LDNS_ResolveFqdn ................................ ................................ ................................ ................................ ... 139
+12.2.1. Interface Description ................................ ................................ ................................ ................................ 139
+12.2.2. Error handling ................................ ................................ ................................ ................................ .......... 140
+12.3. PLC Data Types ................................ ................................ ................................ ................................ ......... 141
+12.4. Integration into the User Project ................................",988,65,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p7_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,7,2,6,".............................. ................................ ......... 141
+12.4. Integration into the User Project ................................ ................................ ................................ ................ 141
+13. Master Copies ................................ ................................ ................................ ............................ 142
+13.1. OUC Master Copies ................................ ................................ ................................ ................................ ... 142
+13.1.1. Overview ................................ ................................ ................................ ................................ ................. 142
+13.1.1.1. Range of Functions ................................ ................................ ................................ ................................ ... 142
+13.1.1.2. Components ................................ ................................",978,55,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p7_c3,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,7,3,6,"...................... ................................ ... 142
+13.1.1.2. Components ................................ ................................ ................................ ................................ ............ 142
+13.1.1.3. Validity ................................ ................................ ................................ ................................ .................... 143
+13.1.2. IsoOnTcpTemplate ................................ ................................ ................................ ................................ .... 144
+13.1.3. TcpTemplate ................................ ................................ ................................ ................................ ............ 146
+13.1.4. TcpSecTemplate ................................ ................................ ................................ ................................ ....... 148
+13.1.5. UdpTemplate ................................ ................................",997,48,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p7_c4,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,7,4,6,"................... ................................ ....... 148
+13.1.5. UdpTemplate ................................ ................................ ................................ ................................ ........... 150
+13.1.6. Error Handling ................................ ................................ ................................ ................................ .......... 152
+13.2. OPC UA structured data types ................................ ................................ ................................ .................... 152
+13.3. OPC UA methods-templates ................................ ................................ ................................ ...................... 153
+13.4. LSQL_Examples ................................ ................................ ................................ ................................ ........ 153
+13.5. LDNS Example ................................ ................................",968,54,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p7_c5,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,7,5,6,"................... ................................ ........ 153
+13.5. LDNS Example ................................ ................................ ................................ ................................ .......... 153
+14. Useful Information ................................ ................................ ................................ ..................... 154
+14.1. Libraries in TIA Portal ................................ ................................ ................................ ................................ 154
+14.2. Diagnostics ................................ ................................ ................................ ................................ .............. 155
+15. Appendix ................................ ................................ ................................ ................................ ... 157
+15.1. Service and Support ................................ ................................ ................................",992,54,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p7_c6,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,7,6,6,"................. ... 157
+15.1. Service and Support ................................ ................................ ................................ ................................ .. 157
+15.2. Links and Literature ................................ ................................ ................................ ................................ .. 158
+15.3. Change Documentation ................................ ................................ ................................ ............................ 159",515,31,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p8_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,8,1,2,"Introduction
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 8
+1. Introduction
+Overview
+The Libraries for Communication are a collection of blocks for various communication tasks, functions, and protocols for
+SIMATIC Controllers.
+OPC UA
+syslog
+SNMP
+MQTT
+TCP
+UDP
+ISO-on-TCP
+HTTP(S)
+SNTP
+FTP
+SQL CoAP
+DNS
+
+Figure 1-1: Libraries for Communication for SIMATIC Controllers
+Range of Functions
+The following libraries are included:
+- LCom:
+This library enables communication based on TCP and provides additional communication functionalities using its own
+protocol (see chapter 2).
+- LFTP:
+With this library, a controller can act as an FTP client (see chapter 3).
+- LHTTP:
+This library enables data exchange with a web server in the local network or on the internet via HTTP or HTTPS (see
+chapter 4).
+- LMQTT:
+This library enables the communication of a controller as MQTT Client (see chapter 5).
+- LOpcUa:
+This library provides function blocks for OPC UA PubSub communication (see chapter 6).
+-",996,160,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p8_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,8,2,2,"ion of a controller as MQTT Client (see chapter 5).
+- LOpcUa:
+This library provides function blocks for OPC UA PubSub communication (see chapter 6).
+- LSNMP:
+This library can be used to monitor and control SNMP-enabled network components from a controller or to send
+messages to a network management system (see chapter 7).
+- LSNTP:
+With this library, a controller can act as an SNTP server to synchronize the time throughout different areas of the
+system (see chapter 8).
+- LSQL:
+This library enables interacting with an SQL database directly from a user program of a controller (see chapter 9).
+- LSyslog:
+This library allows sending syslog messages to a syslog server over UDP or TCP with optional TLS encryption (see
+chapter 10).",733,124,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p9_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,9,1,1,"Introduction
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 9
+- LCoAP:
+This library provides a set of function blocks for implementing the CoAP protocol in the controller (see chapter 11).
+- LDNS:
+This library extends the built-in DNS resolution of the Ethernet interfaces with a DNS resolver (see chapter 12).
+
+In addition, the library provides master copies that you can use to easily implement your own communication functions:
+- Master copies for communication via TCP, UDP, and ISO-on-TCP (see chapter 13.1)
+- Master copies for OPC UA methods
+- Master copies for common OPC UA structured data types
+- Constants for OPC UA status codes
+Application
+These libraries are available for TIA Portal V18 and higher.
+All libraries included are valid for SIMATIC S7-1500 and S7-1200 controllers. If the respective library is also valid for other
+controllers, this is described in the section for the corresponding library.",926,151,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p10_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,10,1,1,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 10
+2. LCom
+2.1. Overview
+2.1.1. Range of Functions
+Possible applications for the use of the LCom library
+The ""LCom_Communication"" function block of the LCom library is used to establish a point-to-point full duplex connection
+via Industrial Ethernet, based on the TCP standard.
+The function block can be used for standard TCP communication to other devices (e.g. camera, controller).
+Since the range of functions of the TCP transport protocol is not sufficient for many applications in the automation sector,
+a separate protocol (LCom protocol) has been defined and implemented in the LCom block library. The LCom protocol
+enables additional communication functionalities.
+
+Figure 2-1: Application scenarios
+
+Application
+LCom_Communication
+IDB
+Ethernet
+Interface
+CPU
+IDB
+Camera
+S7-1500 CPU
+Switch",857,128,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p11_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,11,1,2,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 11
+Some scenarios for a possible use of the LCom library are shown below:
+Scenario 1
+The ""LCom_Communication"" function block is used for standard TCP communication. The TCP transport protocol ensures
+that a continuous flow of data is transferred. TCP is not packet-oriented and, therefore, does not permit the transmission
+of data records with a defined overall length.
+
+Figure 2-2: LCom_Communication – Standard TCP communication",491,77,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p11_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,11,2,2,"herefore, does not permit the transmission
+of data records with a defined overall length.
+
+Figure 2-2: LCom_Communication – Standard TCP communication
+
+The LCom library offers the following advantages:
+- The user does not need to know and program the OUC system function to establish, send/receive, and terminate a
+connection
+- In the event of errors/faults, the function block automatically closes the connection and attempts to reestablish it
+- Cyclic data transmission, the user defines the cycle time
+- One time data transmission
+- Response from sender/receiver about successfully transmitted data at application level
+- The function block contains a data structure for diagnostics
+
+Application
+LCom_Communication
+IDB
+Ethernet
+Interface
+CPU
+IDB
+Camera
+Switch",762,112,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p12_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,12,1,3,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 12
+Scenario 2
+When using the LCom protocol, data records of a defined total length can be sent and received consistently by the
+partner. In order to quickly detect a connection failure, cyclic vital signs are sent. The cycle time of the periodic vital signs
+is specified by the user.
+To synchronize the time of two controllers, the current time of one controller can be sent to the partner and transferred
+there as the system time.
+To use the additional communication functionalities, the communication partner (e.g. S7-1500 CPU) must support the
+LCom protocol.
+
+Figure 2-3: LCom_Communication – LCom protocol",670,111,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p12_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,12,2,3,"nication functionalities, the communication partner (e.g. S7-1500 CPU) must support the
+LCom protocol.
+
+Figure 2-3: LCom_Communication – LCom protocol
+
+The LCom library offers the following advantages:
+- The user does not need to know and program the OUC system function to establish, send/receive, and terminate a
+connection
+- In the event of errors/faults, the function block automatically closes the connection and attempts to reestablish it
+- Cyclic data transmission, the user defines the cycle time
+- One time data transmission
+- Consistent data transmission
+- Synchronizing the communication parameters
+- Monitoring of the communication link by cyclically sending vital signs (fast response times in case of link failure).",729,108,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p12_c3,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,12,3,3,"g the communication parameters
+- Monitoring of the communication link by cyclically sending vital signs (fast response times in case of link failure). For
+pure TCP communication, this is typically in the range of seconds.
+- Data records with defined length up to 64 kB with LCom protocol V1
+- Data records with defined length up to 16 MB with LCom protocol V2
+- Response from sender/receiver about successfully transmitted data at application level
+- Simple time synchronization
+- The function block contains a data structure for diagnostics
+Application
+LCom_Communication
+IDB
+Ethernet
+Interface
+CPU
+IDB
+S7-1500 CPU
+Switch",622,98,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p13_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,13,1,2,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 13
+2.1.2. Components of the Library
+The ""LCom"" library contains the following objects.
+Function blocks
+Table 2-1: Function blocks of the library
+Name Version Description
+LCom_Communication V2.1.0 Controls the communication between the controller and
+the partner.
+PLC data types
+Table 2-2: PLC library data types
+Name Version Description
+LCom_typeConfig V2.0.1 Contains the necessary communication parameters.
+LCom_typeDiagnostics V2.0.1 Provides a detailed diagnostic structure.
+Master copies
+An example how a configuration and execution of a communication with user defined data in connection with the
+""LCom_Communication"" FB looks like is provided in the master copies templates.
+In addition, constants are provided for gloabal usage. With help of that for example, the status and error codes of
+""LCom_Communication"" FB can be processed more readable in user application program.",942,136,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p13_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,13,2,2,"sage. With help of that for example, the status and error codes of
+""LCom_Communication"" FB can be processed more readable in user application program.
+
+Table 2-3 Master copies templates
+Name Type Description
+LCom_Example OB Implementation of an example communication with LCom
+LCom_ExampleComData DB Data of example communication
+LCom_ExampleComBuffers DB Send- and receive buffer
+LCom_typeComUserData Data type User defined data type of example communication
+LCom_Constants PLC tags LCom constants (i.e. status and error codes) for global usage in user
+application program
+
+2.1.3. Validity
+This library is valid for:
+- SIMATIC S7-1500 Controllers as of firmware V2.0
+- SIMATIC S7-1200 Controllers as of firmware V4.4
+- SIMATIC S7-1200 G2 Controllers as of firmware V1.0
+- CP 1543-1, CP 1542SP-1, CP 1542SP-1 IRC, CP 1543SP-1 as of firmware V1.0
+- CP 1243-1, CP 1243-8 as of firmware V2.0",888,135,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p14_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,14,1,3,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 14
+2.2. LCom_Communication
+Parameters
+Figure 2-4: LCom_Communication
+LCom_Communication
+
+Bool enable connected Bool
+Bool send sending Bool
+UDInt sendData
+Length dataReceived Bool
+UDInt readDataLength receivedData
+Length
+UDInt
+""LCom_typeConfig"" configuration busy Bool
+error Bool
+status Word
+Variant sendBuffer Variant
+Variant receiveBuffer Variant
+""LCom_typeDiagnostics"" diagnostics ""LCom_typeDiagnostics""",466,55,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p14_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,14,2,3,"on busy Bool
+error Bool
+status Word
+Variant sendBuffer Variant
+Variant receiveBuffer Variant
+""LCom_typeDiagnostics"" diagnostics ""LCom_typeDiagnostics""
+
+Table 2-4: Parameters of LCom_Communication
+Name Declaration Data type Comment
+enable Input Bool - TRUE: Starts the FB with a rising edge. The connection to
+the partner is established automatically.
+- FALSE (default): With a falling edge, the connection is
+broken.
+send Input Bool - TRUE: Sends the data connected to the ""sendBuffer"" input
+parameter.
+- FALSE (default): Data that is connected at the ""sendBuffer""
+input parameter is not sent.
+sendDataLength Input UDInt Data length to be sent in bytes.
+(default: 4294967295)
+readDataLength Input UDInt Without LCom protocol,
+(""configuration.connection.comService"" =
+""LCOM_TCP_CONNECTION""):
+- 0: Data from the TCP buffer is not read.",833,117,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p14_c3,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,14,3,3,"aLength Input UDInt Without LCom protocol,
+(""configuration.connection.comService"" =
+""LCOM_TCP_CONNECTION""):
+- 0: Data from the TCP buffer is not read. FB, therefore, does
+not receive any data from the partner.
+- 1..4294967294: Number of bytes that must be received by
+the interface before the output tag ""dataReceived"" = TRUE.
+- 4294967295, 16#FFFFFF (default):
+All data available at the interface is read (ad hoc mode).
+With LCom protocol, (""configuration.connection.comService""
+= ""LCOM_LCOM_CONNECTION""):
+- 0: Data from the TCP buffer is not read. The FB therefore
+does not receive any data from the partner.
+- 1..4294967295: Not relevant for the receiving behavior.
+configuration Input ""LCom_typeConfig"" FB configuration",723,103,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p15_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,15,1,3,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 15
+Name Declaration Data type Comment
+connected Output Bool Without LCom protocol,
+(""configuration.connection.comService"" =
+""LCOM_TCP_CONNECTION""):
+- TRUE: The TCP connection to the partner is established.
+- FALSE: The TCP connection to the partner is not
+established.
+With LCom protocol, (""configuration.connection.comService""
+= ""LCOM_LCOM_CONNECTION""):
+- TRUE: TCP connection to partner is established and
+configuration data is negotiated successfully
+- FALSE: TCP connection to partner is not established or
+waiting for negotiation of configuration data.
+sending Output Bool - TRUE: Sends the data connected to the ""sendBuffer"" input
+parameter. Do not change send data.
+- FALSE: Data that is connected at the ""sendBuffer"" input
+parameter is not sent.
+dataReceived Output Bool - TRUE: New data was received.",870,126,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p15_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,15,2,3,"ge send data.
+- FALSE: Data that is connected at the ""sendBuffer"" input
+parameter is not sent.
+dataReceived Output Bool - TRUE: New data was received. The value is present for one
+cycle.
+- FALSE: No data is available for the user.
+receivedDataLength Output UDInt - Returns the received data length in bytes.
+busy Output Bool - TRUE: The block processing is done automatically. No
+intervention is required from the user.
+- FALSE: There is no block processing. Intervention is
+required from the user. Passing parameters may be
+incorrect. More detailed information is provided by the
+output parameter ""status"" or the diagnostic buffer.
+error Output Bool - TRUE: An error has occurred.",681,112,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p15_c3,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,15,3,3,"ect. More detailed information is provided by the
+output parameter ""status"" or the diagnostic buffer.
+error Output Bool - TRUE: An error has occurred. More detailed information is
+provided by the output parameter ""status"" or the
+diagnostic buffer.
+- FALSE: No error has occurred.
+status Output Word Status of the FB, see chapter 2.5.2
+sendBuffer InOut Variant Send data (array of bytes)
+receiveBuffer InOut Variant Receive data (array of bytes)
+diagnostics InOut ""LCom_typeDiagnostics"" Diagnostics information",509,75,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p16_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,16,1,3,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 16
+2.3. PLC Data Types
+LCom_typeConfig
+The following table shows the structure of the PLC data type ""LCom_typeConfig"".
+Table 2-5: PLC data type LCom_typeConfig
+Name Type Start value Comment
+connection Struct
+interfaceID HW_ANY 64 Hardware identifier of the local interface
+- 0: if connectType = 10 (QDN)
+connectionID CONN_ANY 16#0FFF Reference to the connection
+16#0001..16#0FFF
+comService USInt 2 Configuration of the communication protocol:
+- 1: The standard TCP protocol is used.
+- 2 (default): The LCom protocol is used.",585,91,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p16_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,16,2,3,"0FFF
+comService USInt 2 Configuration of the communication protocol:
+- 1: The standard TCP protocol is used.
+- 2 (default): The LCom protocol is used. With the
+LCom protocol, additional communication
+functionalities are enabled
+isClient Bool FALSE - TRUE: Active connection establishment as TCP client.
+- FALSE: Passive connection establishment as TCP
+server.
+connectType USInt 1 Connection type:
+- 1 (default) = IPv4
+- 10 = QDN (Qualified Domain Name)
+localPort UInt 3456 Local port, see system function TCON.
+partnerPort UInt 3456 Only when the connection is active
+(""configuration.connection.isClient"" = TRUE):
+Port of the partner-side, see system function TCON.
+partnerIP IP_V4 - IP address of the partner
+partnerQDN String [254] '' Fully qualified domain name
+Must finish with "".""
+acceptUnknownPartner Bool TRUE Only for passive connection establishment
+(""configuration.connection.isClient"" = FALSE):
+- TRUE: Previously not configured connection partner
+is accepted
+- FALSE: Only the configured",999,144,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p16_c3,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,16,3,3,"blishment
+(""configuration.connection.isClient"" = FALSE):
+- TRUE: Previously not configured connection partner
+is accepted
+- FALSE: Only the configured connection partner is
+accepted
+lifeSignCycleTime Time T#1s Vital signs cycle
+T#1ms..T#24d20h30m20s630ms
+sender Struct
+cycleTime Time T#1s Send cycle
+T#0ms..T#24d20h30m20s630ms",326,37,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p17_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,17,1,2,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 17
+Name Type Start value Comment
+ackTimeout Time T#1s Only relevant when using the LCom protocol
+(""configuration.connection.comService"" = 2):
+The tag ""ackTimeout"" determines the monitoring time
+after which an acknowledgement of the sent packet is
+expected at the latest. If this period is exceeded, the
+connection is closed and re-established.
+T#1ms..T#24d20h30m20s630ms
+timeSync Struct Only relevant when using the LCom protocol
+(""configuration.connection.comService"" = 2)
+usePartnerTimestamps Bool FALSE - TRUE: The received time is taken over as system time
+- FALSE: Received time telegrams are ignored
+sendMode USInt 0 Send mode time synchronization:
+- 0: Inactive
+- 1: Cyclic time synchronization
+- 2: Time when the time synchronization should take
+place
+cycleTime Time T#1h Only relevant if ""sendMode"" = 1;
+Send cycle time of the timestamps
+T#1ms..T#24d20h30m20s630ms
+sendAtTimeOfDay Time_Of_Day TOD#05:00:0.
+000
+Only relevant with",998,144,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p17_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,17,2,2,"levant if ""sendMode"" = 1;
+Send cycle time of the timestamps
+T#1ms..T#24d20h30m20s630ms
+sendAtTimeOfDay Time_Of_Day TOD#05:00:0.
+000
+Only relevant with ""sendMode"" = 2;
+Time at which a time synchronization telegram is sent.
+LCom_typeDiagnostics
+The following table shows the structure of the PLC data type ""LCom_typeDiagnostics"".
+Table 2-6: PLC data type LCom_typeDiagnostics
+Name Type Comment
+localConfig Struct
+connection Struct
+interfaceID HW_ANY Hardware identifier of the local interface
+connectionID CONN_ANY Reference to the local connection
+comService USInt - 1: The standard TCP protocol is used
+- 2: The LCom protocol is used
+isClient Bool - TRUE: Active connection establishment as TCP client
+- FALSE: Passive connection establishment as TCP server
+connectType USInt - 1 = IPv4
+- 10 = QDN (Qualified Domain Name)
+localPort UInt Local port
+localIP IP_V4 Local IP address
+partnerPort UInt Partner-side port
+partnerIP IP_V4 IP address of the partner",955,140,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p18_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,18,1,3,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 18
+Name Type Comment
+partnerQDN String [254] Fully qualified domain name
+acceptUnknownPartner Bool - TRUE: Previously not configured connection partner is
+accepted
+- FALSE: Only the configured connection partner is accepted
+useLComProtocol Bool - TRUE: The LCom protocol is used
+- FALSE: The LCom protocol is not used
+lifeSignCycleTime Time Local vital signs cycle
+sender Struct
+cycleTime Time Local send cycle
+ackTimeout Time The tag ackTimeout determines the local monitoring time
+after which an acknowledgement of the sent packet is expected
+at the latest.",620,96,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p18_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,18,2,3,"e
+ackTimeout Time The tag ackTimeout determines the local monitoring time
+after which an acknowledgement of the sent packet is expected
+at the latest. If this time is exceeded, the connection is closed and
+re-established.
+timeSync Struct
+usePartnerTimestamps Bool - TRUE: The received time is adopted as the system time.
+- FALSE: Received time telegrams are ignored.
+sendMode USInt Send mode time synchronization:
+- 0: Inactive
+- 1: Cyclic time synchronization
+- 2: Time when the time synchronization should take place
+cycleTime Time Send cycle time of the timestamps
+sendAtTimeOfDay Time_Of_Day Time at which a synchronization telegram is sent
+sizeOfSendBuffer UDInt Size of the local send buffer in bytes
+sizeOfReceiveBuffer UDInt Size of the local receive buffer in bytes
+partnerConfig Struct
+connnection Struct
+lifeSignCycleTime Time Partner vital signs cycle
+sender Struct
+cycleTime Time Partner send cycle
+ackTimeout Time The tag ackTimeout determines the partner monitoring time after
+which",997,148,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p18_c3,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,18,3,3,"ital signs cycle
+sender Struct
+cycleTime Time Partner send cycle
+ackTimeout Time The tag ackTimeout determines the partner monitoring time after
+which an acknowledgement of the sent packet is expected at the
+latest. If this time is exceeded, the connection is closed by the
+partner and re-established.
+timeSync Struct
+usePartnerTimestamps Bool - TRUE: The received time is taken over as system time
+- FALSE: Received time telegrams are ignored",443,69,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p19_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,19,1,3,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 19
+Name Type Comment
+sendMode USInt Send mode time synchronization:
+- 0: Inactive
+- 1: cyclic time synchronization.
+- 2: Time when the time synchronization should take place
+sizeOfSendBuffer UDInt Size of the send buffer in bytes of the partner
+sizeOfReceiveBuffer UDInt Size of the receive buffer in bytes of the partner
+statistics Struct Statistics
+avgCallCycle Real Mean value between two FB calls [ms]
+avgReceiveMsgCycle Real Mean value in which cycle data was received [ms]
+maxReceiveMsgCycle Time Maximum occurred receive cycles
+LComProtocolUsed Bool - TRUE: The LCom protocol is used.",652,102,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p19_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,19,2,3,"in which cycle data was received [ms]
+maxReceiveMsgCycle Time Maximum occurred receive cycles
+LComProtocolUsed Bool - TRUE: The LCom protocol is used. With the LCom protocol
+additional communication functionalities are enabled
+- FALSE: The TCP transport protocol is used
+activeLComVersion USInt Active LCom protocol version
+avgMsgSendingTime Real Average value of how long a sending process (sending = TRUE)
+takes [ms]
+maxMsgSendingTime Time Maximum value of a sending process (sending = TRUE) [ms]
+avgMsgReceivingTime Real Mean value of how long a receiving process takes [ms]
+maxMsgReceivingTime Time Maximum value of a receiving process [ms]
+numberOfSentMessages UDInt Number of messages sent, since the L/H edge at the enable input
+numberOfReceivedMessages UDInt Number of received messages, since the L/H edge at the enable
+input
+totalAckTimeouts UInt Number of times the monitoring time was exceeded
+(diagnostics.localConfig.sender.ackTimeout)
+totalSendCycleViolations UInt Number of times the",999,138,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p19_c3,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,19,3,3,"ts UInt Number of times the monitoring time was exceeded
+(diagnostics.localConfig.sender.ackTimeout)
+totalSendCycleViolations UInt Number of times the send cycle is exceeded
+(diagnostics.localConfig.sender.cycleTime)
+totalReceiveCycleViolations UInt Number of times the receive cycle is exceeded
+(diagnostics.partnerConfig.sender.cycleTime)
+totalReconnects UInt Number of times the FB has reestablished the TCP connection
+lastConnect DTL Time when the connection was successfully established to the
+partner
+lastTimeSync DTL Time of the last time synchronization
+bufferIndex USInt Index to the last diagnostic entry
+buffer Array[0..63] of
+Struct
+Diagnostic buffer
+status Word Status message from FB",697,85,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p20_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,20,1,1,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 20
+Name Type Comment
+timestamp DTL Timestamp at appearance of the message
+isActive Bool - TRUE: State is still available
+- FALSE: State is no longer available
+subFunctionErrorID Word If necessary, Return value of a system function
+additionalValue1 Real Additional value 1
+additionalValue2 Real Additional value 2
+additionalValue3 Real Additional value 3
+additionalValue4 Time Additional value 4",455,69,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p21_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,21,1,2,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 21
+2.4. Integration into the User Project
+You will find an application example for integrating the LCom blocks into your user application
+in the master copies of this library.
+Additionally, you will find a detailed application example for the integration of the library into your user project in the
+Siemens Industry Online Support:
+https://support.industry.siemens.com/cs/ww/en/view/48955385
+2.5. Error Handling
+2.5.1. Status Outputs
+An error is indicated by setting the boolean tag ""error"". A distinction must be made between whether the cause of the
+error can be remedied by the user or by the block. If it is an error that can be corrected by the block, ""busy"" remains set. If
+an error occurs that must be corrected by the user, ""busy"" is reset (block processing deactivated).
+The following figure shows the two scenarios as a signal flow diagram.
+1
+0
+error
+(OUT)
+3)
+1
+0
+enable
+(IN)
+2)
+5)
+1
+0
+busy
+(OUT)
+1)
+4)
+6)",977,166,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p21_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,21,2,2,"deactivated).
+The following figure shows the two scenarios as a signal flow diagram.
+1
+0
+error
+(OUT)
+3)
+1
+0
+enable
+(IN)
+2)
+5)
+1
+0
+busy
+(OUT)
+1)
+4)
+6)
+
+Figure 2-5 Signal flow diagram error/busy
+
+1. ""busy"" is set with a rising edge of ""enable"".
+2. An error occurs and ""error"" is set. Since this is an error that can be corrected by the block itself, ""busy"" remains set.
+3. After correcting the cause of the error (e.g. re-establishing the connection), ""error"" is reset.
+4. An error that can only be corrected by the user occurs. Here ""error"" is set and ""busy"" is reset.
+5. The pending error, which must be remedied by the user, can only be cleared with a falling edge at ""enable"".
+6. The block is started again with a rising edge of ""enable"".",740,139,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p22_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,22,1,3,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 22
+Output parameters diagnostics
+In the output parameter ""diagnostics"", there are different substructures that are defined by the PLC data type
+""LCom_typeDiagnostics"". The diagnostic buffer is discussed below. The complete description of the PLC data type
+""LCom_typeDiagnostics"" can be found in chapter 2.3.
+Various status and error messages are entered in the diagnostic buffer. The array is set to 64 entries. This array operates
+as a ring buffer. The tag ""bufferIndex"" points to the last (current) entry.
+Each entry consists of the following elements:
+- Status or error number
+- Date and time of occurrence
+- Current state of the error",699,113,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p22_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,22,2,3,"st (current) entry.
+Each entry consists of the following elements:
+- Status or error number
+- Date and time of occurrence
+- Current state of the error
+
+The state when entering the buffer is always active. When resetting the error, the status in the buffer is set to inactive.
+The structure contains the return value of the system function as well as four additional values that can contain detailed
+information depending on the error that occurred.
+Table 2-7 Structure of the diagnostic buffer
+Name Data type Description
+bufferIndex USInt Index to last entry
+buffer Array [0..63] of Struct Diagnostic buffer
+status Word Status from FB
+timestamp DTL Timestamp at appearance of the message
+isActive Bool - TRUE: State is still present.
+- FALSE: State is no longer present.
+subFunctionErrorID Word If necessary, Return value of a system function
+additionalValue1 Real Additional value 1
+additionalValue2 Real Additional value 2
+additionalValue3 Real Additional value 3
+additionalValue4 Time Additional",998,156,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p22_c3,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,22,3,3,"ionalValue1 Real Additional value 1
+additionalValue2 Real Additional value 2
+additionalValue3 Real Additional value 3
+additionalValue4 Time Additional value 4",158,20,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p23_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,23,1,2,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 23
+2.5.2. Status Messages
+Table 2-8: Status messages
+Code Meaning
+16#7000 No job in process.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1..3:
+additionalValue4
+Time of the event
+State
+16#0
+0.0
+T#0ms
+16#7001 First call after receipt of a new job (rising edge at enable).
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1..3:
+additionalValue4
+Time of the event
+State
+16#0
+0.0
+T#0ms
+16#7002 Follow-up call during active FB processing.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1..3:
+additionalValue4
+Time of the event
+State
+16#0
+0.0
+T#0ms
+16#7003 FB tries to connect as TCP client.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1..3:
+additionalValue4
+Time of the event
+State
+16#0
+0.0
+T#0ms
+16#7004 FB is configured as TCP server and waits for a TCP client request.
+Diagnostic",949,130,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p23_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,23,2,2,"lue1..3:
+additionalValue4
+Time of the event
+State
+16#0
+0.0
+T#0ms
+16#7004 FB is configured as TCP server and waits for a TCP client request.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1...3:
+additionalValue4
+Time of the event
+State
+16#0
+0.0
+T#0ms
+16#7005 The TCP connection to the partner is established.
+Diagnostic entry:",352,50,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p24_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,24,1,1,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 24
+Code Meaning
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1..3:
+additionalValue4
+Time of the event
+State
+16#0
+0.0
+T#0ms",194,28,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p25_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,25,1,2,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 25
+Code Meaning
+16#7006 The FB has successfully exchanged configuration data with the partner via LCom protocol V1.
+The maximum possible data length is 64 KByte.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1..3:
+additionalValue4:
+Time of the event
+State
+16#0
+0.0
+T#0ms
+16#7007 The FB has successfully established the connection and exchanged the configuration data (LCom protocol V2)
+with the partner.
+The maximum possible data length is 16 MByte.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1..3:
+additionalValue4:
+Time of the event
+State
+16#0
+0.0
+T#0ms
+16#7008 The FB terminates the connection.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1..3:
+additionalValue4
+Time of the event
+State
+16#0
+0.0
+T#0ms
+16#7008 The FB terminates the connection.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1..3:
+additionalValue4
+Time",997,130,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p25_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,25,2,2,"T#0ms
+16#7008 The FB terminates the connection.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1..3:
+additionalValue4
+Time of the event
+State
+16#0
+0.0
+T#0ms
+16#7600 The specified send length (sendDataLength) is too large and is automatically limited by the FB.
+The maximum possible send length is determined by the size of the own send buffer (sendBuffer).
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1:
+additionalValue2:
+additionalValue3:
+additionalValue4:
+Time of the event
+State
+16#0
+sendDataLength
+sendBuffer
+0.0
+T#0ms
+16#7610 The specified time (configuration.connection.lifeSignCycleTime) for connection monitoring is too large and is
+automatically limited to 65535 ms.",732,91,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p26_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,26,1,2,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 26
+Code Meaning
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1:
+additionalValue2..3:
+additionalValue4:
+Time of the event
+State
+16#0
+Limitation to 65535
+0.0
+Value of the user
+16#7611 The specified time for the send cycle (configuration.sender.cycleTime) is too large and is automatically limited
+to 65535 ms.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1:
+additionalValue2..3:
+additionalValue4:
+Time of the event
+State
+16#0
+Limitation to 65535
+0.0
+Value of the user
+16#7612 The configured monitoring time (configuration.sender.ackTimeout) is too large and is automatically limited to
+65535 ms
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1:
+additionalValue2..3:
+additionalValue4:
+Time of the event
+State
+16#0
+Limitation to 65535
+0.0
+Value of the user
+16#7613 The configured send cycle (configuration.sender.CycleTime) cannot be kept because the",992,127,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p26_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,26,2,2,"ent
+State
+16#0
+Limitation to 65535
+0.0
+Value of the user
+16#7613 The configured send cycle (configuration.sender.CycleTime) cannot be kept because the previous sending
+process has not yet been completed.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1:
+additionalValue2..3:
+additionalValue4:
+Time of the event
+State
+16#0
+Value of the user
+0.0
+Previous time of the previous send job
+16#7614 When using the LCom protocol (configuration.connection.comService = 2):
+The specified send length (sendDataLength) is larger than the receive buffer of the partner.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1:
+additionalValue2:
+additionalValue3:
+additionalValue4:
+Time of the event
+State
+16#0
+sendDataLength
+Receive buffer of the partner-side
+0.0
+T#0ms",802,102,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p27_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,27,1,1,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 27
+Code Meaning
+Without using the LCom protocol (configuration.connection.comService = 1):
+The specified readDataLength at the FB is larger than the specified receive buffer (receiveBuffer). The
+readDataLength is limited to the size of the specified receive buffer.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1:
+additionalValue2:
+additionalValue3:
+additionalValue4:
+Time of the event
+State
+16#0
+User-defined receive buffer
+readDataLength
+0.0
+T#0ms",539,70,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p28_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,28,1,2,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 28
+Code Meaning
+16#7615 No time synchronization is performed.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1..4:
+Time of the event
+State
+16#0
+0.0
+16#8200 The specified communication service
+(configuration.connection.comService) is invalid → see system function TCON.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1
+additionalValue2...3:
+additionalValue4:
+Time of the event
+State
+16#0
+Value of the user
+0.0
+T#0ms
+16#8201 The specified connection reference (configuration.connection.connectionID) is invalid → see system function
+TCON.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1
+additionalValue2..3:
+additionalValue4:
+Time of the event
+State
+16#0
+Value of the user
+0.0
+T#0ms
+16#8202 The specified hardware identifier for the local interface (configuration.connection.interfaceID) is invalid → see
+system function TCON.
+Diagnostic",978,118,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p28_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,28,2,2,"202 The specified hardware identifier for the local interface (configuration.connection.interfaceID) is invalid → see
+system function TCON.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1
+additionalValue2..3:
+additionalValue4:
+Time of the event
+State
+16#0
+Value of the user
+0.0
+T#0ms
+16#8203 The specified local port
+(configuration.connection.localPort) is not allowed → see system function TCON.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1
+additionalValue2..3:
+additionalValue4:
+Time of the event
+State
+TCON status
+Value of the user
+0.0
+T#0ms
+16#8204 The specified partner IP address (configuration.connection.partnerIP) is invalid → see system function TCON.",720,86,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p29_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,29,1,2,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 29
+Code Meaning
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1
+additionalValue2..3:
+additionalValue4:
+Time of the event
+State
+TCON status
+Value of the user
+0.0
+T#0ms
+16#8205 The specified mode for time synchronization (configuration.timeSync.sendMode) is invalid.
+Diagnostics entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1
+additionalValue2..3:
+additionalValue4:
+Time of the event
+State
+16#0
+Value of the user
+0.0
+T#0ms
+16#8206 The specified cycle time for time synchronization
+(configuration.",600,75,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p29_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,29,2,2,":
+additionalValue4:
+Time of the event
+State
+16#0
+Value of the user
+0.0
+T#0ms
+16#8206 The specified cycle time for time synchronization
+(configuration. timeSync.cycleTime) is invalid.
+Dianostics entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1..3
+additionalValue4:
+Time of the event
+State
+16#0
+0.0
+Value of the user
+16#8207 The specified time for the time synchronization(configuration.timeSync.sendAtTimeOfDay) is invalid.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1..3
+additionalValue4:
+Time of the event
+State
+16#0
+0.0
+T#0ms
+16#8208 The value passed to the input tag sendBuffer is not of type ARRAY of BYTE and is invalid.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1..3
+additionalValue4:
+Time of the event
+State
+16#0
+0.0
+T#0ms
+16#8209 The value passed to the output tag receiveBuffer is not of type ARRAY of BYTE and is invalid.
+Diagnostic entry:",928,124,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p30_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,30,1,1,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 30
+Code Meaning
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1..3
+additionalValue4:
+Time of the event
+State
+16#0
+0.0
+T#0ms
+16#8210 The specified time (configuration.connection.lifeSignCycleTime) for connection monitoring is invalid:
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1..3
+additionalValue4:
+Time of the event
+State
+16#0
+0.0
+Value of the user",452,56,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p31_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,31,1,2,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 31
+Code Meaning
+16#8211 The specified send cycle (configuration.sender.cycleTime) is invalid.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1..3
+additionalValue4:
+Time of the event
+State
+16#0
+0.0
+Value of the user
+16#8212 The configured monitoring time (configuration.sender.ackTimeout) is invalid.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1..3
+additionalValue4:
+Time of the event
+State
+16#0
+0.0
+Value of the user
+16#8213 The configured connection type (configuration.connection.connectType) is invalid
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1
+additionalValue2..3
+additionalValue4:
+Time of the event
+State
+16#0
+Value of the user
+0.0
+T#0ms
+16#8600 An error has occurred when using the TCON system function, see subFunctionErrorID in the diagnostic buffer
+and system documentation.",936,115,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p31_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,31,2,2,"0.0
+T#0ms
+16#8600 An error has occurred when using the TCON system function, see subFunctionErrorID in the diagnostic buffer
+and system documentation. The connection is reestablished.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1:
+additionalValue2:
+additionalValue3:
+additionalValue4:
+Time of the event
+State
+TCON status
+0.0
+0.0
+0.0
+T#0ms
+16#8601 An error has occurred when using the TCON system function, see subFunctionErrorID in the diagnostic buffer
+and system documentation. The connection is reestablished.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1:
+additionalValue2:
+additionalValue3:
+additionalValue4:
+Time of the event
+State
+TCON status
+Local port
+0.0
+0.0
+T#0ms",734,91,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p32_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,32,1,3,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 32
+Code Meaning
+16#8602 An error occurred while using the system function TSEND, see subFunctionErrorID in the diagnostic buffer and
+system documentation. The connection is reestablished.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1:
+additionalValue2:
+additionalValue3:
+additionalValue4:
+Time of the event
+State
+TSEND status
+0.0
+Length of send data
+0.0
+T#0ms
+16#8603 An error has occurred when using the TRCV system function, see subFunctionErrorID in the diagnostic buffer
+and system documentation. The connection is reestablished.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1..3:
+additionalValue4:
+Time of the event
+State
+Status of TRCV
+0.0
+T#0ms
+16#8604 An error has occurred when using the TDISCON system function, see subFunctionErrorID in the diagnostic
+buffer and system documentation.",915,122,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p32_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,32,2,3,"T#0ms
+16#8604 An error has occurred when using the TDISCON system function, see subFunctionErrorID in the diagnostic
+buffer and system documentation. The connection is reestablished.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1..3:
+additionalValue4:
+Time of the event
+State
+Status of TDISCON
+0.0
+T#0ms
+16#8610 The vital signs of the partner were not received in time. The connection is reestablished.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1:
+additionalValue2..3:
+additionalValue4:
+Time of the event
+State
+16#0
+Vital signs cycle
+0.0
+Time in which the FB has not received any data from the
+partner.
+16#8611 The monitoring time of a sent data packet has expired without an acknowledgement being received from the
+partner.",785,108,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p32_c3,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,32,3,3,"d any data from the
+partner.
+16#8611 The monitoring time of a sent data packet has expired without an acknowledgement being received from the
+partner. The connection is reestablished.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1:
+additionalValue2..3:
+additionalValue4:
+Time of the event
+State
+16#0
+Monitoring time
+0.0
+Time in which the FB has not received any data from the
+partner.",413,59,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p33_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,33,1,2,"LCom
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 33
+Code Meaning
+16#8612 An invalid acknowledge number was received from the partner, the connection will be re-established.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1:
+
+additionalValue2:
+additionalValue3:
+additionalValue4:
+Time of the event
+State
+16#0
+Received acknowledge
+message number
+Send acknowledge message number
+0.0
+T#0ms
+16#8613 The LCom (protocol) versions of the library LCom do not match the partner or an invalid (protocol) version was
+received. The connection is reestablished.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1:
+additionalValue2:
+additionalValue3:
+additionalValue4:
+Time of the event
+State
+16#0
+received version
+local, active version
+0.0
+T#0ms
+16#8614 A telegram was received which has an ID that was not expected.",865,115,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p33_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,33,2,2,":
+Time of the event
+State
+16#0
+received version
+local, active version
+0.0
+T#0ms
+16#8614 A telegram was received which has an ID that was not expected. The connection is reestablished.
+Diagnostic entry:
+timestamp:
+isActive:
+subFunctionErrorID:
+additionalValue1:
+additionalValue2..3:
+additionalValue4:
+Time of the event
+State
+16#0
+received ID
+0.0
+T#0ms
+
+If errors occur during parameterization (16#8200 to 16#83FF), intervention by the user is required. The user must replace
+the faulty value with a permissible value and restart the function block with a rising edge at the ""enable"" input.
+In case of an internal error (16#8600 to 16#87FF) the function block will automatically close the connection and try to re-
+establish it. A new rising edge at the ""enable"" input is not necessary.",784,121,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p34_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,34,1,1,"LFTP
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 34
+3. LFTP
+3.1. Overview
+3.1.1. Range of Functions
+A simple protocol that works according to the client/server principle and which meets the demands of this task is the File
+Transfer Protocol (FTP).
+FTP allows you to store data on server systems. FTP supports almost all server systems and operating systems.
+The controllers from the SIMATIC S7-300, S7-400 and S7-1500 product families support FTP communication with the help
+of specialized communications processors (CPs).
+With this library you can implement FTP communication with an S7-1200, S7-1500 or ET200SP CPU based on Open User
+Communication without a special CP.
+
+Integration of the S7-1200 / S7-1500
+into the existing FTP environment
++
+S7-300 with
+CP 343-1
+S7-400 with
+CP 443-1
+S7-1500 with
+CP 1543-1
+FTP server
+S7-1200
+Standard solution
+F T P
+S7-1500
+Solution without CP
+ET 200SP
+CPU
+PROFINET IE
+
+Figure 3-1: Application scenarios",953,154,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p35_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,35,1,1,"LFTP
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 35
+3.1.2. Components of the Library
+Function blocks
+Table 3-1: Function blocks
+Name Version Description
+LFTP_Client V6.1.6 Organizes connection setup of the FTP control
+connection and data connection as well as sending
+and receiving of files.
+PLC data types
+Table 3-2: PLC data types
+Name Version Description
+LFTP_typeConnParam V1.0.0 This data type describes all parameters of the
+connection to the FTP server.
+LFTP_typeFtpParam V1.0.0 This data type describes all parameters of the FTP
+commands.
+
+3.1.3. Validity
+The library is valid for:
+- SIMATIC S7-1500 controllers with firmware V2.9 or higher
+- SIMATIC S7-1200 controllers with firmware V4.5 or higher
+- SIMATIC S7-1200 G2 Controllers as of firmware V1.0
+- SIMATIC ET 200SP Open Controllers with firmware V2.9 or higher
+- CM 1542-1",849,134,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p36_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,36,1,2,"LFTP
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 36
+3.2. LFTP_Client
+3.2.1. Interface Description
+Description
+The FTP function block ""LFTP_Client"" implements FTP on the basis of Open User Communication. It can execute the
+following FTP commands:
+- CONNECT (connect and log on)
+- DISCONNECT (disconnect and log off)
+- STORE (save data)
+- APPEND (append data)
+- RETRIEVE (retrieve data)
+- DELETE (delete a file)
+
+The FB supports both modes Active FTP and Passive FTP.
+Parameters
+Figure 3-2: LFTP_Client
+LFTP_Client
+
+Bool enable valid Bool
+Bool execute done Bool
+Time timeOut busy Bool
+error Bool
+status Word
+diagnostics ""typeDiagnostics""
+""LFTP_typeConnParam"" connParam ""LFTP_typeConnParam""
+""LFTP_typeFtpParam"" ftpParam ""LFTP_typeFtpParam""
+UDInt dataLen UDInt
+Array[*] of Byte data Array[*] of Byte",807,118,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p36_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,36,2,2,"eConnParam"" connParam ""LFTP_typeConnParam""
+""LFTP_typeFtpParam"" ftpParam ""LFTP_typeFtpParam""
+UDInt dataLen UDInt
+Array[*] of Byte data Array[*] of Byte
+
+Table 3-3: Parameters of LFTP_Client
+Name Declaration Data type Comment
+enable IN Bool TRUE = control connection to the FTP server is connected
+FALSE = control connection is terminated
+execute IN Bool FTP job trigger on rising edge
+timeOut IN Time Time after which a job should be automatically canceled
+valid OUT Bool TRUE: The FB executes its function without error.",520,77,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p37_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,37,1,3,"LFTP
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 37
+Name Declaration Data type Comment
+done OUT Bool TRUE: The current job (send message or activate shell) was completed
+successfully.
+busy OUT Bool TRUE: The FB is busy.
+error OUT Bool TRUE: An error has occurred.
+If ""busy"" is TRUE at the same time, the block attempts to correct the
+error itself.
+status OUT Word Status and error codes (see chapter 3.2.2)
+diagnostics OUT ""typeDiagnostics"" Advanced diagnostic information (see chapter 14.2)
+connParam IN_OUT ""LFTP_typeConnParam"" Sets connection parameters. The hardware ID, URL of the FTP server,
+username and password are defined here.
+ftpParam IN_OUT ""LFTP_typeFtpParam"" FTP parameters
+dataLen IN_OUT UDInt Length of data to be sent or received
+data IN_OUT Array[*] of Byte Data to be sent or received",816,131,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p37_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,37,2,3,"""LFTP_typeFtpParam"" FTP parameters
+dataLen IN_OUT UDInt Length of data to be sent or received
+data IN_OUT Array[*] of Byte Data to be sent or received
+
+3.2.2. Error Handling
+Table 3-4: Status and error codes
+Status Meaning
+16#0000 FTP command successfully executed
+16#7000 Idling, no active connections
+16#7001 First call of the block
+16#7002 Control connection is being established
+16#7003 Control connection is being terminated
+16#7004 Control connection is established, no job active
+16#7005 FTP command is being executed
+16#8202 Invalid URL
+16#8400 Error received from FTP server. Some possible causes could be that the login credentials are wrong or that the
+file name does not exist.
+The FTP-specific error code is output at ""diagnostics.subfunctionStatus"".",763,114,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p37_c3,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,37,3,3,"e that the login credentials are wrong or that the
+file name does not exist.
+The FTP-specific error code is output at ""diagnostics.subfunctionStatus"". The meaning of the FTP-specific error
+code can be found in the FTP specification.
+16#8600 The FB is in an invalid state.
+16#8601 Error in subordinate instruction ""TCON""
+The error code of the instruction is output to ""diagnostics.subfunctionStatus"". For the meaning of the
+respective error code, refer to the TIA Portal information system.
+16#8602 Error in subordinate instruction ""TSEND""
+The error code of the instruction is output to ""diagnostics.subfunctionStatus"". For the meaning of the
+respective error code, refer to the TIA Portal information system.",708,107,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p38_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,38,1,2,"LFTP
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 38
+Status Meaning
+16#8603 Error in subordinate instruction ""TRCV""
+The error code of the instruction is output to ""diagnostics.subfunctionStatus"". For the meaning of the
+respective error code, refer to the TIA Portal information system.
+16#8604 Error in subordinate instruction ""TCONSettings""
+The error code of the instruction is output to ""diagnostics.subfunctionStatus"". For the meaning of the
+respective error code, refer to the TIA Portal information system.
+16#8605 Error in subordinate instruction ""MOVE_BLK_VARIANT""
+The error code of the instruction is output to ""diagnostics.subfunctionStatus"". For the meaning of the
+respective error code, refer to the TIA Portal information system.
+16#8086 Error in subordinate instruction ""RDREC""
+The error code of the instruction is output to ""diagnostics.subfunctionStatus"".",881,124,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p38_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,38,2,2,"l information system.
+16#8086 Error in subordinate instruction ""RDREC""
+The error code of the instruction is output to ""diagnostics.subfunctionStatus"". For the meaning of the
+respective error code, refer to the TIA Portal information system.
+16#8D11 Control connection not connected; data connection cannot be opened
+16#8D26 Data connection cannot be opened
+16#8D28 FTP server timeout
+16#8DF1 Request timeout
+16#8DF2 Unknown reply code
+16#8DF3 Unknown command
+16#8DF4 Port number below 2000
+16#8F62 Action aborted; data connection will be terminated
+16#8F69 Connection attempt on existing connection
+
+NOTE If the FB outputs ""done"" but no data after a ""RETRIEVE"" command, this may be caused by the
+communication load being set too low. Increase the communication load in the device configuration.",794,116,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p39_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,39,1,2,"LFTP
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 39
+3.3. PLC Data Types
+LFTP_typeConnParam
+This data type describes all the parameters required for the connection to the FTP server.
+Table 3-5: Parameters of LFTP_typeConnParam
+Name Type Comment
+hwID HW_ANY Hardware ID of the IE interface module
+serverAddress String IP address or hostname of the FTP server
+username String FTP user name
+password String FTP user password
+LFTP_typeFtpParam
+This data type describes all FTP parameters necessary for the data connection.
+Table 3-6: Parameters of LFTP_typeFtpParam
+Name Type Comment
+ftpActiveMode BOOL FTP mode; TRUE: active, FALSE: passive
+portActiveMode UInt Local port for the FTP active mode, must be set to a value higher than 2000.
+ftpCmd Int FTP command
+- 2: STORE
+- 3: RETRIEVE
+- 4: DELETE
+- 6: APPEND
+filename String File name",843,137,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p39_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,39,2,2,"ctive mode, must be set to a value higher than 2000.
+ftpCmd Int FTP command
+- 2: STORE
+- 3: RETRIEVE
+- 4: DELETE
+- 6: APPEND
+filename String File name
+
+3.4. Integration into the user project
+You will find a detailed application example for the integration of the library into your user project in Siemens Industry
+Online Support:
+https://support.industry.siemens.com/cs/ww/en/view/81367009",389,60,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p40_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,40,1,1,"LHTTP
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 40
+4. LHTTP
+4.1. Overview
+4.1.1. Range of Functions
+The Hypertext Transfer Protocol (HTTP) is a data transfer protocol used primarily to load Web pages from the World Wide
+Web.
+Due to the increasing networking of plants and the advancement of the Internet of Things (IoT), HTTP and HTTPS also play
+an increasingly important role in automation technology.
+The library for HTTP communication (LHTTP) enables the data exchange of a
+SIMATIC S7-1200/1500 CPU via the integrated Ethernet interface with another device in the local network or a web server
+in the internet via HTTP respectively HTTPS.
+
+Figure 4-1: Overview
+
+The LHTTP library provides function blocks with which the most conventional HTTP request methods can be implemented
+in the user program:
+- GET
+- POST
+- PUT
+Due to the integrated certificate management in the TIA Portal, it is also possible to transfer data securely with HTTPS
+using the same blocks.",978,162,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p41_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,41,1,2,"LHTTP
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 41
+4.1.2. Components of the Library
+Blocks
+Table 4-1: Blocks of the library
+Name Type Version Description
+LHTTP_Get FB V2.2.0 Realizes the HTTP method GET
+LHTTP_PostPut FB V2.2.0 Realizes the HTTP methods POST and PUT
+LHTTP_FindStringInArray FC V1.0.0 Searches an array of chars for a given string
+LHTTP_ExtractString
+FromArray
+FC V1.0.0 Extracts a string between two specified text parts from an
+array of chars.
+LHTTP_ExtractString
+FromArrayExt
+FC V1.0.0 Same function as ""LHTTP_ExtractStringFromArray"" with
+advanced options
+PLC Data Types
+Table 4-2: PLC library data types
+Name Version Description
+LHTTP_typeTLS V1.0.0 Data type for transferring certificates for secure
+communication via HTTPS
+4.1.3.",764,112,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p41_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,41,2,2,"PLC library data types
+Name Version Description
+LHTTP_typeTLS V1.0.0 Data type for transferring certificates for secure
+communication via HTTPS
+4.1.3. Validity
+The library is valid for:
+- SIMATIC S7-1500 Controllers as of firmware V2.0
+- SIMATIC S7-1200 Controllers as of firmware V4.4
+- SIMATIC S7-1200 G2 Controllers as of firmware V1.0
+- SIMATIC ET 200SP Open Controllers as of firmware V2.5
+- SIMATIC S7-1500 Software Controllers as of firmware V2.5
+- CP 1543-1 as of firmware V2.0
+- CP 1543SP-1 as of firmware V1.0
+- CP 1243-1, CP 1243-8 as of firmware V3.2",562,93,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p42_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,42,1,3,"LHTTP
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 42
+4.2. LHTTP_Get
+4.2.1. Interface Description
+Description
+The block implements the HTTP method GET to fetch data from a web server.
+Parameter
+Figure 4-2: LHTTP_Get
+LHTTP_Get
+
+Bool execute connected Bool
+HW_ANY hwID done Bool
+CONN_OUC connID busy Bool
+String url error Bool
+String queryParams status Word
+Array[0..#UPPER_USER_FIELDS] of Char userFields diagnostics ""typeDiagnostics""
+""LHTTP_typeTLS"" tls responseCode UInt
+Bool keep
+Connection length UDInt
+Time timeOut
+
+Array[*] of Char responseData Array[*] of Char",577,82,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p42_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,42,2,3,"""typeDiagnostics""
+""LHTTP_typeTLS"" tls responseCode UInt
+Bool keep
+Connection length UDInt
+Time timeOut
+
+Array[*] of Char responseData Array[*] of Char
+
+Table 4-3: Parameters of LHTTP_Get
+Name Declaration Data type Description
+execute Input Bool With a positive edge, a connection to the web server is established and the
+HTTP request is sent.
+hwID Input HW_ANY Hardware identifier of the PN/IE interface for establishing the connection
+If ""0"" is selected, a suitable one is selected automatically.
+connID Input CONN_OUC Unique connection ID
+url Input String URL, e.g. ""https://httpbin.org/get""
+HTTPS is used per default.",620,90,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p42_c3,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,42,3,3,"is selected automatically.
+connID Input CONN_OUC Unique connection ID
+url Input String URL, e.g. ""https://httpbin.org/get""
+HTTPS is used per default. To use HTTP ""http://"" must be explicitly specified
+in the URL.
+queryParams Input String Additional query parameters if parameter ""url"" is not long enough, i.e.
+""lang=en&q=simatic"".
+userFields Input Array[0..#UPPER_USER_
+FIELDS] of Char
+Additional user-defined header fields
+The header fields must be formatted according to HTTP and terminated with
+the ""$00"" character.
+tls Input ""LHTTP_typeTLS"" TLS certificates for secure data transmission (HTTPS)
+For unsafe data transmission (HTTP) leave unconnected.
+keepConnection Input Bool TRUE: Keeps the connection established after the job has been executed",750,102,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p43_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,43,1,4,"LHTTP
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 43
+Name Declaration Data type Description
+timeOut Input Time Time after which a job should be automatically canceled
+connected Output Bool TRUE: Connection to the web server is established
+done Output Bool TRUE: Job finished
+busy Output Bool TRUE: Job is being executed
+error Output Bool TRUE: An error has occurred
+status Output Word Status and error codes (see chapter 4.8)
+diagnostics Output ""typeDiagnostics"" Advanced diagnostic information (see chapter 14.2)
+responseCode Output UInt Received HTTP status code (see Table 4-10)
+length Output UDInt Length of the received user data
+responseData InOut Array[*] of Char Received user data. The array must start at ""0"".",731,115,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p43_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,43,2,4,"Table 4-10)
+length Output UDInt Length of the received user data
+responseData InOut Array[*] of Char Received user data. The array must start at ""0"".
+
+4.2.2. Operation
+The user specifies the requested resource in the form of a URL, e.g. ""https://httpbin.org/get"" or
+""http://192.168.0.1:80/index.html"", at the ""url"" parameter. HTTPS is used per default. To use HTTP ""http://"" must be
+explicitly specified in the URL.
+Optional parameters can be passed with two variants:
+- Appended to the URL at the parameter ""url"" with a ""?"" in front, e.g. ""http://httpbin.org/get?lang=en&q=simatic""
+- At the separate parameter ""queryParams"", e.g. ""lang=en&q=simatic""; ""?"" or ""&"" is inserted automatically in between
+""url"" and ""queryParameters"".",728,106,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p43_c3,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,43,3,4,"tic""
+- At the separate parameter ""queryParams"", e.g. ""lang=en&q=simatic""; ""?"" or ""&"" is inserted automatically in between
+""url"" and ""queryParameters"".
+
+With a rising edge at the ""execute"" parameter, the block requests the IP address belonging to the host at the configured
+DNS Server if necessary and establishes a connection to the web server.
+If HTTPS is used, the certificate of the requested web server must be referenced at the ""tls"" parameter (see chapter 4.7). If
+the web server requires client authentication, the PLC's certificate must also be referenced.
+The block creates the HTTP request from the specified URL and sends it to the web server.
+The user data of the web server's response is output at the ""responseData"" parameter. The received HTTP status code is
+output at the ""responseCode"" parameter.
+If the web server responds with an error (HTTP status code 4xx), no data is output.",897,146,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p43_c4,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,43,4,4,"ceived HTTP status code is
+output at the ""responseCode"" parameter.
+If the web server responds with an error (HTTP status code 4xx), no data is output.
+
+NOTE The FB does not clear the receive area at ""responseData"" between two requests. The receive area
+might contain old data. Use the length of the received user data of the current request at the output
+""length"" to only evaluate this data.
+
+Depending on the parameter ""keepConnection"", the block terminates the connection to the web server after all telegrams
+have been successfully received or keeps it established for further requests.
+
+NOTE The block outputs the HTTP status code received from the server with the first received telegram and
+writes the user data of each received telegram directly into the memory area connected to the
+parameter ""responseData"". Evaluate the user data only after the output ""done"" has been set.",882,144,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p44_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,44,1,2,"LHTTP
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 44
+
+NOTE The block does not support redirections. If the server responds with a redirection (HTTP status code
+3xx), the block issues an error (see chapter 4.8).
+Check the URL and correct it if necessary.
+
+User-defined header fields
+The ""userFields"" input allows the user to insert additional header fields into the request. The user has 256 characters
+available in the form of an Array of Char.
+The data must be formatted according to HTTP: Two header fields are separated by an end-of-line (""$R$L""). The end of the
+user-defined header fields is signaled to the FB with the character ""$00"". A closing line end is not necessary.
+For example, the ""Accept Language"" and ""Authorization"" header fields can be inserted as follows:
+Accept-Language: en$R$LAuthorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==$00
+
+If no user-defined header fields are required, the input is not connected.",938,148,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p44_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,44,2,2,"ccept-Language: en$R$LAuthorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==$00
+
+If no user-defined header fields are required, the input is not connected.
+
+NOTE If 256 characters are not enough, the array can be increased by adjusting the local constant
+""UPPER_USER_FIELDS"".
+
+Keep connection established
+If the parameter ""keepConnection"" is set, the connection is not broken after the completion of a job and can be used for
+further requests. Especially if there are many requests to the same web server over HTTPS, this shortens the required
+duration of subsequent requests.
+The connection is then broken by resetting ""keepConnection"".",632,90,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p45_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,45,1,2,"LHTTP
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 45
+4.3. LHTTP_PostPut
+4.3.1. Interface Description
+Description
+The block implements the HTTP methods POST and PUT to transfer data to a web server.
+Parameter
+Figure 4-3: LHTTP_PostPut
+LHTTP_PostPut
+
+Bool execute connected Bool
+HW_ANY hwID done Bool
+CONN_OUC connID busy Bool
+USInt method error Bool
+String url status Word
+Variant data diagnostics ""typeDiagnostics""
+String contentType responseCode UInt
+Array[0..#UPPER_USER_FIELDS] of Char userFields length UDInt
+""LHTTP_typeTLS"" tls
+
+Bool keep
+Connection
+
+Time timeOut
+
+Array[*] of Char responseData Array[*] of Char",628,88,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p45_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,45,2,2,"R_USER_FIELDS] of Char userFields length UDInt
+""LHTTP_typeTLS"" tls
+
+Bool keep
+Connection
+
+Time timeOut
+
+Array[*] of Char responseData Array[*] of Char
+
+Table 4-4: Parameters of LHTTP_PostPut
+Name Declaration Data type Description
+execute Input Bool With a positive edge, a connection to the web server is established and the
+HTTP request is sent.
+hwID Input HW_ANY Hardware identifier of the PN/IE interface for establishing the connection
+If ""0"" is selected, a suitable one is selected automatically.
+connID Input CONN_OUC Unique connection ID
+method Input USInt HTTP method
+0: POST
+1: PUT
+url Input String URL, e.g. ""https://httpbin.org/post""
+HTTPS is used per default. To use HTTP ""http://"" must be explicitly specified
+in the URL.
+contentType Input String Content type of the body",784,119,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p46_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,46,1,5,"LHTTP
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 46
+Name Declaration Data type Description
+data Input Variant Message body
+Valid data types: String and Array of Char
+In the case of Array of Char, the data must be terminated with the character
+""$00"".
+userFields Input Array[0..#UPPER_USER_
+FIELDS] of Char
+Additional user-defined header fields
+The header fields must be formatted according to HTTP and terminated with
+the ""$00"" character.
+tls Input ""LHTTP_typeTLS"" TLS certificates for secure data transmission (HTTPS)
+For unsafe data transmission (HTTP) leave unconnected.
+keepConnection Input Bool TRUE: Keeps the connection established after the job has been executed
+timeOut Input Time Time after which a job should be automatically canceled
+connected Output Bool TRUE: Connection to the web server is established
+done Output Bool TRUE: Job finished
+busy Output Bool TRUE: Job is being executed
+error Output Bool TRUE: An error has occurred
+status Output Word Status and error codes",998,155,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p46_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,46,2,5,"RUE: Job finished
+busy Output Bool TRUE: Job is being executed
+error Output Bool TRUE: An error has occurred
+status Output Word Status and error codes (see chapter 4.8)
+diagnostics Output ""typeDiagnostics"" Advanced diagnostic information (see chapter 14.2)
+responseCode Output UInt Received HTTP status code (see chapter 4.8)
+length Output UDInt Length of the received user data
+responseData InOut Array[*] of Char Received user data. The array must start at ""0"".",463,71,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p46_c3,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,46,3,5,"chapter 4.8)
+length Output UDInt Length of the received user data
+responseData InOut Array[*] of Char Received user data. The array must start at ""0"".
+
+4.3.2. Operation
+The user specifies the requested resource in the form of a URL, e.g. ""https://httpbin.org/post"" or
+""http://192.168.0.1:80/index.html"", at the ""url"" parameter. HTTPS is used per default. To use HTTP ""http://"" must be
+explicitly specified in the URL.
+The user data can be passed as a string or, if 254 characters are not sufficient, as an array of chars at the ""data"" parameter.
+If Array of Char is used, the user data must be terminated with the character ""$00"".
+The content type of the body depends on the webserver and can be set with the parameter ""contentType"".",733,122,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p46_c4,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,46,4,5,"ta must be terminated with the character ""$00"".
+The content type of the body depends on the webserver and can be set with the parameter ""contentType"". The content
+type defines the format of the body.
+Via the ""method"" parameter the user chooses whether the HTTP method POST or PUT should be used.
+With a rising edge at the ""execute"" parameter, the block requests the IP address belonging to the host at the configured
+DNS Server if necessary and establishes a connection to the web server.
+If HTTPS is used, the certificate of the requested web server must be referenced at the ""tls"" parameter (see chapter 4.7). If
+the web server requires client authentication, the PLC's certificate must also be referenced.
+The block creates the HTTP request from the specified URL and sends it to the server.
+The user data of the server's response is output at the ""responseData"" parameter.",876,149,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p46_c5,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,46,5,5,"the HTTP request from the specified URL and sends it to the server.
+The user data of the server's response is output at the ""responseData"" parameter. The received HTTP status code is output
+at the ""responseCode"" parameter.
+If the web server responds with an error (HTTP status code 4xx), no data is output.",306,53,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p47_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,47,1,3,"LHTTP
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 47
+NOTE The FB does not clear the receive area at ""responseData"" between two request. The receive area might
+contain old data. Use the length of the received user data of the current request at the output ""length""
+to only evaluate this data.
+Depending on the parameter ""keepConnection"", the block terminates the connection to the server after all telegrams have
+been successfully received or keeps it established for further requests.
+
+NOTE The block outputs the HTTP status code received from the server with the first received telegram and
+writes the user data of each received telegram directly into the memory area connected to the
+parameter ""responseData"". Evaluate the user data only after the output ""done"" has been set.
+
+NOTE The block does not support redirections. If the server responds with a redirection (HTTP status code
+3xx), the block issues an error (see chapter 4.8).
+Check the URL and correct it if necessary.",990,164,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p47_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,47,2,3,"the server responds with a redirection (HTTP status code
+3xx), the block issues an error (see chapter 4.8).
+Check the URL and correct it if necessary.
+
+User-defined header fields
+The ""userFields"" input allows the user to insert additional header fields into the request. The user has 256 characters
+available in the form of an Array of Char.
+The data must be formatted according to HTTP: Two header fields are separated by an end-of-line (""$R$L""). The end of the
+user-defined header fields is signaled to the FB with the character ""$00"". A closing line end is not necessary.
+For example, the ""Accept Language"" and ""Authorization"" header fields can be inserted as follows:
+Accept-Language: en$R$LAuthorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==$00
+
+If no user-defined header fields are required, the input is not connected.
+
+NOTE If 256 characters are not enough, the array can be increased by adjusting the local constant
+""UPPER_USER_FIELDS"".",943,145,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p47_c3,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,47,3,3,"d, the input is not connected.
+
+NOTE If 256 characters are not enough, the array can be increased by adjusting the local constant
+""UPPER_USER_FIELDS"".
+
+Keep connection established
+If the parameter ""keepConnection"" is set, the connection is not broken after the completion of a job and can be used for
+further requests. Especially if there are many requests to the same web server over HTTPS, this shortens the required
+duration of subsequent requests.
+The connection is then broken by resetting ""keepConnection"".",512,80,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p48_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,48,1,2,"LHTTP
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 48
+4.4. LHTTP_FindStringInArray
+Description
+The function ""LHTTP_FindStringInArray"" searches an Array of Char for a string and returns its position as return value.
+Parameter
+Figure 4-4: LHTTP_FindStringInArray
+LHTTP_FindStringInArray
+
+String searchFor
+
+Array[*] of Char searchIn Array[*] of Char
+
+Table 4-5: Parameters of LHTTP_FindStringInArray
+Name Declaration Data type Description
+searchFor Input String Text to search for.
+searchIn InOut Array[*] of Char Array of Char to be searched.
+Ret_Val Return DInt Position (index) of the searched string in the array.
+-1: String was not found.
+
+4.5. LHTTP_ExtractStringFromArray
+Description
+The LHTTP_ExtractStringFromArray function extracts a string between two specified text parts from an array of chars.
+Parameter
+Figure 4-5: LHTTP_ExtractStringFromArray
+LHTTP_ExtractStringFromArray
+
+String textBefore extracted
+String
+String
+String textAfter",955,124,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p48_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,48,2,2,"of chars.
+Parameter
+Figure 4-5: LHTTP_ExtractStringFromArray
+LHTTP_ExtractStringFromArray
+
+String textBefore extracted
+String
+String
+String textAfter
+
+Array[*] of Char searchIn Array[*] of Char
+
+Table 4-6: Parameters of LHTTP_ExtractStringFromArray
+Name Declaration Data type Description
+textBefore Input String Text part before the text that is to be extracted
+textAfter Input String Text part after the text that is to be extracted
+extractedString Output String Extracted Text
+searchIn InOut Array[*] of Char Array of Char to be searched",539,73,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p49_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,49,1,2,"LHTTP
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 49
+Name Declaration Data type Description
+Ret_Val Return Word Return value:
+16#0000: Successful, Text was found
+16#9001: Only text before was found. String is output with max. length
+16#9002: Neither text before nor after was found
+
+4.6. LHTTP_ExtractStringFromArrayExt
+Description
+The function ""LHTTP_ExtractStringFromArrayExt"" extracts a string between two specified text parts from an array of char
+with extended options.
+
+NOTE The function is part of the library to allow easy parsing of the received data, but is not used by the
+library blocks themselves.
+
+Parameter
+Figure 4-6: LHTTP_ExtractStringFromArrayExt
+LHTTP_ExtractStringFromArrayExt
+
+String textBefore extracted
+String
+String
+String textAfter position DInt
+Bool includeBeforeAf
+ter length Int
+DInt startPos
+
+Array[*] of Char searchIn Array[*] of Char",877,123,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p49_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,49,2,2,"e extracted
+String
+String
+String textAfter position DInt
+Bool includeBeforeAf
+ter length Int
+DInt startPos
+
+Array[*] of Char searchIn Array[*] of Char
+
+Table 4-7: Parameters of LHTTP_ExtractStringFromArrayExt
+Name Declaration Data type Description
+textBefore Input String Text part before the text that is to be extracted
+textAfter Input String Text part after the text that is to be extracted
+includeBeforeAfter Input Bool If TRUE, the text parts before and after are extracted as well
+startPos Input DInt Position in the array from which the search is to be started
+extractedString Output String Extracted Text
+position Output DInt position (index) of the extracted text within the array
+length Output Int Length of the extracted text
+searchIn InOut Array[*] of Char Array of Char to be searched
+Ret_Val Return Word Return value:
+16#0000: Successful, Text was found
+16#9001: Only text before was found. String is output with max. length
+16#9002: Neither text before nor after was found",987,154,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p50_c1,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,50,1,3,"LHTTP
+Entry ID: 109780503 | V2.5.0 | 02/2026 © Siemens 2026 | 50
+4.7. PLC Data Types
+LHTTP_typeTLS
+The PLC data type ""LHTTP_typeTLS"" references the certificates required for secure connections via HTTPS.
+Table 4-8: Parameters of LHTTP_typeTLS
+Name Data type Description
+validateServerIdentity Bool A set bit means that the client validates the subjectAlternateName in the server's
+X.509 V3 certificate to verify the server's identity. The certificates are checked
+when the connection is established.
+serverCert UDInt ID of the X.509 V3 certificate (usually a CA certificate) used by the TLS client to
+validate the TLS server authentication.
+If this parameter is ""0"", the TLS client uses all (CA) certificates currently loaded in
+the client's Certificate Store to validate the server authentication.
+clientCert UDInt ID of your own X.509 V3 certificate.
+This is only relevant if the TLS server requires client authentication and can
+otherwise remain set to ""0"".",960,147,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p50_c2,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,50,2,3,"UDInt ID of your own X.509 V3 certificate.
+This is only relevant if the TLS server requires client authentication and can
+otherwise remain set to ""0"".
+
+NOTE You will find an application example for the usage of certificates in TIA Portal in the Siemens Industry
+Online Support:
+https://support.industry.siemens.com/cs/ww/en/view/109769068
+
+4.8. Error Handling
+General information about the status outputs and the diagnostics of the blocks of these libraries can be found in chapter
+14.2.
+The following are the status and error codes specific to the ""LHTTP"" library.
+The function blocks ""LHTTP_Get"" and ""LHTTP_PostPut"" output internal status and error codes describing the state of the
+function block as well as the HTTP status code received from the partner.
+Internal status codes
+Table 4-9: Internal status codes
+Code Description
+16#0000 Job completed without errors
+16#0003 Connection broken
+16#7000 No job active
+16#7001 First call of the command
+16#7002 Follow-up call of the command
+16#7003",995,150,False
+109780503_Libraries_Comm_Controller_DOC_V2_5_0_en_p50_c3,109780503_Libraries_Comm_Controller_DOC_V2_5_0_en.csv,Libraries for Communication for SIMATIC Controllers,Application Example / Library Documentation,SIMATIC Controllers (S7-1200/S7-1500),109780503,2.5.0,en,50,3,3,"mpleted without errors
+16#0003 Connection broken
+16#7000 No job active
+16#7001 First call of the command
+16#7002 Follow-up call of the command
+16#7003 Connection is broken
+16#7004 Connection is established and monitored. FB is waiting for job.
+16#7005 Request has been sent, response pending
+16#8201 The array at the parameter ""responseData"" does not begin with ""0"".",366,56,False
