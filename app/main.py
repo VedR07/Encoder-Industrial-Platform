@@ -1,6 +1,10 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+
+# Load API key securely from .env — must happen before any LangChain imports
+from app.config import GOOGLE_API_KEY
+
 from app.router import process_query_with_agents
 from app.data_loader import get_retriever
 

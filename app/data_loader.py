@@ -6,8 +6,8 @@ from langchain_community.vectorstores import Chroma
 from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_core.documents import Document
 
-# TODO: Insert Google API Key here later or export as environment variable
-os.environ["GOOGLE_API_KEY"] = os.getenv("GOOGLE_API_KEY", "YOUR_GOOGLE_API_KEY_HERE")
+# Load API key securely from .env before initializing any LangChain components
+from app.config import GOOGLE_API_KEY
 
 def load_and_index_data(data_dir: str = "../datasets", persist_dir: str = "./chroma_db") -> Chroma:
     """
