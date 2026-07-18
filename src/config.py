@@ -26,11 +26,16 @@ class Config:
 
     # --- LLM Configuration ---
     GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-    GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+    GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.0-flash")
     GEMINI_TIMEOUT = int(os.getenv("GEMINI_TIMEOUT", "60"))
 
     # --- Retrieval Configuration ---
     DEFAULT_TOP_K = int(os.getenv("RAG_TOP_K", "5"))
 
+    # --- Server API Configuration ---
+    API_HOST = os.getenv("API_HOST", "0.0.0.0")
+    API_PORT = int(os.getenv("API_PORT", "8000"))
+
 # Global configuration instance
 config = Config()
+
