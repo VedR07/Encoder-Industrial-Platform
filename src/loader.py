@@ -34,7 +34,48 @@ class DocumentIngestor:
         """
         self.data_dir = Path(data_dir)
         
+    def ingest_file(self, file_path: str | Path) -> List[Document]:
+        """
+        Loads a single document file and returns a list of LangChain Documents.
+        
+        Args:
+            file_path (str | Path): Path to the target document file.
+            
+        Returns:
+            List[Document]: Parsed document objects with enhanced metadata.
+        """
+        path = Path(file_path)
+        if not path.exists() or not path.is_file():
+            logger.error(f"File does not exist: {path}")
+            return []
+
+        ext = path.suffix.lower()
+        if ext not in config.SUPPORTED_EXTENSIONS:
+            logger.warning(f"Unsupported file extension '{ext}' for file: {path.name}")
+            return []
+
+        loader_class = LOADER_MAPPING.get(ext)
+        if not loader_class:
+            logger.warning(f"No loader configured for extension '{ext}'")
+            return []
+
+        try:
+            logger.info(f"Ingesting single file: {path.name}")
+            loader = loader_class(str(path))
+            docs = loader.load()
+
+            for doc in docs:
+                doc.metadata["filename"] = path.name
+                doc.metadata["file_type"] = ext
+
+            logger.info(f"Successfully ingested {path.name} ({len(docs)} page/section objects)")
+            return docs
+        except Exception as e:
+            logger.error(f"Failed to ingest file {path.name}: {e}")
+            return []
+
     def ingest_directory(self) -> List[Document]:
+
         """
         Scans the data directory, loads supported files, and returns a list of Langchain Documents.
         
