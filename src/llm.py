@@ -36,7 +36,7 @@ class GeminiLLM:
 
         Args:
             api_key: Google GenAI API key. Falls back to config / .env.
-            model_name: Model identifier (default: gemini-2.5-flash).
+            model_name: Model identifier (default: gemini-2.0-flash).
             timeout: Request timeout in seconds.
 
         Raises:
@@ -54,7 +54,6 @@ class GeminiLLM:
 
         # Initialize the client
         self.client = genai.Client(api_key=self.api_key)
-
         logger.info(f"GeminiLLM initialized (model={self.model_name}, timeout={self.timeout}s)")
 
     def generate(self, prompt: str) -> str:
@@ -88,8 +87,6 @@ class GeminiLLM:
             )
 
             elapsed = time.time() - start_time
-
-            # Extract the text from the response
             answer = response.text
 
             if not answer or not answer.strip():
