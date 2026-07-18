@@ -1,0 +1,1845 @@
+chunk_id,source_file,doc_title,doc_type,product_family,entry_id,version,language,page,chunk_index,page_chunk_count,chunk_text,char_count,word_count,is_boilerplate
+G120C_op_instr_0917_en-US_p1_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,1,1,1,"09/2017 Edition
+Low voltage converter
+Built-in units with frame sizes AA ... F
+Operating Instructions
+www.siemens.com/drives
+SINAMICS G120C
+SINAMICS",148,19,False
+G120C_op_instr_0917_en-US_p3_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,3,1,1,"SINAMICS
+SINAMICS G120C
+SINAMICS G120C converter
+Operating Instructions
+Edition 09/2017, firmware 4.7 SP9
+09/2017, FW V4.7 SP9
+A5E34263257B AF
+Changes in the current
+manual
+Fundamental safety
+instructions 1
+Introduction 2
+Description 3
+Installing 4
+Commissioning 5
+Advanced commissioning 6
+Saving settings and series
+commissioning 7
+Alarms, faults and system
+messages 8
+Corrective maintenance 9
+Technical data 10
+Appendix A",423,59,False
+G120C_op_instr_0917_en-US_p4_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,4,1,4,"Legal information
+Warning notice system
+This manual contains notices you have to observe in order to ensure your personal safety, as well as to prevent
+damage to property. The notices referring to your personal safety are highlighted in the manual by a safety alert
+symbol, notices referring only to property damage have no safety alert symbol. These notices shown below are
+graded according to the degree of danger.
+DANGER
+indicates that death or severe personal injury will result if proper precautions are not taken.
+WARNING
+indicates that death or severe personal injury may result if proper precautions are not taken.
+CAUTION
+indicates that minor personal injury can result if proper precautions are not taken.
+NOTICE
+indicates that property damage can result if proper precautions are not taken.
+If more than one degree of danger is present, the warning notice representing the highest degree of danger will be
+used.",922,148,True
+G120C_op_instr_0917_en-US_p4_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,4,2,4,"er precautions are not taken.
+If more than one degree of danger is present, the warning notice representing the highest degree of danger will be
+used. A notice warning of injury to persons with a safety alert symbol may also include a warning relating to property
+damage.
+Qualified Personnel
+The product/system described in this documentation may be operated only by personnel qualified for the specific
+task in accordance with the relevant documentation, in particular its warning notices and safety instructions. Qualified
+personnel are those who, based on their training and experience, are capable of identifying risks and avoiding
+potential hazards when working with these products/systems.
+Proper use of Siemens products
+Note the following:
+WARNING
+Siemens products may only be used for the applications described in the catalog and in the relevant technical
+documentation. If products and components from other manufacturers are used, these must be recommended or
+approved by Siemens.",991,150,False
+G120C_op_instr_0917_en-US_p4_c3,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,4,3,4,"the relevant technical
+documentation. If products and components from other manufacturers are used, these must be recommended or
+approved by Siemens. Proper transport, storage, installation, assembly, commissioning, operation and
+maintenance are required to ensure that the products operate safely and without any problems. The permissible
+ambient conditions must be complied with. The information in the relevant documentation must be observed.
+Trademarks
+All names identified by ® are registered trademarks of Siemens AG. The remaining trademarks in this publication
+may be trademarks whose use by third parties for their own purposes could violate the rights of the owner.
+Disclaimer of Liability
+We have reviewed the contents of this publication to ensure consistency with the hardware and software described.
+Since variance cannot be precluded entirely, we cannot guarantee full consistency.",896,128,False
+G120C_op_instr_0917_en-US_p4_c4,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,4,4,4,"ion to ensure consistency with the hardware and software described.
+Since variance cannot be precluded entirely, we cannot guarantee full consistency. However, the information in
+this publication is reviewed regularly and any necessary corrections are included in subsequent editions.
+Siemens AG
+Division Digital Factory
+Postfach 48 48
+90026 NÜRNBERG
+GERMANY
+A5E34263257B AF
+P 09/2017 Subject to change
+Copyright © Siemens AG 2011 - 2017.
+All rights reserved",458,67,False
+G120C_op_instr_0917_en-US_p5_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,5,1,2,"Changes in the current manual
+Notable changes since the 11/2016 edition of the Manual
+New hardware
+● Operator Panel IOP replaced by Intelligent Operator Panel 2 (IOP-2).
+Installing the inverter (Page 50)
+Tools to commission the inverter (Page 116)
+● dU/dt filter plus Voltage Peak Limiter
+Mount dU/dt filter plus Voltage Peak Limiter (Page 62)
+Hardware, which is no longer described in the current operating instructions
+Frame size FSA, power range 0.55 kW ... 2.2 kW
+Information on inverters FSA, 0.55 kW ...",509,83,False
+G120C_op_instr_0917_en-US_p5_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,5,2,2,"is no longer described in the current operating instructions
+Frame size FSA, power range 0.55 kW ... 2.2 kW
+Information on inverters FSA, 0.55 kW ... 2.2 kW is provided in Edition 11/2016 of the operating
+instructions.
+Operating instructions SINAMICS G120C, FW V4.7 SP6 (https://
+support.industry.siemens.com/cs/ww/en/view/109744769)
+New functions
+● Telegram 350 added for PROFIBUS and PROFINET
+Drive control via PROFIBUS or PROFINET (Page 179)
+● Improved method for optimizing the efficiency of standard induction motors
+Efficiency optimization (Page 311)
+● End position control with two limit switches
+Limit position control (Page 202)
+● The inverter issues an alarm if a memory card is not inserted.
+Activate message for a memory card that is not inserted (Page 332)
+Overview of all new and modified functions in firmware V4.7 SP9:
+Firmware version 4.7 SP9 (Page 429)
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 5",959,146,False
+G120C_op_instr_0917_en-US_p6_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,6,1,2,"Corrections
+● Default 14 of the terminal strip corrected:
+The higher-level control switches the function of the terminal strip via PZD01, bit 15 (not
+via digital input DI 3).
+Default setting of the interfaces (Page 91)
+● Motor holding brake function corrected:
+– The inverter sets the signal ""Operation released"" to ""high"" after expiry of the time p1216
+(not with the ON command).
+– The inverter sets the signal ""Operation released"" to ""low"" with the OFF command (not
+with the signal ""Motor is magnetized"").
+Motor holding brake (Page 206)
+● The maximum permissible cable length has been corrected:
+Optional components (Page 36)
+● The restrictions relating to the electromagnetic compatibility of the inverter have been
+corrected.
+Maximum permissible motor cable length (Page 77)
+● With the installation of a suitable fuse, the short-circuit current rating SCCR of the inverter
+is 100 kA, irrespective of the frame size.
+General inverter technical data (Page 405)
+Other revised chapters
+● Description",999,158,False
+G120C_op_instr_0917_en-US_p6_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,6,2,2,"rating SCCR of the inverter
+is 100 kA, irrespective of the frame size.
+General inverter technical data (Page 405)
+Other revised chapters
+● Description for drive control via PROFIBUS and PROFINET has been revised
+Drive control via PROFIBUS or PROFINET (Page 179)
+● External Class B line filters for inverters FSAA ... FSC, and reference to additional optional
+components for the inverter added
+Optional components (Page 36)
+● Data regarding branch protection reduced to typical fuses.
+Branch circuit protection (Page 75)
+● Technical data for the digital inputs and digital outputs added:
+– Minimum current for the ""high"" state for digital inputs
+– Maximum current for the ""low"" state for transistor outputs
+Technical data of inputs and outputs (Page 401)
+Changes in the current manual
+SINAMICS G120C converter
+6 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",872,137,False
+G120C_op_instr_0917_en-US_p7_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,7,1,7,"Table of contents
+Changes in the current manual............................................................................................................ ........5
+1 Fundamental safety instructions.................................................................................................................15
+1.1 General safety instructions.....................................................................................................15
+1.2 Equipment damage due to electric fields or electrostatic discharge................................ ......20
+1.3 Warranty and liability for application examples......................................................................21
+1.4 Industrial security.............................................................................................................",818,38,True
+G120C_op_instr_0917_en-US_p7_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,7,2,7,"...............21
+1.4 Industrial security............................................................................................................. ......22
+1.5 Residual risks of power drive systems...................................................................................23
+2 Introduction.................................................................................................................................................25
+2.1 About the Manual...................................................................................................................25
+2.2 Guide through the manual......................................................................................................26
+3 Description..................................................................................................................................................29
+3.1 Scope of delivery inverters FSAA ... FSC........................................................................",998,33,False
+G120C_op_instr_0917_en-US_p7_c3,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,7,3,7,"...............................29
+3.1 Scope of delivery inverters FSAA ... FSC........................................................................ ......30
+3.2 Scope of delivery inverters FSD ... FSF.................................................................................32
+3.3 Directives and standards........................................................................................................34
+3.4 Optional components....................................................................................................... ......36
+3.5 Motors and multi-motor drives that can be operated..............................................................40
+4 Installing............................................................................................................................................... ......41
+4.1 EMC-compliant setup of the machine or plant.................................................................",954,46,False
+G120C_op_instr_0917_en-US_p7_c4,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,7,4,7,"............................ ......41
+4.1 EMC-compliant setup of the machine or plant................................................................. ......41
+4.1.1 Control cabinet.......................................................................................................................42
+4.1.2 Cables....................................................................................................................................43
+4.1.3 Electromechanical components.......................................................................................",571,19,False
+G120C_op_instr_0917_en-US_p7_c5,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,7,5,7,"..........................43
+4.1.3 Electromechanical components....................................................................................... ......46
+4.2 Mounting base components...................................................................................................47
+4.3 Installing the inverter..............................................................................................................50
+4.4 Mounting the line reactor........................................................................................................57
+4.5 Mounting the output reactor.............................................................................................",690,23,False
+G120C_op_instr_0917_en-US_p7_c6,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,7,6,7,".......................57
+4.5 Mounting the output reactor............................................................................................. ......59
+4.6 Mount dU/dt filter plus Voltage Peak Limiter..........................................................................62
+4.7 Mounting the braking resistor.................................................................................................63
+4.8 Connect the line supply, motor and braking resistor..............................................................65
+4.8.1 Permissible line supplies........................................................................................................65
+4.8.1.1 TN line system ((400-V-Umrichter)).................................................................................",799,38,False
+G120C_op_instr_0917_en-US_p7_c7,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,7,7,7,"........................65
+4.8.1.1 TN line system ((400-V-Umrichter))................................................................................. ......65
+4.8.1.2 TT line system........................................................................................................................66
+4.8.1.3 IT system................................................................................................................................67
+4.8.2 Protective conductor........................................................................................................ ......67
+4.8.3 Connecting the inverter and inverter components to the supply............................................69
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 7",795,40,False
+G120C_op_instr_0917_en-US_p8_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,8,1,10,"4.8.4 Branch circuit protection.........................................................................................................75
+4.8.5 Maximum permissible motor cable length..............................................................................77
+4.8.6 Connecting the motor to the inverter in a star or delta connection.........................................79
+4.8.7 Operating a converter on the residual current device...................................................... ......80
+4.9 Connecting the interfaces for the inverter control............................................................ ......81
+4.9.1 Overview of the interfaces......................................................................................................81
+4.9.2 Fieldbus interface assignment.........................................................................................",887,51,False
+G120C_op_instr_0917_en-US_p8_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,8,2,10,".......................81
+4.9.2 Fieldbus interface assignment......................................................................................... ......83
+4.9.3 Terminal strips........................................................................................................................84
+4.9.4 Factory setting of the interfaces.............................................................................................88
+4.9.5 Default setting of the interfaces..............................................................................................91
+4.9.6 Fail-safe digital input........................................................................................................ ....100
+4.9.7 Wiring terminal strips............................................................................................................101
+4.9.7.1 Connecting the cable shields (FSAA ...",903,37,False
+G120C_op_instr_0917_en-US_p8_c3,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,8,3,10,"....................................................................................................101
+4.9.7.1 Connecting the cable shields (FSAA ... FSC)......................................................................103
+4.9.7.2 Connecting cable shields (FSD ... FSF).......................................................................... ....104
+4.9.8 Fieldbus interfaces...............................................................................................................104
+4.9.9 Connecting the inverter to PROFINET.................................................................................104
+4.9.9.1 Communication via PROFINET IO and Ethernet.................................................................104
+4.9.9.2 Connecting the PROFINET cable to the inverter............................................................. ....106
+4.9.9.3 What do you have to set for communication via PROFINET?.........................................",970,53,False
+G120C_op_instr_0917_en-US_p8_c4,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,8,4,10,"..................................... ....106
+4.9.9.3 What do you have to set for communication via PROFINET?......................................... ....106
+4.9.9.4 Installing GSDML............................................................................................................. ....107
+4.9.10 Connecting the inverter to PROFIBUS.................................................................................108
+4.9.10.1 Connecting the PROFIBUS cable to the inverter.................................................................108
+4.9.10.2 What do you have to set for communication via PROFIBUS?.............................................109
+4.9.10.3 Installing the GSD............................................................................................................ ....110
+4.9.10.4 Setting the address..........................................................................................................",942,52,False
+G120C_op_instr_0917_en-US_p8_c5,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,8,5,10,"....... ....110
+4.9.10.4 Setting the address.......................................................................................................... ....110
+4.10 Connecting a motor holding brake................................................................................... ....112
+4.11 Monitoring the temperature of the braking resistor.......................................................... ....113
+5 Commissioning.........................................................................................................................................115
+5.1 Commissioning guidelines............................................................................................... ....115
+5.2 Tools to commission the inverter.....................................................................................",819,35,False
+G120C_op_instr_0917_en-US_p8_c6,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,8,6,10,".................... ....115
+5.2 Tools to commission the inverter..................................................................................... ....116
+5.3 Preparing for commissioning................................................................................................117
+5.3.1 Collecting motor data....................................................................................................... ....117
+5.3.2 Inverter factory setting..........................................................................................................118
+5.3.3 Minimum and maximum speed........................................................................................",688,27,False
+G120C_op_instr_0917_en-US_p8_c7,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,8,7,10,"...........................118
+5.3.3 Minimum and maximum speed........................................................................................ ....119
+5.4 Quick commissioning using the BOP-2 operator panel........................................................120
+5.4.1 Overview of quick commissioning........................................................................................121
+5.4.2 Start quick commissioning and select the application class.................................................122
+5.4.3 Standard Drive Control.........................................................................................................124
+5.4.4 Dynamic Drive Control.....................................................................................................",784,37,False
+G120C_op_instr_0917_en-US_p8_c8,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,8,8,10,"..................124
+5.4.4 Dynamic Drive Control..................................................................................................... ....126
+5.4.5 Expert...................................................................................................................................128
+5.4.6 Identifying the motor data and optimizing the closed-loop control...................................",412,18,False
+G120C_op_instr_0917_en-US_p8_c9,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,8,9,10,"........................................128
+5.4.6 Identifying the motor data and optimizing the closed-loop control................................... ....133
+5.5 Quick commissioning with a PC...........................................................................................135
+5.5.1 Creating a project.................................................................................................................135
+5.5.2 Transfer inverters connected via USB into the project.........................................................136
+5.5.3 Go online and start quick commissioning.............................................................................139
+5.5.4 Overview of quick commissioning........................................................................................140
+5.5.5 Select the application class..................................................................................................141
+5.5.6 Standard Drive",959,51,False
+G120C_op_instr_0917_en-US_p8_c10,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,8,10,10,"Select the application class..................................................................................................141
+5.5.6 Standard Drive Control.........................................................................................................143
+Table of contents
+SINAMICS G120C converter
+8 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",373,23,False
+G120C_op_instr_0917_en-US_p9_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,9,1,9,"5.5.7 Dynamic Drive Control..................................................................................................... ....144
+5.5.8 Expert...................................................................................................................................145
+5.5.9 Identify motor data........................................................................................................... ....148
+5.6 Restoring the factory setting............................................................................................",550,17,False
+G120C_op_instr_0917_en-US_p9_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,9,2,9,"................ ....148
+5.6 Restoring the factory setting............................................................................................ ....151
+5.6.1 Resetting the safety functions to the factory setting.............................................................152
+5.6.2 Restore the factory settings (without safety functions).........................................................155
+6 Advanced commissioning.........................................................................................................................157
+6.1 Overview of the inverter functions........................................................................................157
+6.2 Sequence control when switching the motor on and off.......................................................160
+6.3 Adapt the default setting of the terminal strip.......................................................................162
+6.3.1 Digital",938,55,False
+G120C_op_instr_0917_en-US_p9_c3,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,9,3,9,".......160
+6.3 Adapt the default setting of the terminal strip.......................................................................162
+6.3.1 Digital inputs.........................................................................................................................163
+6.3.2 Digital outputs.................................................................................................................. ....165
+6.3.3 Analog input..................................................................................................................... ....166
+6.3.4 Analog output.......................................................................................................................170
+6.4 Controlling clockwise and counter-clockwise operation via digital inputs........................",812,33,False
+G120C_op_instr_0917_en-US_p9_c4,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,9,4,9,"..............................................170
+6.4 Controlling clockwise and counter-clockwise operation via digital inputs........................ ....173
+6.4.1 Two-wire control, method 1..................................................................................................174
+6.4.2 Two-wire control, method 2..................................................................................................175
+6.4.3 Two-wire control, method 3..................................................................................................176
+6.4.4 Three-wire control, method 1........................................................................................... ....177
+6.4.5 Three-wire control, method 2...........................................................................................",820,37,False
+G120C_op_instr_0917_en-US_p9_c5,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,9,5,9,"................ ....177
+6.4.5 Three-wire control, method 2........................................................................................... ....178
+6.5 Drive control via PROFIBUS or PROFINET.........................................................................179
+6.5.1 Receive data and send data............................................................................................ ....179
+6.5.2 Telegrams........................................................................................................................ ....180
+6.5.3 Control and status word 1................................................................................................",682,31,False
+G120C_op_instr_0917_en-US_p9_c6,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,9,6,9,".............. ....180
+6.5.3 Control and status word 1................................................................................................ ....182
+6.5.4 NAMUR message word........................................................................................................185
+6.5.5 Parameter channel...............................................................................................................186
+6.5.6 Examples for using the parameter channel..........................................................................189
+6.5.7 Extend telegrams and change signal interconnection..........................................................191
+6.5.8 Slave-to-slave communication.........................................................................................",794,33,False
+G120C_op_instr_0917_en-US_p9_c7,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,9,7,9,".......................191
+6.5.8 Slave-to-slave communication......................................................................................... ....193
+6.5.9 Acyclically reading and writing inverter parameters.............................................................193
+6.6 Drive control via Modbus RTU......................................................................................... ....194
+6.7 Drive control via USS...........................................................................................................197
+6.8 Drive control via Ethernet/IP............................................................................................ ....200
+6.9 Jogging.................................................................................................................................201
+6.10 Limit position control........................................................................................................",956,36,False
+G120C_op_instr_0917_en-US_p9_c8,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,9,8,9,"...............201
+6.10 Limit position control........................................................................................................ ....202
+6.11 Switching over the drive control (command data set)...................................................... ....204
+6.12 Motor holding brake......................................................................................................... ....206
+6.13 Free function blocks.............................................................................................................210
+6.14 Selecting physical units........................................................................................................211
+6.14.1 Select the motor standard....................................................................................................211
+6.14.2 Selecting the system of units...........................................................................................",954,40,False
+G120C_op_instr_0917_en-US_p9_c9,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,9,9,9,"...................211
+6.14.2 Selecting the system of units........................................................................................... ....211
+6.14.3 Selecting the technological unit of the technology controller........................................... ....213
+6.14.4 Setting the motor standard, system of units and technology unit using STARTER......... ....213
+6.15 Safe Torque Off (STO) safety function.................................................................................215
+Table of contents
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 9",614,54,False
+G120C_op_instr_0917_en-US_p10_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,10,1,9,"6.15.1 Function description.............................................................................................................215
+6.15.2 Commissioning STO........................................................................................................ ....217
+6.15.2.1 Safety functions password............................................................................................... ....217
+6.15.2.2 Configuring a safety function................................................................................................219
+6.15.2.3 Interconnecting the ""STO active"" signal...............................................................................221
+6.15.2.4 Setting the filter for fail-safe digital inputs........................................................................",812,31,False
+G120C_op_instr_0917_en-US_p10_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,10,2,9,"..................221
+6.15.2.4 Setting the filter for fail-safe digital inputs........................................................................ ....223
+6.15.2.5 Setting the forced checking procedure (test stop)................................................................225
+6.15.2.6 Activating the settings and checking the digital inputs.........................................................228
+6.15.2.7 Acceptance - completion of commissioning.........................................................................232
+6.16 Setpoints.......................................................................................................................... ....235
+6.16.1 Overview..........................................................................................................................",818,38,False
+G120C_op_instr_0917_en-US_p10_c3,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,10,3,9,".... ....235
+6.16.1 Overview.......................................................................................................................... ....235
+6.16.2 Analog input as setpoint source...........................................................................................236
+6.16.3 Specifying the setpoint via the fieldbus................................................................................237
+6.16.4 Motorized potentiometer as setpoint source.................................................................... ....238
+6.16.5 Fixed speed setpoint as setpoint source..............................................................................240
+6.17 Setpoint calculation..............................................................................................................243
+6.17.1 Overview of setpoint processing......................................................................................",940,40,False
+G120C_op_instr_0917_en-US_p10_c4,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,10,4,9,"......................243
+6.17.1 Overview of setpoint processing...................................................................................... ....243
+6.17.2 Invert setpoint.......................................................................................................................244
+6.17.3 Inhibit direction of rotation....................................................................................................245
+6.17.4 Skip frequency bands and minimum speed..................................................................... ....246
+6.17.5 Speed limitation....................................................................................................................247
+6.17.6 Ramp-function generator.................................................................................................",837,29,False
+G120C_op_instr_0917_en-US_p10_c5,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,10,5,9,"...................247
+6.17.6 Ramp-function generator................................................................................................. ....248
+6.18 PID technology controller.....................................................................................................252
+6.19 Motor control.................................................................................................................... ....258
+6.19.1 Reactor, filter and cable resistance at the inverter output....................................................258
+6.19.2 V/f control.............................................................................................................................259
+6.19.2.1 Characteristics of U/f control................................................................................................261
+6.19.2.2 Optimizing motor starting.................................................................................................",976,35,False
+G120C_op_instr_0917_en-US_p10_c6,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,10,6,9,"...............261
+6.19.2.2 Optimizing motor starting................................................................................................. ....264
+6.19.3 Encoderless vector control...................................................................................................268
+6.19.3.1 Structure of vector control without encoder (sensorless).....................................................268
+6.19.3.2 Optimizing the speed controller............................................................................................270
+6.19.3.3 Advanced settings................................................................................................................273
+6.19.3.4 Friction characteristic.......................................................................................................",830,29,False
+G120C_op_instr_0917_en-US_p10_c7,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,10,7,9,"...........273
+6.19.3.4 Friction characteristic....................................................................................................... ....274
+6.19.3.5 Moment of inertia estimator..................................................................................................276
+6.19.4 Application examples for closed-loop motor control.............................................................282
+6.20 Electrically braking the motor...............................................................................................283
+6.20.1 DC braking....................................................................................................................... ....285
+6.20.2 Compound braking...............................................................................................................288
+6.20.3 Dynamic braking..............................................................................................................",968,32,False
+G120C_op_instr_0917_en-US_p10_c8,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,10,8,9,"..............288
+6.20.3 Dynamic braking.............................................................................................................. ....290
+6.21 Overcurrent protection..................................................................................................... ....292
+6.22 Inverter protection using temperature monitoring............................................................",409,15,False
+G120C_op_instr_0917_en-US_p10_c9,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,10,9,9,"............................ ....292
+6.22 Inverter protection using temperature monitoring............................................................ ....293
+6.23 Motor protection with temperature sensor............................................................................296
+6.24 Motor protection by calculating the temperature..................................................................299
+6.25 Motor and inverter protection by limiting the voltage............................................................301
+6.26 Flying restart – switching on while the motor is running.......................................................303
+6.27 Automatic restart..................................................................................................................305
+Table of contents
+SINAMICS G120C converter
+10 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",895,60,False
+G120C_op_instr_0917_en-US_p11_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,11,1,9,"6.28 Kinetic buffering (Vdc min control)................................................................................... ....309
+6.29 Efficiency optimization..........................................................................................................311
+6.30 Line contactor control...........................................................................................................314
+6.31 Calculating the energy saving for fluid flow machines.....................................................",519,23,False
+G120C_op_instr_0917_en-US_p11_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,11,2,9,"...................................314
+6.31 Calculating the energy saving for fluid flow machines..................................................... ....316
+6.32 Switchover between different settings..................................................................................318
+7 Saving settings and series commissioning...............................................................................................321
+7.1 Saving settings on a memory card.......................................................................................322
+7.1.1 Memory cards..................................................................................................................",687,32,False
+G120C_op_instr_0917_en-US_p11_c3,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,11,3,9,"..............322
+7.1.1 Memory cards.................................................................................................................. ....322
+7.1.2 Saving setting on memory card............................................................................................323
+7.1.3 Transferring the setting from the memory card....................................................................327
+7.1.4 Safely remove the memory card...................................................................................... ....330
+7.1.5 Activate message for a memory card that is not inserted................................................",652,37,False
+G120C_op_instr_0917_en-US_p11_c4,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,11,4,9,"................................ ....330
+7.1.5 Activate message for a memory card that is not inserted................................................ ....332
+7.2 Saving the settings to a PC..................................................................................................333
+7.3 Saving settings to an operator panel....................................................................................337
+7.4 Other ways to back up settings............................................................................................339
+7.5 Write protection....................................................................................................................340
+7.6 Know-how protection............................................................................................................342
+7.6.1 Extending the exception list for know-how protection......................................................",937,49,False
+G120C_op_instr_0917_en-US_p11_c5,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,11,5,9,"..................................342
+7.6.1 Extending the exception list for know-how protection...................................................... ....345
+7.6.2 Activating and deactivating know-how protection............................................................ ....346
+8 Alarms, faults and system messages.......................................................................................................349
+8.1 Operating states indicated on LEDs.....................................................................................350
+8.2 Identification & maintenance data (I&M).......................................................................... ....353
+8.3 Alarms, alarm buffer, and alarm history...........................................................................",795,43,False
+G120C_op_instr_0917_en-US_p11_c6,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,11,6,9,"....................... ....353
+8.3 Alarms, alarm buffer, and alarm history........................................................................... ....354
+8.4 Faults, alarm buffer and alarm history..................................................................................357
+8.5 List of alarms and faults...................................................................................................",415,23,False
+G120C_op_instr_0917_en-US_p11_c7,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,11,7,9,"..................357
+8.5 List of alarms and faults................................................................................................... ....361
+9 Corrective maintenance............................................................................................................................369
+9.1 Spare parts compatibility......................................................................................................369
+9.2 Replacing inverter components............................................................................................370
+9.2.1 Overview of how to replace an inverter................................................................................371
+9.2.2 Replacing a converter with enabled safety function.............................................................373
+9.2.3 Replacing a converter without enabled safety function........................................................378
+9.2.4 Replacing a converter without data",983,49,False
+G120C_op_instr_0917_en-US_p11_c8,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,11,8,9,"lacing a converter without enabled safety function........................................................378
+9.2.4 Replacing a converter without data backup..................................................................... ....380
+9.2.5 Replacing devices with active know-how protection........................................................ ....380
+9.2.6 Spare parts...........................................................................................................................383
+9.2.7 Replace the fan unit for the heat sink...................................................................................385
+9.2.8 Replacing the roof-mounted fan...........................................................................................389
+9.3 Firmware upgrade and downgrade..................................................................................",877,45,False
+G120C_op_instr_0917_en-US_p11_c9,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,11,9,9,"..............................389
+9.3 Firmware upgrade and downgrade.................................................................................. ....391
+9.3.1 Upgrading the firmware........................................................................................................393
+9.3.2 Firmware downgrade....................................................................................................... ....395
+9.3.3 Correcting an unsuccessful firmware upgrade or downgrade..............................................397
+9.4 Reduced acceptance after component replacement and firmware change.........................398
+Table of contents
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 11",749,47,False
+G120C_op_instr_0917_en-US_p12_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,12,1,9,"9.5 If the converter no longer responds................................................................................. ....399
+10 Technical data...................................................................................................................................... ....401
+10.1 Technical data of inputs and outputs............................................................................... ....401
+10.2 High Overload and Low Overload........................................................................................403
+10.3 Overload capability of the inverter........................................................................................404
+10.4 General inverter technical data........................................................................................",801,37,False
+G120C_op_instr_0917_en-US_p12_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,12,2,9,"......................404
+10.4 General inverter technical data........................................................................................ ....405
+10.5 Technical data dependent on the power..............................................................................406
+10.6 Data regarding the power loss in partial load operation.......................................................412
+10.7 Current reduction depending on pulse frequency............................................................",513,31,False
+G120C_op_instr_0917_en-US_p12_c3,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,12,3,9,"...................................412
+10.7 Current reduction depending on pulse frequency............................................................ ....413
+10.8 Restrictions for special ambient conditions..........................................................................414
+10.9 Electromagnetic compatibility of the inverter........................................................................418
+10.9.1 Harmonic currents................................................................................................................421
+10.9.2 EMC limit values in South Korea..........................................................................................421
+10.10 Accessories..........................................................................................................................422
+10.10.1 Line reactor......................................................................................................................",964,36,False
+G120C_op_instr_0917_en-US_p12_c4,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,12,4,9,"........422
+10.10.1 Line reactor...................................................................................................................... ....422
+10.10.2 Line filter...............................................................................................................................423
+10.10.3 Output reactor.................................................................................................................. ....424
+10.10.4 Sine-wave filter.....................................................................................................................425
+10.10.5 dU/dt filter plus Voltage Peak Limiter...................................................................................426
+10.10.6 Braking resistor................................................................................................................",868,25,False
+G120C_op_instr_0917_en-US_p12_c5,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,12,5,9,"..........426
+10.10.6 Braking resistor................................................................................................................ ....427
+A Appendix...................................................................................................................................................429
+A.1 New and extended functions................................................................................................429
+A.1.1 Firmware version 4.7 SP9....................................................................................................429
+A.1.2 Firmware version 4.7 SP6....................................................................................................431
+A.1.3 Firmware version 4.7 SP3....................................................................................................432
+A.1.4 Firmware version 4.7............................................................................................................435
+A.1.5",995,32,False
+G120C_op_instr_0917_en-US_p12_c6,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,12,6,9,"...432
+A.1.4 Firmware version 4.7............................................................................................................435
+A.1.5 Firmware version 4.6 SP6....................................................................................................436
+A.1.6 Firmware version 4.6............................................................................................................437
+A.1.7 Firmware version 4.5............................................................................................................438
+A.2 Handling the BOP 2 operator panel.................................................................................",673,25,False
+G120C_op_instr_0917_en-US_p12_c7,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,12,7,9,"............................438
+A.2 Handling the BOP 2 operator panel................................................................................. ....439
+A.2.1 Menu structure, symbols and keys.......................................................................................439
+A.2.2 Changing settings using BOP-2...........................................................................................440
+A.2.3 Changing indexed parameters.............................................................................................441
+A.2.4 Directly entering the parameter number and value..............................................................442
+A.2.5 A parameter cannot be changed..........................................................................................443
+A.3 The device trace in STARTER.............................................................................................444
+A.4 Interconnecting signals in the",959,49,False
+G120C_op_instr_0917_en-US_p12_c8,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,12,8,9,"ce trace in STARTER.............................................................................................444
+A.4 Interconnecting signals in the converter...............................................................................447
+A.4.1 Fundamentals.................................................................................................................. ....447
+A.4.2 Application example.............................................................................................................449
+A.5 Connecting a fail-safe digital input................................................................................... ....451
+A.6 Acceptance test for the safety function............................................................................",773,30,False
+G120C_op_instr_0917_en-US_p12_c9,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,12,9,9,"...................... ....451
+A.6 Acceptance test for the safety function............................................................................ ....453
+A.6.1 Recommended acceptance test...........................................................................................453
+A.6.2 Machine documentation.......................................................................................................456
+Table of contents
+SINAMICS G120C converter
+12 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",528,32,False
+G120C_op_instr_0917_en-US_p13_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,13,1,1,"A.6.3 Documenting the settings for the basic functions, firmware V4.4 ... V4.7 SP6................ ....458
+A.7 Manuals and technical support........................................................................................ ....459
+A.7.1 Overview of the manuals......................................................................................................459
+A.7.2 Configuring support..............................................................................................................461
+A.7.3 Product Support............................................................................................................... ....462
+Index.........................................................................................................................................................463
+Table of contents
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 13",921,48,False
+G120C_op_instr_0917_en-US_p14_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,14,1,1,"Table of contents
+SINAMICS G120C converter
+14 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",107,15,False
+G120C_op_instr_0917_en-US_p15_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,15,1,2,"Fundamental safety instructions 1
+1.1 General safety instructions
+WARNING
+Electric shock and danger to life due to other energy sources
+Touching live components can result in death or severe injury.
+● Only work on electrical devices when you are qualified for this job.
+● Always observe the country-specific safety rules.
+Generally, the following six steps apply when establishing safety:
+1. Prepare for disconnection. Notify all those who will be affected by the procedure.
+2. Isolate the drive system from the power supply and take measures to prevent it being
+switched back on again.
+3. Wait until the discharge time specified on the warning labels has elapsed.
+4. Check that there is no voltage between any of the power connections, and between any
+of the power connections and the protective conductor connection.
+5. Check whether the existing auxiliary supply circuits are de-energized.
+6. Ensure that the motors cannot move.
+7. Identify all other dangerous energy sources, e.g.",984,156,False
+G120C_op_instr_0917_en-US_p15_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,15,2,2,"r the existing auxiliary supply circuits are de-energized.
+6. Ensure that the motors cannot move.
+7. Identify all other dangerous energy sources, e.g. compressed air, hydraulic systems, or
+water. Switch the energy sources to a safe state.
+8. Check that the correct drive system is completely locked.
+After you have completed the work, restore the operational readiness in the inverse sequence.
+WARNING
+Electric shock due to connection to an unsuitable power supply
+When equipment is connected to an unsuitable power supply, exposed components may
+carry a hazardous voltage that might result in serious injury or death.
+● Only use power supplies that provide SELV (Safety Extra Low Voltage) or PELV-
+(Protective Extra Low Voltage) output voltages for all connections and terminals of the
+electronics modules.
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 15",897,137,False
+G120C_op_instr_0917_en-US_p16_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,16,1,3,"WARNING
+Electric shock due to equipment damage
+Improper handling may cause damage to equipment. For damaged devices, hazardous
+voltages can be present at the enclosure or at exposed components; if touched, this can
+result in death or severe injury.
+● Ensure compliance with the limit values specified in the technical data during transport,
+storage and operation.
+● Do not use any damaged devices.
+WARNING
+Electric shock due to unconnected cable shield
+Hazardous touch voltages can occur through capacitive cross-coupling due to unconnected
+cable shields.
+● As a minimum, connect cable shields and the conductors of power cables that are not
+used (e.g.",652,102,False
+G120C_op_instr_0917_en-US_p16_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,16,2,3,"tive cross-coupling due to unconnected
+cable shields.
+● As a minimum, connect cable shields and the conductors of power cables that are not
+used (e.g. brake cores) at one end at the grounded housing potential.
+WARNING
+Electric shock if there is no ground connection
+For missing or incorrectly implemented protective conductor connection for devices with
+protection class I, high voltages can be present at open, exposed parts, which when touched,
+can result in death or severe injury.
+● Ground the device in compliance with the applicable regulations.
+WARNING
+Arcing when a plug connection is opened during operation
+Opening a plug connection when a system is operation can result in arcing that may cause
+serious injury or death.
+● Only open plug connections when the equipment is in a voltage-free state, unless it has
+been explicitly stated that they can be opened in operation.
+WARNING
+Electric shock due to residual charges in power components
+Because of the capacitors, a hazardous voltage is",998,161,False
+G120C_op_instr_0917_en-US_p16_c3,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,16,3,3,"they can be opened in operation.
+WARNING
+Electric shock due to residual charges in power components
+Because of the capacitors, a hazardous voltage is present for up to 5 minutes after the power
+supply has been switched off. Contact with live parts can result in death or serious injury.
+● Wait for 5 minutes before you check that the unit really is in a no-voltage condition and
+start work.
+Fundamental safety instructions
+1.1 General safety instructions
+SINAMICS G120C converter
+16 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",544,88,False
+G120C_op_instr_0917_en-US_p17_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,17,1,4,"NOTICE
+Property damage due to loose power connections
+Insufficient tightening torques or vibration can result in loose power connections. This can
+result in damage due to fire, device defects or malfunctions.
+● Tighten all power connections to the prescribed torque.
+● Check all power connections at regular intervals, particularly after equipment has been
+transported.
+WARNING
+Spread of fire from built-in devices
+In the event of fire outbreak, the enclosures of built-in devices cannot prevent the escape of
+fire and smoke.",525,80,False
+G120C_op_instr_0917_en-US_p17_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,17,2,4,"NG
+Spread of fire from built-in devices
+In the event of fire outbreak, the enclosures of built-in devices cannot prevent the escape of
+fire and smoke. This can result in serious personal injury or property damage.
+● Install built-in units in a suitable metal cabinet in such a way that personnel are protected
+against fire and smoke, or take other appropriate measures to protect personnel.
+● Ensure that smoke can only escape via controlled and monitored paths.
+WARNING
+Failure of pacemakers or implant malfunctions due to electromagnetic fields
+Electromagnetic fields (EMF) are generated by the operation of electrical power equipment,
+such as transformers, converters, or motors.",682,106,False
+G120C_op_instr_0917_en-US_p17_c3,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,17,3,4,"agnetic fields
+Electromagnetic fields (EMF) are generated by the operation of electrical power equipment,
+such as transformers, converters, or motors. People with pacemakers or implants in the
+immediate vicinity of this equipment are at particular risk.
+● If you have a heart pacemaker or implant, maintain a minimum distance of 2 m from
+electrical power equipment.
+WARNING
+Unexpected movement of machines caused by radio devices or mobile phones
+When radio devices or mobile phones with a transmission power > 1 W are used in the
+immediate vicinity of components, they may cause the equipment to malfunction.
+Malfunctions may impair the functional safety of machines and can therefore put people in
+danger or lead to property damage.
+● If you come closer than around 2 m to such components, switch off any radios or mobile
+phones.
+● Use the ""SIEMENS Industry Online Support App"" only on equipment that has already been
+switched off.
+Fundamental safety instructions
+1.1 General safety",984,158,False
+G120C_op_instr_0917_en-US_p17_c4,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,17,4,4,"Use the ""SIEMENS Industry Online Support App"" only on equipment that has already been
+switched off.
+Fundamental safety instructions
+1.1 General safety instructions
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 17",253,35,False
+G120C_op_instr_0917_en-US_p18_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,18,1,2,"WARNING
+Motor fire in the event of insulation overload
+There is higher stress on the motor insulation through a ground fault in an IT system. If the
+insulation fails, it is possible that death or severe injury can occur as a result of smoke and
+fire.
+● Use a monitoring device that signals an insulation fault.
+● Correct the fault as quickly as possible so the motor insulation is not overloaded.
+WARNING
+Fire due to inadequate ventilation clearances
+Inadequate ventilation clearances can cause overheating of components with subsequent
+fire and smoke. This can cause severe injury or even death. This can also result in increased
+downtime and reduced service lives for devices/systems.
+● Ensure compliance with the specified minimum clearance as ventilation clearance for the
+respective component.
+WARNING
+Unrecognized dangers due to missing or illegible warning labels
+Dangers might not be recognized if warning labels are missing or illegible.",946,149,False
+G120C_op_instr_0917_en-US_p18_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,18,2,2,"t.
+WARNING
+Unrecognized dangers due to missing or illegible warning labels
+Dangers might not be recognized if warning labels are missing or illegible. Unrecognized
+dangers may cause accidents resulting in serious injury or death.
+● Check that the warning labels are complete based on the documentation.
+● Attach any missing warning labels to the components, where necessary in the national
+language.
+● Replace illegible warning labels.
+NOTICE
+Device damage caused by incorrect voltage/insulation tests
+Incorrect voltage/insulation tests can damage the device.
+● Before carrying out a voltage/insulation check of the system/machine, disconnect the
+devices as all converters and motors have been subject to a high voltage test by the
+manufacturer, and therefore it is not necessary to perform an additional test within the
+system/machine.
+Fundamental safety instructions
+1.1 General safety instructions
+SINAMICS G120C converter
+18 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",990,143,False
+G120C_op_instr_0917_en-US_p19_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,19,1,2,"WARNING
+Unexpected movement of machines caused by inactive safety functions
+Inactive or non-adapted safety functions can trigger unexpected machine movements that
+may result in serious injury or death.
+● Observe the information in the appropriate product documentation before commissioning.
+● Carry out a safety inspection for functions relevant to safety on the entire system, including
+all safety-related components.
+● Ensure that the safety functions used in your drives and automation tasks are adjusted
+and activated through appropriate parameterizing.
+● Perform a function test.
+● Only put your plant into live operation once you have guaranteed that the functions relevant
+to safety are running correctly.
+Note
+Important safety notices for Safety Integrated functions
+If you want to use Safety Integrated functions, you must observe the safety notices in the Safety
+Integrated manuals.
+WARNING
+Malfunctions of the machine as a result of incorrect or changed parameter settings
+As a result of",998,149,False
+G120C_op_instr_0917_en-US_p19_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,19,2,2,"ty notices in the Safety
+Integrated manuals.
+WARNING
+Malfunctions of the machine as a result of incorrect or changed parameter settings
+As a result of incorrect or changed parameterization, machines can malfunction, which in turn
+can lead to injuries or death.
+● Protect the parameterization (parameter assignments) against unauthorized access.
+● Handle possible malfunctions by taking suitable measures, e.g. emergency stop or
+emergency off.
+Fundamental safety instructions
+1.1 General safety instructions
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 19",596,83,False
+G120C_op_instr_0917_en-US_p20_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,20,1,2,"1.2 Equipment damage due to electric fields or electrostatic discharge
+Electrostatic sensitive devices (ESD) are individual components, integrated circuits, modules
+or devices that may be damaged by either electric fields or electrostatic discharge.
+NOTICE
+Equipment damage due to electric fields or electrostatic discharge
+Electric fields or electrostatic discharge can cause malfunctions through damaged individual
+components, integrated circuits, modules or devices.
+● Only pack, store, transport and send electronic components, modules or devices in their
+original packaging or in other suitable materials, e.g conductive foam rubber of aluminum
+foil.
+● Only touch components, modules and devices when you are grounded by one of the
+following methods:
+– Wearing an ESD wrist strap
+– Wearing ESD shoes or ESD grounding straps in ESD areas with conductive flooring
+● Only place electronic components, modules or devices on conductive surfaces (table with
+ESD surface, conductive ESD foam, ESD",994,144,False
+G120C_op_instr_0917_en-US_p20_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,20,2,2,"th conductive flooring
+● Only place electronic components, modules or devices on conductive surfaces (table with
+ESD surface, conductive ESD foam, ESD packaging, ESD transport container).
+Fundamental safety instructions
+1.2 Equipment damage due to electric fields or electrostatic discharge
+SINAMICS G120C converter
+20 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",380,51,False
+G120C_op_instr_0917_en-US_p21_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,21,1,1,"1.3 Warranty and liability for application examples
+The application examples are not binding and do not claim to be complete regarding
+configuration, equipment or any eventuality which may arise. The application examples do not
+represent specific customer solutions, but are only intended to provide support for typical tasks.
+You are responsible for the proper operation of the described products. These application
+examples do not relieve you of your responsibility for safe handling when using, installing,
+operating and maintaining the equipment.
+Fundamental safety instructions
+1.3 Warranty and liability for application examples
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 21",724,102,True
+G120C_op_instr_0917_en-US_p22_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,22,1,3,"1.4 Industrial security
+Note
+Industrial security
+Siemens provides products and solutions with industrial security functions that support the
+secure operation of plants, systems, machines and networks.
+In order to protect plants, systems, machines and networks against cyber threats, it is
+necessary to implement – and continuously maintain – a holistic, state-of-the-art industrial
+security concept. Siemens products and solutions only represent one component of such a
+concept.
+The customer is responsible for preventing unauthorized access to its plants, systems,
+machines and networks. Systems, machines and components should only be connected to
+the enterprise network or the internet if and to the extent necessary and with appropriate
+security measures (e.g. use of firewalls and network segmentation) in place.
+Additionally, Siemens’ guidance on appropriate security measures should be taken into
+account.",912,128,False
+G120C_op_instr_0917_en-US_p22_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,22,2,3,"g. use of firewalls and network segmentation) in place.
+Additionally, Siemens’ guidance on appropriate security measures should be taken into
+account. For more information about industrial security, please visit:
+Industrial security (http://www.siemens.com/industrialsecurity).
+Siemens’ products and solutions undergo continuous development to make them more secure.
+Siemens strongly recommends to apply product updates as soon as available and to always
+use the latest product versions. Use of product versions that are no longer supported, and
+failure to apply latest updates may increase customer’s exposure to cyber threats.
+To stay informed about product updates, subscribe to the Siemens Industrial Security RSS
+Feed at:
+Industrial security (http://www.siemens.com/industrialsecurity).
+WARNING
+Unsafe operating states resulting from software manipulation
+Software manipulations (e.g.",889,114,False
+G120C_op_instr_0917_en-US_p22_c3,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,22,3,3,"ecurity (http://www.siemens.com/industrialsecurity).
+WARNING
+Unsafe operating states resulting from software manipulation
+Software manipulations (e.g. viruses, trojans, malware or worms) can cause unsafe operating
+states in your system that may lead to death, serious injury, and property damage.
+● Keep the software up to date.
+● Incorporate the automation and drive components into a holistic, state-of-the-art industrial
+security concept for the installation or machine.
+● Make sure that you include all installed products into the holistic industrial security concept.
+● Protect files stored on exchangeable storage media from malicious software by with
+suitable protection measures, e.g. virus scanners.
+Fundamental safety instructions
+1.4 Industrial security
+SINAMICS G120C converter
+22 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",854,114,False
+G120C_op_instr_0917_en-US_p23_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,23,1,3,"1.5 Residual risks of power drive systems
+When assessing the machine- or system-related risk in accordance with the respective local
+regulations (e.g., EC Machinery Directive), the machine manufacturer or system installer must
+take into account the following residual risks emanating from the control and drive components
+of a drive system:
+1. Unintentional movements of driven machine or system components during commissioning,
+operation, maintenance, and repairs caused by, for example,
+– Hardware and/or software errors in the sensors, control system, actuators, and cables
+and connections
+– Response times of the control system and of the drive
+– Operation and/or environmental conditions outside the specification
+– Condensation/conductive contamination
+– Parameterization, programming, cabling, and installation errors
+– Use of wireless devices/mobile phones in the immediate vicinity of electronic
+components
+– External influences/damage
+– X-ray, ionizing radiation and cosmic radiation
+2.",996,137,False
+G120C_op_instr_0917_en-US_p23_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,23,2,3,"ices/mobile phones in the immediate vicinity of electronic
+components
+– External influences/damage
+– X-ray, ionizing radiation and cosmic radiation
+2. Unusually high temperatures, including open flames, as well as emissions of light, noise,
+particles, gases, etc., can occur inside and outside the components under fault conditions
+caused by, for example:
+– Component failure
+– Software errors
+– Operation and/or environmental conditions outside the specification
+– External influences/damage
+3. Hazardous shock voltages caused by, for example:
+– Component failure
+– Influence during electrostatic charging
+– Induction of voltages in moving motors
+– Operation and/or environmental conditions outside the specification
+– Condensation/conductive contamination
+– External influences/damage
+4. Electrical, magnetic and electromagnetic fields generated in operation that can pose a risk
+to people with a pacemaker, implants or metal replacement joints, etc., if they are too close
+5.",978,135,False
+G120C_op_instr_0917_en-US_p23_c3,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,23,3,3,"ic fields generated in operation that can pose a risk
+to people with a pacemaker, implants or metal replacement joints, etc., if they are too close
+5. Release of environmental pollutants or emissions as a result of improper operation of the
+system and/or failure to dispose of components safely and correctly
+6. Influence of network-connected communication systems, e.g. ripple-control transmitters or
+data communication via the network
+For more information about the residual risks of the drive system components, see the relevant
+sections in the technical user documentation.
+Fundamental safety instructions
+1.5 Residual risks of power drive systems
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 23",741,109,False
+G120C_op_instr_0917_en-US_p24_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,24,1,1,"Fundamental safety instructions
+1.5 Residual risks of power drive systems
+SINAMICS G120C converter
+24 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",163,22,False
+G120C_op_instr_0917_en-US_p25_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,25,1,2,"Introduction 2
+2.1 About the Manual
+Who requires the operating instructions and what for?
+These operating instructions primarily address fitters, commissioning engineers and machine
+operators. The operating instructions describe the devices and device components and enable
+the target groups being addressed to install, connect-up, set, and commission the converters
+safely and in the correct manner.
+What is described in the operating instructions?
+These operating instructions provide a summary of all of the information required to operate
+the converter under normal, safe conditions.
+The information provided in the operating instructions has been compiled in such a way that
+it is sufficient for all standard applications and enables drives to be commissioned as efficiently
+as possible. Where it appears useful, additional information for entry level personnel has been
+added.
+The operating instructions also contain information about special applications.",962,136,False
+G120C_op_instr_0917_en-US_p25_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,25,2,2,"eful, additional information for entry level personnel has been
+added.
+The operating instructions also contain information about special applications. Since it is
+assumed that readers already have a sound technical knowledge of how to configure and
+parameterize these applications, the relevant information is summarized accordingly. This
+relates, e.g. to operation with fieldbus systems and safety-related applications.
+What is the meaning of the symbols in the manual?
+Reference to further information in the manual
+An operating instruction starts here.
+This concludes the operating instruction.
+Download from the Internet
+DVD that can be ordered
+Examples of inverter function symbols
+
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 25",777,109,False
+G120C_op_instr_0917_en-US_p26_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,26,1,3,"2.2 Guide through the manual
+Section In this section you will find answers to the following questions:
+Description (Page 29) ● How is the inverter marked?
+● Which components make up the inverter?
+● Which optional components are available for the inverter?
+● What is the purpose of the optional components?
+● Which motors can be fed from the inverter?
+● Which commissioning tools are there?
+Installing (Page 41) ● Which sequence is recommended when installing the inverter?
+● What does EMC-compliant installation actually mean?
+● Which options are available to install optional components below the inverter?
+● What are the inverter dimensions?
+● Which mounting and installation materials are required when installing the inverter?
+● To which line supplies can the inverter be connected?
+● How is the inverter connected to the line supply?
+● How is the braking resistor connected to the inverter?
+● Which terminals and fieldbus interfaces does the inverter have?
+● What are the interface",986,160,False
+G120C_op_instr_0917_en-US_p26_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,26,2,3,"y?
+● How is the braking resistor connected to the inverter?
+● Which terminals and fieldbus interfaces does the inverter have?
+● What are the interface functions?
+Commissioning (Page 115) ● Which motor data is required for commissioning
+● How is the inverter set in the factory?
+● What is the commissioning procedure?
+● How do you restore the inverter factory settings?
+Advanced commissioning
+(Page 157)
+● Which functions are included in the inverter firmware?
+● How do the functions interoperate with one another?
+● How are the functions set?
+Saving settings and series
+commissioning (Page 321)
+● Why is it necessary to back up the inverter settings?
+● Which options are available to back up the settings?
+● How does the data backup function?
+● How do you prevent the inverter settings from being changed?
+● How do you prevent the inverter settings from being read out?
+Corrective maintenance
+(Page 369)
+● How are inverter components replaced?
+● How do you change the firmware version of the",991,168,False
+G120C_op_instr_0917_en-US_p26_c3,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,26,3,3,"ettings from being read out?
+Corrective maintenance
+(Page 369)
+● How are inverter components replaced?
+● How do you change the firmware version of the inverter?
+Alarms, faults and system
+messages (Page 349)
+● What is the meaning of the LEDs provided on the inverter?
+● How does the system runtime respond?
+● How does the inverter save alarms and faults?
+● What do the inverter alarms and faults mean?
+● How are inverter faults resolved?
+● Which I&M data is saved in the inverter?
+Introduction
+2.2 Guide through the manual
+SINAMICS G120C converter
+26 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",611,103,False
+G120C_op_instr_0917_en-US_p27_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,27,1,1,"Section In this section you will find answers to the following questions:
+Technical data (Page 401) ● What is the inverter technical data?
+● What do ""High Overload"" and ""Low Overload"" mean?
+Appendix (Page 429) ● What are the new functions of the current firmware?
+● What are the most important inverter parameters?
+● How is the inverter operated using the BOP-2 Operator Panel?
+● How does the device trace function in STARTER?
+● How can signal interconnections be changed in the inverter firmware?
+● What does ""BiCo technology"" mean?
+● Where can you find additional manuals and information about the inverter?
+Introduction
+2.2 Guide through the manual
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 27",741,120,False
+G120C_op_instr_0917_en-US_p28_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,28,1,1,"Introduction
+2.2 Guide through the manual
+SINAMICS G120C converter
+28 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",131,18,False
+G120C_op_instr_0917_en-US_p29_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,29,1,2,"Description 3
+Use for the intended purpose
+The inverter described in this manual is a device to control a three-phase motor. The inverter
+is designed for installation in electrical installations or machines.
+It has been approved for industrial and commercial use on industrial networks. Additional
+measures have to be taken when connected to public grids.
+The technical specifications and information about connection conditions are indicated on the
+rating plate and in the operating instructions.
+Use of third-party products
+This document contains recommendations relating to third-party products.",598,86,False
+G120C_op_instr_0917_en-US_p29_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,29,2,2,"e
+rating plate and in the operating instructions.
+Use of third-party products
+This document contains recommendations relating to third-party products. Siemens accepts
+the fundamental suitability of these third-party products.
+You can use equivalent products from other manufacturers.
+Siemens does not accept any warranty for the properties of third-party products.
+Use of OpenSSL
+This product contains software developed in the OpenSSL project for use within the OpenSSL
+toolkit.
+This product contains cryptographic software created by Eric Young.
+This product contains software developed by Eric Young.
+Further information is provided on the Internet:
+OpenSSL (https://www.openssl.org/)
+Cryptsoft (mailto:eay@cryptsoft.com)
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 29",814,107,False
+G120C_op_instr_0917_en-US_p30_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,30,1,2,"3.1 Scope of delivery inverters FSAA ... FSC
+The delivery comprises at least the following components:
+● A ready to run inverter with loaded firmware.
+Options for upgrading and downgrading the firmware can be found on the Internet:
+Firmware (http://support.automation.siemens.com/WW/news/en/67364620)
+You can find the article number 6SL3210-1KE..., the hardware version (e.g. C02) and the
+firmware (e.g. V4.7) on the inverter rating plate.
+● 1 set of terminal strips for connecting the inputs and outputs
+● 1 set of shield plates, including mounting materials
+● Compact Operating Instructions in German and English
+● The inverter contains open-source software (OSS). The OSS license terms are saved in
+the inverter.
+● 1 set of connectors for connecting the line supply, motor and braking resistor
+● Only for inverters with fieldbus via USS or Modbus RTU: 1 connector for connecting the
+fieldbus
+Description
+3.1 Scope of delivery inverters FSAA ...",947,146,False
+G120C_op_instr_0917_en-US_p30_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,30,2,2,"● Only for inverters with fieldbus via USS or Modbus RTU: 1 connector for connecting the
+fieldbus
+Description
+3.1 Scope of delivery inverters FSAA ... FSC
+SINAMICS G120C converter
+30 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",244,38,False
+G120C_op_instr_0917_en-US_p31_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,31,1,2,"Rating plate and technical data
+5DWHG RXWSXW
+SRZHU
+)UDPH VL]H 5DWHG RXWSXW
+FXUUHQW
+%DVHG RQ D ORZ RYHUORDG
+$UWLFOH 1R
+:LWK ILOWHU :LWKRXW ILOWHU
+bN: $
+bN: $
+bN: $
+bN: $
+bN: $
+bN: $
+bN: $
+bN: $
+bN: $
+bN: $
+bN: $
+bN: $
+)6$
+)6$$
+)6%
+)6&
+6,1$0,&6 * & 866 0%
+6,1$0,&6 * & '3
+6,1$0,&6 * & 31
+866 0RGEXV 578
+352),%86
+352),1(7 (WKHU1HW ,3
+6/ .( $
+6/ .( $
+6/ .( $
+6/ .( $
+6/ .( $
+6/ .( 8
+6/ .( 8
+6/ .( 8
+6/ .( 8
+6/ .( 8
+6/ .( 8
+6/ .( 8
+6/ .( 8
+6/ .( 8
+6/ .( 8
+6/ .( 8
+
+6/ .( $
+6/ .( $
+6/ .( $
+6/ .( 8 6/ .( $
+6/ .( $
+6/ .( $
+6/ .( $
+
+%
+3
+)
+%
+3
+)
+
+6LQDPLFV * &
+,QSXW $&
+,QSXW $&
+2XWSXW $&
+0RWRU
+0RWRU ,(&
+ZZZ VLHPHQV FRP VLQDPLFV
+6/ .(
+6HULDO 1R
+9HUVLRQ 9",645,172,False
+G120C_op_instr_0917_en-US_p31_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,31,2,2,".( $
+6/ .( $
+6/ .( $
+6/ .( $
+
+%
+3
+)
+%
+3
+)
+
+6LQDPLFV * &
+,QSXW $&
+,QSXW $&
+2XWSXW $&
+0RWRU
+0RWRU ,(&
+ZZZ VLHPHQV FRP VLQDPLFV
+6/ .(
+6HULDO 1R
+9HUVLRQ 9
+
+The rating plate contains the Article No. and the hardware and
+firmware version of the inverter. You will find a rating plate at the
+following locations on the inverter:
+● At the front, after removing the blanking cover for the operator
+panel.
+● At the side on the heat sink
+Description
+3.1 Scope of delivery inverters FSAA ... FSC
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 31",573,110,False
+G120C_op_instr_0917_en-US_p32_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,32,1,1,"3.2 Scope of delivery inverters FSD ... FSF
+The delivery comprises at least the following components:
+● A ready to run inverter with loaded firmware.
+Options for upgrading and downgrading the firmware can be found on the Internet:
+Firmware (http://support.automation.siemens.com/WW/news/en/67364620)
+You can find the article number 6SL3210-1KE..., the hardware version (e.g. C02) and the
+firmware (e.g. V4.7) on the inverter rating plate.
+● Shield plate, including mounting hardware
+● Compact Operating Instructions in German and English
+● The inverter contains open-source software (OSS). The OSS license terms are saved in
+the inverter.
+● 1 set of covers for the motor, line and braking resistor terminals.
+Description
+3.2 Scope of delivery inverters FSD ... FSF
+SINAMICS G120C converter
+32 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",854,126,False
+G120C_op_instr_0917_en-US_p33_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,33,1,1,"Type plate and technical data
+5DWHG RXWSXW
+SRZHU
+)UDPH VL]H 5DWHG RXWSXW
+FXUUHQW
+%DVHG RQ D ORZ RYHUORDG
+$UWLFOH 1R
+:LWK ILOWHU:LWKRXW ILOWHU
+
+6,1$0,&6 * & 31 352),1(7 (WKHU1HW ,3
+N: $
+N: $
+N: $
+N:
+N: $
+N: $
+N: $
+N: $
+N: $
+)6(
+)6'
+)6)
+6/ .( $)
+6/ .( $)
+6/ .( $)
+6/ .( $)
+6/ .( 8)
+6/ .( 8)
+6/ .( 8)
+6/ .( 8)
+6/ .( 8)
+6/ .( 8)
+6/ .( 8)
+6/ .( 8)
+6/ .( $)
+6/ .( $)
+6/ .( $)
+6/ .( $)
+6/ .( 8) 6/ .( $)
+
+6LQDPLFV * &
+,QSXW $&
+,QSXW $&
+2XWSXW $&
+0RWRU
+0RWRU ,(&
+ZZZ VLHPHQV FRP VLQDPLFV
+6/ .(
+6HULDO 1R
+9HUVLRQ 9
+
+The rating plate contains the Article No. and the hardware and
+firmware version of the inverter. You will find a rating plate at the
+following locations on the inverter:
+● At the front, after removing the blanking cover for the operator
+panel.
+● At the side on the heat sink
+Description
+3.2 Scope of delivery inverters FSD ... FSF
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 33",927,197,False
+G120C_op_instr_0917_en-US_p34_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,34,1,2,"3.3 Directives and standards
+Relevant directives and standards
+The following directives and standards are relevant for the inverters:
+European Low Voltage Directive
+The inverters fulfil the requirements stipulated in the Low-Voltage Directive 2014/35/EU, if they
+are covered by the application area of this directive.
+European Machinery Directive
+The inverters fulfil the requirements stipulated in the Machinery Directive 2006/42//EU, if they
+are covered by the application area of this directive.
+However, the use of the inverters in a typical machine application has been fully assessed for
+compliance with the main regulations in this directive concerning health and safety.
+Directive 2011/65/EU
+The inverter fulfills the requirements of Directive 2011/65/EU on the restriction of the use of
+certain hazardous substances in electrical and electronic devices (RoHS II).
+European EMC Directive
+By completely complying with IEC/EN 61800-3, it has been proven that the inverter is in
+compliance with",999,144,False
+G120C_op_instr_0917_en-US_p34_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,34,2,2,"onic devices (RoHS II).
+European EMC Directive
+By completely complying with IEC/EN 61800-3, it has been proven that the inverter is in
+compliance with directive 2004/108/EC or 2014/30/EU.
+Underwriters Laboratories (North American market)
+Inverters provided with one of the test symbols displayed fulfil the requirements stipulated for
+the North American market as a component of drive applications, and are appropriately listed.
+EMC requirements for South Korea
+The inverters with the KC marking on the rating plate satisfy the EMC requirements for South
+Korea.
+Eurasian conformity
+The inverters comply with the requirements of the Russia/Belarus/Kazakhstan customs union
+(EAC).
+Australia and New Zealand (RCM formerly C-Tick)
+The inverters showing the test symbols fulfil the EMC requirements for Australia and New
+Zealand.
+Description
+3.3 Directives and standards
+SINAMICS G120C converter
+34 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",955,136,False
+G120C_op_instr_0917_en-US_p35_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,35,1,2,"Immunity to voltage drop of semiconductor process equipment.
+The inverters comply with the requirements of standard SEMI F47-0706.
+Quality systems
+Siemens AG employs a quality management system that meets the requirements of ISO 9001
+and ISO 14001.
+Certificates for download
+● EC Declaration of Conformity: ( https://support.industry.siemens.com/cs/ww/de/view/
+58275445)
+● Certificates for the relevant directives, prototype test certificates, manufacturers
+declarations and test certificates for functions relating to functional safety (""Safety
+Integrated""): (http://support.automation.siemens.com/WW/view/en/22339653/134200)
+● Certificates of products that were certified by UL: ( http://database.ul.com/cgi-bin/XYV/
+template/LISEXT/1FRAME/index.html)
+● Certificates of products that were certified by TÜV SÜD: ( https://www.tuev-sued.de/
+industrie_konsumprodukte/zertifikatsdatenbank)
+Standards that are not relevant
+China Compulsory Certification
+The inverters do not fall in the area of",991,113,False
+G120C_op_instr_0917_en-US_p35_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,35,2,2,"industrie_konsumprodukte/zertifikatsdatenbank)
+Standards that are not relevant
+China Compulsory Certification
+The inverters do not fall in the area of validity of the China Compulsory Certification (CCC).
+Description
+3.3 Directives and standards
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 35",335,42,False
+G120C_op_instr_0917_en-US_p36_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,36,1,3,"3.4 Optional components
+Line filter
+The inverter is available with and without an integrated line filter. With a line filter, the inverter
+achieves a higher radio interference class.
+Inverter Line filter as base com‐
+ponent
+Class B (Category C1)
+for cable-conducted in‐
+terference emission and
+Class A (Category C2)
+for field-conducted inter‐
+ference emission
+4 kHz pulse frequency
+Maximum motor cable
+length, shielded
+Frame size AA 0.55 kW ... 2.2 kW 6SL3210‐1KE11‐8U . 2,
+6SL3210‐1KE12‐3U . 2,
+6SL3210‐1KE13‐2U . 2,
+6SL3210‐1KE14‐3U . 2,
+6SL3210‐1KE15‐8U . 2 1)
+6SL3203‐0BE17-7BA0 50 m
+Frame size A 3.0 kW ... 4.0 kW 6SL3210‐1KE17‐5U . 1,
+6SL3210‐1KE18‐8U . 1
+25 m
+Frame size B 5.5 kW ... 7.5 kW 6SL3210‐1KE21‐3U . 1,
+6SL3210‐1KE21‐7U . 1
+6SL3203‐0BE21‐8BA0 50 m
+Frame size C 11 kW ...",787,129,False
+G120C_op_instr_0917_en-US_p36_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,36,2,3,"1,
+6SL3210‐1KE18‐8U . 1
+25 m
+Frame size B 5.5 kW ... 7.5 kW 6SL3210‐1KE21‐3U . 1,
+6SL3210‐1KE21‐7U . 1
+6SL3203‐0BE21‐8BA0 50 m
+Frame size C 11 kW ... 18.5 kW 6SL3210‐1KE22‐6UX1,
+6SL3210‐1KE23‐2UX1,
+6SL3210‐1KE23‐8UX1
+6SL3203‐0BE23‐8BA0 50 m with additional fer‐
+rite core
+We recommend ferrite
+cores from Wurth Elek‐
+tronik GmbH, Article
+number 74270095.
+1) with restrictions, see below.
+Line reactor
+The line reactor increases the level of protection for the inverter against overvoltages,
+harmonics and commutation dips.
+In order that the inverter service life is not reduced, a line reactor is required for a relative short-
+circuit voltage uk of the line transformer < 1 %.
+Inverter Line reactor Line reactor as base
+component
+Frame size AA 0.55 kW 6SL3210‐1KE11‐8 . . . 6SL3203‐0CE13‐2AA0 6SE6400‐3CC00‐2AD3
+0.75 kW ... 1.1 kW 6SL3210‐1KE12‐3 . . .
+6SL3210‐1KE13‐2 . . .
+6SE6400-3CC00-4AD3
+1.5 kW 6SL3210‐1KE14‐3 . . . 6SL3203‐0CE21‐0AA0 6SE6400-3CC00-6AD3 1)
+2.2 kW 6SL3210‐1KE15‐8 . .",990,154,False
+G120C_op_instr_0917_en-US_p36_c3,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,36,3,3,"KE12‐3 . . .
+6SL3210‐1KE13‐2 . . .
+6SE6400-3CC00-4AD3
+1.5 kW 6SL3210‐1KE14‐3 . . . 6SL3203‐0CE21‐0AA0 6SE6400-3CC00-6AD3 1)
+2.2 kW 6SL3210‐1KE15‐8 . . .
+Frame size A 3.0 kW ... 4.0 kW 6SL3210‐1KE17‐5 . . 1
+6SL3210‐1KE18‐8 . . 1
+---
+Description
+3.4 Optional components
+SINAMICS G120C converter
+36 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",357,57,False
+G120C_op_instr_0917_en-US_p37_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,37,1,3,"Inverter Line reactor Line reactor as base
+component
+Frame size B 5.5 kW ... 7.5 kW 6SL3210‐1KE21‐3 . . 1
+6SL3210‐1KE21‐7 . . 1
+6SL3203‐0CE21‐8AA0 ---
+Frame size C 11.0 kW ... 18.5 kW 6SL3210‐1KE22‐6 . . 1
+6SL3210‐1KE23‐2 . . 1
+6SL3210‐1KE23‐8 . . 1
+6SL3203‐0CE23‐8AA0 ---
+Frame size
+D ... frame size F
+22 kW ... 132 kW An external line reactor is not required.
+1) with restrictions for G120C FSAA, 2.2 kW. See below.
+Sine-wave filter
+Sine-wave filters limit the the rate of voltage rise (dv/dt) and the peak voltages at the motor
+winding. The sine-wave filter increases the maximum permissible length of the motor cables.
+Inverter Sine-wave filter Sine-wave filter as base
+component
+Frame size AA 0.55 kW ... 2.2 kW 6SL3210‐1KE11‐8U . 2
+6SL3210‐1KE12‐3U . 2
+6SL3210‐1KE13‐2U . 2
+6SL3210‐1KE14‐3U . 2
+6SL3210‐1KE15‐8U . 2 1)
+--- 6SE6400‐3TD00‐4AD0
+Frame size A ... frame size F (3 kW ...",887,153,False
+G120C_op_instr_0917_en-US_p37_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,37,2,3,"6SL3210‐1KE12‐3U . 2
+6SL3210‐1KE13‐2U . 2
+6SL3210‐1KE14‐3U . 2
+6SL3210‐1KE15‐8U . 2 1)
+--- 6SE6400‐3TD00‐4AD0
+Frame size A ... frame size F (3 kW ... 132 kW): A sine-wave filter is not available.
+1) with restrictions, see below.
+Output reactor
+In order to increase the maximum permissible motor cable length you need one or two output
+reactors, depending on the inverter.
+● Frame size AA ... frame size C: An output reactor
+● Frame size D ... frame size F: Two output reactors connected in series
+Inverter Output reactor Output reactor as base
+component
+Frame size AA 0.55 kW ... 2.2 kW 6SL3210‐1KE11‐8 . . .
+6SL3210‐1KE12‐3 . . .
+6SL3210‐1KE13‐2 . . .
+6SL3210‐1KE14‐3 . . .
+6SL3210‐1KE15‐8 . . .
+6SL3202‐0AE16‐1CA0 6SE6400‐3TC00‐4AD2 1)
+Frame size A 3.0 kW ... 4.0 kW 6SL3210‐1KE17‐5 . . 1
+6SL3210‐1KE18‐8 . . 1
+6SL3202‐0AE18‐8CA0 ---
+Frame size B 5.5 kW ... 7.5 kW 6SL3210‐1KE21‐3 . . 1
+6SL3210‐1KE21‐7 . . 1
+6SL3202‐0AE21‐8CA0 ---
+Frame size C 11.0 kW ... 18.5 kW 6SL3210‐1KE22‐6 . .",986,172,False
+G120C_op_instr_0917_en-US_p37_c3,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,37,3,3,"Frame size B 5.5 kW ... 7.5 kW 6SL3210‐1KE21‐3 . . 1
+6SL3210‐1KE21‐7 . . 1
+6SL3202‐0AE21‐8CA0 ---
+Frame size C 11.0 kW ... 18.5 kW 6SL3210‐1KE22‐6 . . 1
+6SL3210‐1KE23‐2 . . 1
+6SL3210‐1KE23‐8 . . 1
+6SL3202‐0AE23‐8CA0 ---
+Description
+3.4 Optional components
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 37",345,56,False
+G120C_op_instr_0917_en-US_p38_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,38,1,3,"Inverter Output reactor Output reactor as base
+component
+Frame size D 22 kW ... 37 kW 6SL3210‐1KE24‐4 . . 1
+6SL3210‐1KE26‐0 . . 1
+6SL3210‐1KE27‐0 . . 1
+6SE6400-3TC07-5ED0 ---
+45 kW 6SL3210‐1KE28‐4 . . 1 6SE6400‐3TC14‐5FD0 ---
+Frame size E 55 kW 6SL3210‐1KE31‐1 . . 1
+Frame size F 75 kW ... 90 kW 6SL3210‐1KE31‐4 . . 1
+6SL3210‐1KE31‐7 . . 1
+110 kW 6SL3210‐1KE32‐1 . . 1 6SL3000‐2BE32‐1AA0 ---
+132 kW 6SL3210‐1KE32‐4 . . 1 6SL3000‐2BE32‐6AA0 ---
+1) with restrictions for G120C FSAA, 2.2 kW. See below.
+dU/dt filter plus Voltage Peak Limiter
+The ""du/dt filter plus Voltage Peak Limiter"" is intended for motors for which the voltage strength
+is either unknown or is not adequate.
+The du/dt filter plus Voltage Peak Limiter limits the voltage rate of rise and the voltage peaks
+at the inverter output.
+Inverter dU/dt filter plus VPL
+Frame size F 75 kW ... 132 kW 6SL3210‐1KE31‐4 . . 1, 6SL3210‐1KE31‐7 . . 1,
+6SL3210‐1KE32‐1 . . 1, 6SL3210‐1KE32‐4 . .",946,167,False
+G120C_op_instr_0917_en-US_p38_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,38,2,3,"Inverter dU/dt filter plus VPL
+Frame size F 75 kW ... 132 kW 6SL3210‐1KE31‐4 . . 1, 6SL3210‐1KE31‐7 . . 1,
+6SL3210‐1KE32‐1 . . 1, 6SL3210‐1KE32‐4 . . 1
+6SL3000-2DE32-6AA0
+Braking resistor
+The braking resistor allows the inverter to actively brake loads with high moments of inertia.
+Inverter Braking resistor Braking resistor as base
+component
+Frame size AA 0.55 kW ... 1.1 kW 6SL3210‐1KE11‐8 . . .
+6SL3210‐1KE12‐3 . . .
+6SL3210‐1KE13‐2 . . .
+6SL3201‐0BE14‐3AA0 6SE6400‐4BD11‐0AA0 1)
+1.5 kW 6SL3210‐1KE14‐3 . . .
+2.2 kW 6SL3210‐1KE15‐8 . . . 6SL3201‐0BE21‐0AA0
+Frame size A 3.0 kW ... 4.0 kW 6SL3210‐1KE17‐5 . . 1
+6SL3210‐1KE18‐8 . . 1
+---
+Frame size B 5.5 kW ... 7.5 kW 6SL3210‐1KE21‐3 . . 1
+6SL3210‐1KE21‐7 . . 1
+6SL3201‐0BE21‐8AA0 ---
+Frame size C 11.0 kW ... 18.5 kW 6SL3210‐1KE22‐6 . . 1
+6SL3210‐1KE23‐2 . . 1
+6SL3210‐1KE23‐8 . . 1
+6SL3201‐0BE23‐8AA0 ---
+Frame size D 22 kW 6SL3210‐1KE24‐4 . . 1 JJY:023422620001 ---
+30 kW ... 37 kW 6SL3210‐1KE26‐0 . . 1
+6SL3210‐1KE27‐0 . .",979,171,False
+G120C_op_instr_0917_en-US_p38_c3,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,38,3,3,"8 . . 1
+6SL3201‐0BE23‐8AA0 ---
+Frame size D 22 kW 6SL3210‐1KE24‐4 . . 1 JJY:023422620001 ---
+30 kW ... 37 kW 6SL3210‐1KE26‐0 . . 1
+6SL3210‐1KE27‐0 . . 1
+JJY:023424020001 ---
+45 kW 6SL3210‐1KE28‐4 . . 1 JJY:023434020001 ---
+Frame size E 55 kW 6SL3210‐1KE31‐1 . . 1
+Description
+3.4 Optional components
+SINAMICS G120C converter
+38 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",389,65,False
+G120C_op_instr_0917_en-US_p39_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,39,1,1,"Inverter Braking resistor Braking resistor as base
+component
+Frame size F 75 kW ... 90 kW 6SL3210‐1KE31‐4 . . 1
+6SL3210‐1KE31‐7 . . 1
+JJY:023454020001 ---
+110 kW ... 132 kW 6SL3210‐1KE32‐1 . . 1
+6SL3210‐1KE32‐4 . . 1
+JJY:023464020001 ---
+1) with restrictions for G120C FSAA, 2.2 kW. See below.
+1) restrictions for G120C FSAA, 2.2 kW
+Operation of the optional component is only permitted for operation of the inverter with the HO
+base load output = 1.5 kW.
+Supplementary optional components for the inverter
+In addition to the optional components offered by SIEMENS, supplementary components are
+also available from selected partners.
+Further information is provided on the Internet:
+Drive options partner (www.siemens.de/drives-options-partner)
+Description
+3.4 Optional components
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 39",870,130,False
+G120C_op_instr_0917_en-US_p40_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,40,1,2,"3.5 Motors and multi-motor drives that can be operated
+Siemens motors that can be operated
+You can connect standard induction motors to the inverter.
+You can find information on further motors on the Internet:
+Motors that can be operated (https://support.industry.siemens.com/cs/ww/en/view/
+100426622)
+Third-party motors that can be operated
+You can operate standard asynchronous motors from other manufacturers with the inverter:
+NOTICE
+Insulation failure due to unsuitable third-party motor
+A higher load occurs on the motor insulation in inverter mode than with mains operation.
+Damage to the motor winding may occur as a result.
+● Please observed the notes in the System Manual ""Requirements for third-party motors""
+Further information is provided on the Internet:
+Requirements for third-party motors (https://support.industry.siemens.com/cs/ww/en/view/
+79690594)
+Multi-motor drive
+A multi-motor drive involves simultaneously operating several motors from one inverter.",973,131,False
+G120C_op_instr_0917_en-US_p40_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,40,2,2,"ndustry.siemens.com/cs/ww/en/view/
+79690594)
+Multi-motor drive
+A multi-motor drive involves simultaneously operating several motors from one inverter. For
+standard induction motors, multi-motor drives are permissible in installations that are compliant
+with IEC.
+Further information is provided on the Internet:
+Multi-motor drive (http://support.automation.siemens.com/WW/view/en/84049346)
+Multi-motor drives are not permissible for installations that are compliant with UL.
+Description
+3.5 Motors and multi-motor drives that can be operated
+SINAMICS G120C converter
+40 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",631,74,False
+G120C_op_instr_0917_en-US_p41_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,41,1,2,"Installing 4
+4.1 EMC-compliant setup of the machine or plant
+The inverter is designed for operation in industrial environments where strong electromagnetic
+fields are to be expected.
+Reliable and disturbance-free operation is only guaranteed for EMC-compliant installation.
+To achieve this, subdivide the control cabinet and the machine or system into EMC zones:
+EMC zones
+)XVHV VZLWFKHV DQG
+FRQWDFWRUV
+9 SRZHU VXSSO\
++LJKHU OHYHO FRQWURO
+V\VWHP
+&RQQHFWLRQ RI VHQVRUV
+H J SRVLWLRQ SUHVVXUH RU
+WHPSHUDWXUH
+/LQH UHDFWRU RU OLQH ILOWHU
+,QYHUWHU
+%UDNLQJ UHVLVWRU
+2XWSXW UHDFWRU RU
+VLQH ZDYH ILOWHU
+&RQWURO FDELQHW /LQH VXSSO\
+'ULYHQ PDFKLQH
+Figure 4-1 Example of the EMC zones of a plant or machine
+Inside the control cabinet
+● Zone A: Line supply connection
+● Zone B: Power electronics
+Devices in Zone B generate energy-rich electromagnetic fields.
+● Zone C: Control and sensors
+Devices in Zone C do not generate any energy-rich electromagnetic fields themselves, but
+their functions can be impaired by",999,154,False
+G120C_op_instr_0917_en-US_p41_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,41,2,2,"one C: Control and sensors
+Devices in Zone C do not generate any energy-rich electromagnetic fields themselves, but
+their functions can be impaired by electromagnetic fields.
+Outside the control cabinet
+● Zone D: Motors, braking resistors
+Devices in Zone D generate electromagnetic fields with a significant amount of energy
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 41",414,61,False
+G120C_op_instr_0917_en-US_p42_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,42,1,3,"4.1.1 Control cabinet
+● Assign the various devices to zones in the control cabinet.
+● Electromagnetically uncouple the zones from each other by means of one of the following
+actions:
+– Side clearance ≥ 25 cm
+– Separate metal enclosure
+– Large-area partition plates
+● Route cables of various zones in separate cable harnesses or cable ducts.
+● Install filters or isolation amplifiers at the interfaces of the zones.
+Control cabinet assembly
+● Connect the door, side panels, top and base plate of the control cabinet with the control
+cabinet frame using one of the following methods:
+– Electrical contact surface of several cm2 for each contact location
+– Several screw connections
+– Short, finely stranded, braided copper wires with cross-sections
+≥ 95 mm2 / 000 (3/0) (‐2) AWG
+● Install a shield support for shielded cables that are routed out of the control cabinet.
+● Connect the PE bar and the shield support to the control cabinet frame through a large
+surface area to establish a good",989,168,False
+G120C_op_instr_0917_en-US_p42_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,42,2,3,"out of the control cabinet.
+● Connect the PE bar and the shield support to the control cabinet frame through a large
+surface area to establish a good electrical connection.
+● Mount the control cabinet components on a bare metal mounting plate.
+● Connect the mounting plate to the control cabinet frame and PE bar and shield support
+through a large surface area to establish a good electrical connection.
+● For screw connections onto painted or anodized surfaces, establish a good conductive
+contact using one of the following methods:
+– Use special (serrated) contact washers that cut through the painted or anodized surface.
+– Remove the insulating coating at the contact locations.
+Measures required for several control cabinets
+● Install equipotential bonding for all control cabinets.
+● Screw the frames of the control cabinets together at several locations through a large
+surface area using serrated washers to establish a good electrical connection.
+● In plants and systems where the control",998,160,False
+G120C_op_instr_0917_en-US_p42_c3,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,42,3,3,"ral locations through a large
+surface area using serrated washers to establish a good electrical connection.
+● In plants and systems where the control cabinets are lined up next to one another, and
+which are installed in two groups back to back, connect the PE bars of the two cabinet
+groups at as many locations as possible.
+Installing
+4.1 EMC-compliant setup of the machine or plant
+SINAMICS G120C converter
+42 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",474,78,False
+G120C_op_instr_0917_en-US_p43_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,43,1,2,"7UDQVIRUPHU
+0RXQWLQJ SODWH
+)RXQGDWLRQ )RXQGDWLRQ
+(TXLSRWHQWLDO ERQGLQJ
+)XVHV VZLWFKHV DQG
+FRQWDFWRUV
+/LQH ILOWHU
+,QYHUWHU
+2XWSXW UHDFWRU RU
+VLQH ZDYH ILOWHU
+&RQWURO FDELQHW &RQWURO FDELQHW
+'ULYHQ PDFKLQH
+6KLHOG VXSSRUW
+(OHFWULFDOO\
+FRQGXFWLYH
+FRQQHFWLRQV
+WKURXJK D ODUJH
+VXUIDFH DUHD
+3(
+3( 3(
+3(
+/
+1
+/
+/
+Figure 4-2 Grounding and high-frequency equipotential bonding measures in the control cabinet and
+in the plant/system
+Further information
+Additional information about EMC-compliant installation is available in the Internet:
+EMC installation guideline (http://support.automation.siemens.com/WW/view/en/60612658)
+4.1.2 Cables
+Cables with a high level of interference and cables with a low level of interference are
+connected to the inverter:
+● Cables with a high level of interference:
+– Cable between the line filter and inverter
+– Motor cable
+– Cable at the inverter DC link connection
+– Cable between the inverter and braking resistor
+● Cables with a low level of interference:
+– Cable between",998,144,False
+G120C_op_instr_0917_en-US_p43_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,43,2,2,"Cable at the inverter DC link connection
+– Cable between the inverter and braking resistor
+● Cables with a low level of interference:
+– Cable between the line and line filter
+– Signal and data cables
+Installing
+4.1 EMC-compliant setup of the machine or plant
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 43",348,57,False
+G120C_op_instr_0917_en-US_p44_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,44,1,2,"Cable routing inside the cabinet
+● Route the power cables with a high level of interference so that there is a minimum
+clearance of 25 cm to cables with a low level of interference.
+If the minimum clearance of 25 cm is not possible, insert separating metal sheets between
+the cables with a high level of interference and cables with a low level of interference.
+Connect these separating metal sheets to the mounting plate to establish a good electrical
+connection.
+● Cables with a high level of interference and cables with a low level of interference may only
+cross over at right angles:
+● Keep all of the cables as short as possible.
+● Route all of the cables close to the mounting plates or cabinet frames.
+● Route signal and data cables - as well as the associated equipotential bonding cables -
+parallel and close to one another.
+● Twist incoming and outgoing unshielded individual conductors.
+Alternatively, you can route incoming and outgoing conductors in parallel, but close to",986,170,False
+G120C_op_instr_0917_en-US_p44_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,44,2,2,"Twist incoming and outgoing unshielded individual conductors.
+Alternatively, you can route incoming and outgoing conductors in parallel, but close to one
+another.
+● Ground any unused conductors of signal and data cables at both ends.
+● Signal and data cables must only enter the cabinet from one side, e.g. from below.
+● Using shielded cables for the following connections:
+– Cable between the inverter and line filter
+– Cable between the inverter and output reactor or sine-wave filter
+0RXQWLQJ SODWH
+6KLHOG VXSSRUW
+)XVHV VZLWFKHV DQG
+FRQWDFWRUV
+/LQH ILOWHU
+,QYHUWHU
+&RQQHFW VKLHOG
+(OHFWULFDOO\
+FRQGXFWLYH
+FRQQHFWLRQV
+WKURXJK D ODUJH
+VXUIDFH DUHD
+&RQQHFW VKLHOG
+&RQQHFW VKLHOG
+%UDNLQJ UHVLVWRU
+2XWSXW UHDFWRU RU
+VLQH ZDYH ILOWHU
+&RQWURO FDELQHW
+Figure 4-3 Routing inverter cables inside and outside a control cabinet
+Installing
+4.1 EMC-compliant setup of the machine or plant
+SINAMICS G120C converter
+44 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",966,145,False
+G120C_op_instr_0917_en-US_p45_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,45,1,2,"Routing cables outside the control cabinet
+● Maintain a minimum clearance of 25 cm between cables with a high level of interference
+and cables with a low level of interference.
+● Using shielded cables for the following connections:
+– Inverter motor cable
+– Cable between the inverter and braking resistor
+– Signal and data cables
+● Connect the motor cable shield to the motor enclosure using a PG gland that establishes
+a good electrical connection.
+Requirements relating to shielded cables
+● Use cables with finely-stranded, braided shields.
+● Connect the shield to at least one end of the cable.
+%DUH VKLHOG
+0RXQWLQJ SODWH
+6KLHOG SODWH
+&RQQHFW VKLHOG
+7RRWKHG
+WDSH
++RVH FODPS",676,111,False
+G120C_op_instr_0917_en-US_p45_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,45,2,2,"braided shields.
+● Connect the shield to at least one end of the cable.
+%DUH VKLHOG
+0RXQWLQJ SODWH
+6KLHOG SODWH
+&RQQHFW VKLHOG
+7RRWKHG
+WDSH
++RVH FODPS
+
+Figure 4-4 Examples for EMC-compliant shield support
+● Attach the shield to the shield support directly after the cable enters the cabinet.
+● Do not interrupt the shield.
+● Only use metallic or metallized plug connectors for shielded data cables.
+Installing
+4.1 EMC-compliant setup of the machine or plant
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 45",547,87,False
+G120C_op_instr_0917_en-US_p46_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,46,1,1,"4.1.3 Electromechanical components
+Surge voltage protection circuit
+● Connect surge voltage protection circuits to the following components:
+– Coils of contactors
+– Relays
+– Solenoid valves
+– Motor holding brakes
+● Connect the surge voltage protection circuit directly at the coil.
+● Use RC elements or varistors for AC-operated coils and freewheeling diodes or varistors
+for DC-operated coils.
+Installing
+4.1 EMC-compliant setup of the machine or plant
+SINAMICS G120C converter
+46 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",543,79,False
+G120C_op_instr_0917_en-US_p47_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,47,1,1,"4.2 Mounting base components
+Dimensions and mounting
+All dimensions in mm
+K
+E
+7
++
+%
+FSAA, FSA FSB FSC
+B 73 100 140
+b 62.3 80 120
+H 202 297 359
+h 186 281 343
+T 65 85 95
+Figure 4-5 Line filter
+Installing
+4.2 Mounting base components
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 47",320,61,False
+G120C_op_instr_0917_en-US_p48_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,48,1,1,"Line reactor
+
+Output reactor
+
+Sine-wave filter
+
+Braking resistor
+Mounting of the base components:
+● 4 × M4 screws
+● 4 × M4 nuts
+● 4 × M4 washers
+Tightening torque: 5 Nm
+Installing
+4.2 Mounting base components
+SINAMICS G120C converter
+48 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",298,49,False
+G120C_op_instr_0917_en-US_p49_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,49,1,2,"Mounting frame size FSAA on a base component
+0RWRU
+/LQH VXSSO\
+OLQH ILOWHU RU
+OLQH UHDFWRU
+/LQH VXSSO\
+OLQH ILOWHU RU
+OLQH UHDFWRU
+2XWSXW UHDFWRU RU
+VLQH ZDYH ILOWHU
+0RWRU
+RXWSXW UHDFWRU
+RU VLQH ZDYH ILOWHU
+%UDNLQJ UHVLVWRU
+0RWRU
+RXWSXW UHDFWRU
+RU VLQH ZDYH ILOWHU
+/LQH VXSSO\
+/LQH ILOWHU RU OLQH
+UHDFWRU
+Figure 4-6 Available base components
+Reactors, filters and braking resistors are available as base components for inverters, frame
+size FSAA.
+Mount the inverter using two M4 screws on the base component.
+Mounting frame size FSAA on two base components",556,91,False
+G120C_op_instr_0917_en-US_p49_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,49,2,2,"mponents for inverters, frame
+size FSAA.
+Mount the inverter using two M4 screws on the base component.
+Mounting frame size FSAA on two base components
+
+0RWRU
+RXWSXW FKRNH
+RU VLQH ZDYH ILOWHU
+0RWRU
+RXWSXW FKRNH
+RU VLQH ZDYH ILOWHU
+/LQH VXSSO\ /LQH VXSSO\ /LQH VXSSO\
+/LQH ILOWHU RU OLQH
+UHDFWRU
+%UDNLQJ UHVLVWRU
+0RWRU
+/LQH ILOWHU /LQH ILOWHU RU OLQH
+UHDFWRU
+6LQH ZDYH ILOWHUV
+/LQH VXSSO\
+0RWRU
+/LQH ILOWHU RU OLQH
+UHDFWRU
+2XWSXW FKRNH/LQH UHDFWRU
+Figure 4-7 Permissible combinations of base components
+You can combine two base components.
+Installing
+4.2 Mounting base components
+SINAMICS G120C converter
+Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF 49",667,104,False
+G120C_op_instr_0917_en-US_p50_c1,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,50,1,2,"4.3 Installing the inverter
+Mounting position
+Only the wall-mounted option with network connection at the bottom is permissible.
+Protection against the spread of fire
+The device may be operated only in closed housings or in control cabinets with protective
+covers that are closed, and when all of the protective devices are used. The installation of the
+device in a metal control cabinet or the protection with another equivalent measure must
+prevent the spread of fire and emissions outside the control cabinet.
+Protection against condensation or electrically conductive contamination
+Protect the device, e.g. by installing it in a control cabinet with degree of protection IP54
+according to IEC 60529 or NEMA 12.",714,111,False
+G120C_op_instr_0917_en-US_p50_c2,G120C_op_instr_0917_en-US.csv,SINAMICS G120C Low Voltage Converter - Operating Instructions,Operating Instructions,SINAMICS G120C,,4.7,en,50,2,2,"ductive contamination
+Protect the device, e.g. by installing it in a control cabinet with degree of protection IP54
+according to IEC 60529 or NEMA 12. Further measures may be necessary for particularly
+critical operating conditions.
+If condensation or conductive pollution can be excluded at the installation site, a lower degree
+of control cabinet protection may be permitted.
+Installing
+4.3 Installing the inverter
+SINAMICS G120C converter
+50 Operating Instructions, 09/2017, FW V4.7 SP9, A5E34263257B AF",506,74,False

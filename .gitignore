@@ -1,11 +1,17 @@
-# Byte-compiled / optimized / DLL files
+# Python / Environments
 __pycache__/
 *.py[cod]
 *$py.class
-
-# Environments
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
 .env
 .venv
+.venv/
 env/
 venv/
 ENV/
@@ -15,6 +21,11 @@ venv.bak/
 # Project specific
 faiss_index/
 data/
+chroma_db/
+
+# IDE
+.vscode/
+.idea/
 
 # OS generated files
 .DS_Store

@@ -1,0 +1,1671 @@
+chunk_id,source_file,doc_title,doc_type,product_family,entry_id,version,language,page,chunk_index,page_chunk_count,chunk_text,char_count,word_count,is_boilerplate
+s7-1200__user_manual_p1_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,1,1,1,"S7-1200 Functional Safety Manual
+
+SIMATIC
+S7
+S7-1200 Functional Safety Manual
+Manual
+
+V4.2, 09/2016
+A5E03470344-AB
+Preface
+
+Product overview
+
+1
+
+New features
+
+2
+
+Getting started
+
+3
+
+Fail-Safe signal module (SM)
+applications
+
+4
+
+Fail-Safe CPU and signal
+module (SM) installation
+
+5
+
+Fail-Safe signal module (SM)
+I/O configuration
+
+6
+
+Fail-Safe signal module (SM)
+diagnostics
+
+7
+
+Technical specifications
+
+A
+
+Ordering information
+
+B
+
+Fail-Safe response times
+
+C",459,61,False
+s7-1200__user_manual_p2_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,2,1,4,"Siemens AG
+Division Digital Factory
+Postfach 48 48
+90026 NÜRNBERG
+GERMANY
+A5E03470344-AB
+P 08/2016 Subject to change
+Copyright © Siemens AG 2016.
+All rights reserved
+Legal information
+Warning notice system
+This manual contains notices you have to observe in order to ensure your personal safety, as well as to prevent
+damage to property. The notices referring to your personal safety are highlighted in the manual by a safety alert
+symbol, notices referring only to property damage have no safety alert symbol. These notices shown below are
+graded according to the degree of danger.
+
+DANGER
+indicates that death or severe personal injury will result if proper precautions are not taken.
+
+WARNING
+indicates that death or severe personal injury may result if proper precautions are not taken.
+
+CAUTION
+indicates that minor personal injury can result if proper precautions are not taken.",884,139,True
+s7-1200__user_manual_p2_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,2,2,4,"l injury may result if proper precautions are not taken.
+
+CAUTION
+indicates that minor personal injury can result if proper precautions are not taken.
+
+NOTICE
+indicates that property damage can result if proper precautions are not taken.
+If more than one degree of danger is present, the warning notice representing the highest degree of danger will
+be used. A notice warning of injury to persons with a safety alert symbol may also include a warning relating to
+property damage.
+Qualified Personnel
+The product/system described in this documentation may be operated only by personnel qualified for the specific
+task in accordance with the relevant documentation, in particular its warning notices and safety instructions.
+Qualified personnel are those who, based on their training and experience, are capable of identifying risks and
+avoiding potential hazards when working with these products/systems.
+Proper use of Siemens products
+Note the following:",954,145,False
+s7-1200__user_manual_p2_c3,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,2,3,4,"pable of identifying risks and
+avoiding potential hazards when working with these products/systems.
+Proper use of Siemens products
+Note the following:
+
+WARNING
+Siemens products may only be used for the applications described in the catalog and in the relevant technical
+documentation. If products and components from other manufacturers are used, these must be recommended
+or approved by Siemens. Proper transport, storage, installation, assembly, commissioning, operation and
+maintenance are required to ensure that the products operate safely and without any problems. The permissible
+ambient conditions must be complied with. The information in the relevant documentation must be observed.
+Trademarks
+All names identified by ® are registered trademarks of Siemens AG.",770,109,False
+s7-1200__user_manual_p2_c4,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,2,4,4,"ed with. The information in the relevant documentation must be observed.
+Trademarks
+All names identified by ® are registered trademarks of Siemens AG. The remaining trademarks in this publication
+may be trademarks whose use by third parties for their own purposes could violate the rights of the owner.
+Disclaimer of Liability
+We have reviewed the contents of this publication to ensure consistency with the hardware and software
+described. Since variance cannot be precluded entirely, we cannot guarantee full consistency. However, the
+information in this publication is reviewed regularly and any necessary corrections are included in subsequent
+editions.",657,97,False
+s7-1200__user_manual_p3_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,3,1,2,"S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 3
+Preface
+
+Purpose of the manual
+The S7-1200 series is a line of programmable logic controllers (PLCs) that can control a
+variety of automation applications. Compact design, low cost, and a powerful instruction set
+make the S7-1200 a perfect solution for controlling a wide variety of applications. The
+S7-1200 models and Windows-based programming tools give you the flexibility you need to
+solve your automation problems.
+This manual provides information about using, installing, and programming the S7- 1200
+Fail-Safe PLCs and is designed for engineers, programmers, installers, and electricians who
+have a general knowledge of programmable logic controllers.
+Required basic knowledge
+To understand this manual, it is necessary to have a general knowledge of automation and
+programmable logic controllers.
+Scope of the manual
+This manual describes or references the following products:
+● STEP 7 Basic V14 or later with:
+– STEP",999,148,False
+s7-1200__user_manual_p3_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,3,2,2,"ogrammable logic controllers.
+Scope of the manual
+This manual describes or references the following products:
+● STEP 7 Basic V14 or later with:
+– STEP 7 Safety Basic V14 or later
+● STEP 7 Professional V14 or later with:
+– STEP 7 Safety Basic V14 or later
+– STEP 7 Safety Advanced V14 or later
+● S7-1200 fail-safe CPU firmware release V4.2 or later
+● S7-1200 fail-safe signal modules (SM) firmware release V2.0 or later",418,75,False
+s7-1200__user_manual_p4_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,4,1,4,"Preface
+
+S7-1200 Functional Safety Manual
+4 Manual, V4.2, 09/2016, A5E03470344-AB
+For a complete list of the S7-1200 products described in this manual, refer to the technical
+specifications article numbers for fail-safe CPUs (Page 229) and fail-safe SMs (Page 229).
+
+WARNING
+The ""SIMATIC Safety - Configuring and Programming, Programming and Operating
+Manual"" in the current version is the authoritative source for Functional Safety -related
+information concerning configuring and programming.
+Siemens identifies the ""SIMATIC Safety - Configuring and Programming, Programming and
+Operating Manual"" (http://support.automation.siemens.com/WW/view/en/54110126/0/en)
+as the authoritative and/or original source in the case of discrepancies between the
+manuals.
+All warnings in the ""SIMATIC Safety - Configuring and Programming, Programming and
+Operating Manual"" have to be observed.",878,114,False
+s7-1200__user_manual_p4_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,4,2,4,"pancies between the
+manuals.
+All warnings in the ""SIMATIC Safety - Configuring and Programming, Programming and
+Operating Manual"" have to be observed.
+
+Certification, CE label, C-Tick, and other approvals
+Refer to the technical specifications (Page 160) for more information.
+Glossary
+The definitions in the glossary are provided to give the reader an easy first reference for
+understanding the terms as used in this manual.",424,64,False
+s7-1200__user_manual_p4_c3,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,4,3,4,".
+Glossary
+The definitions in the glossary are provided to give the reader an easy first reference for
+understanding the terms as used in this manual. Some terms have detailed formal definitions
+in IEC 61508, EN ISO 13849, IEC 61784-3-3, and associated standards, and must be
+understood in terms of broad safety concepts detailed in these standards.
+Another reference for more exact definitions is the ""SIMATIC Safety - Configuring and
+Programming, Programming and Operating Manual""
+(http://support.automation.siemens.com/WW/view/en/54110126/0/en).
+Service and support
+In addition to our documentation, we offer our technical expertise on the Internet on the
+customer support web site (http://www.siemens.com/automation/).
+Contact your Siemens distributor or sales office for assistance in answering any technical
+questions, for training, or for ordering S7 products.",867,120,False
+s7-1200__user_manual_p4_c4,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,4,4,4,"on/).
+Contact your Siemens distributor or sales office for assistance in answering any technical
+questions, for training, or for ordering S7 products. Because your sales representatives are
+technically trained and have specific knowledge about your operations, processes, and
+industry, as well as the individual Siemens products that you are using, they can provide the
+fastest and most efficient answers to any problems you might encounter.",441,65,False
+s7-1200__user_manual_p5_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,5,1,5,"Preface
+
+S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 5
+Documentation and information
+S7-1200 and STEP 7 provide a variety of documentation and other resources for finding the
+technical information that you require.
+● The S7-1200 Functional Safety Manual presents an overview of the Siemens Safety
+software and fail-safe CPUs and SMs and a Getting Started configuration and
+programming example. However, the focus of the manual is the S7-1200 fail-safe SMs.
+SM installation, configuration, diagnostics, applications, and technical specifications are
+emphasized.
+The English version of the S7-1200 Functional Safety Manual is the authoritative
+(original) language for Functional Safety-related information. All translated manuals refer
+back to the English manual as the authoritative and/or original source.",832,114,False
+s7-1200__user_manual_p5_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,5,2,5,"nguage for Functional Safety-related information. All translated manuals refer
+back to the English manual as the authoritative and/or original source. Siemens identifies
+the English manual as the authoritative and/or original source in the case of
+discrepancies between the translated manuals.
+● The
+SIMATIC Safety - Configuring and Programming, Programming and Operating
+Manual provides information that enables you to configure and program SIMATIC Safety
+fail-safe systems. In addition, you will obtain information on acceptance testing of a
+SIMATIC Safety fail-safe system. Before configuring and programming an actual live fail-
+safe operation, it is essential that you refer to this manual.
+● The S7-1200 Programmable Controller System Manual provides specific information
+about the operation, programming, and the specifications for the complete S7-1200
+product family.",875,122,False
+s7-1200__user_manual_p5_c3,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,5,3,5,"ntroller System Manual provides specific information
+about the operation, programming, and the specifications for the complete S7-1200
+product family. In addition to the system manual, the S7-1200 Easy Book provides a
+more general overview to the capabilities of the S7-1200 family.
+● The S7-1200 Functional Safety Manual; SIMATIC Safety - Configuring and Programming,
+Programming and Operating Manual; S7-1200 Programmable Controller System Manual;
+and the S7-1200 Easy Book are available as electronic (PDF) manuals. You can
+download or view the electronic manuals from the Siemens Industry Online Support Web
+site (http://support.industry.siemens.com).",655,90,False
+s7-1200__user_manual_p5_c4,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,5,4,5,"PDF) manuals. You can
+download or view the electronic manuals from the Siemens Industry Online Support Web
+site (http://support.industry.siemens.com). These manuals are also available on the
+Documents Disk that ships with every S7-1200 CPU.
+● The TIA portal STEP 7 online help information system provides immediate access to the
+conceptual information, specific instructions, and error code event IDs that describe the
+operation and functionality of the programming package and basic operation of SIMATIC
+CPUs.
+● The Siemens Industry Online Support Web site (http://support.industry.siemens.com)
+provides access to the electronic (PDF) versions of the SIMATIC documentation set.
+Existing documents are available from the Product Support link.",742,104,False
+s7-1200__user_manual_p5_c5,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,5,5,5,"om)
+provides access to the electronic (PDF) versions of the SIMATIC documentation set.
+Existing documents are available from the Product Support link. With this online
+documentation access, you can also drag and drop topics from various documents to
+create your own custom manual.
+You can access online documentation by clicking ""mySupport"" from the left side of the
+page and selecting ""Documentation"" from the navigation choices. To use the mySupport
+Documentation features, you must sign up as a registered user.",514,79,False
+s7-1200__user_manual_p6_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,6,1,5,"Preface
+
+S7-1200 Functional Safety Manual
+6 Manual, V4.2, 09/2016, A5E03470344-AB
+● Siemens also provides online comprehensive support for your use of safety technology. A
+Safety Evaluation Tool assists you in determining required safety levels, Functional
+Examples guide you in your safety applications, and SITRAIN classes offer training in
+safety standards and products. Visit the following web sites to access these support
+activities:
+– Safety Evaluation Tool (http://www.siemens.com/safety-evaluation-tool)
+– Functional examples (http://www.siemens.com/safety-functional-examples)
+– SITRAIN (http://www.siemens.com/sitrain-safetyintegrated)
+● The customer support web site also provides FAQs and other helpful documents for
+S7-1200 and STEP 7.",749,92,False
+s7-1200__user_manual_p6_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,6,2,5,"ttp://www.siemens.com/sitrain-safetyintegrated)
+● The customer support web site also provides FAQs and other helpful documents for
+S7-1200 and STEP 7. Visit the following web sites to access the collection of podcasts:
+– STEP 7 Basic (http://www.industry.siemens.com/topics/global/en/tia-portal/controller-
+sw-tia-portal/simatic-step7-basic-tia-portal/Pages/Default.aspx)
+– STEP 7 Professional (http://w3.siemens.com/mcms/simatic-controller-
+software/en/step7/step7-professional/Pages/Default.aspx)
+● You can also follow or join product discussions on the Service & Support technical forum
+(https://support.industry.siemens.com/tf/ww/en/?Language=en&siteid=csius&treeLang= e
+n&groupid=4000002&extranet=standard&viewreg=WW&nodeid0=34612486).",740,61,False
+s7-1200__user_manual_p6_c3,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,6,3,5,"(https://support.industry.siemens.com/tf/ww/en/?Language=en&siteid=csius&treeLang= e
+n&groupid=4000002&extranet=standard&viewreg=WW&nodeid0=34612486). These
+forums allow you to interact with various product experts.
+– Forum for S7-1200
+(https://support.industry.siemens.com/tf/ww/en/threads/237?title=simatic-s7-
+1200&skip=0&take=10&orderBy=LastPostDate+desc)
+– Forum for STEP 7 Basic and Professional
+(https://support.industry.siemens.com/tf/ww/en/threads/243?title=step-7-tia-
+portal&skip=0&take=10&orderBy=LastPostDate+desc)
+Security information
+Siemens provides products and solutions with industrial security functions that support the
+secure operation of plants, systems, machines and networks.
+In order to protect plants, systems, machines and networks against cyber threats, it is
+necessary to implement – and continuously maintain – a holistic, state-of-the-art industrial
+security concept.",899,79,False
+s7-1200__user_manual_p6_c4,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,6,4,5,"d networks against cyber threats, it is
+necessary to implement – and continuously maintain – a holistic, state-of-the-art industrial
+security concept. Siemens’ products and solutions only form one element of such a concept.
+Customer is responsible to prevent unauthorized access to its plants, systems, machines
+and networks. Systems, machines and components should only be connected to the
+enterprise network or the internet if and to the extent necessary and with appropriate security
+measures (e.g. use of firewalls and network segmentation) in place.
+Additionally, Siemens’ guidance on appropriate security measures should be taken into
+account. For more information about industrial security, please visit
+(http://www.siemens.com/industrialsecurity).
+Siemens’ products and solutions undergo continuous development to make them more
+secure. Siemens strongly recommends to apply product updates as soon as available and to
+always use the latest product versions.",965,134,False
+s7-1200__user_manual_p6_c5,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,6,5,5,"ent to make them more
+secure. Siemens strongly recommends to apply product updates as soon as available and to
+always use the latest product versions. Use of product versions that are no longer supported,
+and failure to apply latest updates may increase customer’s exposure to cyber threats.
+To stay informed about product updates, subscribe to the Siemens Industrial Security RSS
+Feed under (http://support.automation.siemens.com).",432,63,False
+s7-1200__user_manual_p7_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,7,1,7,"S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 7
+Table of contents
+
+Preface ................................ ................................ ................................ ................................ ................... 3
+1 Product overview ................................ ................................ ................................ ................................ .. 13
+1.1 Overview ................................................................................................................................. 13
+1.2 Hardware and software components ...................................................................................... 15
+1.3 S7-1200 Fail-Safe CPUs ........................................................................................................ 18
+1.3.1 Behavior differences between standard and fail-safe CPUs ..................................................",932,54,False
+s7-1200__user_manual_p7_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,7,2,7,"................................. 18
+1.3.1 Behavior differences between standard and fail-safe CPUs .................................................. 19
+1.3.1.1 Safety mode ............................................................................................................................ 19
+1.3.1.2 Fault reactions ........................................................................................................................ 20
+1.3.1.3 Restart of fail-safe system ...................................................................................................... 22
+1.3.1.4 Firmware update ..................................................................................................................... 22
+1.4 S7-1200 Fail-Safe signal modules (SM) .................................................................................",860,41,False
+s7-1200__user_manual_p7_c3,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,7,3,7,"....................... 22
+1.4 S7-1200 Fail-Safe signal modules (SM) ................................................................................. 23
+1.4.1 Overview ................................................................................................................................. 23
+1.4.2 SM 1226 F-DI 16 x 24 V DC ................................................................................................... 24
+1.4.3 SM 1226 F-DQ 4 x 24 V DC ................................................................................................... 25
+1.4.4 SM 1226 F-DQ 2 x Relay ........................................................................................................ 27
+2 New features ................................ ................................ ................................ ................................ ......... 29
+3 Getting started ................................ ................................ ................................",984,60,False
+s7-1200__user_manual_p7_c4,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,7,4,7,".................... ......... 29
+3 Getting started ................................ ................................ ................................ ................................ ...... 31
+3.1 Introduction to example........................................................................................................... 31
+3.1.1 Instructional videos ................................................................................................................. 31
+3.1.2 Requirements for configuring and programming .................................................................... 32
+3.1.3 Example structure and task definition ..................................................................................... 33
+3.1.4 Procedure ...............................................................................................................................",875,41,False
+s7-1200__user_manual_p7_c5,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,7,5,7,"... 33
+3.1.4 Procedure ............................................................................................................................... 34
+3.2 Configuring .............................................................................................................................. 37
+3.2.1 Introduction ............................................................................................................................. 37
+3.2.2 Step 1: Configuring the S7-1200 CPU 1212FC, CPU 1214FC, or CPU 1215FC................... 38
+3.2.3 Step 2: Configuring fail-safe CPU standard digital inputs for user acknowledgement,
+feedback circuit, and start pushbutton .................................................................................... 41
+3.2.4 Step 3: Configuring an SM1226 F-DI 16 x 24 V DC for connecting an emergency stop
+switch, position switches, and the laser scanner ....................................................................",967,72,False
+s7-1200__user_manual_p7_c6,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,7,6,7,"for connecting an emergency stop
+switch, position switches, and the laser scanner .................................................................... 42
+3.2.5 Step 4: Configuring an SM 1226 F-DQ 4 x 24 V DC for connecting a motor ......................... 50
+3.2.6 Summary: Configuring the Hardware ..................................................................................... 52
+3.3 Programming .......................................................................................................................... 53
+3.3.1 Introduction ............................................................................................................................. 53
+3.3.2 Step 5: Specifying the centralized settings for the safety program ........................................ 55
+3.3.3 Step 6: Creating an F-FB ........................................................................................................",931,68,False
+s7-1200__user_manual_p7_c7,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,7,7,7,"........... 55
+3.3.3 Step 6: Creating an F-FB ........................................................................................................ 58
+3.3.4 Step 7: Programming the safety door function ....................................................................... 59
+3.3.5 Step 8: Programming the emergency stop function ............................................................... 61
+3.3.6 Step 9: Programming the feedback monitoring ...................................................................... 64
+3.3.7 Step 10: Programming the user acknowledgment for reintegration of the fail-safe SM ......... 66
+3.3.8 Step 11: Programming of the main safety block ..................................................................... 67
+3.3.9 Step 12: Compiling the safety program .................................................................................. 69",881,74,False
+s7-1200__user_manual_p8_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,8,1,7,"Table of contents
+
+S7-1200 Functional Safety Manual
+8 Manual, V4.2, 09/2016, A5E03470344-AB
+3.3.10 Step 13: Downloading the complete safety program to the fail-safe CPU and activating
+safety mode ............................................................................................................................ 70
+4 Fail-Safe signal module (SM) applications ................................ ................................ ............................. 75
+4.1 Digital input applications ........................................................................................................ 77
+4.1.1 Selecting the digital input application ..................................................................................... 78
+4.1.2 Applications 1 and 2: 1oo1 evaluation of a single sensor ...................................................... 79
+4.1.3 Applications 3 and 4: 1oo2 evaluation of a single sensor ......................................................",979,79,False
+s7-1200__user_manual_p8_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,8,2,7,"............................. 79
+4.1.3 Applications 3 and 4: 1oo2 evaluation of a single sensor ...................................................... 80
+4.1.4 Applications 5 and 6: 1oo2 evaluation of independent equivalent sensors ........................... 81
+4.1.5 Applications 7 and 8: 1oo2 evaluation of 3-wire, non-equivalent sensor circuit .................... 82
+4.1.6 Applications 9 and 10: 1oo2 evaluation of 4-wire non-equivalent sensor circuit ................... 83
+4.2 Digital output applications ...................................................................................................... 84
+4.2.1 Selecting the digital output application .................................................................................. 85
+4.2.2 Application 1: Wiring a directly-connected SIL-rated actuator ............................................... 86
+4.2.3 Application 2: Wiring external contactors: Separate P and M controlled contactors .............",971,93,False
+s7-1200__user_manual_p8_c3,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,8,3,7,"............................................. 86
+4.2.3 Application 2: Wiring external contactors: Separate P and M controlled contactors ............. 86
+4.2.4 Application 3: Wiring external contactors: Parallel connected between P and M .................. 87
+4.2.5 Application 4: Wiring external contactors: Separate P and M output channels for each
+contactor ................................................................................................................................ 87
+4.2.6 Application 5: Separate circuits of a relay channel controlling external contactors ............... 88
+4.2.7 Application 6: Wiring a directly-connected SIL-rated actuator ............................................... 88
+4.2.8 Application 7: Wiring a directly-connected SIL-rated actuator, switching both load
+conductors ..............................................................................................................................",947,84,False
+s7-1200__user_manual_p8_c4,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,8,4,7,"ng both load
+conductors .............................................................................................................................. 89
+5 Fail-Safe CPU and signal module (SM) installation ................................ ................................ ................ 91
+5.1 S7-1200 Fail-Safe modules installation and removal ............................................................ 91
+5.1.1 Mounting dimensions for S7-1200 Fail-Safe modules ........................................................... 91
+5.1.2 Guidelines for installing S7-1200 Fail-Safe devices .............................................................. 93
+5.1.3 Installation and removal safety rules ..................................................................................... 96
+5.1.4 Installing and removing an S7-1200 FC CPU ........................................................................",907,62,False
+s7-1200__user_manual_p8_c5,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,8,5,7,".......................... 96
+5.1.4 Installing and removing an S7-1200 FC CPU ........................................................................ 98
+5.1.5 Installing and removing a signal module (SM) ..................................................................... 100
+5.1.6 Removing and reinstalling the S7-1200 terminal block connector ....................................... 102
+5.2 Fail-Safe system electrical design rules .............................................................................. 103
+5.2.1 Safe functional extra low voltage requirement (power supplies and other system
+components) ........................................................................................................................ 103
+5.2.2 Power budget .......................................................................................................................",880,60,False
+s7-1200__user_manual_p8_c6,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,8,6,7,"....... 103
+5.2.2 Power budget ....................................................................................................................... 104
+5.2.2.1 Connecting power to the S7-1200 system ........................................................................... 104
+5.2.2.2 Calculating a sample power requirement ............................................................................ 106
+5.2.2.3 Calculating your power requirement .................................................................................... 109
+5.2.3 Fail-Safe module electrical characteristics and terminal assignments ................................ 110
+5.3 Control system wiring guidelines ......................................................................................... 111
+5.3.1 Guidelines for grounding and wiring ....................................................................................",911,55,False
+s7-1200__user_manual_p8_c7,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,8,7,7,"................... 111
+5.3.1 Guidelines for grounding and wiring .................................................................................... 111
+5.3.2 Grounding an S7-1200 system ............................................................................................ 112
+5.3.3 Wiring an S7-1200 system ................................................................................................... 113
+5.3.4 Guidelines for lamp loads .................................................................................................... 115
+5.3.5 Guidelines for inductive loads .............................................................................................. 115
+5.4 Maintenance guidelines ....................................................................................................... 118",828,43,False
+s7-1200__user_manual_p9_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,9,1,8,"Table of contents
+
+S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 9
+6 Fail-Safe signal module (SM) I/O configuration ................................ ................................ .................... 119
+6.1 Configuring fail-safe SM I/O properties................................................................................. 119
+6.2 Configuring common F-parameters ...................................................................................... 120
+6.3 Configuring SM 1226 F-DI 16 x 24 V DC DI and channel parameters ................................. 121
+6.4 Configuring SM 1226 F-DQ 4 x 24 V DC DQ and channel parameters ............................... 125
+6.5 Configuring SM 1226 F-DQ 2 x Relay DQ and channel parameters .................................... 128
+7 Fail-Safe signal module (SM) diagnostics ................................ ................................ ............................",940,91,False
+s7-1200__user_manual_p9_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,9,2,8,"........ 128
+7 Fail-Safe signal module (SM) diagnostics ................................ ................................ ............................ 129
+7.1 Reactions to faults ................................................................................................................ 129
+7.2 Fault diagnostics ................................................................................................................... 133
+7.2.1 Diagnostics performed at start-up ......................................................................................... 134
+7.2.2 D iagnostics by LED display .................................................................................................. 135
+7.2.3 Fault types, causes, and corrective measures ..................................................................... 140
+A Technical specifications ................................ ................................ ................................ ......................",982,54,False
+s7-1200__user_manual_p9_c3,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,9,3,8,"0
+A Technical specifications ................................ ................................ ................................ ...................... 147
+A.1 General technical specifications ........................................................................................... 147
+A.1.1 S tandards compliance .......................................................................................................... 147
+A.1.2 Fail-Safe standards and approvals ....................................................................................... 147
+A.1.3 PROFIsafe compatibility ....................................................................................................... 147
+A.1.4 Standards and approvals ...................................................................................................... 148
+A.1.4.1 General certifications ............................................................................................................",973,43,False
+s7-1200__user_manual_p9_c4,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,9,4,8,"...... 148
+A.1.4.1 General certifications ............................................................................................................ 148
+A.1.4.2 Industrial environments ......................................................................................................... 151
+A.1.5 Electromagnetic compatibility ............................................................................................... 152
+A.1.5.1 Surge immunity ..................................................................................................................... 153
+A.1.6 Transport and storage conditions ......................................................................................... 153
+A.1.7 Mechanical and climatic ambient conditions ........................................................................ 154
+A.1.7.1 Environmental conditions ......................................................................................................",972,41,False
+s7-1200__user_manual_p9_c5,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,9,5,8,".......... 154
+A.1.7.1 Environmental conditions ...................................................................................................... 154
+A.1.8 Information on protection class, degree of protection, and rated voltages ........................... 154
+A.1.8.1 Contamination level and overvoltage category in accordance with IEC 61131-2 ................ 154
+A.1.8.2 Protection class in accordance with EN 61131-2 ................................................................. 154
+A.1.8.3 Degree of protection IP20 ..................................................................................................... 155
+A.1.8.4 Rated voltages ...................................................................................................................... 155
+A.1.9 Reverse voltage protection ...................................................................................................",915,60,False
+s7-1200__user_manual_p9_c6,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,9,6,8,"............. 155
+A.1.9 Reverse voltage protection ................................................................................................... 156
+A.1.10 DC outputs ............................................................................................................................ 156
+A.1.11 Relay electrical service life ................................................................................................... 157
+A.1.12 Internal CPU memory retention ............................................................................................ 158
+A.1.13 Overvoltage Category III ....................................................................................................... 159
+A.2 Fail-Safe CPU technical specifications ................................................................................. 160
+A.2.1 Fail-Safe additions/exceptions ..............................................................................................",977,44,False
+s7-1200__user_manual_p9_c7,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,9,7,8,".............. 160
+A.2.1 Fail-Safe additions/exceptions .............................................................................................. 160
+A.2.1.1 Areas of application .............................................................................................................. 160
+A.2.1.2 Restrictions with ""READ_DBL"" and ""WRIT_DBL""................................................................. 160
+A.2.1.3 Restrictions to configuring the retentive behavior of data blocks ......................................... 160
+A.2.1.4 Probabilities of failure............................................................................................................ 160
+A.2.1.5 Web server ............................................................................................................................ 161
+A.2.1.6 Using a memory card with the S7-1200 Fail-Safe CPU .......................................................",947,53,False
+s7-1200__user_manual_p9_c8,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,9,8,8,"............................... 161
+A.2.1.6 Using a memory card with the S7-1200 Fail-Safe CPU ....................................................... 164
+A.2.1.7 Backing up and restoring a fail-safe CPU ............................................................................. 165
+A.2.1.8 Password for a fail-safe CPU ................................................................................................ 166
+A.2.2 PROFINET interface X1 port pinouts .................................................................................... 166
+A.2.3 CPU 1212FC ......................................................................................................................... 168",696,45,False
+s7-1200__user_manual_p10_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,10,1,9,"Table of contents
+
+S7-1200 Functional Safety Manual
+10 Manual, V4.2, 09/2016, A5E03470344-AB
+A.2.3.1 General specifications and features..................................................................................... 168
+A.2.3.2 Timers, counters, and code blocks supported by CPU 1212FC .......................................... 170
+A.2.3.3 Digital inputs and outputs ..................................................................................................... 174
+A.2.3.4 Analog inputs ....................................................................................................................... 176
+A.2.3.5 CPU 1212FC wiring diagrams ............................................................................................. 178
+A.2.4 CPU 1214FC ........................................................................................................................",896,53,False
+s7-1200__user_manual_p10_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,10,2,9,"........ 178
+A.2.4 CPU 1214FC ........................................................................................................................ 181
+A.2.4.1 General specifications and features..................................................................................... 181
+A.2.4.2 Timers, counters and code blocks supported ...................................................................... 183
+A.2.4.3 Digital inputs and outputs ..................................................................................................... 187
+A.2.4.4 Analog inputs ....................................................................................................................... 189
+A.2.4.5 CPU 1214FC wiring diagrams ............................................................................................. 190
+A.2.5 CPU 1215FC ........................................................................................................................",971,45,False
+s7-1200__user_manual_p10_c3,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,10,3,9,"........ 190
+A.2.5 CPU 1215FC ........................................................................................................................ 194
+A.2.5.1 General specifications and features..................................................................................... 194
+A.2.5.2 Timers, counters and code blocks supported ...................................................................... 196
+A.2.5.3 Digital inputs and outputs ..................................................................................................... 200
+A.2.5.4 Analog inputs and outputs ................................................................................................... 202
+A.2.5.5 CPU 1215FC wiring diagrams ............................................................................................. 205
+A.3 Fail-Safe signal module (SM) technical specifications.........................................................",940,50,False
+s7-1200__user_manual_p10_c4,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,10,4,9,"............................... 205
+A.3 Fail-Safe signal module (SM) technical specifications......................................................... 208
+A.3.1 Fail-Safe signal modules (SM) ............................................................................................. 208
+A.3.2 SM 1226 F-DI 16 x 24 V DC ................................................................................................ 208
+A.3.2.1 Properties ............................................................................................................................. 208
+A.3.2.2 User data space ................................................................................................................... 209
+A.3.2.3 Specifications .......................................................................................................................",857,41,False
+s7-1200__user_manual_p10_c5,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,10,5,9,"... 209
+A.3.2.3 Specifications ....................................................................................................................... 209
+A.3.2.4 Wiring diagrams ................................................................................................................... 212
+A.3.3 SM 1226 F-DQ 4 x 24 V DC ................................................................................................ 213
+A.3.3.1 Properties ............................................................................................................................. 213
+A.3.3.2 User data space ................................................................................................................... 213
+A.3.3.3 Specifications ....................................................................................................................... 214
+A.3.3.4 Fuse and electronic overload protection ..............................................................................",997,43,False
+s7-1200__user_manual_p10_c6,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,10,6,9,"................... 214
+A.3.3.4 Fuse and electronic overload protection .............................................................................. 216
+A.3.3.5 Switching of loads ................................................................................................................ 217
+A.3.3.6 Wiring diagrams ................................................................................................................... 219
+A.3.4 SM 1226 F-DQ 2 x Relay ..................................................................................................... 220
+A.3.4.1 Properties ............................................................................................................................. 220
+A.3.4.2 User data space ...................................................................................................................",866,39,False
+s7-1200__user_manual_p10_c7,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,10,7,9,"...... 220
+A.3.4.2 User data space ................................................................................................................... 220
+A.3.4.3 Specifications ....................................................................................................................... 221
+A.3.4.4 Relay output circuits ............................................................................................................. 223
+A
+.3.4.5 Switching performance and service life of contacts ............................................................. 224
+A.3.4.6 Wiring diagrams ................................................................................................................... 226
+A.4 Companion products ............................................................................................................ 228
+A.4.1 PM1207 power module ........................................................................................................",982,44,False
+s7-1200__user_manual_p10_c8,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,10,8,9,"............... 228
+A.4.1 PM1207 power module ........................................................................................................ 228
+B Ordering information ................................ ................................ ................................ ............................ 229
+B.1 Fail-Safe CPUs .................................................................................................................... 229
+B.2 Fail-Safe signal modules (SM) ............................................................................................. 229
+B.3 Other modules...................................................................................................................... 229
+B.4 Spare parts and other hardware .......................................................................................... 230
+B.5 Fail-Safe terminal block spare kits .......................................................................................",979,47,False
+s7-1200__user_manual_p10_c9,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,10,9,9,".................. 230
+B.5 Fail-Safe terminal block spare kits ....................................................................................... 231
+B.6 Programming software ......................................................................................................... 232",289,15,False
+s7-1200__user_manual_p11_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,11,1,2,"Table of contents
+
+S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 11
+C Fail-Safe response times ................................ ................................ ................................ ..................... 233
+C.1 Maximum response time of the system ................................................................................ 233
+C.2 Response time parameters for the SM 1226 F-DI 16 x 24 VDC .......................................... 234
+C.3 Response time parameters for the SM 1226 F-DQ 4 x 24 VDC .......................................... 236
+C.4 Response time parameters for the SM 1226 F-DQ 2 x Relay .............................................. 237
+Glossary ................................ ................................ ................................ ................................ ............. 239
+Index................................ ................................ ................................ ................................",993,85,False
+s7-1200__user_manual_p11_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,11,2,2,"......... 239
+Index................................ ................................ ................................ ................................ ................... 247",174,8,False
+s7-1200__user_manual_p12_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,12,1,1,"Table of contents
+
+S7-1200 Functional Safety Manual
+12 Manual, V4.2, 09/2016, A5E03470344-AB",92,12,False
+s7-1200__user_manual_p13_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,13,1,3,"S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 13
+Product overview 1
+1.1 Overview
+SIMATIC Safety fail-safe system
+The objective of safety engineering is to minimize danger to humans and the environment as
+much as possible through use of safety-oriented technical installations without restricting
+industrial production and the use of machines and chemical products any more than
+necessary. The SIMATIC Safety fail-safe system is available to implement safety concepts in
+the area of machine and personnel protection (for example, for emergency STOP devices for
+machining and processing equipment).
+What are fail-safe automation systems?
+Fail-safe automation systems control processes that can achieve a safe state immediately as
+a result of an unexpected operation or failure.",800,114,False
+s7-1200__user_manual_p13_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,13,2,3,"n systems?
+Fail-safe automation systems control processes that can achieve a safe state immediately as
+a result of an unexpected operation or failure. These are fail-safe control processes where
+an immediate shutdown to safe state does not endanger humans or the environment.
+Fail-safe systems go beyond conventional safety engineering to enable far-reaching
+intelligent systems that extend all the way to the electrical drives and measuring systems.
+You use fail-safe systems in applications with advanced safety requirements.",527,76,False
+s7-1200__user_manual_p13_c3,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,13,3,3,"s that extend all the way to the electrical drives and measuring systems.
+You use fail-safe systems in applications with advanced safety requirements. You can
+resume production quickly following a safety-related interruption, using the improved fault
+detection and localization provided in fail-safe systems through detailed diagnostic
+information.
+Achievable safety requirements
+SIMATIC Safety fail-safe systems can satisfy the following safety requirements:
+● Safety class (Safety Integrity Level) SIL 1 to SIL 3 in accordance with IEC 61508:2010
+● Category 2 to 4, Performance Level (PL) a to e in accordance with EN ISO 13849- 1:2015",637,94,False
+s7-1200__user_manual_p14_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,14,1,4,"Product overview
+1.1 Overview
+S7-1200 Functional Safety Manual
+14 Manual, V4.2, 09/2016, A5E03470344-AB
+Principles of safety functions in SIMATIC Safety
+You implement functional safety using the hardware and firmware of the fail-safe CPUs and
+signal modules (SM) in conjunction with the safety program downloaded by the software
+(ES). The SIMATIC Safety system executes the safety function to bring the system to a safe
+state or maintain a safe state in case of a dangerous event.
+The fail-safe SMs ensure the safe processing of field information (for example, sensors for
+emergency OFF pushbuttons and light curtains and actuators for motor control). The fail -safe
+SMs have the required hardware and software components for safe processi ng, in
+accordance with the required Safety Integrity Level (SIL).
+You provide the safety function for the process through the application program that you
+create or by the reaction of the fail-safe system to a fault.",956,150,False
+s7-1200__user_manual_p14_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,14,2,4,"You provide the safety function for the process through the application program that you
+create or by the reaction of the fail-safe system to a fault. In the event of an error, if the fail-
+safe system can no longer execute its actual user safety function, it executes the fault
+reaction function (for example, the fail-safe system shuts down the associated outputs).
+Example of user safety function
+If an object interrupts the beam of a light curtain, the fail-safe system stops the motion in the
+area protected by the light curtain (user safety function):
+● The light curtain provides a ""1"" signal, perhaps redundantly, to say the light beam is not
+broken or ""0"" to say the light beam is broken.
+● The fail-safe digital input signal module (SM) acquires the signal from the light curtain and
+provides the state to the fail-safe CPU through a safe communication protocol.
+Redundant processors with mutual diagnostics in the fail-safe digital input SM provide a
+high assurance that a ""1"" is provided",999,169,False
+s7-1200__user_manual_p14_c3,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,14,3,4,"communication protocol.
+Redundant processors with mutual diagnostics in the fail-safe digital input SM provide a
+high assurance that a ""1"" is provided only when correct and faults result in a ""0"" being
+provided.
+● The fail-safe CPU executes your user program for normal control of the motion and
+includes your programmed safety logic that says a ""1"" from the light curtain is required to
+enable the motion. Your programmed safety logic is encoded by the Engineering System
+in redundant logic steps that gives a high assurance that any fault in CPU execution
+results in an identified discrepancy and an output of ""0"". If the CPU fails to receive
+verifiable communication from the fail-safe digital input SM in a required time, the fail-safe
+CPU replaces the signal from the fail-safe digital input SM with ""0"".
+● The fail-safe CPU delivers the results of the safety logic to the fail-safe digital output SM
+through the safe communication protocol.",946,156,False
+s7-1200__user_manual_p14_c4,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,14,4,4,"SM with ""0"".
+● The fail-safe CPU delivers the results of the safety logic to the fail-safe digital output SM
+through the safe communication protocol. A ""1"" signal from your safety logic enables
+motion by turning an output channel ON, or a ""0"" turns the output channel OFF.
+Redundant processors with mutual diagnostics in the fail-safe digital output SM provide a
+high assurance that redundant output switches (series relay contacts or P/M 24 V DC
+solid state switches) are turned ON only when this is correct and at least one output
+switch turns OFF if a fault occurs. If the fail-safe digital output SM fails to receive
+verifiable communication from the fail-safe CPU in a required time, the fail-safe digital
+output SM replaces the signal from the fail-safe CPU with ""0"" and turns outputs OFF.",795,135,False
+s7-1200__user_manual_p15_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,15,1,3,"Product overview
+1.2 Hardware and software components
+S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 15
+1.2 Hardware and software components
+S7-1200 Fail-Safe CPUs and SMs
+The following fail-safe V4.2 CPUs and fail-safe signal modules (SM) are available with the
+STEP 7 V14 Safety releases. You can use any of the listed S7-1200 fail-safe SMs centrally
+on any of the S7-1200 fail-safe CPUs:
+● CPU 1212FC DC/DC/DC
+● CPU 1212FC DC/DC/RLY
+● CPU 1214FC DC/DC/DC
+● CPU 1214FC DC/DC/RLY
+● CPU 1215FC DC/DC/DC
+● CPU 1215FC DC/DC/RLY
+● SM 1226 F-DI 16 x 24 VDC
+● SM 1226 F-DQ 4 x 24 VDC
+● SM 1226 F-DQ 2 x Relay
+An S7-1200 fail-safe system requires a fail-safe CPU and fail-safe SMs.",699,121,False
+s7-1200__user_manual_p15_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,15,2,3,"● SM 1226 F-DI 16 x 24 VDC
+● SM 1226 F-DQ 4 x 24 VDC
+● SM 1226 F-DQ 2 x Relay
+An S7-1200 fail-safe system requires a fail-safe CPU and fail-safe SMs. The integrated I/O
+on the CPU is not fail-safe, but can be used to perform other control functions.
+The S7-1200 standard signal modules (SM), communication modules (CM), and signal
+boards (SB) can be used in the same system with fail-safe SMs to perform your application
+control functions that do not require a rated Safety Integrity Level (SIL).",496,91,False
+s7-1200__user_manual_p15_c3,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,15,3,3,"be used in the same system with fail-safe SMs to perform your application
+control functions that do not require a rated Safety Integrity Level (SIL). Standard SMs that
+are supported for use with fail-safe SMs have the article numbers (6ES7--- ---32 0XB0) or
+later.
+Hardware components for PROFINET IO
+You can use the following fail-safe components in S7-1200 Fail-Safe on PROFINET IO:
+● Fail-safe CPUs with built-in PROFINET interface
+● Fail-safe inputs and outputs (F-I/O), such as:
+– ET 200SP fail-safe modules
+– ET 200MP fail-safe modules
+– ET 200S fail-safe modules
+– ET 200M fail-safe modules
+– ET 200pro fail-safe modules
+– Fail-safe GSD-based, PROFIsafe-capable I/O devices (for example, a light curtain or
+laser scanner)",728,116,False
+s7-1200__user_manual_p16_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,16,1,2,"Product overview
+1.2 Hardware and software components
+S7-1200 Functional Safety Manual
+16 Manual, V4.2, 09/2016, A5E03470344-AB
+
+Note
+You must use V4.2 S7-1200 Fail-Safe CPUs when configuring PROFINET IO fail-safe
+components. You cannot use V4.1 S7-1200 Fail-Safe CPUs when configuring PROFINET IO
+fail-safe components.
+
+Hardware components for PROFIBUS DP
+You can use the following fail-safe components in S7-1200 Fail-Safe on PROFIBUS DP:
+● Fail-safe CPUs with the CM 1243-5 (PROFIBUS DP master)
+● Fail-safe inputs and outputs (F-I/O), such as:
+– ET 200SP fail-safe modules
+– ET 200MP fail-safe modules
+– ET 200S fail-safe modules
+– ET 200M fail-safe modules
+– ET 200pro fail-safe modules
+– ET 200iSP fail-safe modules
+– Fail-safe GSD-based, PROFIsafe-capable DP slaves (for example, a light curtain or
+laser scanner)",819,123,False
+s7-1200__user_manual_p16_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,16,2,2,"pro fail-safe modules
+– ET 200iSP fail-safe modules
+– Fail-safe GSD-based, PROFIsafe-capable DP slaves (for example, a light curtain or
+laser scanner)
+
+Note
+You must use V4.2 S7-1200 Fail-Safe CPUs when configuring PROFIBUS DP fail-safe
+components. You cannot use V4.1 S7-1200 Fail-Safe CPUs when configuring PROFIBUS
+DP fail-safe components.
+
+Note
+You can only use PROFIBUS DP fail-safe modules that support PROFIsafe mode V2 with
+the S71200 CPU.",447,67,False
+s7-1200__user_manual_p17_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,17,1,3,"Product overview
+1.2 Hardware and software components
+S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 17
+PROFINET shared device functionality
+The ""Shared Device"" function allows the fail-safe and standard modules or submodules of an
+IO device to be shared by different IO controllers. One IO controller exclusively controls each
+module or submodule of the shared IO device.
+Without the ""Shared Device"" function, you assign each I/O module or submodule of an IO
+device to the same IO controller.",517,78,False
+s7-1200__user_manual_p17_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,17,2,3,"dule of the shared IO device.
+Without the ""Shared Device"" function, you assign each I/O module or submodule of an IO
+device to the same IO controller. If you have sensors that are physically close to each other,
+but must provide data to different IO controllers, then you require several IO devices.
+Refer to the S7-1200 Programmable Controller System Manual
+(https://support.industry.siemens.com/cs/ww/en/view/109478121) and the ""SIMATIC Safety -
+Configuring and Programming, Programming and Operating Manual""
+(http://support.automation.siemens.com/WW/view/en/54110126/0/en) for detailed
+information about PROFINET shared device configuration.
+Required software components
+You require one of the following software combinations:
+● STEP 7 Basic V14 or later with the STEP 7 Safety Basic V14 or later optional package
+● STEP 7 Professional V14 or later with STEP 7 Safety Basic V14 or later optional package
+● STEP 7 Professional V14 or later with STEP 7 Safety Advanced V14 or later",982,143,False
+s7-1200__user_manual_p17_c3,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,17,3,3,"sional V14 or later with STEP 7 Safety Basic V14 or later optional package
+● STEP 7 Professional V14 or later with STEP 7 Safety Advanced V14 or later optional
+package
+STEP 7 Safety Advanced V14 and STEP 7 Safety Basic V14 are the configuration and
+programming software packages for the SIMATIC Safety fail-safe system. In both software
+packages, you receive the following:
+● Support for configuring the fail-safe CPUs and SMs in the hardware and network editor of
+the TIA portal
+● Support for creating the safety program using LAD and FBD and integrating error
+detection functions into the safety program
+● Instructions for programming your safety program in LAD and FBD, which you are familiar
+with from the standard user programs
+● Instructions for programming your safety program in LAD and FBD with special safety
+functions",828,138,False
+s7-1200__user_manual_p18_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,18,1,3,"Product overview
+1.3 S7-1200 Fail-Safe CPUs
+S7-1200 Functional Safety Manual
+18 Manual, V4.2, 09/2016, A5E03470344-AB
+1.3 S7-1200 Fail-Safe CPUs
+The fail-safe CPU executes your safety program along with standard applications programs.
+Communication between the fail-safe CPU and the fail-safe signal modules is verified using
+the PROFIsafe protocol.
+
+Safety program
+You can create a safety program using the program editor. You can program fail-safe
+function blocks (FB) and functions (FC) in the Function Block Diagram (FBD) or Ladder
+Logic (LAD) programming languages and create fail-safe data blocks (DB).
+The fail-safe system performs a dual execution using coded processing. The fail -safe system
+automatically performs safety checks and inserts additional fail-safe logic for error detection
+and error response when the safety program compilation occurs.",860,122,False
+s7-1200__user_manual_p18_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,18,2,3,"cally performs safety checks and inserts additional fail-safe logic for error detection
+and error response when the safety program compilation occurs. This ensures the detection
+of failures and faults and appropriate execution of reactions to maintain the fail-safe system
+in the safe state or bring it to a safe state.
+In addition to the safety program, you can run a standard user program on the fail-safe CPU.
+A standard program can coexist with a safety program in a fail-safe CPU. The fail-safe CPU
+protects the safety-related data of the safety program from the unintentional effects of the
+data of the standard user program.",631,103,False
+s7-1200__user_manual_p18_c3,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,18,3,3,"CPU. The fail-safe CPU
+protects the safety-related data of the safety program from the unintentional effects of the
+data of the standard user program.
+
+WARNING
+You cannot put an S7-1200 Fail-Safe system that provides safety-related functions into
+operation after installation or modification until after you successfully validate the safety -
+related functionality.
+Death or serious personal injury and damage to machines and equipment may result if
+proper precautions are not taken.
+An S7-1200 Fail-Safe system that provides both safety-related functions and standard (non
+safety-related) functions must not be put into operation in order to use the standard
+functions before you successfully validate the safety-related functions, even if all fail-safe
+signal modules go to the error state and thus remain safe.",813,120,False
+s7-1200__user_manual_p19_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,19,1,2,"Product overview
+1.3 S7-1200 Fail-Safe CPUs
+S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 19
+You can exchange data between the safety program and the standard user program in the
+fail-safe CPU by means of bit memory or data of a standard DB.
+1.3.1 Behavior differences between standard and fail-safe CPUs
+1.3.1.1 Safety mode
+Safety mode
+In safety mode, the safety functions for fault detection and fault reaction are activated in the
+following:
+● Safety program of the fail-safe CPU
+● Fail-safe signal modules (SM)
+Safety mode of safety program
+The safety program runs in the fail-safe CPU in safety mode. The safety program activates
+all safety mechanisms for fault detection and fault reaction. You cannot modify the safety
+program during operation in safety mode.
+You can deactivate and reactivate the safety mode of the safety program.",864,137,False
+s7-1200__user_manual_p19_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,19,2,2,"action. You cannot modify the safety
+program during operation in safety mode.
+You can deactivate and reactivate the safety mode of the safety program. ""Deactivated
+safety mode"" enables the safety program for online tests and changes as needed while the
+fail-safe CPU is in RUN mode.
+For SIMATIC Safety, you can switch back to safety mode only after an operating mode
+change of the fail-safe CPU from RUN to STOP to RUN.
+Safety message frame
+In safety mode, the fail-safe CPU and fail-safe SMs consistently transmit data between them
+in a safety message frame. The safety message frame in accordance with PROFIsafe
+standards consists of the following:
+● Process data (user data)
+● Status byte/control byte (coordination data for safety mode)
+● Virtual Monitoring Number (encoded in CRC signature, provides keep-alive mechanism
+and detection of out-of-sequence messages)
+● CRC signature",884,140,False
+s7-1200__user_manual_p20_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,20,1,3,"Product overview
+1.3 S7-1200 Fail-Safe CPUs
+S7-1200 Functional Safety Manual
+20 Manual, V4.2, 09/2016, A5E03470344-AB
+1.3.1.2 Fault reactions
+Safe state
+The fail-safe concept depends on the identification of a safe state for all process variables.
+The value ""0"" (de-energized) represents this safe state for digital fail-safe signal modules
+(SM). This applies to both sensors and actuators.
+Passivation
+Passivation applies safe state values to the fail-safe SM or channel(s) instead of process
+values when the fail-safe system detects faults.",542,78,False
+s7-1200__user_manual_p20_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,20,2,3,"assivation
+Passivation applies safe state values to the fail-safe SM or channel(s) instead of process
+values when the fail-safe system detects faults. The safety function requires passivation of
+the fail-safe SM or channel(s) in the following situations:
+● When the fail-safe system starts up
+● If the fail-safe system detects overall module faults, such as RAM or Processor failures
+● If the fail-safe system detects errors during safety-related communication between the
+fail-safe CPU and the fail-safe SM through the PROFIsafe safety protocol
+(communication error)
+● If fail-safe channel faults occur (for example, short-circuit and discrepancy errors or
+internal faults of fail-safe input or output channels)
+When passivation occurs in a digital input fail-safe SM, SIMATIC Safety provides the safety
+program with safe state values (0) instead of the process data pending at the fail -safe inputs
+in the input process image.
+When passivation occurs in a digital output fail-safe SM, the SM sets",998,153,False
+s7-1200__user_manual_p20_c3,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,20,3,3,"of the process data pending at the fail -safe inputs
+in the input process image.
+When passivation occurs in a digital output fail-safe SM, the SM sets the passivated
+channel(s) to a value of (0).
+Reintegration
+Reintegration returns the process from passivation to a normal state after successful
+diagnostics determine that the fault has cleared. After reintegration of a fail-safe digital input,
+SIMATIC Safety again provides the process data pending at the inputs to the safety
+program. For a fail-safe digital output, SIMATIC Safety again transfers the output values
+provided by the safety program to the fail-safe outputs. Reintegration from safe state values
+to process data can be automatic or require acknowledgement by your safety program. See
+""Reactions to faults"" (Page 129) for steps to reintegrate.",809,126,False
+s7-1200__user_manual_p21_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,21,1,4,"Product overview
+1.3 S7-1200 Fail-Safe CPUs
+S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 21
+Detection and response to faults
+SIMATIC Safety systems detect and respond to faults in several different conditions:
+● Faults in the fail-safe CPU hardware and firmware
+● Faults in the fail-safe user program
+● PROFIsafe communication errors caused by conditions in either the fail-safe CPU or SMs
+● Fail-safe SM-wide errors such as microprocessor errors or memory errors
+● Fail-safe SM channel errors such as discrepancy errors, wiring shorts, or internal channel
+faults
+Fail-safe CPU faults and fail-safe user program faults often result in the CPU operating mode
+being set to STOP. You can reintegrate PROFIsafe communication faults once
+communication is successfully restored. In most cases, you cannot reintegrate SM- wide
+faults because these faults require the fail-safe SM to be power-cycled.",918,137,False
+s7-1200__user_manual_p21_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,21,2,4,"tion is successfully restored. In most cases, you cannot reintegrate SM- wide
+faults because these faults require the fail-safe SM to be power-cycled. You can often
+reintegrate and return channel faults to proper operation by removing the fault and
+reintegrating the channel.
+Virtual monitoring number, cyclic interrupt time, and F-monitoring time
+The following parameters are integral to fault reactions:
+● Virtual monitoring number: The PROFIsafe protocol provides time monitoring and
+detection of message sequence errors by means of a periodically-updated monitoring
+number.
+● Cyclic interrupt time: The cyclic interrupt time is the interval by which the F-runtime group
+executes and determines how often the fail-safe CPU sends the PROFIsafe frame to the
+fail-safe SMs. When you add a fail-safe CPU to your project, STEP 7 creates Functional
+Safety Organization Block 1 (FOB_1) (OB123 by default).",901,135,False
+s7-1200__user_manual_p21_c3,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,21,3,4,"to the
+fail-safe SMs. When you add a fail-safe CPU to your project, STEP 7 creates Functional
+Safety Organization Block 1 (FOB_1) (OB123 by default). FOB_1 contains the cyclic time
+interrupt time, and you can configure the cyclic interrupt time (100ms by default).
+● F-monitoring time: The F-monitoring time is the amount of time an SM or CPU waits for
+an error-free communication including a new Virtual Monitoring Number before
+passivating channels. You can configure the F-monitoring time. The fail-safe CPU and
+SMs must receive a valid, current safety message frame with a valid monitoring number
+within the configured F-monitoring time.
+If the fail-safe system fails to detect a valid monitoring number within the F-monitoring time,
+the fail-safe system passivates the fail-safe SM.",787,123,False
+s7-1200__user_manual_p21_c4,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,21,4,4,"ime.
+If the fail-safe system fails to detect a valid monitoring number within the F-monitoring time,
+the fail-safe system passivates the fail-safe SM. Expiration of an SM's F-monitoring time
+causes a transition to safe state for all F-inputs or F-outputs of the SM.
+CRC (Cyclic Redundancy Check) signature
+A CRC signature contained in the safety message frame protects the validity of the process
+data in the safety message frame, the accuracy of the assigned address references, and the
+safety-relevant parameters.
+If a CRC signature error occurs during communication between the fail-safe CPU and fail-
+safe SMs, the fail-safe system passivates the fail-safe SMs.",665,103,False
+s7-1200__user_manual_p22_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,22,1,2,"Product overview
+1.3 S7-1200 Fail-Safe CPUs
+S7-1200 Functional Safety Manual
+22 Manual, V4.2, 09/2016, A5E03470344-AB
+1.3.1.3 Restart of fail-safe system
+The operating modes of the SIMATIC Safety system differ from those of the standard system
+only in terms of the restart characteristics.
+Restart characteristics
+When you switch a fail-safe CPU from STOP to RUN mode, the standard user program
+restarts in the usual way. When you restart the safety program, the fail-safe system initializes
+all data blocks with the F-Attribute with values from load memory. This is comparable to a
+cold restart.
+The fail-safe system attempts to reintegrate each fail-safe SM at restart. In contrast to the
+standard user program, you cannot use startup OBs in the safety program.
+1.3.1.4 Firmware update",787,122,False
+s7-1200__user_manual_p22_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,22,2,2,"rate each fail-safe SM at restart. In contrast to the
+standard user program, you cannot use startup OBs in the safety program.
+1.3.1.4 Firmware update
+
+Note
+Fail-safe SM firmware (FW) updates
+If 24 V DC power to the fail-safe SM is interrupted during the FW update, then the FW
+update must be started again with a memory card.
+You cannot complete re-started FW updates from a web server or the TIA Portal.
+
+Refer to the S7-1200 Programmable Controller System Manual
+(https://support.industry.siemens.com/cs/ww/en/view/109478121) for firmware update
+procedures.",560,85,False
+s7-1200__user_manual_p23_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,23,1,2,"Product overview
+1.4 S7-1200 Fail-Safe signal modules (SM)
+S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 23
+1.4 S7-1200 Fail-Safe signal modules (SM)
+1.4.1 Overview
+Siemens intends for the S7-1200 fail-safe products to be used to help solve functional safety
+in machine applications.
+There are three fail-safe SMs in conjunction with the S7-1200 V4.2 release:
+● SM 1226 F-DI 16 x 24 V DC
+● SM 1226 F-DQ 4 x 24 V DC
+● SM 1226 F-DQ 2 x Relay
+Redundant two-processor functional safety design
+The major difference between S7-1200 fail-safe and standard SMs is that failsafe SMs use
+redundancy to achieve functional safety, including two processors that control fail-safe
+operation. Both processors monitor each other and verify that they are executing the same
+code at the same time, automatically test the I/O circuits, and set the fail-safe SMs to safe
+state in the event of a fault.",906,148,False
+s7-1200__user_manual_p23_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,23,2,2,"ey are executing the same
+code at the same time, automatically test the I/O circuits, and set the fail-safe SMs to safe
+state in the event of a fault. Each processor monitors internal and external power supplies
+and module internal temperature and can passivate the module if an abnormal condition is
+detected.
+Safety-related input and output signals form the interface to the process. This enables direct
+connection of single-channel and two-channel input signals from devices such as emergency
+STOP buttons or light curtains. The fail-safe SM redundantly combines the safety-related
+signals internally and passes the unified result on to the CPU in a fail-safe manner for further
+processing.
+The fail-safe CPU sends the safety-related outputs from the CPU to the fail-safe SM for each
+individual output channel. Each output then sets two independent switches for each channel,
+a P and M solid-state switch, or two independent relays.",935,147,False
+s7-1200__user_manual_p24_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,24,1,3,"Product overview
+1.4 S7-1200 Fail-Safe signal modules (SM)
+S7-1200 Functional Safety Manual
+24 Manual, V4.2, 09/2016, A5E03470344-AB
+1.4.2 SM 1226 F-DI 16 x 24 V DC
+
+The SM 1226 F-DI 16 x 24 V DC is an S7-
+1200 signal module (SM) for use in fail-safe
+applications. The inputs are rated for connec-
+tion to 24 V DC sensors/switches and 3/4-wire
+proximity switches (for example, BEROs:
+Siemens line of no-touch sensors) and have
+an EN61131-2 type 1 input rating.
+The module has two sensor supply outputs
+that can each power eight external sensors
+(inputs).
+Inputs and test circuit
+The F-DI consists of 16 input channels (F-DI a.0...a.7, F-DI b.0...b.7). You can configure
+these inputs as sixteen one-out-of-one (1oo1) inputs (SIL 2/Category 3/PL d), eight one-out-
+of-two (1oo2) inputs (SIL 3/Category 3 or Category 4/PL e), or combinations of 1oo1 and
+1oo2 channels. One microcomputer monitors inputs a.0 to a.7, and the other microcomputer
+monitors inputs b.0 to b.7.",967,158,False
+s7-1200__user_manual_p24_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,24,2,3,"L e), or combinations of 1oo1 and
+1oo2 channels. One microcomputer monitors inputs a.0 to a.7, and the other microcomputer
+monitors inputs b.0 to b.7. The corresponding channels from a and b (a.0, b.0), (a.1,
+b.1)...(a.7, b.7) form a 1oo2 channel group. The ""a"" input, the first of the two inputs, conveys
+the signal in a 1oo2 configuration. For example, if you wire I8.0 and I9.0 in a 1oo2
+configuration and configure STEP 7 to use 1oo2 sensor evaluation, the signal appears at
+only the I8.0 input when you close or open the circuit for both.
+When you configure a channel group as 1oo2, the two controllers must sense the same input
+change within a configured time. Otherwise, the two controllers detect a discrepancy error.
+The F-DI reports the 1oo2 input back to the fail-safe CPU as a single input.
+If you use a sensor supply output to provide power to a sensor, you can enable short -circuit
+testing.",905,159,False
+s7-1200__user_manual_p24_c3,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,24,3,3,"ut back to the fail-safe CPU as a single input.
+If you use a sensor supply output to provide power to a sensor, you can enable short -circuit
+testing. The short-circuit test checks for shorts to plus voltage by periodically pulsing the
+sensor output off and verifying that the associated input is off. This short-circuit test also
+checks for shorts to the other circuit in a 1oo2 paired input because the test pulses the two
+sensor outputs off at different times. The short-circuit test does not detect shorts between
+inputs in the same sensor group.
+The processors cooperate in providing internal test pulses to each others process input
+circuits, after the initial field interface, to verify that sensing electronics are responsive to ""1""
+and ""0"" inputs.",756,126,False
+s7-1200__user_manual_p25_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,25,1,1,"Product overview
+1.4 S7-1200 Fail-Safe signal modules (SM)
+S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 25
+You can achieve Category 4 in 1oo2 configurations if you diagnose external wiring faults or
+exclude them according to standards.
+1.4.3 SM 1226 F-DQ 4 x 24 V DC
+
+The SM 1226 F-DQ 4 x 24 V DC is an S7-
+1200 signal module (SM) for use in fail-safe
+applications and is suitable for solenoid
+valves, DC contactors, and indicator LEDs. It
+has four outputs with P- and M-switching that
+are rated for connection to 24 V DC actuators
+with up to a 2.0 A rating.
+Outputs
+The F-DQ DC consists of four output channels (F-DQ a.0...F-DQ a.3). You can use each
+output for SIL 3 applications. Each output consists of two switches:
+● A P-switch connects 24V positive (L+) to the load.
+● An M-switch connects the load to M or 24V return.
+Both switches must be turned ON for current to flow to the load.",916,164,False
+s7-1200__user_manual_p26_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,26,1,2,"Product overview
+1.4 S7-1200 Fail-Safe signal modules (SM)
+S7-1200 Functional Safety Manual
+26 Manual, V4.2, 09/2016, A5E03470344-AB
+The F-DQ DC uses two microcomputers to implement the safety function. One
+microcomputer controls the P-switch while the other microcomputer controls the M-switch.
+There is feedback from the P-switch output to the other microcomputer that is controlling the
+M-switch. Likewise, there is feedback from the M-switch output to the other microcomputer
+that is controlling the P-switch. The feedback verifies that the output switches are operating
+properly and in the commanded state.
+You must configure a ""Maximum readback time"" that specifies the allowed delay for the
+output voltage to respond to the switch change.
+The F-DQ DC regularly tests each ""OFF"" switch ""ON"" briefly, and each ""ON"" switch ""OFF""
+briefly, to verify that each switch is still functional and under independent control.",919,138,False
+s7-1200__user_manual_p26_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,26,2,2,"ests each ""OFF"" switch ""ON"" briefly, and each ""ON"" switch ""OFF""
+briefly, to verify that each switch is still functional and under independent control. Your
+configured ""Maximum readback time"" also sets the duration of the ""OFF"" test pulse. You
+must configure a ""Maximum readback time switch on test"" which sets the duration of the
+""ON"" test pulse. You should choose these durations short enough to not affect your load.",418,69,False
+s7-1200__user_manual_p27_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,27,1,2,"Product overview
+1.4 S7-1200 Fail-Safe signal modules (SM)
+S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 27
+1.4.4 SM 1226 F-DQ 2 x Relay
+
+The SM 1226 F-DQ 2 x Relay is an S7-1200
+signal module (SM) for use in fail-safe appli-
+cations. The F-RLY has two output channels
+(F-DQ a.0 and F-DQ a.1). Each channel in-
+cludes two circuits that switch mechanically-
+linked contacts at the same time. Each circuit
+has two contacts in series controlled by inde-
+pendent relay coils.
+Each circuit can directly control an actuator in
+SIL 3 applications. You can use the two cir-
+cuits together to control redundant contactors
+or relays for SIL 3 applications with interpos-
+ing relays.
+The F-RLY uses two microcomputers to im-
+plement the safety function. Different micro-
+computers control the two series relay
+contacts in each circuit.",849,138,False
+s7-1200__user_manual_p27_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,27,2,2,"he F-RLY uses two microcomputers to im-
+plement the safety function. Different micro-
+computers control the two series relay
+contacts in each circuit. Control of each relay
+coil by one microcomputer is verified by the
+other microcomputer monitoring the mechani-
+cally-linked sense contact.
+The series contacts in each circuit are
+switched in sequence to avoid common mode
+failure by the welding of both contacts.
+
+Output channel a.0: Two circuits controlled as one process output channel.
+Refer to the isolation description in the SM 1226 F-DQ 2 x Relay (Page 221) Specifications, Digital
+outputs table.",603,94,False
+s7-1200__user_manual_p28_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,28,1,2,"Product overview
+1.4 S7-1200 Fail-Safe signal modules (SM)
+S7-1200 Functional Safety Manual
+28 Manual, V4.2, 09/2016, A5E03470344-AB
+Outputs
+You can use each of the two relay output channels for SIL 3 applications.
+
+Note
+Relay contacts of the SM 1226 F-DQ 2 x Relay are designed to Overvoltage Category III.
+You can use them in AC mains circuits without further overvoltage protection.
+Relay contact outputs and AC inputs for fail-safe S7-1200 CPUs and standard (non fail-safe)
+I/O modules do not meet requirements regarding Overvoltage Category III, as applicable to
+EN 50156-1 conforming equipment (burner applications).
+When using the SM 1226 F-DQ 2 x Relay in safety critical circuits of burner applications, you
+can use the relay contact outputs and AC inputs for fail-safe S7-1200 CPUs and standard
+(non fail-safe) I/O modules, but only if used in one of the following:
+- SELV/PELV circuits
+- Circuits connected to the electrical mains with permanent, recognized protection that
+reduces",992,155,False
+s7-1200__user_manual_p28_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,28,2,2,"if used in one of the following:
+- SELV/PELV circuits
+- Circuits connected to the electrical mains with permanent, recognized protection that
+reduces transients to Overvoltage Category II
+Otherwise, the CPU and I/O system, including the SM 1226 F-DQ 2 x Relay, will not meet
+the Overvoltage Category III requirement for burner applications.
+
+WARNING
+Adjacent relay contacts in the same channel of the SM 1226 F -DQ 2 x Relay are not rated
+to separate AC line from SELV / PELV.
+Death or serious personal injury and damage to machines and equipment can result if
+SELV/PELV circuits are wired adjacent to high voltage circuits on this module.
+The A and B circuits of each output must either be both AC line or both SELV.",717,124,False
+s7-1200__user_manual_p29_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,29,1,1,"S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 29
+New features 2
+
+The following fail-safe features are new in the S7-1200 Fail-Safe CPU V4.2 release:
+● Fail-Safe work memory usage reduced when using TIAP V14, Safety System V2.0.
+● Fail-Safe program execution performance improved when using TIAP V14, Safety
+System V2.0.
+● Backup and restore of Fail-Safe CPUs
+● Enhancements to the Web server (Page 161), making it share more common functionality
+with the S7-1500, including the following improved fail-safe web pages:
+– Start Page
+– Module Information
+– Diagnostics
+● Control/Monitoring of fail-safe devices on PROFINET IO and PROFIBUS DP
+● PROFINET shared device functionality
+● PROFINET interface X1 port pinouts
+New fail-safe CPUs for the S7-1200
+The new CPU 1212FC DC/DC/DC and CPU 1212FC DC/DC/RLY add to your choice of S7-
+1200 fail-safe CPUs.",874,136,False
+s7-1200__user_manual_p30_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,30,1,1,"New features
+
+S7-1200 Functional Safety Manual
+30 Manual, V4.2, 09/2016, A5E03470344-AB",87,11,False
+s7-1200__user_manual_p31_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,31,1,2,"S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 31
+Getting started 3
+3.1 Introduction to example
+3.1.1 Instructional videos
+The ""Getting Started"" chapter contains eleven instructional videos. Nine instructional videos
+take you step-by-step through many of the configuring and programming tasks. These
+instructional videos show the completed task at the beginning of the video, with a fadeout to
+a step-by-step tutorial that demonstrates all of the required sub-tasks:
+● ""Procedure"" (Page 34) (shows a wiring overview of the S7-1200 Fail-Safe application
+example)
+● ""Step 1: Configuring the S7-1200 CPU 1212FC, CPU 1214FC, or CPU 1215FC""
+(Page 38) (step-by-step tutorial)
+● ""Step 6: Creating an F-FB"" (Page 58) (step-by-step tutorial)
+● ""Step 7: Programming the safety door function"" (Page 59) (step-by-step tutorial)
+● ""Step 8: Programming the emergency stop function"" (Page 61) (step-by-step tutorial)
+● ""Step 9: Programming the feedback monitoring"" (Page 64) (step-by-step",997,143,False
+s7-1200__user_manual_p31_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,31,2,2,"8: Programming the emergency stop function"" (Page 61) (step-by-step tutorial)
+● ""Step 9: Programming the feedback monitoring"" (Page 64) (step-by-step tutorial)
+● ""Step 10: Programming the user acknowledgment for reintegration of the fail-safe SM""
+(Page 66) (step-by-step tutorial)
+● ""Step 11: Programming of the main safety block"" (Page 67) (step-by-step tutorial)
+● ""Step 12: Compiling the safety program"" (Page 69) (step-by-step tutorial)
+● ""Step 13: Downloading the complete safety program to the fail-safe CPU and activating
+safety mode"" (Page 70) (step-by-step tutorial)
+● ""Step 13: Downloading the complete safety program to the fail-safe CPU and activating
+safety mode"" (Page 70) (second video; shows the end result of the LAD programming
+steps)",752,111,False
+s7-1200__user_manual_p32_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,32,1,4,"Getting started
+3.1 Introduction to example
+S7-1200 Functional Safety Manual
+32 Manual, V4.2, 09/2016, A5E03470344-AB
+3.1.2 Requirements for configuring and programming
+These instructions will guide you step-by-step through a specific example for configuring and
+programming with STEP 7 Safety V14 or later.
+You will become acquainted with the basic functions and special features of
+STEP 7 Safety V14 or later.
+It should take one or two hours to work through this example, depending on your experience.
+Requirements for the example
+The following requirements must be met:
+● In order to understand these Getting Started instructions, you need general knowledge of
+automation technology.",686,102,False
+s7-1200__user_manual_p32_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,32,2,4,"following requirements must be met:
+● In order to understand these Getting Started instructions, you need general knowledge of
+automation technology. You also need to be familiar with STEP 7 V14 or later and
+STEP 7 Safety V14 or later.
+● You need an S7-1200 station consisting of the following components:
+– Fail-safe CPU (CPU 1212FC, CPU 1214FC, or CPU 1215FC)
+– Fail-safe digital input signal module: SM 1226 F-DI 16 x 24 V DC
+– Fail-safe digital output signal module: SM 1226 F-DQ 4 x 24 V DC
+● STEP 7 V14 or later and STEP 7 Safety V14 or later must be correctly installed on your
+Windows-based programming device with an Ethernet interface.
+● The programming device must be connected to the fail-safe CPU through the PROFINET
+interface.
+● The CPU 1212FC, CPU 1214FC, or CPU 1215FC and other hardware must be fully
+installed and wired. Instructions for this can be found in the ""S7-1200 Programmable
+Controller System Manual""
+(https://support.industry.siemens.com/cs/ww/en/view/109478121).",993,162,False
+s7-1200__user_manual_p32_c3,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,32,3,4,"tructions for this can be found in the ""S7-1200 Programmable
+Controller System Manual""
+(https://support.industry.siemens.com/cs/ww/en/view/109478121).
+
+WARNING
+As a component in plants and systems, the S7-1200 is subject to specific standards and
+regulations depending on the area of application. Please note the applicable safety and
+accident prevention regulations (for example, IEC 60204-1 (General Requirements for
+Safety of Machinery)).
+The example in these Getting Started instructions serves as an introduction to configuring
+and programming of
+STEP 7 Safety Advanced V14 or later. It does not lead to actual live
+operation in every case.",645,90,False
+s7-1200__user_manual_p32_c4,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,32,4,4,"ves as an introduction to configuring
+and programming of
+STEP 7 Safety Advanced V14 or later. It does not lead to actual live
+operation in every case. Before you do this, it is essential that you refer to the current
+version of the ""SIMATIC Safety - Configuring and Programming, Programming and
+Operating Manual"" (http://support.automation.siemens.com/WW/view/en/54110126/0/en).
+The warnings and other notes contained in that manual must be heeded at all times even if
+they are not repeated in this document!
+Serious injury and damage to machines and equipment may result if these regulations are
+ignored.",605,93,False
+s7-1200__user_manual_p33_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,33,1,1,"Getting started
+3.1 Introduction to example
+S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 33
+3.1.3 Example structure and task definition
+Production cell with access protection
+
+1 Emergency stop (E-Stop)
+2 Laser scanner
+3 Safety door
+4 Control panel with start and acknowledgement pushbuttons
+5 Conveyor motor
+A laser scanner monitors the entry to the production area. A safety door secures the service
+area.
+Entering the production area or opening the safety door results in a stop or shutdown of the
+production cell similar to an emergency stop.
+The system can only be restarted when the emergency stop is cancelled, the safety door is
+closed, and the laser scanner detects no one in the protected area. The user must
+acknowledge that conditions have returned to a safe state before production can be
+restarted.",837,133,False
+s7-1200__user_manual_p34_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,34,1,2,"Getting started
+3.1 Introduction to example
+S7-1200 Functional Safety Manual
+34 Manual, V4.2, 09/2016, A5E03470344-AB
+3.1.4 Procedure
+The example in these Getting Started instructions consists of the following sections:
+Configuring
+For this example, you must configure the following S7-1200 fail-safe CPUs and SMs:
+● Fail-safe CPU (CPU 1212FC, CPU 1214FC, or CPU 1215FC)
+● Fail-safe CPU standard digital inputs for user acknowledgement, feedback loop, and start
+pushbutton
+● SM 1226 F-DI 16 x 24 V DC for connecting an emergency stop switch, the position
+switches for monitoring a safety door, and the laser scanner for monitoring the entry area
+● SM 1226 F-DQ 4 x 24 V DC for connecting a motor
+The configuration is described in the ""Configuring"" (Page 37) section.
+Programming
+Once the configuration is successfully completed, you can program your safety program.
+In our example, a fail-safe block is programmed with an emergency stop, a safety door
+function, a feedback loop (as restart",989,156,False
+s7-1200__user_manual_p34_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,34,2,2,"ogram your safety program.
+In our example, a fail-safe block is programmed with an emergency stop, a safety door
+function, a feedback loop (as restart protection, when an incorrect load exists), and a user
+acknowledgement for reintegration. The block is then compiled to form a safety program.
+The programming is described in the ""Programming"" (Page 53) section.",362,57,False
+s7-1200__user_manual_p35_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,35,1,1,"Getting started
+3.1 Introduction to example
+S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 35
+Operating the Getting Started example
+This interactive graphic gives you the opportunity to become familiar with how the example
+functions in this Getting Started.
+When you move to this page, you activate the instructional video. Move your cursor over the
+image, and the video controls (rewind, pause, go back, or go forward) appear at the bottom
+of the video screen. Move to another page to deactivate the video.
+The video switches the Laser Scanner, E-Stop, and Safety Door on and off to simulate
+unsafe conditions. Each device operates independently of the the other two devices. If y ou
+do activate a device, you must deactivate the device before continuing.
+The video shows you that you must press the ""Acknowledge"" button to notify the system that
+you have returned to a safe state. Then, you can press the ""Start"" button to operate the
+system again.",974,159,False
+s7-1200__user_manual_p36_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,36,1,2,"Getting started
+3.1 Introduction to example
+S7-1200 Functional Safety Manual
+36 Manual, V4.2, 09/2016, A5E03470344-AB
+The table below describes the steps and their actions:
+
+Step Action Description
+1 Activate the E-Stop. 1, 2 This action prevents resumption of the operation.
+2 Trigger the Laser Scanner. 1, 2 This action prevents resumption of the operation.
+3 Open the Safety Door. 1, 2 This action prevents resumption of the operation.
+4 Deactivate the Laser Scanner. 3 The Laser Scanner deactivates.
+5 Deactivate the E-Stop. 3 The E-Stop deactivates.
+6 Close the Safety Door. 3 The Safety Door closes.
+7 Press the Acknowledge button. The safety program requires acknowledgement.
+8 Press the Start button. Restart your operations.
+1 The activation of the E-STOP, trigger of the Laser Scanner, or opening of the Safety Door can be
+done in any order or individually to stop operations and bring the system to a safe state.
+2 To continue operations, you must do the following steps in this order: 1.",999,164,False
+s7-1200__user_manual_p36_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,36,2,2,"r or individually to stop operations and bring the system to a safe state.
+2 To continue operations, you must do the following steps in this order: 1. Deactivate the fail-safe
+device; 2. Press the Acknowledge button; 3. Press the Start button.
+3 This allows reintegration from safe state values to process data and, if required, acknowledgement
+by your safety program. You can now restart operations.",400,66,False
+s7-1200__user_manual_p37_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,37,1,2,"Getting started
+3.2 Configuring
+S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 37
+3.2 Configuring
+3.2.1 Introduction
+
+WARNING
+You may come into contact with live electrical wires connected to the main power supply.
+Only wire the S7-1200 fail-safe CPU control system when the input power is turned OFF.
+Death or serious personal injury and damage to machines and equipment may result if
+proper precautions are not taken.",443,67,False
+s7-1200__user_manual_p37_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,37,2,2,"n the input power is turned OFF.
+Death or serious personal injury and damage to machines and equipment may result if
+proper precautions are not taken.
+
+The installation and wiring of the S7-1200 fail-safe CPU is described in the S7-1200
+Programmable Controller System Manual
+(https://support.industry.siemens.com/cs/ww/en/view/109478121).
+Configuring the Hardware
+In STEP 7 Safety, you configure the following S7-1200 components:
+● Fail-safe CPU
+● Fail-safe CPU standard digital inputs for user acknowledgement, feedback loop, and start
+pushbutton
+● Fail-safe digital input SM for connecting an emergency stop switch and position switches
+for monitoring a safety door and the laser scanner
+● Fail-safe digital output SM for connecting a motor",742,107,False
+s7-1200__user_manual_p38_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,38,1,1,"Getting started
+3.2 Configuring
+S7-1200 Functional Safety Manual
+38 Manual, V4.2, 09/2016, A5E03470344-AB
+3.2.2 Step 1: Configuring the S7-1200 CPU 1212FC, CPU 1214FC, or CPU 1215FC
+In this step, you create a new project, add a fail-safe CPU, and assign parameters.
+When you move to this page, you activate the instructional video. Move your cursor over the
+image, and the video controls (rewind, pause, go back, or go forward) appear at the bottom
+of the video screen. Move to another page to deactivate the video.
+Procedure
+
+1. In the portal view of STEP 7 Safety, create a new project named ""S7_Safety_V14_GS""
+2. Use ""Add new device"" to add a CPU 1214FC.
+
+Note
+Any of the six available fail-safe CPUs (1212FC DC/DC/DC, 1212FC DC/DC/Relay,
+1214FC DC/DC/DC, 1214FC DC/DC/Relay, 1215FC DC/DC/DC, or 1215FC
+DC/DC/Relay) may be used in this example.
+
+Result: The Device View containing the CPU 1214FC opens.",905,147,False
+s7-1200__user_manual_p39_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,39,1,3,"Getting started
+3.2 Configuring
+S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 39
+3. Locate the ""Fail-safe: F-parameters"" area.
+You can change the following parameters or accept the default setting:
+– ""Low limit for F-destination addresses"": Default value is suitable for a stand-alone fail-
+safe S7-1200 CPU with local fail-safe SMs.
+– ""High limit for F-destination addresses"": Default value is suitable for a stand-alone fail-
+safe S7-1200 CPU with local fail-safe SMs.
+– ""Central F-source address"": Default value is suitable for a stand-alone fail-safe S7-
+1200 CPU with local fail-safe SMs.
+– ""Default F-monitoring time for central F-I/O"": A valid current safety message frame
+must be received from the fail-safe CPU to a fail-safe SM within the F-monitoring time.
+Otherwise, the fail-safe SM goes to safe state.",840,127,False
+s7-1200__user_manual_p39_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,39,2,3,"message frame
+must be received from the fail-safe CPU to a fail-safe SM within the F-monitoring time.
+Otherwise, the fail-safe SM goes to safe state. The F-monitoring time must be set high
+enough so that message frame delays are tolerated and, at the same time, low
+enough that the process can react as quickly as possible when a fault occurs. By
+default, the F-monitoring time for each fail-safe SM is taken from the ""Default F-
+monitoring time for central F-I/O"" parameter of the fail-safe CPU. However, you can
+configure the F-monitoring time individually for each fail-safe SM. Refer to Section 5.2:
+""Configuring common F-parameters"" (Page 120) for further information.
+Leave the default values unchanged for this example.
+4. Move to the ""Protection"" area.
+Select the ""Protection"" property to select the protection level and enter passwords. ""Full
+access incl. fail-safe (no protection)"" protection level with a fail-safe write protection
+password is the lowest level for a fail-safe CPU.",992,157,False
+s7-1200__user_manual_p39_c3,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,39,3,3,"ds. ""Full
+access incl. fail-safe (no protection)"" protection level with a fail-safe write protection
+password is the lowest level for a fail-safe CPU. Enter and confirm a password for the
+required protection. Passwords are case-sensitive.
+
+When you download this configuration to the fail-safe CPU, the user has HMI access and
+can access HMI functions without a password. To read data, the user must enter the
+configured password for ""Read access"", the password for ""Full access (no protection)"", or
+the password for ""Full access incl. fail-safe (no protection)"". To write data, the user must
+enter the configured password for ""Full access (no protection)"" or the password for ""Full
+access incl. fail-safe (no protection)"".",723,112,False
+s7-1200__user_manual_p40_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,40,1,3,"Getting started
+3.2 Configuring
+S7-1200 Functional Safety Manual
+40 Manual, V4.2, 09/2016, A5E03470344-AB
+Access protection for the fail-safe CPU
+The fail-safe CPU provides five levels of security for restricting access to specific functions.
+When you configure the security level and password for a fail-safe CPU, you limit the
+functions and memory areas that can be accessed without entering a password.
+Each level allows certain functions to be accessible without a password. The default
+condition for the fail-safe CPU is to have no restriction and no password-protection. To
+restrict access to a fail-safe CPU, you configure the properties of the fail-safe CPU, and
+enter and confirm the password.
+Table 3- 1 Security levels for the CPU
+Security level Access restrictions
+Full access incl. fail-
+safe
+(no protection)
+Allows full access without password.",858,131,False
+s7-1200__user_manual_p40_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,40,2,3,"3- 1 Security levels for the CPU
+Security level Access restrictions
+Full access incl. fail-
+safe
+(no protection)
+Allows full access without password. This is the lowest level of protection for a fail-safe CPU.
+Full access
+(no protection)
+Allows full access, except write access to fail-safe blocks.
+Password is required for modifying (writing to) fail-safe blocks and for changing the CPU mode
+(RUN/STOP).
+Read access Allows HMI access and all forms of PLC-to-PLC communications without password protection.
+Password is required for modifying (writing to) the CPU and for changing the CPU mode
+(RUN/STOP).
+HMI access Allows HMI access and all forms of PLC-to-PLC communications without password protection.
+Password is required for reading the data in the CPU, for modifying (writing to) the CPU, and for
+changing the CPU mode (RUN/STOP).
+No access
+(complete protec-
+tion)
+Allows no access without password protection.
+Password is required for HMI access, reading the data in the CPU, for modifying",998,155,False
+s7-1200__user_manual_p40_c3,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,40,3,3,"(complete protec-
+tion)
+Allows no access without password protection.
+Password is required for HMI access, reading the data in the CPU, for modifying (writing to) the
+CPU, and for changing the CPU mode (RUN/STOP)
+Result
+The new project has been created and the configuration of the fail-safe CPU is complete.",308,50,False
+s7-1200__user_manual_p41_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,41,1,1,"Getting started
+3.2 Configuring
+S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 41
+3.2.3 Step 2: Configuring fail-safe CPU standard digital inputs for user
+acknowledgement, feedback circuit, and start pushbutton
+In this step, you assign parameters of fail-safe CPU standard digital inputs for the non-fail-
+safe signals (user acknowledgement, feedback loop, and start pushbutton).
+Procedure
+1. Assign the input address of the fail-safe CPU standard digital inputs to ""0"" for this
+example. Assign the output address of the fail-safe CPU standard digital outputs to ""0"" as
+well. You can assign these addresses in the CPU device configuration under ""DI 14/DQ
+10"", ""I/O addresses"".
+Refer to the ""CPU 1214FC Device view"" information from the TIA Portal shown below:
+
+Result
+The configuration of the fail-safe CPU standard digital inputs is now complete.",871,130,False
+s7-1200__user_manual_p42_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,42,1,2,"Getting started
+3.2 Configuring
+S7-1200 Functional Safety Manual
+42 Manual, V4.2, 09/2016, A5E03470344-AB
+3.2.4 Step 3: Configuring an SM1226 F-DI 16 x 24 V DC for connecting an
+emergency stop switch, position switches, and the laser scanner
+In this step, you configure an F-DI for connecting an emergency stop switch, the position
+switches for monitoring a safety door, and the laser scanner for monitoring the entry area.
+Procedure
+1. In the Device View of the S7-1200, use drag-and-drop to add an F-DI 8/16x24VDC_1
+digital electronic module from the hardware catalog to slot 2.
+
+2. Open ""Device data"" to display the ""Device overview"" area. Here, you can change the
+starting addresses for the inputs and outputs of your fail-safe module. Use the module
+default I/O addresses of ""8"" and ""8"" for this example (inputs begin at byte 8, and outputs
+begin at byte 8).",863,143,False
+s7-1200__user_manual_p42_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,42,2,2,"of your fail-safe module. Use the module
+default I/O addresses of ""8"" and ""8"" for this example (inputs begin at byte 8, and outputs
+begin at byte 8).
+
+Note
+The fail-safe SMs each use both Is and Qs, even though they may physically only have
+input channels or only have output channels.
+The F-DI can have 8 - 16 input channels; however, the SM requires 9 input (I) bytes and
+5 output (Q) bytes.",393,74,False
+s7-1200__user_manual_p43_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,43,1,1,"Getting started
+3.2 Configuring
+S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 43
+3. Return to the ""Device view"" and select the F-DI 8/16x24VDC_1. Under the ""Properties""
+tab, select the ""IO tags"" tab. This action displays the ""Process value"" and ""Value status""
+bits for the fail-safe module. Here, you can define tags for each channel:
+
+Each Process value bit has an associated Value status bit that reports whether the
+corresponding process value is valid or passivated. Value status bits are ON for valid
+data and OFF for data associated with passivated channels.. If an entire module or a
+single channel is passivated, the associated Value status bits are OFF.",687,109,False
+s7-1200__user_manual_p44_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,44,1,1,"Getting started
+3.2 Configuring
+S7-1200 Functional Safety Manual
+44 Manual, V4.2, 09/2016, A5E03470344-AB
+To check the Process value bits and the Value status bits, you must know where these
+bits are mapped in the module. For an F-DI 8/16x24VDC_1, the first two bytes of the
+input (I) image register are the Process value bits, and the next two bytes of the input (I)
+image register are the Value status bits. For example, if the module starting address is
+I8.0 and Q8.0 for the F-DI 8/16x24VDC_1 and you have a 1oo1 configuration, then the
+Process value bits and corresponding Value status bits are allocated as shown in the
+following table:
+
+Process value Value status bit
+I8.0 I10.0
+I8.1 I10.1
+I8.2 I10.2
+I8.3 I10.3
+I8.4 I10.4
+I8.5 I10.5
+I8.6 I10.6
+I8.7 I10.7
+I9.0 I11.0
+I9.1 I11.1
+I9.2 I11.2
+I9.3 I11.3
+I9.4 I11.4
+I9.5 I11.5
+I9.6 I11.6
+I9.7 I11.7",850,146,False
+s7-1200__user_manual_p45_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,45,1,3,"Getting started
+3.2 Configuring
+S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 45
+If you have a 1oo2 configuration, then the Process value bits and corresponding Value
+status bits are allocated as shown in the following table:
+
+Process value Value status bit
+I8.0 I10.0
+I8.1 I10.1
+I8.2 I10.2
+I8.3 I10.3
+I8.4 I10.4
+I8.5 I10.5
+I8.6 I10.6
+I8.7 I10.7
+- -
+- -
+- -
+- -
+- -
+- -
+- -
+- -
+4. Under the ""Properties"" tab, select the ""General"" tab, and then select the ""F-parameters""
+area. Here, you can change the following parameters or apply the default settings:
+– ""F-monitoring time"": A valid current safety message frame must be received from the
+fail-safe CPU to the F-DI within the F-monitoring time. Otherwise, the F-DI goes to
+safe state. The F-monitoring time must be set high enough so that message frame
+delays are tolerated and, at the same time, low enough that the process can react as
+quickly as possible when a fault occurs and run without impairment.",980,170,False
+s7-1200__user_manual_p45_c2,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,45,2,3,"lays are tolerated and, at the same time, low enough that the process can react as
+quickly as possible when a fault occurs and run without impairment. By default, the F -
+DI's F-monitoring time is taken from the ""Default F-monitoring time for central F-I/O""
+parameter of the fail-safe CPU.
+
+Note
+The ""cyclic interrupt time"" is a closely-related parameter to the F-monitoring time. The
+cyclic interrupt time is the interval by which the F-runtime group executes and
+determines how often the fail-safe CPU sends the PROFIsafe frame to the fail-safe
+SMs.
+When you add a fail-safe CPU to your project, STEP 7 creates Functional Safety
+Organization Block 1 (FOB_1) (OB123 by default). FOB_1 contains the cyclic interrupt
+time.",721,118,False
+s7-1200__user_manual_p45_c3,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,45,3,3,"-safe CPU to your project, STEP 7 creates Functional Safety
+Organization Block 1 (FOB_1) (OB123 by default). FOB_1 contains the cyclic interrupt
+time.
+
+– ""F-destination address"": A unique PROFIsafe address is critical for every F-IO used in
+a safety system (network and CPU-wide). Refer to the ""SIMATIC Safety - Configuring
+and Programming, Programming and Operating Manual""
+(http://support.automation.siemens.com/WW/view/en/54110126/0/en) for procedures
+to set and verify unique PROFIsafe addresses in networked systems.
+Leave the settings unchanged for the F-parameters for this example.",589,79,False
+s7-1200__user_manual_p46_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,46,1,1,"Getting started
+3.2 Configuring
+S7-1200 Functional Safety Manual
+46 Manual, V4.2, 09/2016, A5E03470344-AB
+5. Select the ""DI parameters"" area.
+Deactivate (uncheck the box) the ""Short-circuit test"" parameter for this example.
+6. In this example, a two-channel emergency stop switch (emergency stop) is connected to
+channels 0 and 8.
+In our example, these channels are wired to Process value bits I8.0 and I9.0. The first of
+the two inputs, I8.0, conveys the signal in this 1oo2 configuration. Expand ""DI
+parameters"" and ""Channel parameters"" and select ""Channel 0, 8"".
+Enter the settings as shown in the following figure:",618,96,False
+s7-1200__user_manual_p47_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,47,1,1,"Getting started
+3.2 Configuring
+S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 47
+7. In this example, the laser scanner for monitoring the accessible entry area is connected
+to channels 1 and 9.
+Make the settings as shown in the following figure:",270,42,False
+s7-1200__user_manual_p48_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,48,1,1,"Getting started
+3.2 Configuring
+S7-1200 Functional Safety Manual
+48 Manual, V4.2, 09/2016, A5E03470344-AB
+8. In this example, the position switches for monitoring a two-channel safety door are
+connected to channels 2 and 3.
+Make the settings as shown in the following figure:",275,42,False
+s7-1200__user_manual_p49_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,49,1,1,"Getting started
+3.2 Configuring
+S7-1200 Functional Safety Manual
+Manual, V4.2, 09/2016, A5E03470344-AB 49
+9. Disable the following unused DI channels by clearing the ""Activated"" check box:
+
+-
+-
+- 4
+- 5
+- 6
+- 7
+- 10
+- 11
+- 12
+- 13
+- 14
+- 15
+Result
+The configuration of the F-DI is now complete.",293,57,False
+s7-1200__user_manual_p50_c1,s7-1200__user_manual.csv,S7-1200 Functional Safety Manual,Functional Safety Manual,S7-1200,,4.2,en,50,1,1,"Getting started
+3.2 Configuring
+S7-1200 Functional Safety Manual
+50 Manual, V4.2, 09/2016, A5E03470344-AB
+3.2.5 Step 4: Configuring an SM 1226 F-DQ 4 x 24 V DC for connecting a motor
+In this step, you configure an F-DQ DC for indirect connection of a motor to channel 0, using
+2 contactors.
+Procedure
+1. In the Device View of the S7-1200, use drag-and-drop to add an F-DQ 4x24VDC_1 digital
+electronic module from the hardware catalog to slot 3.
+
+2. Open ""Device data"" to display the ""Device overview"" area. Here, you can change the start
+addresses for the inputs and outputs of your fail-safe module. Use the module default I/O
+addresses of ""17"" and ""17"" for this example (inputs begin at byte 17, and outputs begin at
+byte 17).
+
+Note
+The fail-safe SMs each use both Is and Qs, even though they may physically only have
+input channels or only have output channels.
+The F-DQ DC has 4 output channels; however, the SM requires 6 input (I) bytes and 6
+output (Q) bytes.",966,170,False
