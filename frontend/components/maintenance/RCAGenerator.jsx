@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { AlertCircle, Zap, ShieldAlert, FileText, CheckCircle2 } from 'lucide-react';
+import { mockRCAEvents } from '../../data/maintenanceData';
 import StatusBadge from '../ui/StatusBadge';
 
 const typeIcons = {
@@ -12,11 +13,11 @@ const typeIcons = {
   observation: <ShieldAlert size={12} className="text-purple-400" />,
 };
 
-export default function RCAGenerator({ events = [] }) {
+export default function RCAGenerator() {
   const [selectedEvent, setSelectedEvent] = useState(null);
 
   const sortedEvents = useMemo(() => {
-    return [...events].sort(
+    return [...mockRCAEvents].sort(
       (a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime()
     );
   }, []);
