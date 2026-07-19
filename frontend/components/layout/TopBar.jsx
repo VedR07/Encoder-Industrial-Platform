@@ -15,6 +15,7 @@ import {
   Factory,
   Cpu,
   MemoryStick,
+  Share2,
 } from 'lucide-react';
 
 const megaMenuItems = [
@@ -25,22 +26,16 @@ const megaMenuItems = [
     icon: LayoutDashboard,
   },
   {
-    to: '/copilot',
-    label: 'Knowledge Copilot',
-    description: 'AI-driven diagnostics, technical manual retrieval, and expert knowledge RAG.',
+    to: '/chat',
+    label: 'AI Chat',
+    description: 'Unified multi-agent chat interface with RCA, Compliance, and Copilot assistants.',
     icon: Brain,
   },
   {
-    to: '/maintenance',
-    label: 'Maintenance & RCA',
-    description: 'Work orders, root cause analysis, and predictive failure modeling for assets.',
-    icon: Wrench,
-  },
-  {
-    to: '/compliance',
-    label: 'Quality & Compliance',
-    description: 'Regulatory reporting, safety audit logs, and environmental impact tracking.',
-    icon: ShieldCheck,
+    to: '/graph',
+    label: 'Graph Explorer',
+    description: 'Visualize asset relationships, dependencies, and complex process flow topologies.',
+    icon: Share2,
   },
 ];
 

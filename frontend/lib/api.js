@@ -5,7 +5,7 @@
  * All backend communication goes through this file.
  *
  * Backend endpoint: POST /query
- * Request:  { query: string }
+ * Request:  { query: string, agent_type?: "RCA" | "COMPLIANCE" | "COPILOT" }
  * Response: { agent: string, response: string }
  */
 
@@ -13,18 +13,21 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
 
 /**
  * Sends a query to the backend multi-agent system.
- * The backend automatically routes to the correct agent (RCA, Compliance, or Copilot).
  *
- * @param {string} query - The user's question or fault description.
+ * @param {string} query      - The user's question or fault description.
+ * @param {string} agentType  - Optional: "RCA", "COMPLIANCE", or "COPILOT".
+ *                              When provided, bypasses auto-routing and forces
+ *                              the request to the specified agent.
  * @returns {Promise<{ agent: string, response: string }>}
  */
-export async function queryAgent(query) {
+export async function queryAgent(query, agentType = null) {
+  const body = { query };
+  if (agentType) body.agent_type = agentType;
+
   const response = await fetch(`${API_BASE_URL}/query`, {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({ query }),
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
   });
 
   if (!response.ok) {

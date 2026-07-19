@@ -1,11 +1,12 @@
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from typing import Optional
 import uvicorn
 import os
 
-# Load API key securely from .env — must happen before any LangChain imports
-from app.config import GOOGLE_API_KEY
+# Load config
+from app.config import OLLAMA_BASE_URL
 
 from app.router import process_query_with_agents
 from app.data_loader import get_retriever
@@ -38,6 +39,7 @@ async def startup_event():
 # Request schema
 class QueryRequest(BaseModel):
     query: str
+    agent_type: Optional[str] = None  # "RCA", "COMPLIANCE", or "COPILOT" — overrides auto-routing
 
 # Response schema
 class QueryResponse(BaseModel):
@@ -73,11 +75,16 @@ def get_metrics():
 async def query_agent(request: QueryRequest):
     """
     Main endpoint to process a user query.
-    Automatically routes to the correct agent (RCA, Compliance, or Copilot)
-    and returns a structured response grounded in the knowledge base.
+    Routes to the specified agent (RCA, Compliance, or Copilot) when agent_type is provided,
+    otherwise uses keyword-based auto-routing.
     """
     if not request.query.strip():
         raise HTTPException(status_code=400, detail="Query cannot be empty.")
+
+    # Normalise agent_type: uppercase, strip whitespace, None if blank
+    forced_agent = request.agent_type.strip().upper() if request.agent_type else None
+    if forced_agent not in ("RCA", "COMPLIANCE", "COPILOT"):
+        forced_agent = None
 
     try:
         # Retrieve relevant context from vector store
@@ -87,12 +94,23 @@ async def query_agent(request: QueryRequest):
             for doc in docs
         ])
 
-        # Process through agent router
-        response = process_query_with_agents(query=request.query, context=context)
+        # Process through agent router, honouring forced agent type if set
+        response = process_query_with_agents(
+            query=request.query,
+            context=context,
+            forced_agent=forced_agent
+        )
 
-        return QueryResponse(agent="auto-routed", response=response)
+        # Fallback in case the model returns an empty string
+        if not response or not response.strip():
+            response = "I'm unable to generate a response at the moment. Please try again."
+
+        agent_label = forced_agent.lower() if forced_agent else "auto-routed"
+        return QueryResponse(agent=agent_label, response=response)
 
     except Exception as e:
+        import traceback
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(e))
 
 if __name__ == "__main__":

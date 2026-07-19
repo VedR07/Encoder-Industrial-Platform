@@ -1,84 +1,106 @@
 from typing import Dict, Any
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_ollama import ChatOllama
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import StrOutputParser
 
-# Load API key securely from .env
-from app.config import GOOGLE_API_KEY
+# Load Ollama config
+from app.config import OLLAMA_BASE_URL
 
 # Import all three specialized agent chains
 from app.agents.rca_agent import get_rca_chain
 from app.agents.compliance_agent import get_compliance_chain
 from app.agents.copilot_agent import get_copilot_chain
 
-# Initialize LLM with low temperature for reduced hallucination
-llm = ChatGoogleGenerativeAI(model="gemini-2.5-pro", temperature=0.1)
+# Initialize LLM — always use explicit localhost URL to avoid Ollama desktop app port conflicts
+llm = ChatOllama(
+    model="gemma3:4b",
+    temperature=0.1,
+    base_url="http://localhost:11434",
+    timeout=120,
+    num_predict=1024,
+)
 
-# Initialize all three agent chains
+# Initialize all three agent chains once at startup
 rca_chain = get_rca_chain(llm)
 compliance_chain = get_compliance_chain(llm)
 copilot_chain = get_copilot_chain(llm)
 
-# Router Prompt
-router_prompt = ChatPromptTemplate.from_template("""
-You are an intelligent router for an industrial automation support system.
-Classify the following user query into exactly one of three categories: 
-1. "RCA" (if the query is about diagnosing errors, faults, or troubleshooting)
-2. "COMPLIANCE" (if the query is about guidelines, best practices, or code standards)
-3. "COPILOT" (if the query is a general how-to, concept explanation, or basic knowledge question)
-
-User Query: {query}
-
-Output ONLY the category name (RCA, COMPLIANCE, or COPILOT) and nothing else.
-""")
-
 # Global chat history for prototype
 global_chat_history = []
 
-def route_query(info: Dict[str, Any]) -> str:
+def route_query(info: Dict[str, Any], forced_agent: str = None) -> str:
     """
-    Routes the query to the appropriate agent chain based on the router's classification.
+    Routes the query to the appropriate agent chain.
+    If forced_agent is set ("RCA", "COMPLIANCE", "COPILOT"), uses that directly.
+    Otherwise falls back to keyword-based routing.
     """
-    router_chain = router_prompt | llm | StrOutputParser()
-    category = router_chain.invoke({"query": info["query"]}).strip().upper()
-    
-    print(f"[Router] Query classified as: {category}")
-    
-    if category == "RCA":
-        return rca_chain.invoke(info)
-    elif category == "COMPLIANCE":
-        return compliance_chain.invoke(info)
+    if forced_agent == "RCA":
+        category = "RCA"
+        result = rca_chain.invoke(info)
+    elif forced_agent == "COMPLIANCE":
+        category = "COMPLIANCE"
+        result = compliance_chain.invoke(info)
+    elif forced_agent == "COPILOT":
+        category = "COPILOT"
+        result = copilot_chain.invoke(info)
     else:
-        # Default to copilot for general queries or unclear classifications
-        return copilot_chain.invoke(info)
+        # Keyword-based auto-routing
+        query_lower = info["query"].lower()
 
-def process_query_with_agents(query: str, context: str) -> str:
+        rca_keywords = [
+            "error", "fault", "alarm", "failure", "trip", "f3", "a7", "diagnos",
+            "root cause", "troubleshoot", "warning", "vibration", "overheat",
+            "overcurrent", "overvoltage", "underheat", "spike", "malfunction"
+        ]
+        compliance_keywords = [
+            "compliance", "regulation", "standard", "oisd", "factory act", "audit",
+            "guideline", "requirement", "safety", "procedure", "inspection", "legal",
+            "mandatory", "permit", "certificate", "violation", "protocol"
+        ]
+
+        if any(kw in query_lower for kw in rca_keywords):
+            category = "RCA"
+            result = rca_chain.invoke(info)
+        elif any(kw in query_lower for kw in compliance_keywords):
+            category = "COMPLIANCE"
+            result = compliance_chain.invoke(info)
+        else:
+            category = "COPILOT"
+            result = copilot_chain.invoke(info)
+
+    print(f"[Router] Query classified as: {category} (forced={forced_agent is not None})")
+    return result
+
+
+def process_query_with_agents(query: str, context: str, forced_agent: str = None) -> str:
     """
     Main entry point for processing a user query with RAG context.
+    forced_agent: "RCA", "COMPLIANCE", or "COPILOT" — skips auto-routing when set.
     """
     global global_chat_history
-    
+
     # Format the last 6 messages (3 turns) into a readable string
     history_str = "\n".join(
         [f"{msg['role']}: {msg['content']}" for msg in global_chat_history[-6:]]
     )
     if not history_str:
         history_str = "None"
-        
+
     agent_input = {
         "query": query,
         "context": context,
         "chat_history": history_str
     }
-    
-    # Get the AI response
-    response = route_query(agent_input)
-    
+
+    # Get the AI response, passing forced_agent through
+    response = route_query(agent_input, forced_agent=forced_agent)
+
     # Save the interaction to memory
     global_chat_history.append({"role": "User", "content": query})
     global_chat_history.append({"role": "AI", "content": response})
-    
+
     return response
+
 
 # For testing logic standalone
 if __name__ == "__main__":

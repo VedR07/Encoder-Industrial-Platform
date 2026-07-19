@@ -14,6 +14,20 @@ import {
   BarChart3,
   History,
 } from 'lucide-react';
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import ReactMarkdown from 'react-markdown';
+import { queryAgent } from '../lib/api';
+
+const compressorData = [
+  { time: '14:15', vibration: 2.1 },
+  { time: '14:16', vibration: 2.2 },
+  { time: '14:17', vibration: 2.5 },
+  { time: '14:18', vibration: 3.1 },
+  { time: '14:19', vibration: 4.8 },
+  { time: '14:20', vibration: 7.2 }, 
+  { time: '14:21', vibration: 6.8 },
+  { time: '14:22', vibration: 7.5 },
+];
 
 const nodes = [
   { id: 'NODE-042', name: 'Primary Cracker', temp: 'TEMP: 842°C', status: 'normal', efficiency: '98% EFF' },
@@ -25,18 +39,32 @@ const nodes = [
 ];
 
 const opsLogs = [
-  { time: '14:22:10', severity: 'critical', label: 'CRITICAL', text: 'Anomaly in Node-007. Helix Model predicts seal failure.', node: 'Node-007' },
-  { time: '14:15:45', severity: 'warning', label: 'WARNING', text: 'Vibration peak at Cooling Tower C.', node: 'Cooling Tower C' },
-  { time: '14:02:33', severity: 'info', label: 'INFO', text: 'Fuel-mix adjustment suggestion by Copilot in Section B.', node: 'Section B' },
+  { time: '14:28:05', severity: 'critical', label: 'RCA AGENT', text: 'Diagnostic alert on Compressor St. 2: F30005 error code detected. Immediate bypass recommended to avoid seal fracture.' },
+  { time: '14:12:18', severity: 'warning', label: 'COMPLIANCE AGENT', text: 'OISD Audit Flag: Cooling Tower C vibration exceeds 14.2 mm/s threshold. Maintenance required within 48 hours.' },
+  { time: '13:55:40', severity: 'info', label: 'COPILOT', text: 'Optimized fuel-mix ratio for Steam Gen. based on current ambient temperature. Projected efficiency gain: +1.2%.' },
+  { time: '13:30:11', severity: 'info', label: 'SYSTEM', text: 'Shift handover complete. Chief Engineer logged in. All nominal parameters stable.' },
+  { time: '12:45:00', severity: 'warning', label: 'COMPLIANCE AGENT', text: 'Routine safety inspection due for Primary Cracker pressure valves. Permit #4429 automatically generated.' }
 ];
 
 export default function ExecutiveOverview() {
   const [metrics, setMetrics] = useState(null);
+  const [rcaDiagnosis, setRcaDiagnosis] = useState("Analyzing fault data...");
+  const [isRcaLoading, setIsRcaLoading] = useState(true);
 
   useEffect(() => {
     fetchMetrics()
       .then(data => setMetrics(data))
       .catch(() => setMetrics(null));
+
+    queryAgent("Compressor St. 2 CRITICAL FAULT. Anomalous vibration spike detected.", "RCA")
+      .then(data => {
+        setRcaDiagnosis(data.response);
+        setIsRcaLoading(false);
+      })
+      .catch(err => {
+        setRcaDiagnosis(`[ERROR] Could not fetch diagnosis: ${err.message}`);
+        setIsRcaLoading(false);
+      });
   }, []);
 
   return (
@@ -50,16 +78,6 @@ export default function ExecutiveOverview() {
               Executive Overview
             </h3>
             <p className="text-xs text-[#64748b]">Real-time status monitoring for Alpha Sector Refinery</p>
-          </div>
-          <div className="flex gap-2">
-            <button className="bg-[#2563eb] text-white text-[11px] px-6 py-2 font-bold hover:bg-blue-700 transition-all"
-              style={{ fontFamily: '"JetBrains Mono", monospace' }}>
-              START GOLDEN DEMO
-            </button>
-            <button className="border border-[#e2e8f0] bg-white text-[#1e293b] text-[11px] px-6 py-2 font-bold hover:bg-slate-50 transition-all"
-              style={{ fontFamily: '"JetBrains Mono", monospace' }}>
-              EXPORT DATA
-            </button>
           </div>
         </div>
 
@@ -180,12 +198,22 @@ export default function ExecutiveOverview() {
         </div>
 
         {/* Asset Detail Preview */}
-        <div className="clean-card overflow-hidden flex flex-col md:flex-row h-64 shadow-sm">
-          <div className="w-full md:w-1/3 relative bg-slate-900 border-r border-[#e2e8f0]">
-            <div className="absolute inset-0 bg-gradient-to-b from-slate-800 to-slate-900 flex items-center justify-center">
-              <Activity size={48} className="text-slate-600 opacity-30" />
+        <div className="clean-card overflow-hidden flex flex-col md:flex-row h-72 shadow-sm">
+          <div className="w-full md:w-1/3 relative bg-slate-900 border-r border-[#e2e8f0] flex flex-col">
+            <div className="absolute inset-0 bg-gradient-to-b from-slate-800 to-slate-900" />
+            <div className="relative flex-1 p-4 pb-16">
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart data={compressorData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="#334155" vertical={false} />
+                  <Tooltip 
+                    contentStyle={{ backgroundColor: '#1e293b', border: 'none', borderRadius: '4px', color: '#f8fafc', fontSize: '10px' }}
+                    itemStyle={{ color: '#ef4444' }}
+                  />
+                  <Line type="monotone" dataKey="vibration" stroke="#ef4444" strokeWidth={2} dot={{ fill: '#ef4444', r: 3 }} activeDot={{ r: 5 }} />
+                </LineChart>
+              </ResponsiveContainer>
             </div>
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
             <div className="absolute bottom-4 left-4">
               <h4 className="text-sm font-bold text-white uppercase tracking-tight">Compressor St. 2</h4>
               <p className="text-[10px] text-[#ef4444] font-bold uppercase tracking-widest">CRITICAL FAULT</p>
@@ -200,8 +228,14 @@ export default function ExecutiveOverview() {
                 94% CONFIDENCE
               </span>
             </div>
-            <div className="bg-slate-50 p-4 border border-slate-100 text-xs leading-relaxed text-[#64748b] italic">
-              "Anomaly detected in seal pressure differentials. Probable hairline fracture in casing unit B-4. Autonomous diagnostic suggests immediate bypass to Redundancy Loop 2."
+            <div className="bg-slate-50 p-4 border border-slate-100 text-xs leading-relaxed text-[#64748b] h-32 overflow-y-auto custom-scroll">
+              {isRcaLoading ? (
+                <div className="animate-pulse">Analyzing telemetry data to determine root cause...</div>
+              ) : (
+                <div className="prose prose-sm max-w-none prose-p:leading-tight prose-headings:text-sm prose-headings:font-bold">
+                  <ReactMarkdown>{rcaDiagnosis}</ReactMarkdown>
+                </div>
+              )}
             </div>
             <div className="flex gap-3 mt-auto">
               <button className="bg-[#2563eb] text-white text-[11px] px-6 py-2 font-bold flex-1 hover:bg-blue-700 transition-all"
@@ -252,38 +286,6 @@ export default function ExecutiveOverview() {
               );
             })}
           </div>
-
-          {/* AI Copilot Input */}
-          <div className="p-4 bg-slate-50 border-t border-[#e2e8f0]">
-            <div className="relative">
-              <input
-                className="w-full bg-white border border-[#e2e8f0] py-2 px-3 text-xs focus:border-[#2563eb] focus:ring-0 outline-none"
-                placeholder="Ask AI Copilot..."
-                type="text"
-              />
-              <button className="absolute right-2 top-1/2 -translate-y-1/2 text-[#2563eb]">
-                <Send size={16} />
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Fleet Efficiency */}
-        <div className="clean-card p-6 h-44 relative overflow-hidden shadow-sm">
-          <h4 className="text-[10px] font-bold text-[#64748b] uppercase mb-4 tracking-wider" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
-            Fleet Efficiency
-          </h4>
-          <div className="flex gap-2">
-            <div className="flex-1 h-20 bg-slate-50 border border-slate-100 flex flex-col items-center justify-center">
-              <span className="text-xl font-bold text-[#2563eb]">12</span>
-              <span className="text-[9px] uppercase font-bold text-[#64748b]">ACTIVE</span>
-            </div>
-            <div className="flex-1 h-20 bg-slate-50 border border-slate-100 flex flex-col items-center justify-center">
-              <span className="text-xl font-bold text-[#f97316]">2</span>
-              <span className="text-[9px] uppercase font-bold text-[#64748b]">OFFLINE</span>
-            </div>
-          </div>
-          <p className="text-[10px] text-[#64748b] mt-4 italic">Global parameters stable.</p>
         </div>
       </aside>
     </div>
