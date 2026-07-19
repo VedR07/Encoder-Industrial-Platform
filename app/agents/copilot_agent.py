@@ -9,6 +9,9 @@ Answer the user's question clearly and concisely using ONLY the provided context
 Context:
 {context}
 
+Previous Chat History:
+{chat_history}
+
 User Query: {query}
 
 Break down complex explanations into easy-to-understand steps. If the information is not in the context, inform the user: "I don't have that information in my knowledge base."

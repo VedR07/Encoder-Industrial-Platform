@@ -9,6 +9,9 @@ Analyze the user's fault description or error code. Use ONLY the provided contex
 Context:
 {context}
 
+Previous Chat History:
+{chat_history}
+
 User Query: {query}
 
 If the context does not contain relevant troubleshooting information, clearly state: "I cannot diagnose this issue with the available documentation." Do not guess or hallucinate.

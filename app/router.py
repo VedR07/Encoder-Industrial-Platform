@@ -32,6 +32,9 @@ User Query: {query}
 Output ONLY the category name (RCA, COMPLIANCE, or COPILOT) and nothing else.
 """)
 
+# Global chat history for prototype
+global_chat_history = []
+
 def route_query(info: Dict[str, Any]) -> str:
     """
     Routes the query to the appropriate agent chain based on the router's classification.
@@ -53,11 +56,29 @@ def process_query_with_agents(query: str, context: str) -> str:
     """
     Main entry point for processing a user query with RAG context.
     """
+    global global_chat_history
+    
+    # Format the last 6 messages (3 turns) into a readable string
+    history_str = "\n".join(
+        [f"{msg['role']}: {msg['content']}" for msg in global_chat_history[-6:]]
+    )
+    if not history_str:
+        history_str = "None"
+        
     agent_input = {
         "query": query,
-        "context": context
+        "context": context,
+        "chat_history": history_str
     }
-    return route_query(agent_input)
+    
+    # Get the AI response
+    response = route_query(agent_input)
+    
+    # Save the interaction to memory
+    global_chat_history.append({"role": "User", "content": query})
+    global_chat_history.append({"role": "AI", "content": response})
+    
+    return response
 
 # For testing logic standalone
 if __name__ == "__main__":

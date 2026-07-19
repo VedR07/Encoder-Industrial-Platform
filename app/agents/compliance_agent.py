@@ -9,6 +9,9 @@ Evaluate the user's query or scenario against the provided compliance context.
 Context:
 {context}
 
+Previous Chat History:
+{chat_history}
+
 User Query: {query}
 
 Highlight any violations of the guidelines, cite the relevant section, and provide the recommended compliant approach. 
