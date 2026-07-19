@@ -1,6 +1,7 @@
 'use client';
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { fetchMetrics } from '../lib/api';
 import {
   Activity,
   ShieldAlert,
@@ -30,6 +31,14 @@ const opsLogs = [
 ];
 
 export default function ExecutiveOverview() {
+  const [metrics, setMetrics] = useState(null);
+
+  useEffect(() => {
+    fetchMetrics()
+      .then(data => setMetrics(data))
+      .catch(() => setMetrics(null));
+  }, []);
+
   return (
     <div className="w-full h-[calc(100vh-3.5rem)] p-6 overflow-y-auto grid grid-cols-12 gap-6 bg-[#f8fafc]">
       {/* Center: Primary Dashboard (9 cols) */}
@@ -66,13 +75,15 @@ export default function ExecutiveOverview() {
             </div>
             <div>
               <div className="flex items-baseline gap-2">
-                <span className="text-3xl text-[#1e293b] font-bold tracking-tighter">99.84%</span>
+                <span className="text-3xl text-[#1e293b] font-bold tracking-tighter">
+                  {metrics ? `${metrics.uptime}%` : '99.84%'}
+                </span>
                 <span className="text-green-600 text-[11px] font-bold flex items-center" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
                   <TrendingUp size={12} className="mr-0.5" /> 0.2%
                 </span>
               </div>
               <div className="w-full h-1 bg-slate-100 mt-4">
-                <div className="h-full bg-[#2563eb]" style={{ width: '99.8%' }} />
+                <div className="h-full bg-[#2563eb]" style={{ width: `${metrics ? metrics.uptime : 99.8}%` }} />
               </div>
             </div>
           </div>
@@ -87,9 +98,11 @@ export default function ExecutiveOverview() {
             </div>
             <div>
               <div className="flex items-baseline gap-2">
-                <span className="text-3xl text-[#1e293b] font-bold tracking-tighter">24</span>
+                <span className="text-3xl text-[#1e293b] font-bold tracking-tighter">
+                  {metrics ? metrics.active_hypotheses : 24}
+                </span>
                 <span className="bg-orange-50 text-[#f97316] border border-orange-100 px-2 py-0.5 text-[10px] font-bold" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
-                  3 CRITICAL
+                  {metrics ? `${metrics.critical_gaps} CRITICAL` : '3 CRITICAL'}
                 </span>
               </div>
               <div className="flex gap-1 items-end h-4 mt-4">

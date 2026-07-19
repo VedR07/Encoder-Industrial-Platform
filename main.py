@@ -48,6 +48,27 @@ class QueryResponse(BaseModel):
 def root():
     return {"status": "Encoder Industrial Platform API is running."}
 
+# Metrics response schema
+class MetricsResponse(BaseModel):
+    uptime: float
+    active_hypotheses: int
+    outstanding_audits: int
+    critical_gaps: int
+
+@app.get("/metrics", response_model=MetricsResponse)
+def get_metrics():
+    """
+    Returns platform KPI metrics for the dashboard overview.
+    These are prototype values — replace with live telemetry data in production.
+    """
+    return MetricsResponse(
+        uptime=94.7,
+        active_hypotheses=3,
+        outstanding_audits=7,
+        critical_gaps=2
+    )
+
+
 @app.post("/query", response_model=QueryResponse)
 async def query_agent(request: QueryRequest):
     """

@@ -44,3 +44,13 @@ export async function checkHealth() {
   if (!response.ok) throw new Error('Backend offline');
   return true;
 }
+
+/**
+ * Fetches dashboard KPI metrics from the backend.
+ * @returns {Promise<{ uptime, active_hypotheses, outstanding_audits, critical_gaps }>}
+ */
+export async function fetchMetrics() {
+  const response = await fetch(`${API_BASE_URL}/metrics`, { method: 'GET' });
+  if (!response.ok) throw new Error('Failed to fetch metrics');
+  return response.json();
+}
