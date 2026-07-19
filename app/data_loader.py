@@ -19,6 +19,11 @@ def load_and_index_data(data_dir: str = "./datasets", persist_dir: str = "./chro
     # Initialize Gemini Embeddings
     embeddings = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-2")
     
+    # Check if vector store already exists
+    if os.path.exists(persist_dir) and os.path.exists(os.path.join(persist_dir, "chroma.sqlite3")):
+        print(f"Loading existing vector store from {persist_dir}")
+        return Chroma(persist_directory=persist_dir, embedding_function=embeddings)
+        
     # Check if directory exists
     if not os.path.exists(data_dir) or not os.listdir(data_dir):
         print(f"Warning: Directory '{data_dir}' is empty or does not exist.")
