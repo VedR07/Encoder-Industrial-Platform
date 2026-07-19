@@ -3,14 +3,22 @@
 import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import { Send, Terminal, Sparkles, BookOpen } from 'lucide-react';
 import ConfidenceMeter from '../ui/ConfidenceMeter';
-import { queryAgent } from '../../lib/api';
+import { queryAgent, checkHealth } from '../../lib/api';
 import { mockConversation, suggestedQueries, mockDocuments } from '../../data/copilotData';
 
 export default function ChatInterface({ onCitationClick }) {
   const [messages, setMessages] = useState(mockConversation);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [backendStatus, setBackendStatus] = useState('checking'); // 'online' | 'offline' | 'checking'
   const chatEndRef = useRef(null);
+
+  // Ping backend on mount to check real status
+  useEffect(() => {
+    checkHealth()
+      .then(() => setBackendStatus('online'))
+      .catch(() => setBackendStatus('offline'));
+  }, []);
 
   // Auto-scroll on new messages
   useEffect(() => {
@@ -71,8 +79,16 @@ export default function ChatInterface({ onCitationClick }) {
           <span>Intelliprompt Terminal v3.4.2</span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-          <span>RAG PIPELINE STABLE</span>
+          <span className={`w-1.5 h-1.5 rounded-full ${
+            backendStatus === 'online'   ? 'bg-emerald-500 animate-pulse' :
+            backendStatus === 'offline'  ? 'bg-red-500' :
+                                          'bg-yellow-500 animate-pulse'
+          }`} />
+          <span>{
+            backendStatus === 'online'  ? 'RAG PIPELINE STABLE' :
+            backendStatus === 'offline' ? 'BACKEND OFFLINE' :
+                                         'CONNECTING...'
+          }</span>
         </div>
       </div>
 

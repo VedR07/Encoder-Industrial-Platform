@@ -34,3 +34,13 @@ export async function queryAgent(query) {
 
   return response.json(); // { agent: string, response: string }
 }
+
+/**
+ * Pings the backend root endpoint to check if it is online.
+ * @returns {Promise<boolean>} true if online, throws if offline.
+ */
+export async function checkHealth() {
+  const response = await fetch(`${API_BASE_URL}/`, { method: 'GET' });
+  if (!response.ok) throw new Error('Backend offline');
+  return true;
+}
