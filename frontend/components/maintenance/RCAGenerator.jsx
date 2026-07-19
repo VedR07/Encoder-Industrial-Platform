@@ -1,9 +1,10 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import { AlertCircle, Zap, ShieldAlert, FileText, CheckCircle2 } from 'lucide-react';
+import { AlertCircle, Zap, ShieldAlert, FileText, CheckCircle2, Send } from 'lucide-react';
 import { mockRCAEvents } from '../../data/maintenanceData';
 import StatusBadge from '../ui/StatusBadge';
+import { queryAgent } from '../../lib/api';
 
 const typeIcons = {
   failure: <Zap size={12} className="text-[#ef4444]" />,
@@ -15,6 +16,23 @@ const typeIcons = {
 
 export default function RCAGenerator() {
   const [selectedEvent, setSelectedEvent] = useState(null);
+  const [rcaQuery, setRcaQuery] = useState('');
+  const [rcaResponse, setRcaResponse] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleRCAQuery = async () => {
+    if (!rcaQuery.trim()) return;
+    setIsLoading(true);
+    setRcaResponse(null);
+    try {
+      const data = await queryAgent(rcaQuery);
+      setRcaResponse({ text: data.response, error: false });
+    } catch (err) {
+      setRcaResponse({ text: `[CONNECTION ERROR] ${err.message}`, error: true });
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const sortedEvents = useMemo(() => {
     return [...mockRCAEvents].sort(
@@ -92,6 +110,35 @@ export default function RCAGenerator() {
             </div>
           );
         })}
+      </div>
+
+      {/* AI RCA Query Panel */}
+      <div className="mt-5 pt-4 border-t border-zinc-900">
+        <p className="text-[9px] text-zinc-500 uppercase tracking-widest mb-2">AI Fault Diagnosis — Ask the RCA Agent</p>
+        <div className="flex gap-2">
+          <input
+            type="text"
+            value={rcaQuery}
+            onChange={(e) => setRcaQuery(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && handleRCAQuery()}
+            placeholder="Describe the fault or error code..."
+            className="flex-1 bg-[#0d1117] border border-zinc-800 text-[11px] px-3 py-2 text-zinc-300 placeholder-zinc-600 focus:outline-none focus:border-[#ef4444]"
+          />
+          <button
+            onClick={handleRCAQuery}
+            disabled={isLoading}
+            className="px-3 py-2 bg-[#ef4444] text-zinc-950 font-bold hover:bg-red-500 transition-all cursor-pointer disabled:opacity-50"
+          >
+            {isLoading ? '...' : <Send size={12} />}
+          </button>
+        </div>
+        {rcaResponse && (
+          <div className={`mt-3 p-3 border text-[11px] leading-relaxed font-sans ${
+            rcaResponse.error ? 'border-zinc-800 text-zinc-500' : 'border-zinc-800 bg-[#0d1117] text-zinc-300'
+          }`}>
+            {rcaResponse.text}
+          </div>
+        )}
       </div>
     </div>
   );
