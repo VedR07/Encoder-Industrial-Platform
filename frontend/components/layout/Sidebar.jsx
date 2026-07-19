@@ -154,12 +154,12 @@ export default function Sidebar({ isExpanded, setIsExpanded }) {
           `}
         >
           <div className="w-8 h-8 rounded-lg bg-[#0d7377] flex items-center justify-center flex-shrink-0 text-[11px] font-bold text-white">
-            RP
+            U
           </div>
           {isExpanded && (
             <div className="min-w-0">
               <p className="text-[11px] font-semibold text-slate-200 truncate leading-none">
-                Rajesh Patel
+                User
               </p>
               <p className="text-[10px] text-slate-500 truncate mt-1 tracking-wide">
                 Reliability Eng

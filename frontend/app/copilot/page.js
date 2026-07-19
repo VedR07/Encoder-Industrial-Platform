@@ -11,9 +11,49 @@ import {
   AlertCircle,
   Share2,
 } from 'lucide-react';
+import { queryAgent } from '../../lib/api';
 
 export default function CopilotPage() {
-  const [selectedDoc, setSelectedDoc] = useState(null);
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+
+  const handleSend = async () => {
+    if (!input.trim()) return;
+    
+    const userMsg = {
+      id: Date.now().toString(),
+      role: 'user',
+      content: input,
+      timestamp: new Date().toISOString()
+    };
+    
+    setMessages(prev => [...prev, userMsg]);
+    setInput('');
+    setIsTyping(true);
+
+    try {
+      const data = await queryAgent(input);
+      const aiMsg = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: data.response,
+        timestamp: new Date().toISOString()
+      };
+      setMessages(prev => [...prev, aiMsg]);
+    } catch (err) {
+      const errMsg = {
+        id: (Date.now() + 1).toString(),
+        role: 'assistant',
+        content: `[CONNECTION ERROR] Could not reach the AI backend. Please ensure the server is running. (${err.message})`,
+        timestamp: new Date().toISOString(),
+        isError: true
+      };
+      setMessages(prev => [...prev, errMsg]);
+    } finally {
+      setIsTyping(false);
+    }
+  };
 
   return (
     <div className="flex h-[calc(100vh-3.5rem)]">
@@ -39,100 +79,59 @@ export default function CopilotPage() {
         {/* Chat Workspace */}
         <div className="flex-1 overflow-y-auto p-6 space-y-6 custom-scroll">
           <div className="max-w-4xl mx-auto space-y-6">
-            {/* AI Message */}
-            <div className="flex gap-4">
-              <div className="w-9 h-9 bg-[#2563eb] flex items-center justify-center shrink-0">
-                <Brain size={18} className="text-white" />
+            
+            {messages.length === 0 && !isTyping && (
+              <div className="flex flex-col items-center justify-center h-64 text-[#64748b] space-y-4">
+                <Brain size={48} className="text-[#cbd5e1]" />
+                <p className="text-sm font-medium">Hello User. How can I assist you with your operations today?</p>
               </div>
-              <div className="flex-1 bg-white border border-[#e2e8f0] p-6 shadow-sm">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center gap-3">
+            )}
+
+            {messages.map((msg) => (
+              <div key={msg.id} className={`flex gap-4 ${msg.role === 'user' ? 'flex-row-reverse' : ''}`}>
+                {msg.role === 'assistant' ? (
+                  <div className="w-9 h-9 bg-[#2563eb] flex items-center justify-center shrink-0">
+                    <Brain size={18} className="text-white" />
+                  </div>
+                ) : (
+                  <div className="w-9 h-9 border border-[#e2e8f0] bg-[#dbeafe] text-[#1e40af] flex items-center justify-center shrink-0 text-[10px] font-bold">
+                    U
+                  </div>
+                )}
+                
+                <div className={`flex-1 max-w-2xl ${msg.role === 'user' ? 'bg-slate-800 text-white p-4 shadow-sm' : 'bg-white border border-[#e2e8f0] p-6 shadow-sm'}`}>
+                  {msg.role === 'assistant' && (
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center gap-3">
+                        <span className="text-xs font-bold text-[#1e293b]">INTELLIPLANT AI</span>
+                        <span className="text-[10px] text-blue-600 bg-blue-50 px-2 py-0.5 font-bold border border-blue-100">
+                          DIAGNOSTICS ACTIVE
+                        </span>
+                      </div>
+                      <span className="text-[10px] text-[#64748b]">{new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                    </div>
+                  )}
+
+                  <div className={`space-y-4 text-sm leading-relaxed whitespace-pre-wrap ${msg.role === 'user' ? 'text-white' : msg.isError ? 'text-red-600' : 'text-[#1e293b]'}`}>
+                    {msg.content}
+                  </div>
+                </div>
+              </div>
+            ))}
+
+            {isTyping && (
+              <div className="flex gap-4">
+                <div className="w-9 h-9 bg-[#2563eb] flex items-center justify-center shrink-0">
+                  <Brain size={18} className="text-white animate-pulse" />
+                </div>
+                <div className="flex-1 bg-white border border-[#e2e8f0] p-6 shadow-sm">
+                  <div className="flex items-center gap-3 mb-2">
                     <span className="text-xs font-bold text-[#1e293b]">INTELLIPLANT AI</span>
-                    <span className="text-[10px] text-blue-600 bg-blue-50 px-2 py-0.5 font-bold border border-blue-100">
-                      DIAGNOSTICS ACTIVE
-                    </span>
                   </div>
-                  <span className="text-[10px] text-[#64748b]">14:25 UTC</span>
-                </div>
-
-                <div className="space-y-4 text-sm text-[#1e293b] leading-relaxed">
-                  <p>
-                    Analysis of telemetry and maintenance records{' '}
-                    <span className="font-bold text-[#2563eb]">[DOC_ID: MAINT-2023-Q3-091]</span>{' '}
-                    indicates a <span className="text-red-600 font-bold">high probability (88%)</span>{' '}
-                    that the current vibration profile matches the actuator seal failure observed in August.
-                  </p>
-
-                  {/* Data Grid */}
-                  <div className="grid grid-cols-2 gap-0 border border-[#e2e8f0]">
-                    <div className="p-4 border-r border-[#e2e8f0] bg-slate-50/50">
-                      <div className="text-[10px] text-[#64748b] font-bold uppercase mb-1">Current Frequency</div>
-                      <div className="text-xl font-bold text-[#1e293b]">
-                        142.5 Hz <span className="text-xs text-red-600 font-medium ml-1">↑ 12%</span>
-                      </div>
-                    </div>
-                    <div className="p-4 bg-slate-50/50">
-                      <div className="text-[10px] text-[#64748b] font-bold uppercase mb-1">Historical Threshold</div>
-                      <div className="text-xl font-bold text-[#1e293b]">138.0 Hz</div>
-                    </div>
-                  </div>
-
-                  {/* Confidence Meter */}
-                  <div className="bg-blue-50/50 p-4 border-l-2 border-[#2563eb]">
-                    <h4 className="text-xs font-bold text-[#2563eb] mb-2 flex items-center gap-1.5">
-                      <BadgeCheck size={14} />
-                      RAG ANALYSIS CONFIDENCE: 94.2%
-                    </h4>
-                    <div className="w-full h-1.5 bg-slate-200 mb-1">
-                      <div className="h-full bg-[#2563eb]" style={{ width: '94.2%' }} />
-                    </div>
-                  </div>
-
-                  {/* Evidence */}
-                  <div className="space-y-2">
-                    <h4 className="text-xs font-bold text-[#1e293b]">Evidence Base:</h4>
-                    <div className="flex flex-wrap gap-2">
-                      <div className="flex items-center gap-1.5 px-2 py-1 bg-slate-100 border border-[#e2e8f0] text-[11px] text-[#64748b] cursor-pointer hover:bg-slate-200 transition-colors">
-                        <Paperclip size={11} /> Valve_Specs_CV402_RevB.pdf
-                      </div>
-                      <div className="flex items-center gap-1.5 px-2 py-1 bg-slate-100 border border-[#e2e8f0] text-[11px] text-[#64748b] cursor-pointer hover:bg-slate-200 transition-colors">
-                        <FileText size={11} /> Post_Mortem_Aug_2023.md
-                      </div>
-                    </div>
-                  </div>
+                  <div className="text-sm text-[#64748b] animate-pulse">Analyzing...</div>
                 </div>
               </div>
-            </div>
-
-            {/* Suggested Actions */}
-            <div className="ml-12 grid grid-cols-2 gap-4">
-              <button className="flex items-center justify-between p-4 bg-white border border-[#e2e8f0] hover:border-[#2563eb] hover:bg-blue-50/30 transition-all text-left">
-                <div>
-                  <p className="text-xs font-bold text-[#1e293b]">Create Maintenance Ticket</p>
-                  <p className="text-[10px] text-[#64748b] uppercase mt-1">Priority: High</p>
-                </div>
-                <span className="text-[#2563eb]">→</span>
-              </button>
-              <button className="flex items-center justify-between p-4 bg-white border border-[#e2e8f0] hover:border-[#2563eb] hover:bg-blue-50/30 transition-all text-left">
-                <div>
-                  <p className="text-xs font-bold text-[#1e293b]">Deploy Inspection Drone</p>
-                  <p className="text-[10px] text-[#64748b] uppercase mt-1">Visual Check</p>
-                </div>
-                <span className="text-[#2563eb]">→</span>
-              </button>
-            </div>
-
-            {/* User Message */}
-            <div className="flex gap-4 flex-row-reverse">
-              <div className="w-9 h-9 border border-[#e2e8f0] bg-[#dbeafe] text-[#1e40af] flex items-center justify-center shrink-0 text-[10px] font-bold">
-                RP
-              </div>
-              <div className="flex-1 max-w-xl bg-slate-800 text-white p-4 shadow-sm">
-                <p className="text-sm">
-                  Analyze current vibration data for CV-402 and cross-reference with the maintenance history from Q3. Is this a repeat of the actuator seal failure?
-                </p>
-              </div>
-            </div>
+            )}
           </div>
         </div>
 
@@ -141,14 +140,26 @@ export default function CopilotPage() {
           <div className="max-w-4xl mx-auto">
             <div className="relative">
               <textarea
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    handleSend();
+                  }
+                }}
                 className="w-full bg-slate-50 border border-[#e2e8f0] py-3 pl-4 pr-32 text-sm focus:ring-0 focus:border-[#2563eb] resize-none min-h-[56px] outline-none"
                 placeholder="Ask the Copilot or type a command..."
+                disabled={isTyping}
               />
               <div className="absolute right-3 bottom-3 flex items-center gap-3">
                 <button className="text-[#64748b] hover:text-[#2563eb]">
                   <Paperclip size={16} />
                 </button>
-                <button className="bg-[#2563eb] text-white px-4 py-1.5 text-xs font-bold hover:bg-blue-700 transition-all"
+                <button 
+                  onClick={handleSend}
+                  disabled={isTyping}
+                  className="bg-[#2563eb] text-white px-4 py-1.5 text-xs font-bold hover:bg-blue-700 transition-all disabled:opacity-50"
                   style={{ fontFamily: '"JetBrains Mono", monospace' }}>
                   SEND
                 </button>

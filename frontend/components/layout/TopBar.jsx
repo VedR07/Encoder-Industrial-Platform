@@ -114,14 +114,14 @@ export default function TopBar({ viewMode, setViewMode, activeAsset }) {
           <div className="flex items-center gap-2 pl-1">
             <div className="text-right">
               <p className="text-[11px] font-bold text-[#1e293b] leading-tight" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
-                Rajesh Patel
+                User
               </p>
               <p className="text-[9px] text-[#64748b] uppercase tracking-tighter" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
                 Chief Engineer
               </p>
             </div>
             <div className="w-8 h-8 border border-[#e2e8f0] bg-[#dbeafe] text-[#1e40af] flex items-center justify-center text-[11px] font-bold">
-              RP
+              U
             </div>
           </div>
         </div>
