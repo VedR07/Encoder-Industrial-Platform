@@ -2,8 +2,9 @@
 
 import React from 'react';
 import { Activity, ShieldAlert, Thermometer, ShieldCheck } from 'lucide-react';
+import { telemetryMetrics } from '../../data/copilotData';
 
-export default function TelemetryTicker({ metrics = [] }) {
+export default function TelemetryTicker() {
   const getStatusColor = (status) => {
     switch (status) {
       case 'critical': return 'text-[#ef4444] border-l-[#ef4444] bg-[#ef4444]/5';
@@ -14,7 +15,7 @@ export default function TelemetryTicker({ metrics = [] }) {
 
   return (
     <div className="flex gap-2 overflow-x-auto py-1.5 px-3 border-b border-[#1f2937] bg-[#0d1117] flex-shrink-0">
-      {metrics.map((metric) => (
+      {telemetryMetrics.map((metric) => (
         <div
           key={metric.id}
           className={`flex items-center gap-2 px-3 py-1 border border-[#1f2937] border-l-2 text-[10px] font-mono flex-shrink-0 ${getStatusColor(

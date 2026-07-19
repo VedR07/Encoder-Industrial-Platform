@@ -1,10 +1,11 @@
 import React from 'react';
 import MetricCard from '../ui/MetricCard';
+import { mockKPIs } from '../../data/maintenanceData';
 
-export default function KPIRow({ kpis = [] }) {
+export default function KPIRow() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
-      {kpis.map((kpi) => (
+      {mockKPIs.map((kpi) => (
         <MetricCard
           key={kpi.id}
           label={kpi.label}

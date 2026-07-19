@@ -2,9 +2,10 @@
 
 import React from 'react';
 import { AlertCircle, Terminal, HardHat } from 'lucide-react';
+import { mockGapAlerts } from '../../data/complianceData';
 import StatusBadge from '../ui/StatusBadge';
 
-export default function GapAlertFeed({ alerts = [] }) {
+export default function GapAlertFeed() {
   return (
     <div className="ink-panel p-5 grid-bg font-mono flex flex-col h-full">
       <div className="flex items-center gap-2 mb-4 border-b border-zinc-900 pb-3">
@@ -15,7 +16,7 @@ export default function GapAlertFeed({ alerts = [] }) {
       </div>
 
       <div className="flex-1 space-y-2.5 overflow-y-auto max-h-[300px] pr-1">
-        {alerts.map((gap) => (
+        {mockGapAlerts.map((gap) => (
           <div
             key={gap.id}
             className="border border-zinc-900 bg-[#0d1117]/80 hover:border-zinc-800 p-2.5 flex flex-col gap-1.5 text-[10px]"

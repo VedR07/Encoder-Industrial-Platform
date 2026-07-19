@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+import { mockComplianceStandards } from '../../data/complianceData';
 import StatusBadge from '../ui/StatusBadge';
 import { ShieldCheck, Flame, Scale, CheckCircle2, AlertTriangle } from 'lucide-react';
 
@@ -12,16 +13,8 @@ const standardIcons = {
   'STD-005': <CheckCircle2 size={16} className="text-purple-400" />,
 };
 
-export default function ComplianceMatrix({ standards = [] }) {
-  const [selectedStandard, setSelectedStandard] = useState(standards[0] || null);
-
-  if (!selectedStandard) {
-    return (
-      <div className="ink-panel p-5 grid-bg font-mono flex items-center justify-center text-zinc-500 text-xs min-h-[200px]">
-        No compliance standards available.
-      </div>
-    );
-  }
+export default function ComplianceMatrix() {
+  const [selectedStandard, setSelectedStandard] = useState(mockComplianceStandards[0]);
 
   return (
     <div className="ink-panel p-5 grid-bg font-mono flex flex-col md:flex-row gap-6">
@@ -31,7 +24,7 @@ export default function ComplianceMatrix({ standards = [] }) {
           Regulatory Code Scoreboard
         </h3>
         <div className="space-y-1.5 max-h-[300px] overflow-y-auto pr-1">
-          {standards.map((std) => {
+          {mockComplianceStandards.map((std) => {
             const isSelected = selectedStandard.id === std.id;
             return (
               <div

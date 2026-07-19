@@ -3,9 +3,10 @@
 import React, { useState, useRef, useEffect, useMemo, useCallback } from 'react';
 import { Send, Terminal, Sparkles, BookOpen } from 'lucide-react';
 import ConfidenceMeter from '../ui/ConfidenceMeter';
+import { mockConversation, suggestedQueries, mockDocuments } from '../../data/copilotData';
 
-export default function ChatInterface({ onCitationClick, initialMessages = [], suggestedQueries = [], documents = [] }) {
-  const [messages, setMessages] = useState(initialMessages);
+export default function ChatInterface({ onCitationClick }) {
+  const [messages, setMessages] = useState(mockConversation);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const chatEndRef = useRef(null);
@@ -30,16 +31,58 @@ export default function ChatInterface({ onCitationClick, initialMessages = [], s
     setInput('');
     setIsTyping(true);
 
-    // Backend integration placeholder
-    // In the future, this is where the API call to the Python backend will happen.
-    setIsTyping(true);
-    // Simulate network request placeholder (optional, can be removed)
-    // setTimeout(() => setIsTyping(false), 500);
+    // Simulate RAG extraction stream delay
+    setTimeout(() => {
+      // Find possible mock responses containing relevant queries
+      let content = "I've searched the plant operations manual but couldn't locate a precise match for this request. Please specify the sensor or turbine model.";
+      let overallConfidence = 74;
+      let citations = [];
+
+      if (text.toLowerCase().includes('turbine') || text.toLowerCase().includes('hot gas path')) {
+        content = "The Hot Gas Path (HGP) inspection is scheduled at 24,000 equivalent operating hours (EOH) or 900 starts. Maintain bucket tip clearances at 2.54mm ± 0.15mm using fluorescent penetrant inspection.";
+        overallConfidence = 96;
+        citations = [
+          {
+            id: 'CIT-1',
+            documentId: 'DOC-001',
+            documentTitle: 'Gas Turbine GT-7001FA Maintenance Manual',
+            pageNumber: 87,
+            section: '4.3 — Hot Gas Path Inspection Procedure',
+            snippet: 'HGP inspection is performed every 24,000 EOH or 900 starts... bucket tip clearance (nominal 2.54mm ± 0.15mm)'
+          }
+        ];
+      } else if (text.toLowerCase().includes('vibration') || text.toLowerCase().includes('k-301')) {
+        content = "Compressor K-301 is exhibiting 4.2 mm/s RMS vibration trending towards the alert threshold of 5.0 mm/s. Recommended Action: Perform alignment check within 30 days.";
+        overallConfidence = 92;
+        citations = [
+          {
+            id: 'CIT-2',
+            documentId: 'DOC-003',
+            documentTitle: 'Work Order WO-2024-4821: Compressor K-301 Vibration Analysis',
+            pageNumber: 3,
+            section: 'Analysis Summary & Findings',
+            snippet: 'Overall vibration levels at Drive End bearing: 4.2 mm/s RMS velocity... misalignment suspect.'
+          }
+        ];
+      }
+
+      const botMsg = {
+        id: `MSG-BOT-${Date.now()}`,
+        role: 'assistant',
+        content,
+        timestamp: new Date().toISOString(),
+        overallConfidence,
+        citations
+      };
+
+      setMessages(prev => [...prev, botMsg]);
+      setIsTyping(false);
+    }, 1200);
   }, []);
 
   const handleCitationClick = useCallback((cit) => {
     // Find document matching citations and fire onCitationClick
-    const doc = documents.find(d => d.id === cit.documentId);
+    const doc = mockDocuments.find(d => d.id === cit.documentId);
     if (doc && onCitationClick) {
       onCitationClick(doc);
     }

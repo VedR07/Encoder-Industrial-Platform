@@ -2,9 +2,10 @@
 
 import React from 'react';
 import { Calendar as CalendarIcon, Clock, HardHat } from 'lucide-react';
+import { maintenanceSchedule } from '../../data/maintenanceData';
 import StatusBadge from '../ui/StatusBadge';
 
-export default function MaintenanceCalendar({ schedule = [] }) {
+export default function MaintenanceCalendar() {
   return (
     <div className="ink-panel p-5 grid-bg font-mono flex flex-col h-full">
       <div className="flex items-center gap-2 mb-4 border-b border-zinc-900 pb-3">
@@ -15,7 +16,7 @@ export default function MaintenanceCalendar({ schedule = [] }) {
       </div>
 
       <div className="flex-1 space-y-2.5 overflow-y-auto max-h-[300px] pr-1">
-        {schedule.map((item) => (
+        {maintenanceSchedule.map((item) => (
           <div
             key={item.id}
             className="border border-zinc-900 bg-[#0d1117]/80 hover:border-zinc-800 p-2.5 flex items-center justify-between text-[10px]"

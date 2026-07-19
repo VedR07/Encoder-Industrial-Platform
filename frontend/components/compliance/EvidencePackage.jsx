@@ -1,18 +1,34 @@
 'use client';
 
 import React, { useState } from 'react';
+import { mockEvidencePackages } from '../../data/complianceData';
 import StatusBadge from '../ui/StatusBadge';
 import { Archive, Plus, Download, Loader2 } from 'lucide-react';
 
-export default function EvidencePackage({ packages = [] }) {
+export default function EvidencePackage() {
   const [isCompiling, setIsCompiling] = useState(false);
-  const [activePackages, setActivePackages] = useState(packages);
+  const [activePackages, setActivePackages] = useState(mockEvidencePackages);
 
   const triggerCompilation = () => {
     setIsCompiling(true);
-    // Backend integration placeholder
-    // API call to trigger evidence compilation goes here
-    // setTimeout(() => setIsCompiling(false), 1000);
+    setTimeout(() => {
+      setIsCompiling(false);
+      // Append a mock compiled package to simulate database write
+      const newPackage = {
+        id: `ev-${activePackages.length + 1}`,
+        packageId: `EVP-2025-0${activePackages.length + 1}`,
+        standard: 'PESO / OISD',
+        auditType: 'Surveillance',
+        status: 'Approved',
+        documentsCount: 14,
+        createdDate: new Date().toISOString().split('T')[0],
+        dueDate: '2025-09-01',
+        assignedTo: 'AI Core Generator',
+        description: 'Auto-Compiled statutory inspection and proof test dossier.',
+        completionPercent: 100
+      };
+      setActivePackages(prev => [newPackage, ...prev]);
+    }, 1800);
   };
 
   return (

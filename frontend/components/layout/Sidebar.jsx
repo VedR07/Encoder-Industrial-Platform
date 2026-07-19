@@ -50,23 +50,23 @@ export default function Sidebar({ isExpanded, setIsExpanded }) {
   return (
     <aside
       className={`
-        flex flex-col h-screen bg-[#0d1117] border-r border-[#1f2937]
+        flex flex-col h-screen bg-[#1e293b] border-r border-[#334155]
         transition-all duration-300 ease-in-out flex-shrink-0 relative
         ${isExpanded ? 'w-[260px]' : 'w-[72px]'}
       `}
     >
       {/* Brand Header */}
-      <div className="flex items-center gap-3 px-4 h-14 border-b border-[#1f2937] flex-shrink-0 bg-[#0d1117] overflow-hidden">
-        <div className="w-8 h-8 rounded-none bg-[#ef4444] flex items-center justify-center flex-shrink-0 shadow-[0_0_8px_var(--vermilion)]">
-          <Activity size={18} className="text-zinc-950 font-bold" />
+      <div className="flex items-center gap-3 px-4 h-14 border-b border-[#334155] flex-shrink-0 bg-[#1e293b] overflow-hidden">
+        <div className="w-8 h-8 rounded-lg bg-[#0d7377] flex items-center justify-center flex-shrink-0 shadow-md">
+          <Activity size={18} className="text-white font-bold" />
         </div>
         {isExpanded && (
           <div className="animate-fade-in whitespace-nowrap">
-            <h1 className="text-xs font-mono font-bold text-zinc-100 tracking-wider uppercase leading-none">
-              INTELLIPLANT
+            <h1 className="text-[13px] font-semibold text-white tracking-wide leading-none">
+              IntelliPlant
             </h1>
-            <p className="text-[9px] font-mono text-zinc-500 font-bold tracking-widest uppercase mt-1">
-              OPERATIONS BRAIN
+            <p className="text-[10px] text-slate-400 mt-1 tracking-wide">
+              Operations Brain
             </p>
           </div>
         )}
@@ -76,11 +76,11 @@ export default function Sidebar({ isExpanded, setIsExpanded }) {
       <nav className="flex-1 py-4 px-3 space-y-1 overflow-y-auto">
         <p
           className={`
-            text-[9px] font-mono font-bold uppercase tracking-wider text-zinc-500 mb-2
+            text-[10px] font-medium uppercase tracking-wider text-slate-500 mb-2
             ${isExpanded ? 'px-3' : 'text-center'}
           `}
         >
-          {isExpanded ? 'CONTROL CONSOLE' : '---'}
+          {isExpanded ? 'Control Console' : '—'}
         </p>
 
         {navItems.map((item) => {
@@ -92,18 +92,18 @@ export default function Sidebar({ isExpanded, setIsExpanded }) {
               key={item.to}
               href={item.to}
               className={`
-                group relative flex items-center gap-3 rounded-none transition-all duration-150 font-mono
+                group relative flex items-center gap-3 rounded-lg transition-all duration-150
                 ${isExpanded ? 'px-3 py-2.5' : 'px-0 py-2.5 justify-center'}
                 ${
                   isActive
-                    ? 'bg-[#111827] text-[#ef4444] border-l border-l-[#ef4444]'
-                    : 'text-zinc-400 hover:bg-[#111827]/60 hover:text-zinc-100'
+                    ? 'bg-[#0d7377]/20 text-[#14b8a6] border-l-2 border-l-[#14b8a6]'
+                    : 'text-slate-400 hover:bg-white/5 hover:text-slate-200'
                 }
               `}
             >
               <span
                 className={`flex-shrink-0 transition-colors ${
-                  isActive ? 'text-[#ef4444]' : 'text-zinc-500 group-hover:text-zinc-300'
+                  isActive ? 'text-[#14b8a6]' : 'text-slate-500 group-hover:text-slate-300'
                 }`}
               >
                 <Icon size={18} className="stroke-[1.5]" />
@@ -111,10 +111,10 @@ export default function Sidebar({ isExpanded, setIsExpanded }) {
               
               {isExpanded && (
                 <div className="min-w-0">
-                  <p className="text-[12px] font-bold tracking-wide truncate leading-tight">
+                  <p className="text-[12px] font-semibold tracking-wide truncate leading-tight">
                     {item.label}
                   </p>
-                  <p className="text-[9px] text-zinc-500 truncate mt-0.5 group-hover:text-zinc-400">
+                  <p className="text-[10px] text-slate-500 truncate mt-0.5 group-hover:text-slate-400">
                     {item.sublabel}
                   </p>
                 </div>
@@ -125,43 +125,43 @@ export default function Sidebar({ isExpanded, setIsExpanded }) {
       </nav>
 
       {/* System Status Indicators at Bottom */}
-      <div className="border-t border-[#1f2937] p-3 space-y-1 flex-shrink-0 bg-[#0d1117]">
+      <div className="border-t border-[#334155] p-3 space-y-1 flex-shrink-0 bg-[#1e293b]">
         {isExpanded ? (
-          <div className="px-2 py-1.5 bg-[#111827] border border-[#1f2937] rounded-none mb-3 font-mono">
-            <div className="flex items-center justify-between text-[9px] text-zinc-500">
-              <span>DB SYNC STATE</span>
-              <span className="text-emerald-400 flex items-center gap-1 font-bold">
-                <span className="w-1 h-1 rounded-full bg-emerald-500 animate-pulse" />
-                ONLINE
+          <div className="px-2 py-1.5 bg-[#0f172a] border border-[#334155] rounded-lg mb-3">
+            <div className="flex items-center justify-between text-[10px] text-slate-400">
+              <span>DB Sync State</span>
+              <span className="text-emerald-400 flex items-center gap-1 font-semibold">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-subtle-pulse" />
+                Online
               </span>
             </div>
-            <div className="flex items-center justify-between text-[9px] text-zinc-500 mt-1">
-              <span>RAG ENGINE</span>
-              <span className="text-emerald-400 font-bold">READY</span>
+            <div className="flex items-center justify-between text-[10px] text-slate-400 mt-1">
+              <span>RAG Engine</span>
+              <span className="text-emerald-400 font-semibold">Ready</span>
             </div>
           </div>
         ) : (
           <div className="flex justify-center mb-2">
-            <Database size={12} className="text-emerald-400 animate-pulse" />
+            <Database size={12} className="text-emerald-400 animate-subtle-pulse" />
           </div>
         )}
 
         {/* User Card */}
         <div
           className={`
-            flex items-center gap-3 rounded-none bg-[#111827] border border-[#1f2937]
+            flex items-center gap-3 rounded-lg bg-[#0f172a] border border-[#334155]
             ${isExpanded ? 'px-3 py-2' : 'justify-center py-2'}
           `}
         >
-          <div className="w-8 h-8 rounded-none bg-zinc-800 border border-zinc-700 flex items-center justify-center flex-shrink-0 text-[10px] font-mono font-bold text-zinc-100">
+          <div className="w-8 h-8 rounded-lg bg-[#0d7377] flex items-center justify-center flex-shrink-0 text-[11px] font-bold text-white">
             RP
           </div>
           {isExpanded && (
-            <div className="min-w-0 font-mono">
-              <p className="text-[11px] font-bold text-zinc-200 truncate leading-none">
+            <div className="min-w-0">
+              <p className="text-[11px] font-semibold text-slate-200 truncate leading-none">
                 Rajesh Patel
               </p>
-              <p className="text-[9px] text-zinc-500 truncate mt-1 uppercase tracking-wider">
+              <p className="text-[10px] text-slate-500 truncate mt-1 tracking-wide">
                 Reliability Eng
               </p>
             </div>
@@ -172,7 +172,7 @@ export default function Sidebar({ isExpanded, setIsExpanded }) {
       {/* Sidebar Collapse Toggle */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
-        className="absolute -right-3 top-16 w-6 h-6 rounded-none bg-[#0d1117] border border-[#1f2937] flex items-center justify-center text-zinc-400 hover:text-zinc-100 hover:bg-[#111827] transition-all duration-150 z-20 shadow-lg cursor-pointer"
+        className="absolute -right-3 top-16 w-6 h-6 rounded-full bg-white border border-[#e2e0dc] flex items-center justify-center text-slate-400 hover:text-[#0d7377] hover:border-[#0d7377] transition-all duration-150 z-20 shadow-md cursor-pointer"
         aria-label={isExpanded ? 'Collapse console' : 'Expand console'}
       >
         {isExpanded ? <ChevronLeft size={12} /> : <ChevronRight size={12} />}
