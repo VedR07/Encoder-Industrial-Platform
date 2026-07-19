@@ -9,7 +9,7 @@ from langchain_core.documents import Document
 # Load API key securely from .env before initializing any LangChain components
 from app.config import GOOGLE_API_KEY
 
-def load_and_index_data(data_dir: str = "../datasets", persist_dir: str = "./chroma_db") -> Chroma:
+def load_and_index_data(data_dir: str = "./datasets", persist_dir: str = "./chroma_db") -> Chroma:
     """
     Loads datasets from the given directory, splits them into chunks, 
     and indexes them into a Chroma vector store using Gemini embeddings.
