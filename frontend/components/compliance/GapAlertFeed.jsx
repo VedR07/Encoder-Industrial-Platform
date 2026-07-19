@@ -1,11 +1,29 @@
 'use client';
 
-import React from 'react';
-import { AlertCircle, Terminal, HardHat } from 'lucide-react';
+import React, { useState } from 'react';
+import { AlertCircle, Send } from 'lucide-react';
 import { mockGapAlerts } from '../../data/complianceData';
 import StatusBadge from '../ui/StatusBadge';
+import { queryAgent } from '../../lib/api';
 
 export default function GapAlertFeed() {
+  const [complianceQuery, setComplianceQuery] = useState('');
+  const [complianceResponse, setComplianceResponse] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleComplianceQuery = async () => {
+    if (!complianceQuery.trim()) return;
+    setIsLoading(true);
+    setComplianceResponse(null);
+    try {
+      const data = await queryAgent(complianceQuery);
+      setComplianceResponse({ text: data.response, error: false });
+    } catch (err) {
+      setComplianceResponse({ text: `[CONNECTION ERROR] ${err.message}`, error: true });
+    } finally {
+      setIsLoading(false);
+    }
+  };
   return (
     <div className="ink-panel p-5 grid-bg font-mono flex flex-col h-full">
       <div className="flex items-center gap-2 mb-4 border-b border-zinc-900 pb-3">
@@ -39,6 +57,35 @@ export default function GapAlertFeed() {
             </div>
           </div>
         ))}
+      </div>
+
+      {/* AI Compliance Query Panel */}
+      <div className="mt-4 pt-4 border-t border-zinc-900">
+        <p className="text-[9px] text-zinc-500 uppercase tracking-widest mb-2">AI Compliance Query</p>
+        <div className="flex gap-2">
+          <input
+            type="text"
+            value={complianceQuery}
+            onChange={(e) => setComplianceQuery(e.target.value)}
+            onKeyDown={(e) => e.key === 'Enter' && handleComplianceQuery()}
+            placeholder="Ask about a regulation or standard..."
+            className="flex-1 bg-[#0d1117] border border-zinc-800 text-[11px] px-3 py-2 text-zinc-300 placeholder-zinc-600 focus:outline-none focus:border-[#ef4444]"
+          />
+          <button
+            onClick={handleComplianceQuery}
+            disabled={isLoading}
+            className="px-3 py-2 bg-[#ef4444] text-zinc-950 font-bold hover:bg-red-500 transition-all cursor-pointer disabled:opacity-50"
+          >
+            {isLoading ? '...' : <Send size={12} />}
+          </button>
+        </div>
+        {complianceResponse && (
+          <div className={`mt-3 p-3 border text-[11px] leading-relaxed font-sans ${
+            complianceResponse.error ? 'border-zinc-800 text-zinc-500' : 'border-zinc-800 bg-[#0d1117] text-zinc-300'
+          }`}>
+            {complianceResponse.text}
+          </div>
+        )}
       </div>
     </div>
   );
