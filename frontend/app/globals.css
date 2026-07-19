@@ -1,0 +1,120 @@
+@import "tailwindcss";
+
+:root {
+  /* Organic Ink Wash Palette: soot black base, mist/parchment support, vermilion seal stamp accent */
+  --ink-base: #080c14;          /* Deep organic pine soot black */
+  --ink-deep: #03060c;          /* Ultra dark well-depth */
+  --ink-surface: #0f1524;       /* Slate stone ink slab */
+  --ink-surface-hover: #161f33;  /* Wet slate highlight */
+  --ink-border: #1a2436;        /* Raw cut metal edging */
+  --ink-border-accent: #2e3d59; /* Brightened metallic corner joints */
+  --ink-mist: #e2e8f0;          /* Raw paper fiber grey-white */
+  --ink-parchment: #cbd5e1;     /* Bleached silk overlay */
+  --ink-muted: #64748b;         /* Diluted charcoal wash */
+  
+  --vermilion: #e11d48;         /* High-visibility Vermilion (seal stamp crimson) */
+  --vermilion-glow: rgba(225, 29, 72, 0.2);
+  --amber-laser: #f59e0b;       /* Laser warning amber */
+  
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* ─── Base Overrides ─── */
+body {
+  background-color: var(--ink-base);
+  color: var(--ink-mist);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* Custom Scrollbar for Rugged UI */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--ink-border) transparent;
+}
+
+*::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: var(--ink-border-accent);
+  border-radius: 2px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: var(--ink-muted);
+}
+
+/* ─── Solid Industrial Panel styling (Replaces light glass-panel) ─── */
+.ink-panel {
+  background-color: var(--ink-surface);
+  border: 1px solid var(--ink-border);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.02), 0 4px 12px rgba(0, 0, 0, 0.6);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.ink-panel:hover {
+  border-color: var(--ink-border-accent);
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.03), 0 6px 16px rgba(0, 0, 0, 0.7);
+}
+
+/* Industrial Grid overlay background */
+.grid-bg {
+  background-size: 24px 24px;
+  background-image: 
+    linear-gradient(to right, rgba(46, 61, 89, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(46, 61, 89, 0.08) 1px, transparent 1px);
+}
+
+/* Status Dots */
+.status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+  display: inline-block;
+}
+
+.status-dot-critical { background-color: var(--vermilion); box-shadow: 0 0 8px var(--vermilion); }
+.status-dot-warning { background-color: var(--amber-laser); box-shadow: 0 0 8px var(--amber-laser); }
+.status-dot-healthy { background-color: #10b981; box-shadow: 0 0 8px #10b981; }
+.status-dot-info { background-color: #3b82f6; box-shadow: 0 0 8px #3b82f6; }
+.status-dot-maintenance { background-color: #6366f1; box-shadow: 0 0 8px #6366f1; }
+
+/* ─── Micro-animations ─── */
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scanline {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.2s ease-out forwards;
+}
+
+.scanline-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.scanline-effect::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
