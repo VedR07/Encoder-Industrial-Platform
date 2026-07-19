@@ -12,7 +12,7 @@ from app.agents.compliance_agent import get_compliance_chain
 from app.agents.copilot_agent import get_copilot_chain
 
 # Initialize LLM with low temperature for reduced hallucination
-llm = ChatGoogleGenerativeAI(model="gemini-1.5-pro", temperature=0.1)
+llm = ChatGoogleGenerativeAI(model="gemini-2.5-pro", temperature=0.1)
 
 # Initialize all three agent chains
 rca_chain = get_rca_chain(llm)

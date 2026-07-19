@@ -17,7 +17,7 @@ def load_and_index_data(data_dir: str = "./datasets", persist_dir: str = "./chro
     print(f"Initializing data loader for directory: {data_dir}")
     
     # Initialize Gemini Embeddings
-    embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+    embeddings = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-2")
     
     # Check if directory exists
     if not os.path.exists(data_dir) or not os.listdir(data_dir):
@@ -34,7 +34,7 @@ def load_and_index_data(data_dir: str = "./datasets", persist_dir: str = "./chro
         data_dir, 
         glob="**/*.csv", 
         loader_cls=CSVLoader, 
-        loader_kwargs={"source_column": "page"} # Assuming datasets retain a 'page' column
+        loader_kwargs={"encoding": "utf-8"}
     )
     
     print("Loading documents from directory...")
