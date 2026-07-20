@@ -50,7 +50,10 @@ class DirectOllamaEmbeddings(Embeddings):
         return self._embed_batch([text])[0]
 
 
-def get_embeddings() -> DirectOllamaEmbeddings:
+def get_embeddings() -> Embeddings:
+    if os.environ.get("USE_CLOUD_EMBEDDINGS") == "true":
+        from langchain_google_genai import GoogleGenerativeAIEmbeddings
+        return GoogleGenerativeAIEmbeddings(model="models/embedding-001")
     return DirectOllamaEmbeddings(model=EMBED_MODEL, base_url=OLLAMA_URL)
 
 
