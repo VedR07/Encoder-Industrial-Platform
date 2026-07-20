@@ -352,7 +352,7 @@ export default function ExecutiveOverview() {
                   <p className="text-[10px] text-[#94a3b8] uppercase tracking-widest" style={{ fontFamily: '"JetBrains Mono", monospace' }}>RCA Agent — Live Diagnosis</p>
                   <p className="text-[10px] text-[#ef4444] font-bold">NODE-007 · Compressor St. 2</p>
                 </div>
-                <span className="text-[10px] text-green-400 font-bold bg-green-900/40 px-2 py-0.5 border border-green-700/40" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
+                <span className="text-[10px] text-green-400 font-bold bg-green-900/40 px-2 py-0.5 border border-green-700/40" style={{ fontFamily: '"JetBrains Mono", monospace' }} title="Simulated for demo">
                   94% CONF
                 </span>
               </div>
@@ -368,10 +368,14 @@ export default function ExecutiveOverview() {
                 )}
               </div>
               <div className="flex gap-0 border-t border-[#e2e8f0]">
-                <button className="flex-1 bg-[#2563eb] text-white text-[10px] py-2.5 font-bold hover:bg-blue-700 transition-all uppercase tracking-wider" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
+                <button 
+                  onClick={() => alert("Simulated: View Full Telemetry opened")}
+                  className="flex-1 bg-[#2563eb] text-white text-[10px] py-2.5 font-bold hover:bg-blue-700 transition-all uppercase tracking-wider" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
                   View Telemetry
                 </button>
-                <button className="flex-1 border-l border-[#ef4444] text-[#ef4444] text-[10px] py-2.5 font-bold hover:bg-red-50 transition-all uppercase tracking-wider" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
+                <button 
+                  onClick={() => alert("Simulated: System bypassed")}
+                  className="flex-1 border-l border-[#ef4444] text-[#ef4444] text-[10px] py-2.5 font-bold hover:bg-red-50 transition-all uppercase tracking-wider" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
                   Bypass System
                 </button>
               </div>

@@ -133,7 +133,7 @@ export default function GlobalInsightsPage() {
                       </div>
                     </div>
                     
-                    <div className={`mt-6 p-3 bg-white border ${borderLight} text-center`}>
+                    <div className={`mt-6 p-3 bg-white border ${borderLight} text-center`} title="Simulated for demo">
                       <span className="block text-[10px] uppercase font-bold text-[#64748b] mb-1" style={{ fontFamily: '"JetBrains Mono", monospace' }}>Graph Match Score</span>
                       <span className="text-xl font-bold" style={{ color: accentColor }}>{insight.matchScore}%</span>
                     </div>
