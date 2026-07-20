@@ -89,7 +89,10 @@ export default function UnifiedChatPage() {
   const CurrentAgentIcon = currentAgent.icon;
 
   const handleSend = async () => {
-    if (!input.trim() && !attachedFile) return;
+    if (!input.trim() && !attachedFile) {
+      alert("Please type a message or attach a document before sending.");
+      return;
+    }
     
     // Build query — if file attached, append context about it
     const queryText = attachedFile
