@@ -210,7 +210,9 @@ export default function UnifiedChatPage() {
                         <div className="text-[10px] font-bold text-[#64748b] uppercase tracking-wider mb-2">Sources</div>
                         <div className="flex flex-wrap gap-2">
                           {msg.citations.map((cite, idx) => (
-                            <span key={idx} className="inline-flex items-center gap-1 bg-slate-100 border border-slate-200 px-2 py-1 text-[10px] text-slate-700 font-medium hover:bg-slate-200 cursor-pointer transition-colors">
+                            <span key={idx} 
+                              onClick={() => alert(`Simulated: Opening source document '${cite}'`)}
+                              className="inline-flex items-center gap-1 bg-slate-100 border border-slate-200 px-2 py-1 text-[10px] text-slate-700 font-medium hover:bg-slate-200 cursor-pointer transition-colors">
                               <FileText size={10} className="text-[#2563eb]" />
                               {cite}
                             </span>
