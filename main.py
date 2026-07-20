@@ -40,6 +40,7 @@ async def startup_event():
 class QueryRequest(BaseModel):
     query: str
     agent_type: Optional[str] = None  # "RCA", "COMPLIANCE", or "COPILOT" — overrides auto-routing
+    session_id: Optional[str] = "default"
 
 # Response schema
 class QueryResponse(BaseModel):
@@ -100,7 +101,8 @@ async def query_agent(request: QueryRequest):
         response = process_query_with_agents(
             query=request.query,
             context=context,
-            forced_agent=forced_agent
+            forced_agent=forced_agent,
+            session_id=request.session_id
         )
 
         # Fallback in case the model returns an empty string

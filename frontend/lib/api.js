@@ -20,8 +20,8 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
  *                              the request to the specified agent.
  * @returns {Promise<{ agent: string, response: string }>}
  */
-export async function queryAgent(query, agentType = null) {
-  const body = { query };
+export async function queryAgent(query, agentType = null, sessionId = 'default') {
+  const body = { query, session_id: sessionId };
   if (agentType) body.agent_type = agentType;
 
   const response = await fetch(`${API_BASE_URL}/query`, {

@@ -25,8 +25,8 @@ rca_chain = get_rca_chain(llm)
 compliance_chain = get_compliance_chain(llm)
 copilot_chain = get_copilot_chain(llm)
 
-# Global chat history for prototype
-global_chat_history = []
+# Global chat history for prototype (keyed by session_id)
+global_chat_history: Dict[str, list] = {}
 
 def route_query(info: Dict[str, Any], forced_agent: str = None) -> str:
     """
@@ -72,16 +72,21 @@ def route_query(info: Dict[str, Any], forced_agent: str = None) -> str:
     return result
 
 
-def process_query_with_agents(query: str, context: str, forced_agent: str = None) -> str:
+def process_query_with_agents(query: str, context: str, forced_agent: str = None, session_id: str = "default") -> str:
     """
     Main entry point for processing a user query with RAG context.
     forced_agent: "RCA", "COMPLIANCE", or "COPILOT" — skips auto-routing when set.
     """
     global global_chat_history
 
+    if session_id not in global_chat_history:
+        global_chat_history[session_id] = []
+        
+    history_list = global_chat_history[session_id]
+
     # Format the last 6 messages (3 turns) into a readable string
     history_str = "\n".join(
-        [f"{msg['role']}: {msg['content']}" for msg in global_chat_history[-6:]]
+        [f"{msg['role']}: {msg['content']}" for msg in history_list[-6:]]
     )
     if not history_str:
         history_str = "None"
@@ -96,8 +101,8 @@ def process_query_with_agents(query: str, context: str, forced_agent: str = None
     response = route_query(agent_input, forced_agent=forced_agent)
 
     # Save the interaction to memory
-    global_chat_history.append({"role": "User", "content": query})
-    global_chat_history.append({"role": "AI", "content": response})
+    history_list.append({"role": "User", "content": query})
+    history_list.append({"role": "AI", "content": response})
 
     return response
 

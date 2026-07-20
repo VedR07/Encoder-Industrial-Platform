@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import {
   Brain,
   Paperclip,
@@ -23,6 +23,14 @@ export default function UnifiedChatPage() {
   // Agent Selector State
   const [selectedAgent, setSelectedAgent] = useState('COPILOT');
   const [isSelectorOpen, setIsSelectorOpen] = useState(false);
+  
+  // Session ID for backend history isolation
+  const [sessionId, setSessionId] = useState('');
+
+  useEffect(() => {
+    // Generate a simple unique session ID on mount
+    setSessionId(Math.random().toString(36).substring(2, 15));
+  }, []);
   
   // Attachment state
   const [attachedFile, setAttachedFile] = useState(null);
@@ -102,7 +110,7 @@ export default function UnifiedChatPage() {
     setIsTyping(true);
 
     try {
-      const data = await queryAgent(queryText, selectedAgent);
+      const data = await queryAgent(queryText, selectedAgent, sessionId);
       const aiMsg = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
