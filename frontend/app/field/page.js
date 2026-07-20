@@ -109,9 +109,9 @@ function StatusBar({ zone }) {
         </div>
       </div>
       <div className="flex items-center gap-3">
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1" title="Simulated for demo">
           <Radio size={10} className="animate-pulse" />
-          <span>5G PLANT MESH</span>
+          <span>PLANT NETWORK</span>
         </div>
         <div className="flex items-center gap-1">
           <Battery size={10} />
@@ -138,44 +138,95 @@ function CornerBrackets({ children, color = 'border-green-500' }) {
 
 // ── Main component ────────────────────────────────────────────────────────────
 export default function FieldModePage() {
-  const [state, setState]           = useState('idle');   // idle | listening | processing | result
+  const [state, setState]             = useState('idle');   // idle | listening | processing | result
   const [scenarioIdx, setScenarioIdx] = useState(0);
-  const [typedQuery, setTypedQuery] = useState('');
+  const [typedQuery, setTypedQuery]   = useState('');
   const [displayedSteps, setDisplayedSteps] = useState([]);
+  const [speechSupported, setSpeechSupported] = useState(false);
   const zone = 'ZONE B — COMPRESSION UNIT';
-  const timerRef = useRef(null);
-  const typeRef  = useRef(null);
+  const timerRef    = useRef(null);
+  const typeRef     = useRef(null);
+  const recognizerRef = useRef(null);
+
+  // Detect Web Speech API support on mount
+  useEffect(() => {
+    setSpeechSupported(typeof window !== 'undefined' && !!window.SpeechRecognition || !!(window?.webkitSpeechRecognition));
+  }, []);
 
   const currentScenario = scenarios[scenarioIdx];
+
+  // ── Shared: typewriter + show result ────────────────────────────────────────
+  const runDemoFlow = (query) => {
+    setState('processing');
+    let idx = 0;
+    setTypedQuery('');
+    typeRef.current = setInterval(() => {
+      setTypedQuery(query.slice(0, idx + 1));
+      idx++;
+      if (idx >= query.length) {
+        clearInterval(typeRef.current);
+        setTimeout(() => {
+          setDisplayedSteps([]);
+          setState('result');
+        }, 600);
+      }
+    }, 40);
+  };
 
   const handlePressStart = () => {
     if (state !== 'idle') return;
     setState('listening');
-    // After 2.5s auto-transition to processing
-    timerRef.current = setTimeout(() => {
-      setState('processing');
-      // Typewriter for the query
-      let idx = 0;
-      const query = currentScenario.query;
-      setTypedQuery('');
-      typeRef.current = setInterval(() => {
-        setTypedQuery(query.slice(0, idx + 1));
-        idx++;
-        if (idx >= query.length) {
-          clearInterval(typeRef.current);
-          // After typing, show result
-          setTimeout(() => {
-            setDisplayedSteps([]);
-            setState('result');
-          }, 600);
-        }
-      }, 40);
-    }, 2500);
+
+    const SpeechRecognition = typeof window !== 'undefined' && (window.SpeechRecognition || window.webkitSpeechRecognition);
+
+    if (SpeechRecognition) {
+      // ── Real Web Speech API path ─────────────────────────────────────────
+      const recognition = new SpeechRecognition();
+      recognizerRef.current = recognition;
+      recognition.lang = 'en-IN';
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 1;
+
+      recognition.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        // Pick the best-matching demo scenario by keyword, else advance index
+        const lower = transcript.toLowerCase();
+        let matchIdx = scenarioIdx;
+        if (lower.includes('wiring') || lower.includes('compressor') || lower.includes('motor')) matchIdx = 0;
+        else if (lower.includes('lockout') || lower.includes('loto') || lower.includes('pump')) matchIdx = 1;
+        else if (lower.includes('psv') || lower.includes('valve') || lower.includes('inspect')) matchIdx = 2;
+        setScenarioIdx(matchIdx);
+        runDemoFlow(transcript || scenarios[matchIdx].query);
+      };
+
+      recognition.onerror = () => {
+        // Fallback to demo on error
+        runDemoFlow(currentScenario.query);
+      };
+
+      recognition.onend = () => {
+        // If still listening (no result fired), fall back
+        if (state === 'listening') runDemoFlow(currentScenario.query);
+      };
+
+      recognition.start();
+      // Safety timeout: if speech API hangs, fall back after 6s
+      timerRef.current = setTimeout(() => {
+        try { recognition.stop(); } catch (_) {}
+        runDemoFlow(currentScenario.query);
+      }, 6000);
+    } else {
+      // ── Demo fallback (no Speech API) ────────────────────────────────────
+      timerRef.current = setTimeout(() => {
+        runDemoFlow(currentScenario.query);
+      }, 2500);
+    }
   };
 
   const handleReset = () => {
     clearTimeout(timerRef.current);
     clearInterval(typeRef.current);
+    try { recognizerRef.current?.stop(); } catch (_) {}
     setState('idle');
     setTypedQuery('');
     setDisplayedSteps([]);
@@ -223,8 +274,8 @@ export default function FieldModePage() {
             <p className="text-xl font-bold text-green-300 leading-tight">FIELD TECHNICIAN VIEW</p>
           </div>
         </div>
-        <div className="px-3 py-1.5 bg-green-950/40 border border-green-800/50 text-green-400 text-[10px] uppercase tracking-widest">
-          ● AR-ASSIST ONLINE
+        <div className="px-3 py-1.5 bg-green-950/40 border border-green-800/50 text-green-400 text-[10px] uppercase tracking-widest" title="Simulated for demo">
+          ● AI-ASSIST ONLINE
         </div>
       </div>
 
@@ -389,7 +440,11 @@ export default function FieldModePage() {
             )}
           </button>
           <p className="text-[10px] text-green-800 uppercase tracking-widest text-center">
-            {state === 'idle' ? `Demo Query ${scenarioIdx + 1} / ${scenarios.length} — Tap button to activate` : ''}
+            {state === 'idle'
+              ? speechSupported
+                ? `Voice-enabled — Speak after pressing (Demo ${scenarioIdx + 1}/${scenarios.length})`
+                : `Demo mode — Tap button to activate (${scenarioIdx + 1}/${scenarios.length})`
+              : ''}
           </p>
         </div>
       </div>
