@@ -11,6 +11,7 @@ import {
   AlertCircle,
   Share2,
   FileText,
+  Mic,
 } from 'lucide-react';
 import { queryAgent } from '../../lib/api';
 import ReactMarkdown from 'react-markdown';
@@ -35,6 +36,46 @@ export default function UnifiedChatPage() {
   // Attachment state
   const [attachedFile, setAttachedFile] = useState(null);
   const fileInputRef = useRef(null);
+  
+  // Voice input state
+  const [isListening, setIsListening] = useState(false);
+  const recognizerRef = useRef(null);
+  const [voiceSupported, setVoiceSupported] = useState(false);
+
+  useEffect(() => {
+    setVoiceSupported(
+      typeof window !== 'undefined' &&
+      !!(window.SpeechRecognition || window.webkitSpeechRecognition)
+    );
+  }, []);
+
+  const handleVoiceInput = () => {
+    if (isTyping) return;
+    const SpeechRecognition = typeof window !== 'undefined' && (window.SpeechRecognition || window.webkitSpeechRecognition);
+    if (!SpeechRecognition) {
+      alert('Voice input is not supported in this browser. Try Chrome or Edge.');
+      return;
+    }
+    if (isListening) {
+      recognizerRef.current?.stop();
+      setIsListening(false);
+      return;
+    }
+    const recognition = new SpeechRecognition();
+    recognizerRef.current = recognition;
+    recognition.lang = 'en-IN';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+    setIsListening(true);
+    recognition.onresult = (event) => {
+      const transcript = event.results[0][0].transcript;
+      setInput(prev => prev ? `${prev} ${transcript}` : transcript);
+      setIsListening(false);
+    };
+    recognition.onerror = () => setIsListening(false);
+    recognition.onend = () => setIsListening(false);
+    recognition.start();
+  };
 
   const handleAttach = (e) => {
     const file = e.target.files?.[0];
@@ -328,6 +369,18 @@ export default function UnifiedChatPage() {
                 >
                   <Paperclip size={16} />
                 </button>
+                {voiceSupported && (
+                  <button
+                    onClick={handleVoiceInput}
+                    disabled={isTyping}
+                    title={isListening ? 'Listening… click to stop' : 'Voice input'}
+                    className={`transition-colors disabled:opacity-40 ${
+                      isListening ? 'text-red-500 animate-pulse' : 'text-[#64748b] hover:text-[#2563eb]'
+                    }`}
+                  >
+                    <Mic size={16} />
+                  </button>
+                )}
                 <button 
                   onClick={handleSend}
                   disabled={isTyping}
