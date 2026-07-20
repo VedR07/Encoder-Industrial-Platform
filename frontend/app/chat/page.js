@@ -10,6 +10,7 @@ import {
   ChevronDown,
   AlertCircle,
   Share2,
+  FileText,
 } from 'lucide-react';
 import { queryAgent } from '../../lib/api';
 import ReactMarkdown from 'react-markdown';
@@ -53,6 +54,8 @@ export default function UnifiedChatPage() {
         role: 'assistant',
         content: data.response,
         agent: selectedAgent,
+        citations: data.citations || [],
+        confidence: data.confidence || 0,
         timestamp: new Date().toISOString()
       };
       setMessages(prev => [...prev, aiMsg]);
@@ -126,6 +129,11 @@ export default function UnifiedChatPage() {
                           <span className="text-[10px] text-blue-600 bg-blue-50 px-2 py-0.5 font-bold border border-blue-100 uppercase">
                             {msgAgent.id} ACTIVE
                           </span>
+                          {msg.confidence > 0 && (
+                            <span className="text-[10px] text-green-700 bg-green-50 px-2 py-0.5 font-bold border border-green-200">
+                              {msg.confidence}% CONFIDENCE
+                            </span>
+                          )}
                         </div>
                         <span className="text-[10px] text-[#64748b]">{new Date(msg.timestamp).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
                       </div>
@@ -134,6 +142,20 @@ export default function UnifiedChatPage() {
                     <div className={`space-y-4 text-sm leading-relaxed whitespace-pre-wrap ${msg.role === 'user' ? 'text-white' : msg.isError ? 'text-red-600' : 'text-[#1e293b]'}`}>
                       <ReactMarkdown className="prose prose-sm max-w-none">{msg.content}</ReactMarkdown>
                     </div>
+
+                    {msg.role === 'assistant' && msg.citations && msg.citations.length > 0 && (
+                      <div className="mt-4 pt-3 border-t border-[#e2e8f0]">
+                        <div className="text-[10px] font-bold text-[#64748b] uppercase tracking-wider mb-2">Sources</div>
+                        <div className="flex flex-wrap gap-2">
+                          {msg.citations.map((cite, idx) => (
+                            <span key={idx} className="inline-flex items-center gap-1 bg-slate-100 border border-slate-200 px-2 py-1 text-[10px] text-slate-700 font-medium hover:bg-slate-200 cursor-pointer transition-colors">
+                              <FileText size={10} className="text-[#2563eb]" />
+                              {cite}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    )}
                   </div>
                 </div>
               );
