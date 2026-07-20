@@ -18,6 +18,7 @@ import {
   Share2,
   FileImage,
   Server,
+  Globe2,
 } from 'lucide-react';
 
 const megaMenuItems = [
@@ -50,6 +51,12 @@ const megaMenuItems = [
     label: 'Enterprise Integrations',
     description: 'Connect existing ERP, EAM, and SCADA systems (SAP, Maximo, MindSphere) via zero-ETL.',
     icon: Server,
+  },
+  {
+    to: '/insights',
+    label: 'Cross-Plant Insights',
+    description: 'Global lessons learned engine. See how AI predicts systemic failures across the enterprise fleet.',
+    icon: Globe2,
   },
 ];
 
