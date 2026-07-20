@@ -20,6 +20,7 @@ import {
   Server,
   Globe2,
   Box,
+  HardHat,
 } from 'lucide-react';
 
 const megaMenuItems = [
@@ -64,6 +65,12 @@ const megaMenuItems = [
     label: '2.5D Digital Twin',
     description: 'Interactive schematic view with live telemetry overlays and time-scrub fault playback.',
     icon: Box,
+  },
+  {
+    to: '/field',
+    label: 'Field Technician Mode',
+    description: 'Hands-free, high-contrast AR interface for mechanics on the factory floor. Push-to-Talk AI lookup.',
+    icon: HardHat,
   },
 ];
 
