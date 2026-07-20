@@ -226,7 +226,7 @@ export default function ExecutiveOverview() {
               { label: 'Plant Uptime',       value: metrics ? `${metrics.uptime}%` : '94.7%',  sub: '↑ 0.2% vs yesterday', color: '#2563eb', Icon: BarChart3 },
               { label: 'Active Hypotheses',  value: metrics ? metrics.active_hypotheses : 3,    sub: '3 critical',          color: '#f97316', Icon: Zap       },
               { label: 'Outstanding Audits', value: metrics ? metrics.outstanding_audits : 7,   sub: '2 overdue',           color: '#ef4444', Icon: ShieldAlert },
-              { label: 'Docs Indexed',       value: '2,490',                                     sub: '+12 this shift',      color: '#0d9488', Icon: Activity   },
+              { label: 'Docs Indexed',       value: metrics ? metrics.docs_indexed : '2,490',                                     sub: '+12 this shift',      color: '#0d9488', Icon: Activity   },
             ].map(({ label, value, sub, color, Icon }) => (
               <div key={label} className="clean-card p-4 flex flex-col gap-2">
                 <div className="flex justify-between items-start">

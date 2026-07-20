@@ -59,6 +59,7 @@ class MetricsResponse(BaseModel):
     active_hypotheses: int
     outstanding_audits: int
     critical_gaps: int
+    docs_indexed: int
 
 @app.get("/metrics", response_model=MetricsResponse)
 def get_metrics():
@@ -66,11 +67,20 @@ def get_metrics():
     Returns platform KPI metrics for the dashboard overview.
     These are prototype values — replace with live telemetry data in production.
     """
+    global retriever
+    docs_count = 2490  # fallback
+    try:
+        if retriever and hasattr(retriever, 'vectorstore'):
+            docs_count = retriever.vectorstore._collection.count()
+    except Exception:
+        pass
+
     return MetricsResponse(
         uptime=94.7,
         active_hypotheses=3,
         outstanding_audits=7,
-        critical_gaps=2
+        critical_gaps=2,
+        docs_indexed=docs_count
     )
 
 
