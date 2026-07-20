@@ -157,7 +157,9 @@ export default function GlobalInsightsPage() {
                       </div>
                       
                       <div className="flex items-center justify-between">
-                        <button className={`flex items-center gap-2 px-6 py-2 text-xs font-bold text-white transition-colors ${
+                        <button 
+                          onClick={() => insight.status !== 'applied' && alert(`Simulated: ${insight.action}`)}
+                          className={`flex items-center gap-2 px-6 py-2 text-xs font-bold text-white transition-colors ${
                           insight.status === 'applied' ? 'bg-slate-300 cursor-not-allowed' : 'bg-[#2563eb] hover:bg-blue-700'
                         }`}>
                           {insight.status === 'applied' ? 'Action Applied' : insight.action}

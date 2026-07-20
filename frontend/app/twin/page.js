@@ -199,10 +199,14 @@ export default function DigitalTwinPage() {
               <span className="font-bold text-white">Root Cause Identified:</span> High-frequency vibration spike correlates with sudden mechanical seal degradation.
             </p>
             <div className="space-y-2">
-              <button className="w-full py-2 bg-red-600 hover:bg-red-500 text-white text-xs font-bold transition-colors">
+              <button 
+                onClick={() => alert("Simulated: Emergency Bypass Activated")}
+                className="w-full py-3 bg-red-900/40 hover:bg-red-800/60 text-red-300 font-bold tracking-widest text-sm border border-red-900/50 transition-colors">
                 EMERGENCY BYPASS
               </button>
-              <button className="w-full py-2 border border-slate-600 hover:bg-slate-800 text-slate-300 text-xs font-bold transition-colors">
+              <button 
+                onClick={() => alert("Simulated: Navigating to Maintenance Logs")}
+                className="w-full py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold tracking-widest text-sm transition-colors">
                 VIEW MAINTENANCE LOGS
               </button>
             </div>

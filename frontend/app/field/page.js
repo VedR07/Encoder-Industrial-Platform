@@ -254,6 +254,7 @@ export default function FieldModePage() {
                 { label: 'Work Orders', icon: Wrench, color: 'border-red-700 bg-red-950/30 text-red-400' },
               ].map(({ label, icon: Icon, color }) => (
                 <button key={label}
+                  onClick={() => alert(`Simulated: Opening ${label}`)}
                   className={`flex items-center gap-3 p-4 border rounded-none text-left ${color} hover:opacity-80 active:scale-95 transition-all`}>
                   <Icon size={22} />
                   <span className="text-xs font-bold uppercase leading-tight">{label}</span>
@@ -335,6 +336,7 @@ export default function FieldModePage() {
               <div className="flex flex-col gap-2 mt-2 flex-shrink-0">
                 {resp.actions.map((action, i) => (
                   <button key={action}
+                    onClick={() => alert(`Simulated action triggered: ${action}`)}
                     className={`w-full py-4 text-sm font-bold uppercase tracking-widest transition-all active:scale-95 ${
                       i === 0
                         ? 'bg-green-600 hover:bg-green-500 text-black'
