@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import {
   Brain,
   Paperclip,
@@ -23,6 +23,17 @@ export default function UnifiedChatPage() {
   // Agent Selector State
   const [selectedAgent, setSelectedAgent] = useState('COPILOT');
   const [isSelectorOpen, setIsSelectorOpen] = useState(false);
+  
+  // Attachment state
+  const [attachedFile, setAttachedFile] = useState(null);
+  const fileInputRef = useRef(null);
+
+  const handleAttach = (e) => {
+    const file = e.target.files?.[0];
+    if (file) setAttachedFile(file);
+    // Reset input so same file can be re-selected
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  };
 
   const generateCompliancePDF = (msg) => {
     import('jspdf').then(({ default: jsPDF }) => {
@@ -70,21 +81,28 @@ export default function UnifiedChatPage() {
   const CurrentAgentIcon = currentAgent.icon;
 
   const handleSend = async () => {
-    if (!input.trim()) return;
+    if (!input.trim() && !attachedFile) return;
+    
+    // Build query — if file attached, append context about it
+    const queryText = attachedFile
+      ? `${input.trim() ? input : 'Analyze this document:'} [Attached file: ${attachedFile.name}]`
+      : input;
     
     const userMsg = {
       id: Date.now().toString(),
       role: 'user',
-      content: input,
+      content: input || `📎 ${attachedFile.name}`,
+      attachment: attachedFile ? attachedFile.name : null,
       timestamp: new Date().toISOString()
     };
     
     setMessages(prev => [...prev, userMsg]);
     setInput('');
+    setAttachedFile(null);
     setIsTyping(true);
 
     try {
-      const data = await queryAgent(input, selectedAgent);
+      const data = await queryAgent(queryText, selectedAgent);
       const aiMsg = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
@@ -282,7 +300,19 @@ export default function UnifiedChatPage() {
                 disabled={isTyping}
               />
               <div className="absolute right-3 bottom-3 flex items-center gap-3">
-                <button className="text-[#64748b] hover:text-[#2563eb]">
+                {/* Hidden file input */}
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  className="hidden"
+                  accept=".pdf,.png,.jpg,.jpeg,.csv,.txt,.xlsx"
+                  onChange={handleAttach}
+                />
+                <button
+                  onClick={() => fileInputRef.current?.click()}
+                  title="Attach a file"
+                  className={`transition-colors ${attachedFile ? 'text-[#2563eb]' : 'text-[#64748b] hover:text-[#2563eb]'}`}
+                >
                   <Paperclip size={16} />
                 </button>
                 <button 
@@ -294,6 +324,23 @@ export default function UnifiedChatPage() {
                 </button>
               </div>
             </div>
+            
+            {/* Attached file pill */}
+            {attachedFile && (
+              <div className="mt-1.5 px-1 flex items-center gap-2">
+                <div className="flex items-center gap-1.5 bg-blue-50 border border-blue-200 px-2 py-1 text-[10px] text-[#2563eb] font-bold">
+                  <Paperclip size={10} />
+                  <span style={{ fontFamily: '"JetBrains Mono", monospace' }}>{attachedFile.name}</span>
+                  <button
+                    onClick={() => setAttachedFile(null)}
+                    className="ml-1 text-[#94a3b8] hover:text-[#ef4444] transition-colors"
+                  >
+                    ✕
+                  </button>
+                </div>
+              </div>
+            )}
+            
             <div className="mt-2 flex justify-between items-center px-1">
               <div className="flex gap-4 text-[10px] font-bold text-[#64748b] uppercase tracking-tighter" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
                 <span className="flex items-center gap-1">

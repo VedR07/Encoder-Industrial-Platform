@@ -17,6 +17,7 @@ import {
   MemoryStick,
   Share2,
   FileImage,
+  Server,
 } from 'lucide-react';
 
 const megaMenuItems = [
@@ -43,6 +44,12 @@ const megaMenuItems = [
     label: 'P&ID Vision Parser',
     description: 'Upload engineering drawings — AI extracts equipment tags, instruments, and piping connections live.',
     icon: FileImage,
+  },
+  {
+    to: '/integrations',
+    label: 'Enterprise Integrations',
+    description: 'Connect existing ERP, EAM, and SCADA systems (SAP, Maximo, MindSphere) via zero-ETL.',
+    icon: Server,
   },
 ];
 

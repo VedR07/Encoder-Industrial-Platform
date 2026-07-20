@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { fetchMetrics } from '../lib/api';
 import {
   Activity, ShieldAlert, Zap, CheckCircle, AlertTriangle,
@@ -192,9 +193,12 @@ export default function ExecutiveOverview() {
         </div>
         <div className="w-px h-4 bg-current opacity-20" style={{ color: currentAlert.color }} />
         <p className="text-[11px] text-[#1e293b] leading-tight flex-1">{currentAlert.text}</p>
-        <span className="flex-shrink-0 flex items-center gap-1 text-[10px] font-bold cursor-pointer" style={{ color: currentAlert.color }}>
+        <Link
+          href={`/chat`}
+          className="flex-shrink-0 flex items-center gap-1 text-[10px] font-bold hover:underline transition-all" style={{ color: currentAlert.color }}
+        >
           Ask AI <ChevronRight size={10} />
-        </span>
+        </Link>
       </div>
 
       {/* ── Main Grid ──────────────────────────────────────────────────────── */}
