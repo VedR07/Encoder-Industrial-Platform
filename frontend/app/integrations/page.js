@@ -66,25 +66,35 @@ export default function IntegrationsPage() {
   const toggleConnection = (id) => {
     setIntegrations(integrations.map(integration => {
       if (integration.id === id) {
-        const isConnecting = integration.status === 'disconnected';
+        const isConnecting = integration.status === 'disconnected' || integration.status === 'error';
         return {
           ...integration,
-          status: isConnecting ? 'syncing' : 'disconnected',
-          lastSync: isConnecting ? 'Connecting...' : 'Never'
+          status: isConnecting ? 'syncing' : 'disconnecting',
+          lastSync: isConnecting ? 'Connecting...' : 'Disconnecting...'
         };
       }
       return integration;
     }));
 
-    // Simulate connection delay
+    // Simulate connection delay and error case
     const target = integrations.find(i => i.id === id);
-    if (target && target.status === 'disconnected') {
+    if (target) {
+      const isConnecting = target.status === 'disconnected' || target.status === 'error';
       setTimeout(() => {
-        setIntegrations(current => current.map(integration => 
-          integration.id === id 
-            ? { ...integration, status: 'connected', lastSync: 'Just now' }
-            : integration
-        ));
+        setIntegrations(current => current.map(integration => {
+          if (integration.id === id) {
+            // 20% chance to fail on connect
+            if (isConnecting && Math.random() < 0.2) {
+              return { ...integration, status: 'error', lastSync: 'Connection failed' };
+            }
+            return { 
+              ...integration, 
+              status: isConnecting ? 'connected' : 'disconnected', 
+              lastSync: isConnecting ? 'Just now' : 'Never' 
+            };
+          }
+          return integration;
+        }));
       }, 2000);
     }
   };
@@ -160,7 +170,8 @@ export default function IntegrationsPage() {
           {integrations.map((integration) => {
             const Icon = integration.icon;
             const isConnected = integration.status === 'connected';
-            const isSyncing = integration.status === 'syncing';
+            const isSyncing = integration.status === 'syncing' || integration.status === 'disconnecting';
+            const isError = integration.status === 'error';
             
             return (
               <div key={integration.id} className="clean-card p-6 flex flex-col bg-white border border-[#e2e8f0] shadow-sm hover:shadow-md transition-shadow">
@@ -190,7 +201,12 @@ export default function IntegrationsPage() {
                         <RefreshCw size={12} className="animate-spin" /> Syncing
                       </span>
                     )}
-                    {!isConnected && !isSyncing && (
+                    {isError && (
+                      <span className="flex items-center gap-1 text-[10px] font-bold text-red-600 bg-red-50 px-2 py-1 uppercase tracking-wider" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
+                        <AlertCircle size={12} /> Error
+                      </span>
+                    )}
+                    {!isConnected && !isSyncing && !isError && (
                       <span className="flex items-center gap-1 text-[10px] font-bold text-slate-500 bg-slate-100 px-2 py-1 uppercase tracking-wider" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
                         <AlertCircle size={12} /> Disconnected
                       </span>
