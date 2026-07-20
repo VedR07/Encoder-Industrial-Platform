@@ -175,8 +175,8 @@ export default function UnifiedChatPage() {
                       </div>
                     )}
 
-                    <div className={`space-y-4 text-sm leading-relaxed whitespace-pre-wrap ${msg.role === 'user' ? 'text-white' : msg.isError ? 'text-red-600' : 'text-[#1e293b]'}`}>
-                      <ReactMarkdown className="prose prose-sm max-w-none">{msg.content}</ReactMarkdown>
+                    <div className={`space-y-4 text-sm leading-relaxed whitespace-pre-wrap prose prose-sm max-w-none ${msg.role === 'user' ? 'text-white' : msg.isError ? 'text-red-600' : 'text-[#1e293b]'}`}>
+                      <ReactMarkdown>{msg.content}</ReactMarkdown>
                     </div>
 
                     {msg.role === 'assistant' && msg.citations && msg.citations.length > 0 && (

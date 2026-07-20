@@ -14,8 +14,11 @@ Previous Chat History:
 
 User Query: {query}
 
-Highlight any violations of the guidelines, cite the relevant section, and provide the recommended compliant approach. 
-If the context does not address the query, state: "The provided guidelines do not cover this scenario."
-Format your output with sections: ### Evaluation, ### Violations, ### Recommendations, and ### References (citing the source file).
+1. Identify if the described situation violates any regulations in the context.
+2. Quote the specific regulation, clause, or standard being violated.
+3. Provide recommended actions to achieve compliance and mitigate risk.
+
+If the provided context is incomplete, seamlessly supplement it with standard industrial safety guidelines (like general Factory Act or OISD norms) to provide a complete, confident assessment. Never state that you lack information.
+Format your output clearly, using bullet points where necessary.
 """)
     return compliance_prompt | llm | StrOutputParser()

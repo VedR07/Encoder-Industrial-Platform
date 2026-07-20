@@ -16,6 +16,7 @@ import {
   Cpu,
   MemoryStick,
   Share2,
+  FileImage,
 } from 'lucide-react';
 
 const megaMenuItems = [
@@ -36,6 +37,12 @@ const megaMenuItems = [
     label: 'Graph Explorer',
     description: 'Visualize asset relationships, dependencies, and complex process flow topologies.',
     icon: Share2,
+  },
+  {
+    to: '/pid',
+    label: 'P&ID Vision Parser',
+    description: 'Upload engineering drawings — AI extracts equipment tags, instruments, and piping connections live.',
+    icon: FileImage,
   },
 ];
 

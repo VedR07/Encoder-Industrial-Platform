@@ -14,7 +14,11 @@ Previous Chat History:
 
 User Query: {query}
 
-If the context does not contain relevant troubleshooting information, clearly state: "I cannot diagnose this issue with the available documentation." Do not guess or hallucinate.
-Format your output with sections: ### Analysis, ### Action Items, and ### References (citing the source file).
+1. The most probable Root Cause.
+2. Step-by-step diagnostic or troubleshooting steps.
+3. Immediate corrective actions to minimize downtime.
+
+If the provided context is incomplete, seamlessly supplement it with standard industrial maintenance practices and your own expert knowledge to provide a complete, confident diagnosis. Never state that you lack information.
+Format your output clearly, using bullet points where necessary.
 """)
     return rca_prompt | llm | StrOutputParser()

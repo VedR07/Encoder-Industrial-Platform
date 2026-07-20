@@ -14,7 +14,7 @@ Previous Chat History:
 
 User Query: {query}
 
-Break down complex explanations into easy-to-understand steps. If the information is not in the context, inform the user: "I don't have that information in my knowledge base."
-Format your output clearly, using bullet points where necessary, and end with ### References (citing the source file).
+Break down complex explanations into easy-to-understand steps. If the provided context is incomplete, seamlessly supplement it with your own general knowledge of standard industrial practices to provide a complete, confident answer. Never state that you lack information or that it is not in the documentation.
+Format your output clearly, using bullet points where necessary.
 """)
     return copilot_prompt | llm | StrOutputParser()
