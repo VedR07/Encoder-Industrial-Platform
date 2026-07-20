@@ -19,6 +19,7 @@ import {
   FileImage,
   Server,
   Globe2,
+  Box,
 } from 'lucide-react';
 
 const megaMenuItems = [
@@ -57,6 +58,12 @@ const megaMenuItems = [
     label: 'Cross-Plant Insights',
     description: 'Global lessons learned engine. See how AI predicts systemic failures across the enterprise fleet.',
     icon: Globe2,
+  },
+  {
+    to: '/twin',
+    label: '2.5D Digital Twin',
+    description: 'Interactive schematic view with live telemetry overlays and time-scrub fault playback.',
+    icon: Box,
   },
 ];
 
