@@ -52,8 +52,31 @@ export async function checkHealth() {
  * Fetches dashboard KPI metrics from the backend.
  * @returns {Promise<{ uptime, active_hypotheses, outstanding_audits, critical_gaps }>}
  */
-export async function fetchMetrics() {
-  const response = await fetch(`${API_BASE_URL}/metrics`, { method: 'GET' });
-  if (!response.ok) throw new Error('Failed to fetch metrics');
-  return response.json();
-}
+export const fetchMetrics = async () => {
+  try {
+    const res = await fetch(`${API_BASE_URL}/metrics`);
+    if (!res.ok) throw new Error('Failed to fetch metrics');
+    return await res.json();
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};
+
+export const uploadDocument = async (file) => {
+  try {
+    const formData = new FormData();
+    formData.append('file', file);
+    
+    const res = await fetch(`${API_BASE_URL}/ingest`, {
+      method: 'POST',
+      body: formData,
+    });
+    
+    if (!res.ok) throw new Error('Document ingestion failed');
+    return await res.json();
+  } catch (err) {
+    console.error(err);
+    throw err;
+  }
+};

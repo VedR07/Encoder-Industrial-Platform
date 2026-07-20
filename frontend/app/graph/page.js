@@ -1,9 +1,10 @@
 'use client';
 
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useRef } from 'react';
 import OntologyGraph from '../../components/OntologyGraph';
-import { graphData } from './data';
-import { Filter, RefreshCw, Network, Info } from 'lucide-react';
+import { graphData as initialGraphData } from './data';
+import { uploadDocument } from '../../lib/api';
+import { Filter, RefreshCw, Network, UploadCloud } from 'lucide-react';
 
 export default function GraphExplorer() {
   const [selectedGroups, setSelectedGroups] = useState({
@@ -13,6 +14,11 @@ export default function GraphExplorer() {
     Document: true,
     Agent: true
   });
+  
+  const [graphData, setGraphData] = useState(initialGraphData);
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadStatus, setUploadStatus] = useState('');
+  const fileInputRef = useRef(null);
   const [selectedNode, setSelectedNode] = useState(null);
 
   // Filter data based on selected groups
@@ -21,7 +27,35 @@ export default function GraphExplorer() {
     const nodeIds = new Set(nodes.map(n => n.id));
     const links = graphData.links.filter(l => nodeIds.has(l.source.id || l.source) && nodeIds.has(l.target.id || l.target));
     return { nodes, links };
-  }, [selectedGroups]);
+  }, [graphData, selectedGroups]);
+
+  const handleFileUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setIsUploading(true);
+    setUploadStatus(`Parsing ${file.name}...`);
+    
+    try {
+      const res = await uploadDocument(file);
+      setUploadStatus(res.message);
+      
+      // Inject new nodes and links into graph
+      setGraphData(prev => ({
+        nodes: [...prev.nodes, ...res.extracted_nodes],
+        links: [...prev.links, ...res.extracted_links]
+      }));
+      
+      // Clear status after 3s
+      setTimeout(() => setUploadStatus(''), 3000);
+    } catch (err) {
+      setUploadStatus('Ingestion failed.');
+      setTimeout(() => setUploadStatus(''), 3000);
+    } finally {
+      setIsUploading(false);
+      if (fileInputRef.current) fileInputRef.current.value = '';
+    }
+  };
 
   const toggleGroup = (group) => {
     setSelectedGroups(prev => ({ ...prev, [group]: !prev[group] }));
@@ -93,7 +127,36 @@ export default function GraphExplorer() {
           </div>
         </div>
 
-        <div className="mt-auto space-y-2">
+        <div className="mt-auto space-y-4">
+          <div className="p-3 bg-slate-50 border border-[#e2e8f0] rounded-sm">
+            <h4 className="text-[10px] font-bold uppercase tracking-widest text-[#64748b] mb-2" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
+              Document Ingestion
+            </h4>
+            <p className="text-[10px] text-[#64748b] mb-3 leading-tight">
+              Upload P&IDs, manuals, or maintenance logs to dynamically extract entities and update the Knowledge Graph.
+            </p>
+            <input 
+              type="file" 
+              className="hidden" 
+              ref={fileInputRef} 
+              onChange={handleFileUpload} 
+              accept=".pdf,.png,.jpg,.csv,.txt"
+            />
+            <button 
+              onClick={() => fileInputRef.current?.click()}
+              disabled={isUploading}
+              className="w-full bg-[#2563eb] py-2 text-xs font-bold text-white hover:bg-blue-700 transition-colors flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <UploadCloud size={14} /> 
+              {isUploading ? 'Extracting...' : 'Upload Document'}
+            </button>
+            {uploadStatus && (
+              <p className="text-[10px] text-[#2563eb] mt-2 font-bold text-center animate-pulse" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
+                {uploadStatus}
+              </p>
+            )}
+          </div>
+
           <button 
             onClick={() => setSelectedGroups({ Hardware: true, Software: true, Fault: true, Document: true, Agent: true })}
             className="w-full border border-[#e2e8f0] py-2 text-xs font-bold text-[#1e293b] hover:bg-slate-50 transition-colors flex items-center justify-center gap-2"
