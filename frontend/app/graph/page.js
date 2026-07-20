@@ -7,8 +7,8 @@ import { Filter, RefreshCw, Network, Info } from 'lucide-react';
 
 export default function GraphExplorer() {
   const [selectedGroups, setSelectedGroups] = useState({
-    Asset: true,
-    Component: true,
+    Hardware: true,
+    Software: true,
     Fault: true,
     Document: true,
     Agent: true
@@ -43,8 +43,8 @@ export default function GraphExplorer() {
   };
 
   const groupColors = {
-    Asset: '#3b82f6',
-    Component: '#8b5cf6',
+    Hardware: '#2563eb',
+    Software: '#8b5cf6',
     Fault: '#ef4444',
     Document: '#10b981',
     Agent: '#0f172a'
@@ -95,7 +95,7 @@ export default function GraphExplorer() {
 
         <div className="mt-auto space-y-2">
           <button 
-            onClick={() => setSelectedGroups({ Asset: true, Component: true, Fault: true, Document: true, Agent: true })}
+            onClick={() => setSelectedGroups({ Hardware: true, Software: true, Fault: true, Document: true, Agent: true })}
             className="w-full border border-[#e2e8f0] py-2 text-xs font-bold text-[#1e293b] hover:bg-slate-50 transition-colors flex items-center justify-center gap-2"
           >
             <RefreshCw size={14} /> Reset Filters
@@ -128,7 +128,7 @@ export default function GraphExplorer() {
               </p>
             </div>
 
-            <div className="p-4 flex-1 overflow-y-auto max-h-[300px]">
+            <div className="p-4 flex-1 overflow-y-auto max-h-[300px] bg-[#f8fafc]">
               <h4 className="text-[10px] font-bold uppercase tracking-widest text-[#64748b] mb-3" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
                 Relationships
               </h4>
@@ -137,7 +137,7 @@ export default function GraphExplorer() {
                   <li className="text-xs text-[#94a3b8]">No connections found.</li>
                 ) : (
                   selectedNode.connections.map((conn, idx) => (
-                    <li key={idx} className="text-xs flex flex-col">
+                    <li key={idx} className="text-xs flex flex-col bg-white p-2 border border-[#e2e8f0] shadow-sm">
                       <span className="text-[9px] text-[#2563eb] font-bold uppercase tracking-wider mb-1" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
                         {conn.direction === 'OUT' ? `→ ${conn.type}` : `← ${conn.type}`}
                       </span>
