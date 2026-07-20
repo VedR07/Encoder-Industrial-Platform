@@ -24,6 +24,42 @@ export default function UnifiedChatPage() {
   const [selectedAgent, setSelectedAgent] = useState('COPILOT');
   const [isSelectorOpen, setIsSelectorOpen] = useState(false);
 
+  const generateCompliancePDF = (msg) => {
+    import('jspdf').then(({ default: jsPDF }) => {
+      const doc = new jsPDF();
+      doc.setFontSize(16);
+      doc.setTextColor(220, 38, 38); // Red
+      doc.text("INTELLIPLANT - REGULATORY AUDIT FLAG", 20, 20);
+      
+      doc.setFontSize(10);
+      doc.setTextColor(100, 116, 139);
+      doc.text(`Generated: ${new Date(msg.timestamp).toLocaleString()}`, 20, 30);
+      doc.text(`Tracking ID: AUDIT-${msg.id.slice(-6)}`, 20, 35);
+      
+      doc.setDrawColor(226, 232, 240);
+      doc.line(20, 40, 190, 40);
+      
+      doc.setFontSize(12);
+      doc.setTextColor(30, 41, 59);
+      // Clean up markdown hashes/stars for simple text PDF
+      const cleanContent = msg.content.replace(/[*#]/g, '');
+      const splitText = doc.splitTextToSize(cleanContent, 170);
+      doc.text(splitText, 20, 50);
+      
+      if (msg.citations && msg.citations.length > 0) {
+        doc.setFontSize(10);
+        doc.setTextColor(37, 99, 235);
+        const yOffset = 50 + (splitText.length * 6) + 10;
+        doc.text("Evidentiary Sources:", 20, yOffset);
+        msg.citations.forEach((cite, idx) => {
+          doc.text(`[${idx + 1}] ${cite}`, 20, yOffset + 5 + (idx * 5));
+        });
+      }
+      
+      doc.save(`Compliance_Report_${msg.id.slice(-4)}.pdf`);
+    });
+  };
+
   const agents = [
     { id: 'COPILOT', label: 'Copilot Agent', icon: Brain, description: 'General Knowledge AI Assistant' },
     { id: 'RCA', label: 'RCA Agent', icon: Wrench, description: 'Root Cause Analysis & Diagnostics' },
@@ -155,6 +191,16 @@ export default function UnifiedChatPage() {
                           ))}
                         </div>
                       </div>
+                    )}
+
+                    {msg.role === 'assistant' && msg.agent === 'COMPLIANCE' && (
+                      <button 
+                        onClick={() => generateCompliancePDF(msg)}
+                        className="mt-4 flex items-center gap-2 bg-red-50 border border-red-200 text-red-700 px-3 py-1.5 text-[10px] font-bold hover:bg-red-100 transition-colors tracking-widest uppercase"
+                        style={{ fontFamily: '"JetBrains Mono", monospace' }}
+                      >
+                        <ShieldCheck size={12} /> Generate Compliance Evidence (PDF)
+                      </button>
                     )}
                   </div>
                 </div>
