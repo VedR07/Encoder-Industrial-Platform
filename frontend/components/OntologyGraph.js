@@ -69,7 +69,7 @@ export default function OntologyGraph({ data, onNodeClick }) {
 
   const paintNode = useCallback((node, ctx, globalScale) => {
     const label = node.id;
-    const fontSize = 14 / globalScale;
+    const fontSize = 12 / globalScale;
     const isHovered = hoverNode && hoverNode.id === node.id;
     const isNeighbor = hoverNode && neighbors.get(hoverNode.id).has(node.id);
     const isMuted = hoverNode && !isHovered && !isNeighbor;
@@ -77,26 +77,40 @@ export default function OntologyGraph({ data, onNodeClick }) {
     // Node radius
     const r = (node.val || 5) * 1.5;
 
-    // Draw Circle
     ctx.beginPath();
-    ctx.arc(node.x, node.y, r, 0, 2 * Math.PI, false);
+    
+    // Determine shape based on group
+    const group = node.group || '';
+    if (group === 'Hardware' || group === 'Brand') {
+      // Square
+      ctx.rect(node.x - r, node.y - r, r * 2, r * 2);
+    } else if (group === 'Fault' || group === 'RiskRule' || group === 'Document') {
+      // Triangle
+      ctx.moveTo(node.x, node.y - r);
+      ctx.lineTo(node.x + r, node.y + r);
+      ctx.lineTo(node.x - r, node.y + r);
+      ctx.closePath();
+    } else {
+      // Circle
+      ctx.arc(node.x, node.y, r, 0, 2 * Math.PI, false);
+    }
     
     // Solid fill
-    ctx.fillStyle = isMuted ? '#334155' : (node.color || '#3b82f6');
+    ctx.fillStyle = isMuted ? '#cbd5e1' : (node.color || '#3b82f6');
     
     // Add glow effect if hovered
     if (isHovered) {
-      ctx.shadowColor = node.color;
-      ctx.shadowBlur = 15;
+      ctx.shadowColor = node.color || '#3b82f6';
+      ctx.shadowBlur = 10;
     } else {
       ctx.shadowBlur = 0;
     }
     
     ctx.fill();
 
-    // Draw white stroke around circle
-    ctx.lineWidth = isHovered ? 3 / globalScale : 1.5 / globalScale;
-    ctx.strokeStyle = isMuted ? '#475569' : '#ffffff';
+    // Draw dark stroke around shape
+    ctx.lineWidth = isHovered ? 2 / globalScale : 1 / globalScale;
+    ctx.strokeStyle = isMuted ? '#e2e8f0' : '#475569';
     ctx.stroke();
     
     // Reset shadow
@@ -104,24 +118,21 @@ export default function OntologyGraph({ data, onNodeClick }) {
 
     // Draw Label below the node
     if (!isMuted || globalScale > 1.5) { // Only draw labels if not muted, or zoomed in
-      ctx.font = `bold ${fontSize}px "JetBrains Mono", monospace`;
+      ctx.font = `bold ${fontSize}px "Inter", sans-serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
-      ctx.fillStyle = isMuted ? '#64748b' : '#e2e8f0'; // Light text for dark background
+      ctx.fillStyle = isMuted ? '#94a3b8' : '#1e293b'; // Dark text for light background
+      
+      // Draw white stroke behind text for readability
+      ctx.lineWidth = 2 / globalScale;
+      ctx.strokeStyle = 'rgba(255,255,255,0.8)';
+      ctx.strokeText(label, node.x, node.y + r + 4);
       ctx.fillText(label, node.x, node.y + r + 4);
     }
   }, [hoverNode, neighbors]);
 
   return (
-    <div ref={containerRef} className="w-full h-full bg-[#0f172a] relative overflow-hidden">
-      {/* Background Grid Pattern for Cyberpunk aesthetic */}
-      <div 
-        className="absolute inset-0 pointer-events-none opacity-20"
-        style={{
-          backgroundImage: 'linear-gradient(#334155 1px, transparent 1px), linear-gradient(90deg, #334155 1px, transparent 1px)',
-          backgroundSize: '40px 40px'
-        }}
-      />
+    <div ref={containerRef} className="w-full h-full bg-white relative overflow-hidden">
       
       <ForceGraph2D
         ref={fgRef}
@@ -129,17 +140,20 @@ export default function OntologyGraph({ data, onNodeClick }) {
         height={dimensions.height}
         graphData={data}
         nodeRelSize={6}
-        nodeLabel={() => ''} // Custom tooltip handled via canvas if needed, or disable default
+        nodeLabel={() => ''} 
         linkColor={link => {
           const source = typeof link.source === 'object' ? link.source.id : link.source;
           const target = typeof link.target === 'object' ? link.target.id : link.target;
           
-          if (!hoverNode) return 'rgba(148, 163, 184, 0.4)'; // Default slate-400
+          if (!hoverNode) {
+             // Assign some basic colors based on link label if we wanted to match the colorful edges, but gray is safer
+             return 'rgba(203, 213, 225, 0.8)'; // slate-300
+          }
           
           if (source === hoverNode.id || target === hoverNode.id) {
-            return 'rgba(255, 255, 255, 0.8)'; // Highlight connected links
+            return 'rgba(15, 23, 42, 0.6)'; // Dark line for connected
           }
-          return 'rgba(51, 65, 85, 0.2)'; // Mute unrelated links
+          return 'rgba(241, 245, 249, 0.5)'; // Very light slate-100 for muted
         }}
         linkWidth={link => {
           const source = typeof link.source === 'object' ? link.source.id : link.source;
