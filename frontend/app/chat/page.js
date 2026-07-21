@@ -12,6 +12,8 @@ import {
   Share2,
   FileText,
   Mic,
+  Trash2,
+  Pencil
 } from 'lucide-react';
 import { queryAgent } from '../../lib/api';
 import ReactMarkdown from 'react-markdown';
@@ -30,6 +32,40 @@ export default function UnifiedChatPage() {
   const [activeSessionId, setActiveSessionId] = useState('');
   const [sessions, setSessions] = useState([]);
   const [copySuccess, setCopySuccess] = useState(false);
+  const [editingSessionId, setEditingSessionId] = useState(null);
+  const [editTitle, setEditTitle] = useState('');
+
+  const deleteSession = (e, id) => {
+    e.stopPropagation();
+    const updated = sessions.filter(s => s.id !== id);
+    setSessions(updated);
+    localStorage.setItem('intelliplant_chat_sessions', JSON.stringify(updated));
+    
+    if (activeSessionId === id) {
+      if (updated.length > 0) {
+        setActiveSessionId(updated[0].id);
+        setSessionId(updated[0].id);
+        setMessages(updated[0].messages || []);
+      } else {
+        createNewSession();
+      }
+    }
+  };
+
+  const startEditing = (e, session) => {
+    e.stopPropagation();
+    setEditingSessionId(session.id);
+    setEditTitle(session.title);
+  };
+
+  const saveEdit = (id) => {
+    setSessions(prev => {
+      const updated = prev.map(s => s.id === id ? { ...s, title: editTitle } : s);
+      localStorage.setItem('intelliplant_chat_sessions', JSON.stringify(updated));
+      return updated;
+    });
+    setEditingSessionId(null);
+  };
 
   const createNewSession = () => {
     const newId = Math.random().toString(36).substring(2, 15).toUpperCase();
@@ -259,15 +295,38 @@ export default function UnifiedChatPage() {
             <div 
               key={item.id} 
               onClick={() => {
+                if (editingSessionId === item.id) return;
                 setActiveSessionId(item.id);
                 setSessionId(item.id);
                 setMessages(item.messages || []);
               }}
-              className={`p-3 border cursor-pointer transition-colors ${activeSessionId === item.id ? 'bg-blue-50 border-blue-200' : 'bg-white border-transparent hover:bg-slate-50 border-b-[#e2e8f0]'}`}
+              className={`group p-3 border cursor-pointer transition-colors ${activeSessionId === item.id ? 'bg-blue-50 border-blue-200' : 'bg-white border-transparent hover:bg-slate-50 border-b-[#e2e8f0]'}`}
             >
-              <div className={`text-xs font-bold mb-1 truncate ${activeSessionId === item.id ? 'text-[#1e40af]' : 'text-[#1e293b]'}`}>
-                {item.title}
-              </div>
+              {editingSessionId === item.id ? (
+                <input
+                  autoFocus
+                  type="text"
+                  value={editTitle}
+                  onChange={e => setEditTitle(e.target.value)}
+                  onBlur={() => saveEdit(item.id)}
+                  onKeyDown={e => { if (e.key === 'Enter') saveEdit(item.id); }}
+                  className="w-full text-xs font-bold bg-white border border-[#2563eb] px-1 py-0.5 mb-1 outline-none text-[#1e40af]"
+                />
+              ) : (
+                <div className="flex justify-between items-start gap-2">
+                  <div className={`text-xs font-bold mb-1 truncate ${activeSessionId === item.id ? 'text-[#1e40af]' : 'text-[#1e293b]'}`}>
+                    {item.title}
+                  </div>
+                  <div className="opacity-0 group-hover:opacity-100 flex items-center gap-1.5 transition-opacity shrink-0">
+                    <button onClick={(e) => startEditing(e, item)} className="text-[#64748b] hover:text-[#2563eb] transition-colors" title="Rename">
+                      <Pencil size={11} />
+                    </button>
+                    <button onClick={(e) => deleteSession(e, item.id)} className="text-[#64748b] hover:text-red-500 transition-colors" title="Delete">
+                      <Trash2 size={11} />
+                    </button>
+                  </div>
+                </div>
+              )}
               <div className="text-[10px] text-[#64748b]" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
                 {item.time}
               </div>
