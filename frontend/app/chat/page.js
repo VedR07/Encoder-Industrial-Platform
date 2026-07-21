@@ -191,6 +191,36 @@ export default function UnifiedChatPage() {
 
   return (
     <div className="flex h-[calc(100vh-3.5rem)]">
+      {/* Left Sidebar - Chat History */}
+      <aside className="w-64 bg-white border-r border-[#e2e8f0] flex flex-col hidden md:flex shrink-0">
+        <div className="p-4 border-b border-[#e2e8f0] bg-slate-50">
+          <h3 className="text-[10px] font-bold uppercase tracking-widest text-[#64748b]" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
+            Chat History
+          </h3>
+        </div>
+        <div className="flex-1 overflow-y-auto custom-scroll p-4 space-y-2">
+          {[
+            { id: 1, title: 'Current Session', time: 'Just now', active: true },
+            { id: 2, title: 'Valve CV-402 Failure Analysis', time: '2 hrs ago', active: false },
+            { id: 3, title: 'Compliance Check: ISO-14001', time: 'Yesterday', active: false },
+            { id: 4, title: 'P&ID Schematic: Reactor 3', time: 'Yesterday', active: false },
+            { id: 5, title: 'Agent Routing Diagnostics', time: '3 days ago', active: false },
+          ].map((item) => (
+            <div 
+              key={item.id} 
+              className={`p-3 border cursor-pointer transition-colors ${item.active ? 'bg-blue-50 border-blue-200' : 'bg-white border-transparent hover:bg-slate-50 border-b-[#e2e8f0]'}`}
+            >
+              <div className={`text-xs font-bold mb-1 truncate ${item.active ? 'text-[#1e40af]' : 'text-[#1e293b]'}`}>
+                {item.title}
+              </div>
+              <div className="text-[10px] text-[#64748b]" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
+                {item.time}
+              </div>
+            </div>
+          ))}
+        </div>
+      </aside>
+
       {/* Center: Chat View */}
       <section className="flex-1 bg-slate-50 flex flex-col relative">
         {/* Session Header */}
