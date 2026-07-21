@@ -27,11 +27,21 @@ export default function UnifiedChatPage() {
   
   // Session ID for backend history isolation
   const [sessionId, setSessionId] = useState('');
+  const [copySuccess, setCopySuccess] = useState(false);
 
   useEffect(() => {
-    // Generate a simple unique session ID on mount
-    setSessionId(Math.random().toString(36).substring(2, 15));
+    setSessionId(Math.random().toString(36).substring(2, 15).toUpperCase());
   }, []);
+
+  const handleShareSession = () => {
+    const url = `${window.location.origin}/chat?session=${sessionId}`;
+    navigator.clipboard.writeText(url).then(() => {
+      setCopySuccess(true);
+      setTimeout(() => setCopySuccess(false), 2000);
+    }).catch(() => {
+      alert(`Session link: ${url}`);
+    });
+  };
   
   // Attachment state
   const [attachedFile, setAttachedFile] = useState(null);
@@ -190,12 +200,16 @@ export default function UnifiedChatPage() {
               REFINERY_ALPHA MULTI-AGENT SESSION
             </span>
             <span className="text-[10px] text-[#64748b] bg-slate-100 px-2 py-0.5 border border-[#e2e8f0]" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
-              SESSION_0042
+              {sessionId || 'LOADING...'}
             </span>
           </div>
           <div className="flex items-center gap-3">
-            <button className="text-xs text-[#2563eb] font-bold hover:underline flex items-center gap-1">
-              <Share2 size={12} /> SHARE SESSION
+            <button 
+              onClick={handleShareSession}
+              className="text-xs font-bold hover:underline flex items-center gap-1 transition-colors"
+              style={{ color: copySuccess ? '#10b981' : '#2563eb' }}
+            >
+              <Share2 size={12} />{copySuccess ? ' COPIED!' : ' SHARE SESSION'}
             </button>
           </div>
         </div>
