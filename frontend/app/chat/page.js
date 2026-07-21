@@ -27,11 +27,60 @@ export default function UnifiedChatPage() {
   
   // Session ID for backend history isolation
   const [sessionId, setSessionId] = useState('');
+  const [activeSessionId, setActiveSessionId] = useState('');
+  const [sessions, setSessions] = useState([]);
   const [copySuccess, setCopySuccess] = useState(false);
 
+  const createNewSession = () => {
+    const newId = Math.random().toString(36).substring(2, 15).toUpperCase();
+    setActiveSessionId(newId);
+    setSessionId(newId);
+    setMessages([]);
+    setSessions(prev => [{ id: newId, title: 'New Session', time: 'Just now', messages: [] }, ...prev]);
+  };
+
   useEffect(() => {
-    setSessionId(Math.random().toString(36).substring(2, 15).toUpperCase());
+    // Load from localStorage on mount
+    const saved = localStorage.getItem('intelliplant_chat_sessions');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        setSessions(parsed);
+        if (parsed.length > 0) {
+          setActiveSessionId(parsed[0].id);
+          setMessages(parsed[0].messages || []);
+          setSessionId(parsed[0].id);
+        } else {
+          createNewSession();
+        }
+      } catch (e) {
+        createNewSession();
+      }
+    } else {
+      createNewSession();
+    }
   }, []);
+
+  useEffect(() => {
+    if (!activeSessionId || sessions.length === 0) return;
+    
+    // Sync active session's messages to state and localStorage
+    setSessions(prev => {
+      const updated = prev.map(s => {
+        if (s.id === activeSessionId) {
+          let newTitle = s.title;
+          // Auto-generate title from first user message if it's 'New Session'
+          if (messages.length > 0 && s.title === 'New Session' && messages[0].role === 'user') {
+            newTitle = messages[0].content.slice(0, 25) + (messages[0].content.length > 25 ? '...' : '');
+          }
+          return { ...s, title: newTitle, messages, time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) };
+        }
+        return s;
+      });
+      localStorage.setItem('intelliplant_chat_sessions', JSON.stringify(updated));
+      return updated;
+    });
+  }, [messages, activeSessionId]);
 
   const handleShareSession = () => {
     const url = `${window.location.origin}/chat?session=${sessionId}`;
@@ -199,18 +248,24 @@ export default function UnifiedChatPage() {
           </h3>
         </div>
         <div className="flex-1 overflow-y-auto custom-scroll p-4 space-y-2">
-          {[
-            { id: 1, title: 'Current Session', time: 'Just now', active: true },
-            { id: 2, title: 'Valve CV-402 Failure Analysis', time: '2 hrs ago', active: false },
-            { id: 3, title: 'Compliance Check: ISO-14001', time: 'Yesterday', active: false },
-            { id: 4, title: 'P&ID Schematic: Reactor 3', time: 'Yesterday', active: false },
-            { id: 5, title: 'Agent Routing Diagnostics', time: '3 days ago', active: false },
-          ].map((item) => (
+          <button 
+            onClick={createNewSession}
+            className="w-full mb-4 bg-white border border-[#2563eb] text-[#2563eb] hover:bg-blue-50 py-2 text-[10px] font-bold uppercase tracking-wider transition-colors"
+            style={{ fontFamily: '"JetBrains Mono", monospace' }}
+          >
+            + New Chat
+          </button>
+          {sessions.map((item) => (
             <div 
               key={item.id} 
-              className={`p-3 border cursor-pointer transition-colors ${item.active ? 'bg-blue-50 border-blue-200' : 'bg-white border-transparent hover:bg-slate-50 border-b-[#e2e8f0]'}`}
+              onClick={() => {
+                setActiveSessionId(item.id);
+                setSessionId(item.id);
+                setMessages(item.messages || []);
+              }}
+              className={`p-3 border cursor-pointer transition-colors ${activeSessionId === item.id ? 'bg-blue-50 border-blue-200' : 'bg-white border-transparent hover:bg-slate-50 border-b-[#e2e8f0]'}`}
             >
-              <div className={`text-xs font-bold mb-1 truncate ${item.active ? 'text-[#1e40af]' : 'text-[#1e293b]'}`}>
+              <div className={`text-xs font-bold mb-1 truncate ${activeSessionId === item.id ? 'text-[#1e40af]' : 'text-[#1e293b]'}`}>
                 {item.title}
               </div>
               <div className="text-[10px] text-[#64748b]" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
