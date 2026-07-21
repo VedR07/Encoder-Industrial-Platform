@@ -92,6 +92,7 @@ function AudioWave({ active }) {
 // ── Status bar ────────────────────────────────────────────────────────────────
 function StatusBar({ zone }) {
   const [time, setTime] = useState('');
+  const [battery, setBattery] = useState(84);
   useEffect(() => {
     const update = () => setTime(new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
     update();
@@ -99,23 +100,33 @@ function StatusBar({ zone }) {
     return () => clearInterval(id);
   }, []);
 
+  // Slowly drain battery to make it feel real (1% every 3 minutes of wall time)
+  useEffect(() => {
+    const id = setInterval(() => {
+      setBattery(prev => Math.max(prev - 1, 5));
+    }, 180000);
+    return () => clearInterval(id);
+  }, []);
+
+  const batteryColor = battery < 20 ? 'text-red-400' : 'text-green-500';
+
   return (
     <div className="flex items-center justify-between px-5 py-2 bg-black/60 border-b border-green-900/50 text-green-500 text-[11px] font-mono">
       <div className="flex items-center gap-4">
         <span className="font-bold text-green-400">{time}</span>
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1.5" title="Simulated zone — no GPS active">
           <MapPin size={10} />
-          <span>{zone}</span>
+          <span>{zone} <span className="opacity-50">(DEMO)</span></span>
         </div>
       </div>
       <div className="flex items-center gap-3">
-        <div className="flex items-center gap-1" title="Simulated for demo">
+        <div className="flex items-center gap-1" title="Simulated — no real network connection">
           <Radio size={10} className="animate-pulse" />
           <span>PLANT NETWORK</span>
         </div>
-        <div className="flex items-center gap-1">
+        <div className={`flex items-center gap-1 ${batteryColor}`} title="Simulated battery level">
           <Battery size={10} />
-          <span>84%</span>
+          <span>{battery}%</span>
         </div>
       </div>
     </div>
