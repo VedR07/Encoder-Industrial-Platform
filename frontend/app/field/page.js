@@ -4,10 +4,11 @@ import React, { useState, useEffect, useRef } from 'react';
 import { 
   Mic, MicOff, MapPin, Wifi, Battery, ChevronRight,
   FileText, AlertTriangle, CheckCircle, Wrench, Radio,
-  X, Volume2, ArrowLeft
+  X, Volume2, ArrowLeft, StopCircle
 } from 'lucide-react';
 import Link from 'next/link';
 import { queryAgent } from '../../lib/api';
+import ReactMarkdown from 'react-markdown';
 
 // ── Pre-baked demo scenarios (fallback only) ──────────────────────────────────
 const scenarios = [
@@ -151,110 +152,85 @@ function CornerBrackets({ children, color = 'border-green-500' }) {
 // ── Main component ────────────────────────────────────────────────────────────
 export default function FieldModePage() {
   const [state, setState]             = useState('idle');   // idle | listening | processing | result
-  const [scenarioIdx, setScenarioIdx] = useState(0);
   const [typedQuery, setTypedQuery]   = useState('');
-  const [displayedSteps, setDisplayedSteps] = useState([]);
+  const [interimTranscript, setInterimTranscript] = useState(''); // live speech text
   const [speechSupported, setSpeechSupported] = useState(false);
   const [liveResponse, setLiveResponse] = useState(null); // Real API response
   const zone = 'ZONE B — COMPRESSION UNIT';
   const timerRef    = useRef(null);
-  const typeRef     = useRef(null);
   const recognizerRef = useRef(null);
 
   // Detect Web Speech API support on mount
   useEffect(() => {
-    setSpeechSupported(typeof window !== 'undefined' && !!window.SpeechRecognition || !!(window?.webkitSpeechRecognition));
+    setSpeechSupported(
+      typeof window !== 'undefined' &&
+      !!(window.SpeechRecognition || window.webkitSpeechRecognition)
+    );
   }, []);
 
-  const currentScenario = scenarios[scenarioIdx];
-
-  // ── Shared: typewriter + show result ────────────────────────────────────────
-  const runDemoFlow = async (query, isReal = false) => {
+  // ── Send transcript to AI and show real result ───────────────────────────────
+  const runRealQuery = async (transcript) => {
+    setInterimTranscript('');
+    setTypedQuery(transcript);
     setState('processing');
-    let idx = 0;
-    setTypedQuery('');
-    typeRef.current = setInterval(() => {
-      setTypedQuery(query.slice(0, idx + 1));
-      idx++;
-      if (idx >= query.length) {
-        clearInterval(typeRef.current);
-      }
-    }, 40);
+    setLiveResponse(null);
 
-    if (isReal) {
-      try {
-        const res = await queryAgent(query, 'COPILOT', 'field-session');
-        clearInterval(typeRef.current);
-        setTypedQuery(query);
-        
-        // Parse the Markdown string roughly into lines/steps for the UI
-        const lines = res.response.split('\n').filter(l => l.trim().length > 0);
-        
-        setLiveResponse({
-          title: `Response from ${res.agent}`,
-          source: 'Live AI Analysis',
-          confidence: 95,
-          type: 'FIELD ASSISTANT',
-          typeColor: '#3b82f6',
-          content: lines.slice(0, 7), // Just take first few lines to act as steps
-          actions: ['VIEW FULL DETAILS', 'RAISE WORK ORDER'],
-        });
-        
-        setDisplayedSteps([]);
-        setState('result');
-      } catch (err) {
-        console.error(err);
-        clearInterval(typeRef.current);
-        // Fall back to demo
-        setLiveResponse(null);
-        setDisplayedSteps([]);
-        setState('result');
-      }
-    } else {
-      // Demo mode
-      setLiveResponse(null);
-      let waitTimer = setInterval(() => {
-        if (idx >= query.length) {
-          clearInterval(waitTimer);
-          setTimeout(() => {
-            setDisplayedSteps([]);
-            setState('result');
-          }, 600);
-        }
-      }, 100);
+    try {
+      const res = await queryAgent(transcript, 'COPILOT', 'field-session');
+      setLiveResponse({
+        title: transcript,
+        agent: res.agent || 'COPILOT',
+        markdown: res.response,
+      });
+      setState('result');
+    } catch (err) {
+      console.error(err);
+      setLiveResponse({
+        title: transcript,
+        agent: 'COPILOT',
+        markdown: `**Error:** Could not reach the AI backend. Please check your connection and try again.\n\n_${err.message}_`,
+      });
+      setState('result');
     }
   };
 
   const handlePressStart = () => {
     if (state !== 'idle') return;
     setState('listening');
+    setInterimTranscript('');
 
     const SpeechRecognition = typeof window !== 'undefined' && (window.SpeechRecognition || window.webkitSpeechRecognition);
 
     if (SpeechRecognition) {
-      // ── Real Web Speech API path ─────────────────────────────────────────
       const recognition = new SpeechRecognition();
       recognizerRef.current = recognition;
       recognition.lang = 'en-IN';
-      recognition.continuous = false;
-      recognition.interimResults = false;
+      recognition.continuous = true;        // Keep listening until user stops or presses Stop
+      recognition.interimResults = true;    // Show live transcript as they speak
       recognition.maxAlternatives = 1;
 
-      // Flag to prevent the onend fallback from triggering after a real result
-      let didGetResult = false;
+      let finalTranscript = '';
+      let didFinalize = false;
 
       recognition.onresult = (event) => {
-        didGetResult = true;
-        clearTimeout(timerRef.current);
-        const transcript = event.results[0][0].transcript;
-        runDemoFlow(transcript, true);
+        let interim = '';
+        for (let i = event.resultIndex; i < event.results.length; i++) {
+          const result = event.results[i];
+          if (result.isFinal) {
+            finalTranscript += result[0].transcript + ' ';
+          } else {
+            interim += result[0].transcript;
+          }
+        }
+        // Show the combined live transcript
+        setInterimTranscript((finalTranscript + interim).trim());
       };
 
       recognition.onerror = (event) => {
-        if (didGetResult) return; // already handled
+        if (didFinalize) return;
         clearTimeout(timerRef.current);
-        // Only fall back to demo on a real error (not-allowed, no-speech, etc.)
         setState('idle');
+        setInterimTranscript('');
         if (event.error === 'not-allowed') {
           alert('Microphone access was denied. Please allow microphone permission in your browser settings.');
         }
@@ -262,51 +238,63 @@ export default function FieldModePage() {
 
       recognition.onend = () => {
         clearTimeout(timerRef.current);
-        // If we got a real result, do nothing — runDemoFlow already took over
-        if (didGetResult) return;
-        // No speech detected, quietly return to idle
-        setState('idle');
+        if (didFinalize) return;
+        // Auto-ended (silence detected) — submit whatever we captured
+        const captured = finalTranscript.trim();
+        if (captured) {
+          didFinalize = true;
+          runRealQuery(captured);
+        } else {
+          setState('idle');
+          setInterimTranscript('');
+        }
+      };
+
+      // Stop button handler — called by the Stop button on screen
+      recognizerRef.current._stop = () => {
+        clearTimeout(timerRef.current);
+        didFinalize = true;
+        try { recognition.stop(); } catch (_) {}
+        const captured = finalTranscript.trim();
+        if (captured) {
+          runRealQuery(captured);
+        } else {
+          setState('idle');
+          setInterimTranscript('');
+        }
       };
 
       recognition.start();
 
-      // Safety timeout: auto-stop after 10s if user never speaks
+      // Safety timeout: auto-stop after 60 seconds
       timerRef.current = setTimeout(() => {
-        try { recognition.stop(); } catch (_) {}
-      }, 10000);
+        if (!didFinalize) {
+          didFinalize = true;
+          try { recognition.stop(); } catch (_) {}
+          const captured = finalTranscript.trim();
+          if (captured) runRealQuery(captured);
+          else setState('idle');
+        }
+      }, 60000);
     } else {
-      // ── No Speech API — show a clear message rather than silent demo ──────
       alert('Voice recognition is not supported in this browser. Please use Google Chrome or Microsoft Edge.');
       setState('idle');
     }
   };
 
+  const handleStopListening = () => {
+    recognizerRef.current?._stop?.();
+  };
+
   const handleReset = () => {
     clearTimeout(timerRef.current);
-    clearInterval(typeRef.current);
     try { recognizerRef.current?.stop(); } catch (_) {}
     setState('idle');
     setTypedQuery('');
-    setDisplayedSteps([]);
-    // Advance to next scenario
-    setScenarioIdx(i => (i + 1) % scenarios.length);
+    setInterimTranscript('');
+    setLiveResponse(null);
   };
 
-  // Stagger the result steps appearing
-  useEffect(() => {
-    if (state !== 'result') return;
-    const resp = liveResponse || currentScenario.response;
-    const steps = resp.content;
-    let i = 0;
-    const id = setInterval(() => {
-      setDisplayedSteps(prev => [...prev, steps[i]]);
-      i++;
-      if (i >= steps.length) clearInterval(id);
-    }, 150);
-    return () => clearInterval(id);
-  }, [state]);
-
-  const resp = liveResponse || currentScenario.response;
 
   return (
     <div
@@ -376,7 +364,7 @@ export default function FieldModePage() {
 
         {/* ── LISTENING STATE ── */}
         {state === 'listening' && (
-          <div className="flex-1 flex flex-col items-center justify-center gap-10 w-full">
+          <div className="flex-1 flex flex-col items-center justify-center gap-8 w-full">
             <div className="text-center">
               <div className="w-24 h-24 mx-auto rounded-full border-2 border-green-500 flex items-center justify-center mb-6 relative"
                    style={{ boxShadow: '0 0 40px rgba(74,222,128,0.3), 0 0 80px rgba(74,222,128,0.1)' }}>
@@ -384,11 +372,25 @@ export default function FieldModePage() {
                 <div className="absolute inset-0 rounded-full border border-green-500 animate-ping opacity-30" />
               </div>
               <p className="text-green-400 text-2xl font-bold uppercase tracking-widest">LISTENING...</p>
-              <p className="text-green-700 text-xs mt-2 uppercase tracking-wider">Speak clearly into your mic</p>
+              <p className="text-green-700 text-xs mt-2 uppercase tracking-wider">Speak your query — press Stop when done</p>
             </div>
             <div className="w-full max-w-xs">
               <AudioWave active={true} />
             </div>
+            {/* Live interim transcript */}
+            {interimTranscript && (
+              <div className="w-full max-w-lg px-4 py-3 border border-green-800/50 bg-green-950/30">
+                <p className="text-[10px] text-green-600 uppercase tracking-widest mb-1">Hearing:</p>
+                <p className="text-green-300 text-sm leading-relaxed">"{interimTranscript}"</p>
+              </div>
+            )}
+            {/* Stop button */}
+            <button
+              onClick={handleStopListening}
+              className="flex items-center gap-2 px-8 py-3 bg-red-900/40 border border-red-700 text-red-400 hover:bg-red-900/60 text-sm font-bold uppercase tracking-widest transition-all"
+            >
+              <StopCircle size={18} /> Stop &amp; Submit
+            </button>
           </div>
         )}
 
@@ -416,47 +418,52 @@ export default function FieldModePage() {
         )}
 
         {/* ── RESULT STATE ── */}
-        {state === 'result' && (
+        {state === 'result' && liveResponse && (
           <div className="flex-1 flex flex-col w-full max-w-2xl gap-4 overflow-y-auto custom-scroll">
-            {/* Source & Confidence */}
+            {/* Header */}
             <div className="flex items-center justify-between flex-shrink-0">
-              <span className="text-[10px] uppercase tracking-widest px-2 py-1 font-bold"
-                    style={{ color: resp.typeColor, backgroundColor: `${resp.typeColor}22`, border: `1px solid ${resp.typeColor}55` }}>
-                {resp.type}
+              <span className="text-[10px] uppercase tracking-widest px-2 py-1 font-bold text-blue-400" style={{ backgroundColor: '#3b82f622', border: '1px solid #3b82f655' }}>
+                FIELD ASSISTANT — {liveResponse.agent}
               </span>
-              <span className="text-[10px] text-green-500 uppercase tracking-widest">{resp.confidence}% MATCH · {resp.source}</span>
+              <span className="text-[10px] text-green-500 uppercase tracking-widest">AI RESPONSE · LIVE</span>
             </div>
 
-            {/* Title */}
-            <h2 className="text-2xl font-bold text-white leading-tight flex-shrink-0">{resp.title}</h2>
+            {/* Query echo */}
+            <div className="border border-green-900/50 bg-green-950/20 px-4 py-3 flex-shrink-0">
+              <p className="text-[10px] text-green-600 uppercase tracking-widest mb-1">Your Query</p>
+              <p className="text-green-300 text-sm">&ldquo;{liveResponse.title}&rdquo;</p>
+            </div>
 
-            {/* Steps */}
-            <div className="flex flex-col gap-2 flex-shrink-0">
-              {displayedSteps.map((step, i) => (
-                <div key={i}
-                     className="flex items-start gap-3 p-3 border border-green-900/50 bg-green-950/20 animate-[fadeSlideIn_0.3s_ease]">
-                  <span className="text-green-500 font-bold text-xs mt-0.5 flex-shrink-0">{String(i + 1).padStart(2, '0')}</span>
-                  <p className="text-sm text-green-200 leading-snug">{step}</p>
-                </div>
-              ))}
+            {/* Full markdown response */}
+            <div className="flex-1 border border-green-900/40 bg-[#020c04] px-5 py-4 overflow-y-auto custom-scroll prose prose-sm max-w-none"
+              style={{
+                '--tw-prose-body': '#86efac',
+                '--tw-prose-headings': '#4ade80',
+                '--tw-prose-bold': '#bbf7d0',
+                '--tw-prose-bullets': '#16a34a',
+                '--tw-prose-counters': '#16a34a',
+                '--tw-prose-code': '#4ade80',
+                color: '#86efac',
+              }}
+            >
+              <ReactMarkdown>{liveResponse.markdown}</ReactMarkdown>
             </div>
 
             {/* Action buttons */}
-            {displayedSteps.length === resp.content.length && (
-              <div className="flex flex-col gap-2 mt-2 flex-shrink-0">
-                {resp.actions.map((action, i) => (
-                  <button key={action}
-                    onClick={() => alert(`Simulated action triggered: ${action}`)}
-                    className={`w-full py-4 text-sm font-bold uppercase tracking-widest transition-all active:scale-95 ${
-                      i === 0
-                        ? 'bg-green-600 hover:bg-green-500 text-black'
-                        : 'border border-green-800 hover:bg-green-950/40 text-green-400'
-                    }`}>
-                    {action}
-                  </button>
-                ))}
-              </div>
-            )}
+            <div className="flex gap-3 flex-shrink-0 mt-1">
+              <button
+                onClick={() => alert('Simulated: Raising Work Order')}
+                className="flex-1 py-4 text-sm font-bold uppercase tracking-widest bg-green-600 hover:bg-green-500 text-black transition-all active:scale-95"
+              >
+                Raise Work Order
+              </button>
+              <button
+                onClick={handleReset}
+                className="flex-1 py-4 text-sm font-bold uppercase tracking-widest border border-green-800 hover:bg-green-950/40 text-green-400 transition-all"
+              >
+                New Query
+              </button>
+            </div>
           </div>
         )}
 
