@@ -436,49 +436,7 @@ export default function UnifiedChatPage() {
         </div>
       </section>
 
-      {/* Right Sidebar - Context Insights */}
-      <aside className="w-80 bg-white border-l border-[#e2e8f0] flex flex-col hidden lg:flex">
-        <div className="p-4 border-b border-[#e2e8f0] bg-slate-50">
-          <h3 className="text-[10px] font-bold uppercase tracking-widest text-[#64748b]" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
-            Context Insights
-          </h3>
-        </div>
-        <div className="flex-1 overflow-y-auto custom-scroll p-4 space-y-6">
-          {/* Live Telemetry */}
-          <div className="space-y-2">
-            <p className="text-[10px] text-[#64748b] font-bold uppercase tracking-wider" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
-              Live Telemetry: CV-402
-            </p>
-            <div className="p-4 bg-slate-50 border border-[#e2e8f0]">
-              <div className="flex justify-between items-baseline mb-2">
-                <span className="text-2xl font-bold text-[#1e293b]">142.5</span>
-                <span className="text-[10px] text-[#64748b] font-bold uppercase" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
-                  Frequency (Hz)
-                </span>
-              </div>
-              <div className="h-12 flex items-end gap-0.5">
-                <div className="flex-1 bg-[#2563eb]/20 h-[40%]" />
-                <div className="flex-1 bg-[#2563eb]/30 h-[55%]" />
-                <div className="flex-1 bg-[#2563eb]/40 h-[45%]" />
-                <div className="flex-1 bg-[#2563eb]/50 h-[70%]" />
-                <div className="flex-1 bg-red-500/80 h-[95%]" />
-              </div>
-            </div>
-          </div>
 
-          {/* Asset Integrity Alert */}
-          <div className="mt-auto p-4 bg-red-50 border border-red-200">
-            <div className="flex items-center gap-1.5 text-red-600 mb-1.5">
-              <AlertCircle size={14} />
-              <span className="text-[10px] font-bold uppercase">Asset Integrity Alert</span>
-            </div>
-            <p className="text-[11px] text-[#1e293b]">
-              Thermal drift on <span className="font-bold">CV-402</span>. Predicted failure window:{' '}
-              <span className="text-red-600 font-bold">18h 42m</span>.
-            </p>
-          </div>
-        </div>
-      </aside>
     </div>
   );
 }
