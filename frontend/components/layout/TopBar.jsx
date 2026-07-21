@@ -15,6 +15,12 @@ import {
   Factory,
   Cpu,
   MemoryStick,
+  Share2,
+  FileImage,
+  Server,
+  Globe2,
+  Box,
+  HardHat,
 } from 'lucide-react';
 
 const megaMenuItems = [
@@ -25,22 +31,46 @@ const megaMenuItems = [
     icon: LayoutDashboard,
   },
   {
-    to: '/copilot',
-    label: 'Knowledge Copilot',
-    description: 'AI-driven diagnostics, technical manual retrieval, and expert knowledge RAG.',
+    to: '/chat',
+    label: 'AI Chat',
+    description: 'Unified multi-agent chat interface with RCA, Compliance, and Copilot assistants.',
     icon: Brain,
   },
   {
-    to: '/maintenance',
-    label: 'Maintenance & RCA',
-    description: 'Work orders, root cause analysis, and predictive failure modeling for assets.',
-    icon: Wrench,
+    to: '/graph',
+    label: 'Graph Explorer',
+    description: 'Visualize asset relationships, dependencies, and complex process flow topologies.',
+    icon: Share2,
   },
   {
-    to: '/compliance',
-    label: 'Quality & Compliance',
-    description: 'Regulatory reporting, safety audit logs, and environmental impact tracking.',
-    icon: ShieldCheck,
+    to: '/pid',
+    label: 'P&ID Vision Parser',
+    description: 'Upload engineering drawings — AI extracts equipment tags, instruments, and piping connections live.',
+    icon: FileImage,
+  },
+  {
+    to: '/integrations',
+    label: 'Enterprise Integrations',
+    description: 'Connect existing ERP, EAM, and SCADA systems (SAP, Maximo, MindSphere) via zero-ETL.',
+    icon: Server,
+  },
+  {
+    to: '/insights',
+    label: 'Cross-Plant Insights',
+    description: 'Global lessons learned engine. See how AI predicts systemic failures across the enterprise fleet.',
+    icon: Globe2,
+  },
+  {
+    to: '/twin',
+    label: '2.5D Digital Twin',
+    description: 'Interactive schematic view with live telemetry overlays and time-scrub fault playback.',
+    icon: Box,
+  },
+  {
+    to: '/field',
+    label: 'Field Technician Mode',
+    description: 'Hands-free, high-contrast AR interface for mechanics on the factory floor. Push-to-Talk AI lookup.',
+    icon: HardHat,
   },
 ];
 
