@@ -236,35 +236,48 @@ export default function FieldModePage() {
       const recognition = new SpeechRecognition();
       recognizerRef.current = recognition;
       recognition.lang = 'en-IN';
+      recognition.continuous = false;
       recognition.interimResults = false;
       recognition.maxAlternatives = 1;
 
+      // Flag to prevent the onend fallback from triggering after a real result
+      let didGetResult = false;
+
       recognition.onresult = (event) => {
+        didGetResult = true;
+        clearTimeout(timerRef.current);
         const transcript = event.results[0][0].transcript;
         runDemoFlow(transcript, true);
       };
 
-      recognition.onerror = () => {
-        // Fallback to demo on error
-        runDemoFlow(currentScenario.query);
+      recognition.onerror = (event) => {
+        if (didGetResult) return; // already handled
+        clearTimeout(timerRef.current);
+        // Only fall back to demo on a real error (not-allowed, no-speech, etc.)
+        setState('idle');
+        if (event.error === 'not-allowed') {
+          alert('Microphone access was denied. Please allow microphone permission in your browser settings.');
+        }
       };
 
       recognition.onend = () => {
-        // If still listening (no result fired), fall back
-        if (state === 'listening') runDemoFlow(currentScenario.query);
+        clearTimeout(timerRef.current);
+        // If we got a real result, do nothing — runDemoFlow already took over
+        if (didGetResult) return;
+        // No speech detected, quietly return to idle
+        setState('idle');
       };
 
       recognition.start();
-      // Safety timeout: if speech API hangs, fall back after 8s
+
+      // Safety timeout: auto-stop after 10s if user never speaks
       timerRef.current = setTimeout(() => {
         try { recognition.stop(); } catch (_) {}
-        runDemoFlow(currentScenario.query, false);
-      }, 8000);
+      }, 10000);
     } else {
-      // ── Demo fallback (no Speech API) ────────────────────────────────────
-      timerRef.current = setTimeout(() => {
-        runDemoFlow(currentScenario.query);
-      }, 2500);
+      // ── No Speech API — show a clear message rather than silent demo ──────
+      alert('Voice recognition is not supported in this browser. Please use Google Chrome or Microsoft Edge.');
+      setState('idle');
     }
   };
 
@@ -488,8 +501,8 @@ export default function FieldModePage() {
           <p className="text-[10px] text-green-800 uppercase tracking-widest text-center">
             {state === 'idle'
               ? speechSupported
-                ? `Voice-enabled — Speak after pressing (Demo ${scenarioIdx + 1}/${scenarios.length})`
-                : `Demo mode — Tap button to activate (${scenarioIdx + 1}/${scenarios.length})`
+                ? 'Voice-enabled — Press and speak your query'
+                : 'Voice not available — Use Chrome or Edge'
               : ''}
           </p>
         </div>
