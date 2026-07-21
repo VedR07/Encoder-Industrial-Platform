@@ -38,6 +38,10 @@ export default function OntologyGraph({ data, onNodeClick }) {
   useEffect(() => {
     // Zoom to fit on mount or data change
     if (fgRef.current) {
+      // Configure d3 forces for a more spread out, elegant layout
+      fgRef.current.d3Force('charge').strength(-400);
+      fgRef.current.d3Force('link').distance(60);
+      
       setTimeout(() => {
         fgRef.current.zoomToFit(400, 50);
       }, 500);
@@ -79,32 +83,15 @@ export default function OntologyGraph({ data, onNodeClick }) {
 
     ctx.beginPath();
     
-    // Determine shape based on group
-    const group = node.group || '';
-    if (group === 'Hardware' || group === 'Brand') {
-      // Square
-      ctx.rect(node.x - r, node.y - r, r * 2, r * 2);
-    } else if (group === 'Fault' || group === 'RiskRule' || group === 'Document') {
-      // Triangle
-      ctx.moveTo(node.x, node.y - r);
-      ctx.lineTo(node.x + r, node.y + r);
-      ctx.lineTo(node.x - r, node.y + r);
-      ctx.closePath();
-    } else {
-      // Circle
-      ctx.arc(node.x, node.y, r, 0, 2 * Math.PI, false);
-    }
+    // Always use Circle
+    ctx.arc(node.x, node.y, r, 0, 2 * Math.PI, false);
     
     // Solid fill
     ctx.fillStyle = isMuted ? '#cbd5e1' : (node.color || '#3b82f6');
     
-    // Add glow effect if hovered
-    if (isHovered) {
-      ctx.shadowColor = node.color || '#3b82f6';
-      ctx.shadowBlur = 10;
-    } else {
-      ctx.shadowBlur = 0;
-    }
+    // Add soft glow effect
+    ctx.shadowColor = isMuted ? 'transparent' : (node.color || '#3b82f6');
+    ctx.shadowBlur = isHovered ? 15 : 4;
     
     ctx.fill();
 
