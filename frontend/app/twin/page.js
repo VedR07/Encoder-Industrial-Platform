@@ -6,9 +6,26 @@ import {
 } from 'lucide-react';
 
 export default function DigitalTwinPage() {
-  const [timeScrub, setTimeScrub] = useState(100); // 100 = Now (Fault), 0 = 5 mins ago (Normal)
+  const [timeScrub, setTimeScrub] = useState(100);
   const [isPlaying, setIsPlaying] = useState(false);
   const [activeNode, setActiveNode] = useState(null);
+  const [bypassActive, setBypassActive] = useState(false);
+  const [showLogs, setShowLogs] = useState(false);
+
+  const maintenanceLogs = [
+    { ts: '2024-09-20 14:28', type: 'CRITICAL', text: 'F30005 — Mechanical seal vibration threshold exceeded (7.8 mm/s)' },
+    { ts: '2024-09-20 12:10', type: 'WARNING',  text: 'Bearing temp rising — 88°C logged. Cooling check advised.' },
+    { ts: '2024-09-14 09:00', type: 'INFO',     text: 'Routine PM completed. Seal replaced. RPM nominal at 1,450.' },
+    { ts: '2024-08-30 11:42', type: 'WARNING',  text: 'Vibration spike (3.2 mm/s) — within limits. Monitor flagged.' },
+    { ts: '2024-07-15 07:55', type: 'INFO',     text: 'Annual inspection passed. PSV-88 recalibrated.' },
+  ];
+
+  const handleBypass = () => {
+    if (bypassActive) return;
+    if (window.confirm('⚠ CONFIRM EMERGENCY BYPASS\n\nThis will reroute load to Compressor St. 3 & St. 4 and isolate St. 2.\n\nProceed?')) {
+      setBypassActive(true);
+    }
+  };
 
   // Auto-play the timeline
   useEffect(() => {
@@ -199,16 +216,36 @@ export default function DigitalTwinPage() {
               <span className="font-bold text-white">Root Cause Identified:</span> High-frequency vibration spike correlates with sudden mechanical seal degradation.
             </p>
             <div className="space-y-2">
+              {bypassActive ? (
+                <div className="w-full py-3 bg-green-900/40 border border-green-700/50 text-green-300 font-bold tracking-widest text-sm text-center">
+                  ✓ BYPASS ACTIVE — St.3 &amp; St.4 ONLINE
+                </div>
+              ) : (
+                <button 
+                  onClick={handleBypass}
+                  className="w-full py-3 bg-red-900/40 hover:bg-red-800/60 text-red-300 font-bold tracking-widest text-sm border border-red-900/50 transition-colors">
+                  EMERGENCY BYPASS
+                </button>
+              )}
               <button 
-                onClick={() => alert("Simulated: Emergency Bypass Activated")}
-                className="w-full py-3 bg-red-900/40 hover:bg-red-800/60 text-red-300 font-bold tracking-widest text-sm border border-red-900/50 transition-colors">
-                EMERGENCY BYPASS
-              </button>
-              <button 
-                onClick={() => alert("Simulated: Navigating to Maintenance Logs")}
+                onClick={() => setShowLogs(v => !v)}
                 className="w-full py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 font-bold tracking-widest text-sm transition-colors">
-                VIEW MAINTENANCE LOGS
+                {showLogs ? 'HIDE LOGS ▲' : 'VIEW MAINTENANCE LOGS ▼'}
               </button>
+              {showLogs && (
+                <div className="max-h-40 overflow-y-auto space-y-1 mt-1">
+                  {maintenanceLogs.map((log, i) => (
+                    <div key={i} className={`p-2 text-[10px] font-mono border-l-2 ${
+                      log.type === 'CRITICAL' ? 'border-red-500 bg-red-950/30 text-red-300' :
+                      log.type === 'WARNING'  ? 'border-yellow-500 bg-yellow-950/20 text-yellow-300' :
+                                               'border-slate-600 bg-slate-800/40 text-slate-400'
+                    }`}>
+                      <div className="opacity-60 mb-0.5">{log.ts} · {log.type}</div>
+                      <div>{log.text}</div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
