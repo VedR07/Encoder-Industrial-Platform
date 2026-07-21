@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { fetchMetrics } from '../lib/api';
 import {
   Activity, ShieldAlert, Zap, CheckCircle, AlertTriangle,
@@ -87,15 +88,24 @@ const DarkTooltip = ({ active, payload, label, unit }) => {
 
 // ─── Main component ───────────────────────────────────────────────────────────
 export default function ExecutiveOverview() {
+  const router = useRouter();
   const [metrics, setMetrics]             = useState(null);
-  const [vibData, setVibData]             = useState([]);   // seeded client-side to avoid SSR hydration mismatch
-  const [tempData, setTempData]           = useState([]);   // seeded client-side to avoid SSR hydration mismatch
+  const [vibData, setVibData]             = useState([]);
+  const [tempData, setTempData]           = useState([]);
   const [tickerIdx, setTickerIdx]         = useState(0);
   const [tickerVisible, setTickerVisible] = useState(true);
   const [liveLogs, setLiveLogs]           = useState(initialLogs);
   const [rcaDiagnosis, setRcaDiagnosis]   = useState('');
   const [isRcaLoading, setIsRcaLoading]   = useState(true);
+  const [dashBypassActive, setDashBypassActive] = useState(false);
   const logsEndRef = useRef(null);
+
+  const handleDashBypass = () => {
+    if (dashBypassActive) return;
+    if (window.confirm('⚠ CONFIRM BYPASS\n\nThis will reroute load to Compressor St. 3 & St. 4.\n\nProceed?')) {
+      setDashBypassActive(true);
+    }
+  };
 
   // Seed charts client-side only (avoids SSR/hydration mismatch from Math.random())
   useEffect(() => {
@@ -375,15 +385,21 @@ export default function ExecutiveOverview() {
               </div>
               <div className="flex gap-0 border-t border-[#e2e8f0]">
                 <button 
-                  onClick={() => alert("Simulated: View Full Telemetry opened")}
+                  onClick={() => router.push('/twin')}
                   className="flex-1 bg-[#2563eb] text-white text-[10px] py-2.5 font-bold hover:bg-blue-700 transition-all uppercase tracking-wider" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
                   View Telemetry
                 </button>
-                <button 
-                  onClick={() => alert("Simulated: System bypassed")}
-                  className="flex-1 border-l border-[#ef4444] text-[#ef4444] text-[10px] py-2.5 font-bold hover:bg-red-50 transition-all uppercase tracking-wider" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
-                  Bypass System
-                </button>
+                {dashBypassActive ? (
+                  <div className="flex-1 border-l border-green-600 text-green-600 text-[10px] py-2.5 font-bold text-center uppercase tracking-wider bg-green-50" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
+                    ✓ BYPASSED
+                  </div>
+                ) : (
+                  <button 
+                    onClick={handleDashBypass}
+                    className="flex-1 border-l border-[#ef4444] text-[#ef4444] text-[10px] py-2.5 font-bold hover:bg-red-50 transition-all uppercase tracking-wider" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
+                    Bypass System
+                  </button>
+                )}
               </div>
             </div>
           </div>
