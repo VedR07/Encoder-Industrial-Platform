@@ -48,18 +48,7 @@ const megaMenuItems = [
     description: 'Upload engineering drawings — AI extracts equipment tags, instruments, and piping connections live.',
     icon: FileImage,
   },
-  {
-    to: '/integrations',
-    label: 'Enterprise Integrations',
-    description: 'Connect existing ERP, EAM, and SCADA systems (SAP, Maximo, MindSphere) via zero-ETL.',
-    icon: Server,
-  },
-  {
-    to: '/insights',
-    label: 'Cross-Plant Insights',
-    description: 'Global lessons learned engine. See how AI predicts systemic failures across the enterprise fleet.',
-    icon: Globe2,
-  },
+
   {
     to: '/twin',
     label: '2.5D Digital Twin',
