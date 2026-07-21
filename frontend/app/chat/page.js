@@ -196,9 +196,7 @@ export default function UnifiedChatPage() {
         {/* Session Header */}
         <div className="h-12 border-b border-[#e2e8f0] bg-white flex items-center px-6 justify-between shadow-sm z-10">
           <div className="flex items-center gap-3">
-            <span className="text-xs font-bold text-[#1e293b]" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
-              REFINERY_ALPHA MULTI-AGENT SESSION
-            </span>
+
             <span className="text-[10px] text-[#64748b] bg-slate-100 px-2 py-0.5 border border-[#e2e8f0]" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
               {sessionId || 'LOADING...'}
             </span>
