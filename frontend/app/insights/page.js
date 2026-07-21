@@ -48,6 +48,15 @@ const insights = [
 
 export default function GlobalInsightsPage() {
   const [filter, setFilter] = useState('all');
+  // Per-card action state: 'idle' | 'loading' | 'done'
+  const [actioned, setActioned] = useState({});
+
+  const handleAction = (id, actionLabel) => {
+    setActioned(prev => ({ ...prev, [id]: 'loading' }));
+    setTimeout(() => {
+      setActioned(prev => ({ ...prev, [id]: 'done' }));
+    }, 1400);
+  };
 
   return (
     <div className="w-full h-[calc(100vh-3.5rem)] flex flex-col bg-[#f8fafc] overflow-y-auto custom-scroll">
@@ -157,16 +166,24 @@ export default function GlobalInsightsPage() {
                       </div>
                       
                       <div className="flex items-center justify-between">
-                        <button 
-                          onClick={() => insight.status !== 'applied' && alert(`Simulated: ${insight.action}`)}
-                          className={`flex items-center gap-2 px-6 py-2 text-xs font-bold text-white transition-colors ${
-                          insight.status === 'applied' ? 'bg-slate-300 cursor-not-allowed' : 'bg-[#2563eb] hover:bg-blue-700'
-                        }`}>
-                          {insight.status === 'applied' ? 'Action Applied' : insight.action}
-                          {insight.status !== 'applied' && <ChevronRight size={14} />}
-                        </button>
+                        {actioned[insight.id] === 'done' || insight.status === 'applied' ? (
+                          <div className="flex items-center gap-2 px-6 py-2 text-xs font-bold text-green-700 bg-green-50 border border-green-200">
+                            ✓ Action Applied
+                          </div>
+                        ) : actioned[insight.id] === 'loading' ? (
+                          <div className="flex items-center gap-2 px-6 py-2 text-xs font-bold text-blue-700 bg-blue-50 border border-blue-200 animate-pulse">
+                            Processing...
+                          </div>
+                        ) : (
+                          <button 
+                            onClick={() => handleAction(insight.id, insight.action)}
+                            className="flex items-center gap-2 px-6 py-2 text-xs font-bold text-white transition-colors bg-[#2563eb] hover:bg-blue-700">
+                            {insight.action}
+                            <ChevronRight size={14} />
+                          </button>
+                        )}
                         
-                        {insight.status === 'action_required' && (
+                        {insight.status === 'action_required' && !actioned[insight.id] && (
                           <span className="flex items-center gap-1.5 text-[10px] font-bold text-red-600 uppercase tracking-widest animate-pulse" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
                             <AlertTriangle size={12} /> Pending Review
                           </span>
