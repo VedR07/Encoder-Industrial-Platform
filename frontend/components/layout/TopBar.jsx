@@ -110,7 +110,7 @@ export default function TopBar({ viewMode, setViewMode, activeAsset }) {
 
             <div className="h-full flex items-center border-b-2 border-transparent ml-3">
               <span className="text-[#64748b] px-3 text-[11px] uppercase tracking-tight" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
-                {activeAsset ? activeAsset.label : 'Refinery Alpha'}
+                {activeAsset ? activeAsset.label : ''}
               </span>
             </div>
           </nav>
