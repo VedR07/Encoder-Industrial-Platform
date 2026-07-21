@@ -3,7 +3,6 @@
 import React, { useRef, useEffect, useState, useCallback, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 
-// Dynamically import ForceGraph2D to avoid SSR issues with canvas/window
 const ForceGraph2D = dynamic(() => import('react-force-graph-2d'), { ssr: false });
 
 export default function OntologyGraph({ data, onNodeClick }) {
@@ -11,10 +10,8 @@ export default function OntologyGraph({ data, onNodeClick }) {
   const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
   const containerRef = useRef();
 
-  // State for interactive hovering
   const [hoverNode, setHoverNode] = useState(null);
 
-  // Precompute relationships for fast lookup during render
   const { nodesById, neighbors } = useMemo(() => {
     const nodesById = new Map();
     data.nodes.forEach(node => nodesById.set(node.id, node));
@@ -36,15 +33,10 @@ export default function OntologyGraph({ data, onNodeClick }) {
   }, [data]);
 
   useEffect(() => {
-    // Zoom to fit on mount or data change
     if (fgRef.current) {
-      // Configure d3 forces for a more spread out, elegant layout
       fgRef.current.d3Force('charge').strength(-400);
-      fgRef.current.d3Force('link').distance(60);
-      
-      setTimeout(() => {
-        fgRef.current.zoomToFit(400, 50);
-      }, 500);
+      fgRef.current.d3Force('link').distance(70);
+      setTimeout(() => fgRef.current.zoomToFit(400, 50), 500);
     }
   }, [data]);
 
@@ -57,7 +49,6 @@ export default function OntologyGraph({ data, onNodeClick }) {
         });
       }
     };
-    
     updateDimensions();
     window.addEventListener('resize', updateDimensions);
     return () => window.removeEventListener('resize', updateDimensions);
@@ -65,62 +56,82 @@ export default function OntologyGraph({ data, onNodeClick }) {
 
   const handleNodeHover = useCallback((node) => {
     setHoverNode(node || null);
-    // When hovering, cursor should be pointer
-    if (containerRef.current) {
-      containerRef.current.style.cursor = node ? 'pointer' : 'grab';
-    }
+    // Removed manual cursor override which was hiding the mouse
   }, []);
 
   const paintNode = useCallback((node, ctx, globalScale) => {
     const label = node.id;
-    const fontSize = 12 / globalScale;
+    const fontSize = 11 / globalScale;
     const isHovered = hoverNode && hoverNode.id === node.id;
     const isNeighbor = hoverNode && neighbors.get(hoverNode.id).has(node.id);
     const isMuted = hoverNode && !isHovered && !isNeighbor;
 
-    // Node radius
     const r = (node.val || 5) * 1.5;
 
     ctx.beginPath();
     
-    // Always use Circle
-    ctx.arc(node.x, node.y, r, 0, 2 * Math.PI, false);
+    // Determine shape based on group
+    const group = node.group || '';
+    if (group === 'Hardware' || group === 'Fault') {
+      // Rounded Square (like red/black nodes in screenshot)
+      const size = r * 2;
+      const x = node.x - r;
+      const y = node.y - r;
+      const radius = r * 0.4;
+      if (ctx.roundRect) {
+        ctx.roundRect(x, y, size, size, radius);
+      } else {
+        ctx.rect(x, y, size, size);
+      }
+    } else if (group === 'Software' || group === 'RiskRule') {
+      // Triangle (like purple nodes in screenshot)
+      ctx.moveTo(node.x, node.y - (r * 1.2));
+      ctx.lineTo(node.x + r * 1.2, node.y + (r * 0.8));
+      ctx.lineTo(node.x - r * 1.2, node.y + (r * 0.8));
+      ctx.closePath();
+    } else {
+      // Circle (like blue/green nodes in screenshot)
+      ctx.arc(node.x, node.y, r, 0, 2 * Math.PI, false);
+    }
     
-    // Solid fill
-    ctx.fillStyle = isMuted ? '#cbd5e1' : (node.color || '#3b82f6');
-    
-    // Add soft glow effect
-    ctx.shadowColor = isMuted ? 'transparent' : (node.color || '#3b82f6');
-    ctx.shadowBlur = isHovered ? 15 : 4;
-    
+    // Fill and Stroke
+    ctx.fillStyle = isMuted ? '#e2e8f0' : (node.color || '#3b82f6');
     ctx.fill();
-
-    // Draw dark stroke around shape
-    ctx.lineWidth = isHovered ? 2 / globalScale : 1 / globalScale;
-    ctx.strokeStyle = isMuted ? '#e2e8f0' : '#475569';
+    ctx.lineWidth = isHovered ? 2 / globalScale : 1.5 / globalScale;
+    ctx.strokeStyle = isMuted ? '#cbd5e1' : '#1e293b'; // Dark solid stroke
     ctx.stroke();
-    
-    // Reset shadow
-    ctx.shadowBlur = 0;
 
-    // Draw Label below the node
-    if (!isMuted || globalScale > 1.5) { // Only draw labels if not muted, or zoomed in
+    // Add green badge to some nodes (like screenshot)
+    if (!isMuted && node.id.length % 3 === 0) {
+      const badgeR = r * 0.45;
+      ctx.beginPath();
+      ctx.arc(node.x + r * 0.8, node.y - r * 0.8, badgeR, 0, 2 * Math.PI);
+      ctx.fillStyle = '#22c55e'; // Green badge
+      ctx.fill();
+      ctx.lineWidth = 1 / globalScale;
+      ctx.strokeStyle = '#fff';
+      ctx.stroke();
+      
+      // Badge text
+      ctx.font = `bold ${badgeR * 1.2}px sans-serif`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle = '#fff';
+      ctx.fillText((node.id.length % 3) + 1, node.x + r * 0.8, node.y - r * 0.8);
+    }
+
+    // Draw Label below node (Plain dark text, no stroke, like screenshot)
+    if (!isMuted || globalScale > 1.5) {
       ctx.font = `bold ${fontSize}px "Inter", sans-serif`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
-      ctx.fillStyle = isMuted ? '#94a3b8' : '#1e293b'; // Dark text for light background
-      
-      // Draw white stroke behind text for readability
-      ctx.lineWidth = 2 / globalScale;
-      ctx.strokeStyle = 'rgba(255,255,255,0.8)';
-      ctx.strokeText(label, node.x, node.y + r + 4);
-      ctx.fillText(label, node.x, node.y + r + 4);
+      ctx.fillStyle = isMuted ? '#94a3b8' : '#0f172a';
+      ctx.fillText(label, node.x, node.y + r + 3);
     }
   }, [hoverNode, neighbors]);
 
   return (
-    <div ref={containerRef} className="w-full h-full bg-white relative overflow-hidden">
-      
+    <div ref={containerRef} className="w-full h-full bg-[#f8fafc] relative overflow-hidden">
       <ForceGraph2D
         ref={fgRef}
         width={dimensions.width}
@@ -132,33 +143,26 @@ export default function OntologyGraph({ data, onNodeClick }) {
           const source = typeof link.source === 'object' ? link.source.id : link.source;
           const target = typeof link.target === 'object' ? link.target.id : link.target;
           
-          if (!hoverNode) {
-             // Assign some basic colors based on link label if we wanted to match the colorful edges, but gray is safer
-             return 'rgba(203, 213, 225, 0.8)'; // slate-300
+          if (hoverNode && source !== hoverNode.id && target !== hoverNode.id) {
+            return 'rgba(226, 232, 240, 0.4)'; // slate-200 very muted
           }
           
-          if (source === hoverNode.id || target === hoverNode.id) {
-            return 'rgba(15, 23, 42, 0.6)'; // Dark line for connected
-          }
-          return 'rgba(241, 245, 249, 0.5)'; // Very light slate-100 for muted
+          // Color edges based on target id length to simulate screenshot colors
+          const len = target.length;
+          if (len % 3 === 0) return 'rgba(249, 115, 22, 0.6)'; // orange
+          if (len % 3 === 1) return 'rgba(34, 197, 94, 0.6)';  // green
+          return 'rgba(56, 189, 248, 0.6)'; // light blue
         }}
         linkWidth={link => {
           const source = typeof link.source === 'object' ? link.source.id : link.source;
           const target = typeof link.target === 'object' ? link.target.id : link.target;
-          return hoverNode && (source === hoverNode.id || target === hoverNode.id) ? 3 : 1;
+          return hoverNode && (source === hoverNode.id || target === hoverNode.id) ? 2 : 1;
         }}
-        linkDirectionalParticles={link => {
-          const source = typeof link.source === 'object' ? link.source.id : link.source;
-          const target = typeof link.target === 'object' ? link.target.id : link.target;
-          return hoverNode && (source === hoverNode.id || target === hoverNode.id) ? 4 : 0;
-        }}
-        linkDirectionalParticleWidth={3}
-        linkDirectionalParticleSpeed={0.005}
         nodeCanvasObject={paintNode}
         onNodeClick={onNodeClick}
         onNodeHover={handleNodeHover}
-        d3VelocityDecay={0.3}
-        warmupTicks={100}
+        d3VelocityDecay={0.2}
+        warmupTicks={50}
         cooldownTicks={0}
       />
     </div>
