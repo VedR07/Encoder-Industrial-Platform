@@ -12,6 +12,8 @@ import {
   Share2,
   FileText,
   Mic,
+  Trash2,
+  Pencil
 } from 'lucide-react';
 import { queryAgent } from '../../lib/api';
 import ReactMarkdown from 'react-markdown';
@@ -27,11 +29,94 @@ export default function UnifiedChatPage() {
   
   // Session ID for backend history isolation
   const [sessionId, setSessionId] = useState('');
+  const [activeSessionId, setActiveSessionId] = useState('');
+  const [sessions, setSessions] = useState([]);
   const [copySuccess, setCopySuccess] = useState(false);
+  const [editingSessionId, setEditingSessionId] = useState(null);
+  const [editTitle, setEditTitle] = useState('');
+
+  const deleteSession = (e, id) => {
+    e.stopPropagation();
+    const updated = sessions.filter(s => s.id !== id);
+    setSessions(updated);
+    localStorage.setItem('intelliplant_chat_sessions', JSON.stringify(updated));
+    
+    if (activeSessionId === id) {
+      if (updated.length > 0) {
+        setActiveSessionId(updated[0].id);
+        setSessionId(updated[0].id);
+        setMessages(updated[0].messages || []);
+      } else {
+        createNewSession();
+      }
+    }
+  };
+
+  const startEditing = (e, session) => {
+    e.stopPropagation();
+    setEditingSessionId(session.id);
+    setEditTitle(session.title);
+  };
+
+  const saveEdit = (id) => {
+    setSessions(prev => {
+      const updated = prev.map(s => s.id === id ? { ...s, title: editTitle } : s);
+      localStorage.setItem('intelliplant_chat_sessions', JSON.stringify(updated));
+      return updated;
+    });
+    setEditingSessionId(null);
+  };
+
+  const createNewSession = () => {
+    const newId = Math.random().toString(36).substring(2, 15).toUpperCase();
+    setActiveSessionId(newId);
+    setSessionId(newId);
+    setMessages([]);
+    setSessions(prev => [{ id: newId, title: 'New Session', time: 'Just now', messages: [] }, ...prev]);
+  };
 
   useEffect(() => {
-    setSessionId(Math.random().toString(36).substring(2, 15).toUpperCase());
+    // Load from localStorage on mount
+    const saved = localStorage.getItem('intelliplant_chat_sessions');
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved);
+        setSessions(parsed);
+        if (parsed.length > 0) {
+          setActiveSessionId(parsed[0].id);
+          setMessages(parsed[0].messages || []);
+          setSessionId(parsed[0].id);
+        } else {
+          createNewSession();
+        }
+      } catch (e) {
+        createNewSession();
+      }
+    } else {
+      createNewSession();
+    }
   }, []);
+
+  useEffect(() => {
+    if (!activeSessionId || sessions.length === 0) return;
+    
+    // Sync active session's messages to state and localStorage
+    setSessions(prev => {
+      const updated = prev.map(s => {
+        if (s.id === activeSessionId) {
+          let newTitle = s.title;
+          // Auto-generate title from first user message if it's 'New Session'
+          if (messages.length > 0 && s.title === 'New Session' && messages[0].role === 'user') {
+            newTitle = messages[0].content.slice(0, 25) + (messages[0].content.length > 25 ? '...' : '');
+          }
+          return { ...s, title: newTitle, messages, time: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) };
+        }
+        return s;
+      });
+      localStorage.setItem('intelliplant_chat_sessions', JSON.stringify(updated));
+      return updated;
+    });
+  }, [messages, activeSessionId]);
 
   const handleShareSession = () => {
     const url = `${window.location.origin}/chat?session=${sessionId}`;
@@ -191,14 +276,71 @@ export default function UnifiedChatPage() {
 
   return (
     <div className="flex h-[calc(100vh-3.5rem)]">
+      {/* Left Sidebar - Chat History */}
+      <aside className="w-64 bg-white border-r border-[#e2e8f0] flex flex-col hidden md:flex shrink-0">
+        <div className="p-4 border-b border-[#e2e8f0] bg-slate-50">
+          <h3 className="text-[10px] font-bold uppercase tracking-widest text-[#64748b]" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
+            Chat History
+          </h3>
+        </div>
+        <div className="flex-1 overflow-y-auto custom-scroll p-4 space-y-2">
+          <button 
+            onClick={createNewSession}
+            className="w-full mb-4 bg-white border border-[#2563eb] text-[#2563eb] hover:bg-blue-50 py-2 text-[10px] font-bold uppercase tracking-wider transition-colors"
+            style={{ fontFamily: '"JetBrains Mono", monospace' }}
+          >
+            + New Chat
+          </button>
+          {sessions.map((item) => (
+            <div 
+              key={item.id} 
+              onClick={() => {
+                if (editingSessionId === item.id) return;
+                setActiveSessionId(item.id);
+                setSessionId(item.id);
+                setMessages(item.messages || []);
+              }}
+              className={`group p-3 border cursor-pointer transition-colors ${activeSessionId === item.id ? 'bg-blue-50 border-blue-200' : 'bg-white border-transparent hover:bg-slate-50 border-b-[#e2e8f0]'}`}
+            >
+              {editingSessionId === item.id ? (
+                <input
+                  autoFocus
+                  type="text"
+                  value={editTitle}
+                  onChange={e => setEditTitle(e.target.value)}
+                  onBlur={() => saveEdit(item.id)}
+                  onKeyDown={e => { if (e.key === 'Enter') saveEdit(item.id); }}
+                  className="w-full text-xs font-bold bg-white border border-[#2563eb] px-1 py-0.5 mb-1 outline-none text-[#1e40af]"
+                />
+              ) : (
+                <div className="flex justify-between items-start gap-2">
+                  <div className={`text-xs font-bold mb-1 truncate ${activeSessionId === item.id ? 'text-[#1e40af]' : 'text-[#1e293b]'}`}>
+                    {item.title}
+                  </div>
+                  <div className="opacity-0 group-hover:opacity-100 flex items-center gap-1.5 transition-opacity shrink-0">
+                    <button onClick={(e) => startEditing(e, item)} className="text-[#64748b] hover:text-[#2563eb] transition-colors" title="Rename">
+                      <Pencil size={11} />
+                    </button>
+                    <button onClick={(e) => deleteSession(e, item.id)} className="text-[#64748b] hover:text-red-500 transition-colors" title="Delete">
+                      <Trash2 size={11} />
+                    </button>
+                  </div>
+                </div>
+              )}
+              <div className="text-[10px] text-[#64748b]" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
+                {item.time}
+              </div>
+            </div>
+          ))}
+        </div>
+      </aside>
+
       {/* Center: Chat View */}
       <section className="flex-1 bg-slate-50 flex flex-col relative">
         {/* Session Header */}
         <div className="h-12 border-b border-[#e2e8f0] bg-white flex items-center px-6 justify-between shadow-sm z-10">
           <div className="flex items-center gap-3">
-            <span className="text-xs font-bold text-[#1e293b]" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
-              REFINERY_ALPHA MULTI-AGENT SESSION
-            </span>
+
             <span className="text-[10px] text-[#64748b] bg-slate-100 px-2 py-0.5 border border-[#e2e8f0]" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
               {sessionId || 'LOADING...'}
             </span>
@@ -438,49 +580,7 @@ export default function UnifiedChatPage() {
         </div>
       </section>
 
-      {/* Right Sidebar - Context Insights */}
-      <aside className="w-80 bg-white border-l border-[#e2e8f0] flex flex-col hidden lg:flex">
-        <div className="p-4 border-b border-[#e2e8f0] bg-slate-50">
-          <h3 className="text-[10px] font-bold uppercase tracking-widest text-[#64748b]" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
-            Context Insights
-          </h3>
-        </div>
-        <div className="flex-1 overflow-y-auto custom-scroll p-4 space-y-6">
-          {/* Live Telemetry */}
-          <div className="space-y-2">
-            <p className="text-[10px] text-[#64748b] font-bold uppercase tracking-wider" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
-              Live Telemetry: CV-402
-            </p>
-            <div className="p-4 bg-slate-50 border border-[#e2e8f0]">
-              <div className="flex justify-between items-baseline mb-2">
-                <span className="text-2xl font-bold text-[#1e293b]">142.5</span>
-                <span className="text-[10px] text-[#64748b] font-bold uppercase" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
-                  Frequency (Hz)
-                </span>
-              </div>
-              <div className="h-12 flex items-end gap-0.5">
-                <div className="flex-1 bg-[#2563eb]/20 h-[40%]" />
-                <div className="flex-1 bg-[#2563eb]/30 h-[55%]" />
-                <div className="flex-1 bg-[#2563eb]/40 h-[45%]" />
-                <div className="flex-1 bg-[#2563eb]/50 h-[70%]" />
-                <div className="flex-1 bg-red-500/80 h-[95%]" />
-              </div>
-            </div>
-          </div>
 
-          {/* Asset Integrity Alert */}
-          <div className="mt-auto p-4 bg-red-50 border border-red-200">
-            <div className="flex items-center gap-1.5 text-red-600 mb-1.5">
-              <AlertCircle size={14} />
-              <span className="text-[10px] font-bold uppercase">Asset Integrity Alert</span>
-            </div>
-            <p className="text-[11px] text-[#1e293b]">
-              Thermal drift on <span className="font-bold">CV-402</span>. Predicted failure window:{' '}
-              <span className="text-red-600 font-bold">18h 42m</span>.
-            </p>
-          </div>
-        </div>
-      </aside>
     </div>
   );
 }

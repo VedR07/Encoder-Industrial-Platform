@@ -3,7 +3,6 @@
 import React, { useRef, useEffect, useState, useCallback, useMemo } from 'react';
 import dynamic from 'next/dynamic';
 
-// Dynamically import ForceGraph2D to avoid SSR issues with canvas/window
 const ForceGraph2D = dynamic(() => import('react-force-graph-2d'), { ssr: false });
 
 export default function OntologyGraph({ data, onNodeClick }) {
@@ -11,10 +10,8 @@ export default function OntologyGraph({ data, onNodeClick }) {
   const [dimensions, setDimensions] = useState({ width: 800, height: 600 });
   const containerRef = useRef();
 
-  // State for interactive hovering
   const [hoverNode, setHoverNode] = useState(null);
 
-  // Precompute relationships for fast lookup during render
   const { nodesById, neighbors } = useMemo(() => {
     const nodesById = new Map();
     data.nodes.forEach(node => nodesById.set(node.id, node));
@@ -36,7 +33,6 @@ export default function OntologyGraph({ data, onNodeClick }) {
   }, [data]);
 
   useEffect(() => {
-    // Zoom to fit on mount or data change
     if (fgRef.current) {
       setTimeout(() => {
         fgRef.current.zoomToFit(400, 50);
@@ -61,10 +57,7 @@ export default function OntologyGraph({ data, onNodeClick }) {
 
   const handleNodeHover = useCallback((node) => {
     setHoverNode(node || null);
-    // When hovering, cursor should be pointer
-    if (containerRef.current) {
-      containerRef.current.style.cursor = node ? 'pointer' : 'grab';
-    }
+    // Removed manual cursor override which was hiding the mouse
   }, []);
 
   const paintNode = useCallback((node, ctx, globalScale) => {
@@ -74,7 +67,6 @@ export default function OntologyGraph({ data, onNodeClick }) {
     const isNeighbor = hoverNode && neighbors.get(hoverNode.id).has(node.id);
     const isMuted = hoverNode && !isHovered && !isNeighbor;
 
-    // Node radius
     const r = (node.val || 5) * 1.5;
 
     // Draw Circle
@@ -103,7 +95,7 @@ export default function OntologyGraph({ data, onNodeClick }) {
     ctx.shadowBlur = 0;
 
     // Draw Label below the node
-    if (!isMuted || globalScale > 1.5) { // Only draw labels if not muted, or zoomed in
+    if (!isMuted || globalScale > 1.5) {
       ctx.font = `bold ${fontSize}px "JetBrains Mono", monospace`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'top';
@@ -129,7 +121,7 @@ export default function OntologyGraph({ data, onNodeClick }) {
         height={dimensions.height}
         graphData={data}
         nodeRelSize={6}
-        nodeLabel={() => ''} // Custom tooltip handled via canvas if needed, or disable default
+        nodeLabel={() => ''} 
         linkColor={link => {
           const source = typeof link.source === 'object' ? link.source.id : link.source;
           const target = typeof link.target === 'object' ? link.target.id : link.target;

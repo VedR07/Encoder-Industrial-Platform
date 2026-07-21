@@ -7,8 +7,9 @@ import {
   X, Volume2, ArrowLeft
 } from 'lucide-react';
 import Link from 'next/link';
+import { queryAgent } from '../../lib/api';
 
-// ── Pre-baked demo scenarios ──────────────────────────────────────────────────
+// ── Pre-baked demo scenarios (fallback only) ──────────────────────────────────
 const scenarios = [
   {
     query: 'Show wiring diagram compressor motor drive...',
@@ -154,6 +155,7 @@ export default function FieldModePage() {
   const [typedQuery, setTypedQuery]   = useState('');
   const [displayedSteps, setDisplayedSteps] = useState([]);
   const [speechSupported, setSpeechSupported] = useState(false);
+  const [liveResponse, setLiveResponse] = useState(null); // Real API response
   const zone = 'ZONE B — COMPRESSION UNIT';
   const timerRef    = useRef(null);
   const typeRef     = useRef(null);
@@ -167,7 +169,7 @@ export default function FieldModePage() {
   const currentScenario = scenarios[scenarioIdx];
 
   // ── Shared: typewriter + show result ────────────────────────────────────────
-  const runDemoFlow = (query) => {
+  const runDemoFlow = async (query, isReal = false) => {
     setState('processing');
     let idx = 0;
     setTypedQuery('');
@@ -176,12 +178,51 @@ export default function FieldModePage() {
       idx++;
       if (idx >= query.length) {
         clearInterval(typeRef.current);
-        setTimeout(() => {
-          setDisplayedSteps([]);
-          setState('result');
-        }, 600);
       }
     }, 40);
+
+    if (isReal) {
+      try {
+        const res = await queryAgent(query, 'COPILOT', 'field-session');
+        clearInterval(typeRef.current);
+        setTypedQuery(query);
+        
+        // Parse the Markdown string roughly into lines/steps for the UI
+        const lines = res.response.split('\n').filter(l => l.trim().length > 0);
+        
+        setLiveResponse({
+          title: `Response from ${res.agent}`,
+          source: 'Live AI Analysis',
+          confidence: 95,
+          type: 'FIELD ASSISTANT',
+          typeColor: '#3b82f6',
+          content: lines.slice(0, 7), // Just take first few lines to act as steps
+          actions: ['VIEW FULL DETAILS', 'RAISE WORK ORDER'],
+        });
+        
+        setDisplayedSteps([]);
+        setState('result');
+      } catch (err) {
+        console.error(err);
+        clearInterval(typeRef.current);
+        // Fall back to demo
+        setLiveResponse(null);
+        setDisplayedSteps([]);
+        setState('result');
+      }
+    } else {
+      // Demo mode
+      setLiveResponse(null);
+      let waitTimer = setInterval(() => {
+        if (idx >= query.length) {
+          clearInterval(waitTimer);
+          setTimeout(() => {
+            setDisplayedSteps([]);
+            setState('result');
+          }, 600);
+        }
+      }, 100);
+    }
   };
 
   const handlePressStart = () => {
@@ -200,14 +241,7 @@ export default function FieldModePage() {
 
       recognition.onresult = (event) => {
         const transcript = event.results[0][0].transcript;
-        // Pick the best-matching demo scenario by keyword, else advance index
-        const lower = transcript.toLowerCase();
-        let matchIdx = scenarioIdx;
-        if (lower.includes('wiring') || lower.includes('compressor') || lower.includes('motor')) matchIdx = 0;
-        else if (lower.includes('lockout') || lower.includes('loto') || lower.includes('pump')) matchIdx = 1;
-        else if (lower.includes('psv') || lower.includes('valve') || lower.includes('inspect')) matchIdx = 2;
-        setScenarioIdx(matchIdx);
-        runDemoFlow(transcript || scenarios[matchIdx].query);
+        runDemoFlow(transcript, true);
       };
 
       recognition.onerror = () => {
@@ -221,11 +255,11 @@ export default function FieldModePage() {
       };
 
       recognition.start();
-      // Safety timeout: if speech API hangs, fall back after 6s
+      // Safety timeout: if speech API hangs, fall back after 8s
       timerRef.current = setTimeout(() => {
         try { recognition.stop(); } catch (_) {}
-        runDemoFlow(currentScenario.query);
-      }, 6000);
+        runDemoFlow(currentScenario.query, false);
+      }, 8000);
     } else {
       // ── Demo fallback (no Speech API) ────────────────────────────────────
       timerRef.current = setTimeout(() => {
@@ -248,7 +282,8 @@ export default function FieldModePage() {
   // Stagger the result steps appearing
   useEffect(() => {
     if (state !== 'result') return;
-    const steps = currentScenario.response.content;
+    const resp = liveResponse || currentScenario.response;
+    const steps = resp.content;
     let i = 0;
     const id = setInterval(() => {
       setDisplayedSteps(prev => [...prev, steps[i]]);
@@ -258,7 +293,7 @@ export default function FieldModePage() {
     return () => clearInterval(id);
   }, [state]);
 
-  const resp = currentScenario.response;
+  const resp = liveResponse || currentScenario.response;
 
   return (
     <div

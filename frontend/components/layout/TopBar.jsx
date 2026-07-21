@@ -48,18 +48,7 @@ const megaMenuItems = [
     description: 'Upload engineering drawings — AI extracts equipment tags, instruments, and piping connections live.',
     icon: FileImage,
   },
-  {
-    to: '/integrations',
-    label: 'Enterprise Integrations',
-    description: 'Connect existing ERP, EAM, and SCADA systems (SAP, Maximo, MindSphere) via zero-ETL.',
-    icon: Server,
-  },
-  {
-    to: '/insights',
-    label: 'Cross-Plant Insights',
-    description: 'Global lessons learned engine. See how AI predicts systemic failures across the enterprise fleet.',
-    icon: Globe2,
-  },
+
   {
     to: '/twin',
     label: '2.5D Digital Twin',
@@ -110,7 +99,7 @@ export default function TopBar({ viewMode, setViewMode, activeAsset }) {
 
             <div className="h-full flex items-center border-b-2 border-transparent ml-3">
               <span className="text-[#64748b] px-3 text-[11px] uppercase tracking-tight" style={{ fontFamily: '"JetBrains Mono", monospace' }}>
-                {activeAsset ? activeAsset.label : 'Refinery Alpha'}
+                {activeAsset ? activeAsset.label : ''}
               </span>
             </div>
           </nav>
