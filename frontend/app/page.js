@@ -88,14 +88,20 @@ const DarkTooltip = ({ active, payload, label, unit }) => {
 // ─── Main component ───────────────────────────────────────────────────────────
 export default function ExecutiveOverview() {
   const [metrics, setMetrics]             = useState(null);
-  const [vibData, setVibData]             = useState(seedVibration);
-  const [tempData, setTempData]           = useState(seedTemp);
+  const [vibData, setVibData]             = useState([]);   // seeded client-side to avoid SSR hydration mismatch
+  const [tempData, setTempData]           = useState([]);   // seeded client-side to avoid SSR hydration mismatch
   const [tickerIdx, setTickerIdx]         = useState(0);
   const [tickerVisible, setTickerVisible] = useState(true);
   const [liveLogs, setLiveLogs]           = useState(initialLogs);
   const [rcaDiagnosis, setRcaDiagnosis]   = useState('');
   const [isRcaLoading, setIsRcaLoading]   = useState(true);
   const logsEndRef = useRef(null);
+
+  // Seed charts client-side only (avoids SSR/hydration mismatch from Math.random())
+  useEffect(() => {
+    setVibData(seedVibration());
+    setTempData(seedTemp());
+  }, []);
 
   // Fetch KPI metrics
   useEffect(() => {
