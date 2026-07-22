@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import OntologyGraph from '../../components/OntologyGraph';
+import { graphData as initialGraphData } from './data';
 import { uploadDocument } from '../../lib/api';
 import { Filter, RefreshCw, Network, UploadCloud } from 'lucide-react';
 
@@ -29,17 +30,20 @@ export default function GraphExplorer() {
         const parsed = JSON.parse(stored);
         if (parsed.nodes?.length > 0 || parsed.links?.length > 0) {
           setGraphData(prev => {
+            const baseNodes = prev.nodes.length === 0 ? initialGraphData.nodes : prev.nodes;
+            const baseLinks = prev.links.length === 0 ? initialGraphData.links : prev.links;
+            
             // Deduplicate nodes by id
-            const existingIds = new Set(prev.nodes.map(n => n.id));
+            const existingIds = new Set(baseNodes.map(n => n.id));
             const newNodes = parsed.nodes.filter(n => !existingIds.has(n.id));
             
             // Deduplicate links by source-target-label
-            const existingLinks = new Set(prev.links.map(l => `${l.source.id || l.source}-${l.target.id || l.target}-${l.label}`));
+            const existingLinks = new Set(baseLinks.map(l => `${l.source.id || l.source}-${l.target.id || l.target}-${l.label}`));
             const newLinks = parsed.links.filter(l => !existingLinks.has(`${l.source}-${l.target}-${l.label}`));
 
             return {
-              nodes: [...prev.nodes, ...newNodes],
-              links: [...prev.links, ...newLinks]
+              nodes: [...baseNodes, ...newNodes],
+              links: [...baseLinks, ...newLinks]
             };
           });
         }
@@ -69,10 +73,16 @@ export default function GraphExplorer() {
       setUploadStatus(res.message);
       
       // Inject new nodes and links into graph
-      setGraphData(prev => ({
-        nodes: [...prev.nodes, ...res.extracted_nodes],
-        links: [...prev.links, ...res.extracted_links]
-      }));
+      setGraphData(prev => {
+        // If graph is currently empty, load the initial dummy data as the base
+        const baseNodes = prev.nodes.length === 0 ? initialGraphData.nodes : prev.nodes;
+        const baseLinks = prev.links.length === 0 ? initialGraphData.links : prev.links;
+        
+        return {
+          nodes: [...baseNodes, ...res.extracted_nodes],
+          links: [...baseLinks, ...res.extracted_links]
+        };
+      });
       
       // Clear status after 3s
       setTimeout(() => setUploadStatus(''), 3000);
