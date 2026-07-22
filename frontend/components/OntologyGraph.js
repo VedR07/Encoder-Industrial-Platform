@@ -73,13 +73,6 @@ export default function OntologyGraph({ data, onNodeClick }) {
 
     const r = (node.val || 5) * 1.5;
 
-    // Draw Circle
-    ctx.beginPath();
-    ctx.arc(node.x, node.y, r, 0, 2 * Math.PI, false);
-    
-    // Solid fill
-    ctx.fillStyle = isMuted ? '#334155' : (node.color || '#3b82f6');
-    
     // Add glow effect if hovered
     if (isHovered) {
       ctx.shadowColor = node.color;
@@ -88,12 +81,60 @@ export default function OntologyGraph({ data, onNodeClick }) {
       ctx.shadowBlur = 0;
     }
     
-    ctx.fill();
-
-    // Draw white stroke around circle
-    ctx.lineWidth = isHovered ? 3 / globalScale : 1.5 / globalScale;
-    ctx.strokeStyle = isMuted ? '#475569' : '#ffffff';
-    ctx.stroke();
+    // Solid fill color
+    ctx.fillStyle = isMuted ? '#334155' : (node.color || '#3b82f6');
+    
+    ctx.beginPath();
+    
+    if (node.group === 'Document') {
+      // Draw a file/document shape
+      const w = r * 1.5;
+      const h = r * 2;
+      const fold = w * 0.35;
+      
+      ctx.moveTo(node.x - w/2, node.y - h/2); // top-left
+      ctx.lineTo(node.x + w/2 - fold, node.y - h/2); // top edge to fold
+      ctx.lineTo(node.x + w/2, node.y - h/2 + fold); // fold corner
+      ctx.lineTo(node.x + w/2, node.y + h/2); // right edge
+      ctx.lineTo(node.x - w/2, node.y + h/2); // bottom edge
+      ctx.closePath();
+      
+      ctx.fill();
+      
+      // Draw stroke
+      ctx.lineWidth = isHovered ? 3 / globalScale : 1.5 / globalScale;
+      ctx.strokeStyle = isMuted ? '#475569' : '#ffffff';
+      ctx.stroke();
+      
+      // Draw the folded corner line
+      ctx.beginPath();
+      ctx.moveTo(node.x + w/2 - fold, node.y - h/2);
+      ctx.lineTo(node.x + w/2 - fold, node.y - h/2 + fold);
+      ctx.lineTo(node.x + w/2, node.y - h/2 + fold);
+      ctx.stroke();
+      
+      // Add text lines for document aesthetics
+      ctx.beginPath();
+      ctx.moveTo(node.x - w/2 + fold/2, node.y - h/4);
+      ctx.lineTo(node.x + w/4, node.y - h/4);
+      ctx.moveTo(node.x - w/2 + fold/2, node.y);
+      ctx.lineTo(node.x + w/2 - fold/2, node.y);
+      ctx.moveTo(node.x - w/2 + fold/2, node.y + h/4);
+      ctx.lineTo(node.x + w/2 - fold/2, node.y + h/4);
+      ctx.lineWidth = 1 / globalScale;
+      ctx.strokeStyle = isMuted ? '#1e293b' : 'rgba(255,255,255,0.7)';
+      ctx.stroke();
+      
+    } else {
+      // Draw standard Circle for everything else
+      ctx.arc(node.x, node.y, r, 0, 2 * Math.PI, false);
+      ctx.fill();
+      
+      // Draw white stroke around circle
+      ctx.lineWidth = isHovered ? 3 / globalScale : 1.5 / globalScale;
+      ctx.strokeStyle = isMuted ? '#475569' : '#ffffff';
+      ctx.stroke();
+    }
     
     // Reset shadow
     ctx.shadowBlur = 0;
