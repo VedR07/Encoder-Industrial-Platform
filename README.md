@@ -42,14 +42,14 @@ By combining spatial AI vision parsing, dynamic ontology graphs, and multi-agent
 
 *   **Frontend:** Next.js 14, React, Tailwind CSS, Lucide Icons, Force-Graph 2D
 *   **Backend:** Python 3, FastAPI, Uvicorn, LangChain, ChromaDB
-*   **AI Models:** Google Gemini 1.5 Pro / Flash
+*   **AI Models:** gemma4:12b (via Ollama)
 
 ## 📦 Getting Started
 
 ### Prerequisites
 *   Node.js (v18+)
 *   Python 3.10+
-*   Google API Key (for Gemini models)
+*   Ollama (with gemma4:12b model pulled)
 
 ### Local Development
 
@@ -64,7 +64,6 @@ cd Encoder-Industrial-Platform
 python -m venv venv
 source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 pip install -r requirements.txt
-echo "GOOGLE_API_KEY=your_key_here" > .env
 python main.py
 ```
 The backend API will run on `http://localhost:8000` with Swagger docs available at `http://localhost:8000/docs`.
