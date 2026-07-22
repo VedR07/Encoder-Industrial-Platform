@@ -1,14 +1,42 @@
-# IntelliPlant Industrial Copilot Platform
+<div align="center">
+  <h1>IntelliPlant 🏭</h1>
+  <p><strong>An AI-Powered Industrial Operating System</strong></p>
+  <p>Bridging the gap between legacy engineering data and real-time operational decision making.</p>
+</div>
 
-IntelliPlant is a state-of-the-art, AI-powered industrial operating system designed to bridge the gap between complex engineering data and real-time operational decision making. It features a Next.js Executive Dashboard paired with a highly performant, multi-agent FastAPI backend.
+<hr />
 
-## 🚀 Key Features
+## 🚀 Overview
 
-*   **Multi-Agent Routing Architecture:** Automatically routes natural language queries to specialized AI agents (Root Cause Analysis, Regulatory Compliance, or Knowledge Copilot) depending on the engineering context.
+IntelliPlant is a state-of-the-art, multi-agent platform designed specifically for heavy industry. It features a Next.js Executive Dashboard paired with a highly performant, multi-agent FastAPI backend. 
+
+By combining spatial AI vision parsing, dynamic ontology graphs, and multi-agent AI, we are redefining how industrial facilities operate, keeping workers safe and operations efficient.
+
+## 📸 Screenshots
+
+### 1. Dynamic Knowledge Graph
+*Dynamically maps relationships between hardware, faults, agents, and documentation in a live, physics-based environment.*
+![Knowledge Graph](assets/images/graph.png)
+
+### 2. P&ID Vision Parser
+*Instantly digitizes legacy engineering diagrams, automatically extracting components and control loops with high confidence.*
+![P&ID Vision Parser](assets/images/pid.png)
+
+### 3. Multi-Agent AI Chat
+*Seamlessly routes queries to specialized AI agents (Root Cause Analysis, Compliance, or Copilot) based on engineering context.*
+![Multi-Agent Chat](assets/images/chat.png)
+
+### 4. Field Tech Voice Interface
+*A hands-free, dark-mode copilot designed for extreme environments. Allows technicians to query the Knowledge Graph using voice commands for actionable, step-by-step procedures.*
+![Field Tech Interface](assets/images/field.png)
+
+## ✨ Key Features
+
+*   **Multi-Agent Routing Architecture:** Automatically routes natural language queries to specialized AI agents depending on the engineering context.
 *   **P&ID Vision Parser:** Utilizes advanced LLM vision capabilities to instantly extract piping, instruments, and equipment tags from uploaded engineering diagrams.
-*   **Dynamic Knowledge Graph:** Automatically ingests P&ID data and heterogeneous documents into a live Ontology Graph, creating semantic links between hardware, faults, agents, and documentation.
+*   **Dynamic Knowledge Graph:** Automatically ingests P&ID data and heterogeneous documents into a live Ontology Graph, creating semantic links.
 *   **Field Tech Voice Interface:** A hands-free, dark-mode mobile interface designed for field technicians to query systems and run diagnostics using voice commands.
-*   **RAG Document Pipeline:** Rapidly retrieves domain context from uploaded industrial PDFs and CSVs using ChromaDB vector store integration.
+*   **RAG Document Pipeline:** Rapidly retrieves domain context from uploaded industrial PDFs and CSVs using vector store integration.
 
 ## 🛠 Technology Stack
 
@@ -57,4 +85,4 @@ The frontend dashboard will run on `http://localhost:3000`.
 *   `main.py` - The FastAPI application entrypoint.
 
 ## 🛡 License
-This project is proprietary and intended for hackathon demonstration purposes.
+This project is proprietary and intended for demonstration purposes.
