@@ -2,7 +2,6 @@
 
 import React, { useState, useMemo, useRef, useEffect } from 'react';
 import OntologyGraph from '../../components/OntologyGraph';
-import { graphData as initialGraphData } from './data';
 import { uploadDocument } from '../../lib/api';
 import { Filter, RefreshCw, Network, UploadCloud } from 'lucide-react';
 
@@ -16,7 +15,7 @@ export default function GraphExplorer() {
     Instrument: true
   });
   
-  const [graphData, setGraphData] = useState(initialGraphData);
+  const [graphData, setGraphData] = useState({ nodes: [], links: [] });
   const [isUploading, setIsUploading] = useState(false);
   const [uploadStatus, setUploadStatus] = useState('');
   const fileInputRef = useRef(null);
