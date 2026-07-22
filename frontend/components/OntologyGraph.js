@@ -34,6 +34,10 @@ export default function OntologyGraph({ data, onNodeClick }) {
 
   useEffect(() => {
     if (fgRef.current) {
+      // Increase repulsion and link distance to prevent label overlap
+      fgRef.current.d3Force('charge').strength(-500);
+      fgRef.current.d3Force('link').distance(120);
+      
       setTimeout(() => {
         fgRef.current.zoomToFit(400, 50);
       }, 500);
@@ -104,6 +108,56 @@ export default function OntologyGraph({ data, onNodeClick }) {
     }
   }, [hoverNode, neighbors]);
 
+  const paintLink = useCallback((link, ctx, globalScale) => {
+    const start = link.source;
+    const end = link.target;
+    if (typeof start !== 'object' || typeof end !== 'object') return; // wait for nodes to be initialized
+
+    const isHovered = hoverNode && (start.id === hoverNode.id || end.id === hoverNode.id);
+    if (!isHovered && globalScale < 1.5) return; // Only show labels on hover or zoom
+
+    const label = link.label;
+    if (!label) return;
+
+    const fontSize = 10 / globalScale;
+    ctx.font = `${fontSize}px "JetBrains Mono", monospace`;
+    
+    // Calculate center of the link
+    const textPos = Object.assign(...['x', 'y'].map(c => ({
+      [c]: start[c] + (end[c] - start[c]) / 2
+    })));
+
+    ctx.save();
+    ctx.translate(textPos.x, textPos.y);
+
+    // Calculate angle for text rotation
+    let angle = Math.atan2(end.y - start.y, end.x - start.x);
+    // Keep text upright
+    if (angle > Math.PI / 2 || angle < -Math.PI / 2) {
+      angle += Math.PI;
+    }
+    ctx.rotate(angle);
+
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    
+    // Background pill
+    const padding = 4 / globalScale;
+    const metrics = ctx.measureText(label);
+    const bgWidth = metrics.width + padding * 2;
+    const bgHeight = fontSize + padding * 2;
+    
+    ctx.fillStyle = isHovered ? 'rgba(30, 41, 59, 0.9)' : 'rgba(15, 23, 42, 0.7)';
+    ctx.beginPath();
+    ctx.roundRect(-bgWidth/2, -bgHeight/2, bgWidth, bgHeight, 2/globalScale);
+    ctx.fill();
+
+    // Text
+    ctx.fillStyle = isHovered ? '#38bdf8' : '#64748b'; // sky-400 when highlighted
+    ctx.fillText(label, 0, 0);
+    ctx.restore();
+  }, [hoverNode]);
+
   return (
     <div ref={containerRef} className="w-full h-full bg-[#0f172a] relative overflow-hidden">
       {/* Background Grid Pattern for Cyberpunk aesthetic */}
@@ -146,6 +200,8 @@ export default function OntologyGraph({ data, onNodeClick }) {
         linkDirectionalParticleWidth={3}
         linkDirectionalParticleSpeed={0.005}
         nodeCanvasObject={paintNode}
+        linkCanvasObject={paintLink}
+        linkCanvasObjectMode={() => 'after'}
         onNodeClick={onNodeClick}
         onNodeHover={handleNodeHover}
         d3VelocityDecay={0.3}

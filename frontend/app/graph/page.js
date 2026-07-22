@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useMemo, useRef } from 'react';
+import React, { useState, useMemo, useRef, useEffect } from 'react';
 import OntologyGraph from '../../components/OntologyGraph';
 import { graphData as initialGraphData } from './data';
 import { uploadDocument } from '../../lib/api';
@@ -12,7 +12,8 @@ export default function GraphExplorer() {
     Software: true,
     Fault: true,
     Document: true,
-    Agent: true
+    Agent: true,
+    Instrument: true
   });
   
   const [graphData, setGraphData] = useState(initialGraphData);
@@ -20,6 +21,34 @@ export default function GraphExplorer() {
   const [uploadStatus, setUploadStatus] = useState('');
   const fileInputRef = useRef(null);
   const [selectedNode, setSelectedNode] = useState(null);
+
+  // Load P&ID entities from localStorage on mount
+  useEffect(() => {
+    try {
+      const stored = localStorage.getItem('intelliplant_pid_entities');
+      if (stored) {
+        const parsed = JSON.parse(stored);
+        if (parsed.nodes?.length > 0 || parsed.links?.length > 0) {
+          setGraphData(prev => {
+            // Deduplicate nodes by id
+            const existingIds = new Set(prev.nodes.map(n => n.id));
+            const newNodes = parsed.nodes.filter(n => !existingIds.has(n.id));
+            
+            // Deduplicate links by source-target-label
+            const existingLinks = new Set(prev.links.map(l => `${l.source.id || l.source}-${l.target.id || l.target}-${l.label}`));
+            const newLinks = parsed.links.filter(l => !existingLinks.has(`${l.source}-${l.target}-${l.label}`));
+
+            return {
+              nodes: [...prev.nodes, ...newNodes],
+              links: [...prev.links, ...newLinks]
+            };
+          });
+        }
+      }
+    } catch (e) {
+      console.error('Failed to load P&ID entities from localStorage', e);
+    }
+  }, []);
 
   // Filter data based on selected groups
   const filteredData = useMemo(() => {
@@ -81,7 +110,8 @@ export default function GraphExplorer() {
     Software: '#8b5cf6',
     Fault: '#ef4444',
     Document: '#10b981',
-    Agent: '#0f172a'
+    Agent: '#0f172a',
+    Instrument: '#0ea5e9' // sky-500
   };
 
   return (
@@ -158,7 +188,7 @@ export default function GraphExplorer() {
           </div>
 
           <button 
-            onClick={() => setSelectedGroups({ Hardware: true, Software: true, Fault: true, Document: true, Agent: true })}
+            onClick={() => setSelectedGroups({ Hardware: true, Software: true, Fault: true, Document: true, Agent: true, Instrument: true })}
             className="w-full border border-[#e2e8f0] py-2 text-xs font-bold text-[#1e293b] hover:bg-slate-50 transition-colors flex items-center justify-center gap-2"
           >
             <RefreshCw size={14} /> Reset Filters

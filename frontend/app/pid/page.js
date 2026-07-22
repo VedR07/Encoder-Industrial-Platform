@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 import {
   UploadCloud, Cpu, CheckCircle, AlertTriangle,
   Share2, ChevronRight, Zap, FileImage, RefreshCw
@@ -34,6 +35,8 @@ export default function PIDParser() {
   const fileInputRef = useRef(null);
   const scanIntervalRef = useRef(null);
   const boxRevealRef = useRef(null);
+  const graphDataRef = useRef({ nodes: [], links: [] });
+  const router = useRouter();
 
   const handleFile = async (e) => {
     const file = e.target.files?.[0];
@@ -72,6 +75,10 @@ export default function PIDParser() {
       clearInterval(scanIntervalRef.current);
       setScanProgress(100);
       setEntities(data.entities || []);
+      graphDataRef.current = {
+        nodes: data.graph_nodes || [],
+        links: data.graph_links || []
+      };
 
       // Reveal bounding boxes one by one with a stagger
       (data.entities || []).forEach((_, idx) => {
@@ -105,9 +112,14 @@ export default function PIDParser() {
 
   const handlePushToGraph = () => {
     setPushStatus('Injecting entities into Knowledge Graph...');
+    
+    // Save to localStorage so /graph can pick it up
+    localStorage.setItem('intelliplant_pid_entities', JSON.stringify(graphDataRef.current));
+    
     setTimeout(() => {
       setPushStatus(`✓ ${entities.length} entities pushed to Graph Explorer`);
       setPhase('pushed');
+      setTimeout(() => router.push('/graph'), 800);
     }, 1200);
   };
 
