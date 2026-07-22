@@ -70,16 +70,16 @@ export default function PIDParser() {
       setScanProgress(100);
       
       const hardcodedEntities = [
-        { tag: 'FIC 501', type: 'Control Valve',     description: 'Flow Indicator Controller with set point', confidence: 99.8, x: 5, y: 5, w: 14, h: 16 },
-        { tag: 'TIC 501', type: 'Temp. Element',      description: 'Temperature Indicator Controller', confidence: 98.5, x: 41, y: 4, w: 14, h: 11 },
-        { tag: 'FT 501',  type: 'Flow Transmitter',   description: 'Flow Transmitter on main line', confidence: 97.2, x: 6, y: 30, w: 11, h: 9 },
-        { tag: 'TY 501',  type: 'Temp. Element',      description: 'Temperature Relay/Compute device', confidence: 96.4, x: 28, y: 28, w: 11, h: 9 },
-        { tag: 'YIC 501', type: 'Control Valve',      description: 'State Indicator Controller (Top)', confidence: 95.9, x: 52, y: 25, w: 14, h: 11 },
-        { tag: 'TT 501',  type: 'Temp. Element',      description: 'Temperature Transmitter', confidence: 98.1, x: 74, y: 35, w: 11, h: 9 },
-        { tag: 'S',       type: 'Pressure Valve',     description: 'Solenoid Valve for air supply', confidence: 94.3, x: 43, y: 62, w: 6, h: 7 },
-        { tag: 'YIC 501 ',type: 'Control Valve',      description: 'State Indicator Controller (Bottom)', confidence: 96.8, x: 58, y: 60, w: 14, h: 11 },
-        { tag: 'ZSH 501A',type: 'Sensor',             description: 'Position Switch High', confidence: 97.5, x: 56, y: 78, w: 12, h: 10 },
-        { tag: 'ZSL 501B',type: 'Sensor',             description: 'Position Switch Low', confidence: 97.9, x: 73, y: 78, w: 12, h: 10 }
+        { tag: 'FIC 501', type: 'Control Valve',     description: 'Flow Indicator Controller with set point', confidence: 99.8, x: 8, y: 6, w: 13, h: 14 },
+        { tag: 'TIC 501', type: 'Temp. Element',      description: 'Temperature Indicator Controller', confidence: 98.5, x: 42, y: 4, w: 12, h: 9 },
+        { tag: 'FT 501',  type: 'Flow Transmitter',   description: 'Flow Transmitter on main line', confidence: 97.2, x: 9, y: 31, w: 10, h: 8 },
+        { tag: 'TY 501',  type: 'Temp. Element',      description: 'Temperature Relay/Compute device', confidence: 96.4, x: 29, y: 28, w: 9, h: 8 },
+        { tag: 'YIC 501', type: 'Control Valve',      description: 'State Indicator Controller (Top)', confidence: 95.9, x: 51, y: 24, w: 13, h: 10 },
+        { tag: 'TT 501',  type: 'Temp. Element',      description: 'Temperature Transmitter', confidence: 98.1, x: 74, y: 35, w: 10, h: 8 },
+        { tag: 'S',       type: 'Pressure Valve',     description: 'Solenoid Valve for air supply', confidence: 94.3, x: 42, y: 62, w: 6, h: 6 },
+        { tag: 'YIC 501 ',type: 'Control Valve',      description: 'State Indicator Controller (Bottom)', confidence: 96.8, x: 57, y: 60, w: 13, h: 10 },
+        { tag: 'ZSH 501A',type: 'Sensor',             description: 'Position Switch High', confidence: 97.5, x: 58, y: 78, w: 11, h: 9 },
+        { tag: 'ZSL 501B',type: 'Sensor',             description: 'Position Switch Low', confidence: 97.9, x: 75, y: 78, w: 11, h: 9 }
       ];
       setEntities(hardcodedEntities);
       
@@ -232,14 +232,14 @@ export default function PIDParser() {
             </div>
           ) : (
             /* Image with overlays */
-            <div className="relative w-full max-w-4xl h-full flex items-center justify-center">
-              <div className="relative w-full" style={{ maxHeight: 'calc(100vh - 12rem)' }}>
+            <div className="relative w-full max-w-4xl h-full flex justify-center p-4 overflow-auto">
+              <div className="relative inline-block shadow-lg border border-[#e2e8f0] bg-white">
 
                 {/* The uploaded image */}
                 <img
                   src={imageUrl}
                   alt="P&ID Diagram"
-                  className="w-full h-auto object-contain border border-[#e2e8f0] shadow-lg bg-white"
+                  className="block max-w-full"
                   style={{ maxHeight: 'calc(100vh - 12rem)' }}
                 />
 
