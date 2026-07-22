@@ -1,6 +1,7 @@
 'use client';
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
+import { useSearchParams } from 'next/navigation';
 import {
   Brain,
   Paperclip,
@@ -18,7 +19,7 @@ import {
 import { queryAgent } from '../../lib/api';
 import ReactMarkdown from 'react-markdown';
 
-export default function UnifiedChatPage() {
+function ChatInner() {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -34,6 +35,8 @@ export default function UnifiedChatPage() {
   const [copySuccess, setCopySuccess] = useState(false);
   const [editingSessionId, setEditingSessionId] = useState(null);
   const [editTitle, setEditTitle] = useState('');
+  const [autoSentRef] = useState({ done: false });
+  const searchParams = useSearchParams();
 
   const deleteSession = (e, id) => {
     e.stopPropagation();
@@ -96,6 +99,19 @@ export default function UnifiedChatPage() {
       createNewSession();
     }
   }, []);
+
+  // ── Pre-fill from URL ?q= param (Ask AI from dashboard) ─────────────────
+  useEffect(() => {
+    const q = searchParams.get('q');
+    const agent = searchParams.get('agent');
+    if (!q || autoSentRef.done) return;
+    autoSentRef.done = true;
+    if (agent && ['RCA', 'COMPLIANCE', 'COPILOT'].includes(agent)) {
+      setSelectedAgent(agent);
+    }
+    setInput(q);
+  }, [searchParams]);
+
 
   useEffect(() => {
     if (!activeSessionId || sessions.length === 0) return;
@@ -582,5 +598,13 @@ export default function UnifiedChatPage() {
 
 
     </div>
+  );
+}
+
+export default function UnifiedChatPage() {
+  return (
+    <React.Suspense fallback={null}>
+      <ChatInner />
+    </React.Suspense>
   );
 }

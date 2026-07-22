@@ -210,7 +210,7 @@ export default function ExecutiveOverview() {
         <div className="w-px h-4 bg-current opacity-20" style={{ color: currentAlert.color }} />
         <p className="text-[11px] text-[#1e293b] leading-tight flex-1">{currentAlert.text}</p>
         <Link
-          href={`/chat`}
+          href={`/chat?q=${encodeURIComponent(currentAlert.text)}&agent=${encodeURIComponent(currentAlert.agent === 'RCA Agent' ? 'RCA' : currentAlert.agent === 'Compliance Agent' ? 'COMPLIANCE' : 'COPILOT')}`}
           className="flex-shrink-0 flex items-center gap-1 text-[10px] font-bold hover:underline transition-all" style={{ color: currentAlert.color }}
         >
           Ask AI <ChevronRight size={10} />
@@ -239,10 +239,10 @@ export default function ExecutiveOverview() {
           {/* KPI Cards */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              { label: 'Plant Uptime',       value: metrics ? `${metrics.uptime}%` : '94.7%',  sub: '↑ 0.2% vs yesterday', color: '#2563eb', Icon: BarChart3 },
-              { label: 'Active Hypotheses',  value: metrics ? metrics.active_hypotheses : 3,    sub: '3 critical',          color: '#f97316', Icon: Zap       },
-              { label: 'Outstanding Audits', value: metrics ? metrics.outstanding_audits : 7,   sub: '2 overdue',           color: '#ef4444', Icon: ShieldAlert },
-              { label: 'Docs Indexed',       value: metrics ? metrics.docs_indexed : '2,490',                                     sub: '+12 this shift',      color: '#0d9488', Icon: Activity   },
+              { label: 'Plant Uptime',       value: metrics ? (metrics.uptime === -1 ? '---' : `${metrics.uptime}%`) : '---',  sub: metrics && metrics.uptime === -1 ? '(demo baseline)' : '↑ 0.2% vs yesterday', color: '#2563eb', Icon: BarChart3 },
+              { label: 'Active Hypotheses',  value: metrics ? (metrics.active_hypotheses === -1 ? '---' : metrics.active_hypotheses) : '---',    sub: metrics && metrics.active_hypotheses === -1 ? '(demo baseline)' : '3 critical',          color: '#f97316', Icon: Zap       },
+              { label: 'Outstanding Audits', value: metrics ? (metrics.outstanding_audits === -1 ? '---' : metrics.outstanding_audits) : '---',   sub: metrics && metrics.outstanding_audits === -1 ? '(demo baseline)' : '2 overdue',           color: '#ef4444', Icon: ShieldAlert },
+              { label: 'Docs Indexed',       value: metrics ? metrics.docs_indexed : '---',                                     sub: 'live from vector store',      color: '#0d9488', Icon: Activity   },
             ].map(({ label, value, sub, color, Icon }) => (
               <div key={label} className="clean-card p-4 flex flex-col gap-2">
                 <div className="flex justify-between items-start">
