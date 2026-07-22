@@ -68,7 +68,7 @@ def get_metrics():
     These are prototype values — replace with live telemetry data in production.
     """
     global retriever
-    docs_count = 2490  # fallback
+    docs_count = 0  # fallback if not loaded
     try:
         if retriever and hasattr(retriever, 'vectorstore'):
             docs_count = retriever.vectorstore._collection.count()
@@ -76,10 +76,10 @@ def get_metrics():
         pass
 
     return MetricsResponse(
-        uptime=94.7,
-        active_hypotheses=3,
-        outstanding_audits=7,
-        critical_gaps=2,
+        uptime=-1.0,
+        active_hypotheses=-1,
+        outstanding_audits=-1,
+        critical_gaps=-1,
         docs_indexed=docs_count
     )
 
@@ -156,16 +156,18 @@ async def query_agent(request: QueryRequest):
         )
 
 import asyncio
+import base64
+import json
+import re
 
-# --- P&ID Analyzer Endpoint ---
+# --- P&ID Analyzer Endpoint (Two-Pass Vision Extraction) ---
 class PIDEntity(BaseModel):
     tag: str
     type: str
     description: str
     confidence: float
-    # Bounding box as percentage of image dimensions (for overlay positioning)
-    x: float  # left %
-    y: float  # top %
+    x: float  # left % of image width
+    y: float  # top % of image height
     w: float  # width %
     h: float  # height %
 
@@ -175,50 +177,229 @@ class PIDAnalyzeResponse(BaseModel):
     graph_nodes: list
     graph_links: list
 
+# ── Pass 1: Pure entity identification (text only — LLMs excel here) ──────────
+PASS1_PROMPT = """You are an expert P&ID (Piping and Instrumentation Diagram) analyst.
+
+Examine this engineering diagram carefully. List EVERY visible industrial component, instrument, valve, transmitter, pump, vessel, or equipment tag you can identify.
+
+Return a raw JSON array with one object per component:
+- "tag": the alphanumeric label on the diagram (e.g. "FT-201", "PV-101", "E-101"). If unclear, infer a plausible tag from the symbol type and context.
+- "type": exactly one of: "Pressure Valve", "Flow Transmitter", "Control Valve", "Temp. Element", "Level Transmitter", "Pressure Safety V.", "Heat Exchanger", "Pump", "Vessel", "Compressor", "Separator", "Sensor", "Other"
+- "description": one concise technical sentence describing this component's function
+- "confidence": your certainty 0-100
+
+Return ONLY the raw JSON array. No markdown, no explanation, no code fences.
+Example: [{"tag":"FT-201","type":"Flow Transmitter","description":"Coriolis mass flow transmitter on main feed line","confidence":94}]"""
+
+# ── Pass 2: Layout regions (LLMs are reliable at coarse spatial reasoning) ────
+PASS2_PROMPT = """You are analyzing a P&ID engineering diagram.
+
+I have identified the following instrument tags in this diagram:
+{tag_list}
+
+Divide the image into a 3x3 grid:
+  Columns: left (0-33% width) | center (33-66% width) | right (66-100% width)
+  Rows:    top (0-33% height) | middle (33-66% height) | bottom (66-100% height)
+
+For each tag, identify which grid cell it appears in.
+Use ONLY these 9 region names: top-left, top-center, top-right, middle-left, middle-center, middle-right, bottom-left, bottom-center, bottom-right
+
+Return ONLY a raw JSON object mapping each tag to its region. No markdown.
+Example: {{"FT-201": "top-left", "PV-101": "middle-right", "E-101": "bottom-center"}}"""
+
+# ── Region -> coordinate mapping ───────────────────────────────────────────────
+REGION_COORDS = {
+    "top-left":      (8,  8),
+    "top-center":    (38, 8),
+    "top-right":     (70, 8),
+    "middle-left":   (8,  42),
+    "middle-center": (38, 42),
+    "middle-right":  (70, 42),
+    "bottom-left":   (8,  72),
+    "bottom-center": (38, 72),
+    "bottom-right":  (70, 72),
+}
+
+def parse_llm_json_array(raw: str) -> list:
+    raw = raw.strip()
+    raw = re.sub(r"^```(?:json)?\s*", "", raw, flags=re.MULTILINE)
+    raw = re.sub(r"\s*```\s*$", "", raw, flags=re.MULTILINE)
+    raw = raw.strip()
+    start, end = raw.find('['), raw.rfind(']')
+    if start != -1 and end != -1 and end > start:
+        raw = raw[start:end+1]
+    return json.loads(raw)
+
+def parse_llm_json_object(raw: str) -> dict:
+    raw = raw.strip()
+    raw = re.sub(r"^```(?:json)?\s*", "", raw, flags=re.MULTILINE)
+    raw = re.sub(r"\s*```\s*$", "", raw, flags=re.MULTILINE)
+    raw = raw.strip()
+    start, end = raw.find('{'), raw.rfind('}')
+    if start != -1 and end != -1 and end > start:
+        raw = raw[start:end+1]
+    return json.loads(raw)
+
+def assign_positions(entities: list, layout_map: dict) -> list:
+    region_counts = {}
+    result = []
+    for e in entities:
+        tag = e["tag"]
+        region = layout_map.get(tag, "middle-center").lower().strip()
+        base_x, base_y = REGION_COORDS.get(region, (38, 42))
+
+        count = region_counts.get(region, 0)
+        region_counts[region] = count + 1
+        col_off = (count % 2) * 13
+        row_off = (count // 2) * 11
+
+        result.append({
+            **e,
+            "x": float(min(base_x + col_off, 85)),
+            "y": float(min(base_y + row_off, 83)),
+            "w": 11.0,
+            "h": 8.0,
+        })
+    return result
+
+def call_gemini_vision(client, model_name: str, contents: bytes, mime_type: str, prompt: str):
+    from google.genai import types as genai_types
+    response = client.models.generate_content(
+        model=model_name,
+        contents=[
+            genai_types.Part.from_bytes(data=contents, mime_type=mime_type),
+            prompt
+        ]
+    )
+    return response.text
+
 @app.post("/pid-analyze", response_model=PIDAnalyzeResponse)
 async def analyze_pid(file: UploadFile = File(...)):
-    """
-    Accepts a P&ID image/PDF and simulates Computer Vision entity extraction.
-    Returns detected equipment tags, instrument tags, and line connections
-    with bounding box coordinates for visual overlay on the frontend.
-    """
-    await asyncio.sleep(3.0)  # Simulate OCR + CV processing time
-
     filename = file.filename
+    contents = await file.read()
 
-    # Realistic P&ID entities with percentage-based bounding boxes
-    entities = [
-        {"tag": "PV-101", "type": "Pressure Valve",     "description": "Globe valve on high-pressure steam line", "confidence": 97.2, "x": 12, "y": 18, "w": 10, "h": 8},
-        {"tag": "FT-204", "type": "Flow Transmitter",   "description": "Coriolis flow meter on feed line",        "confidence": 95.1, "x": 38, "y": 28, "w": 11, "h": 7},
-        {"tag": "CV-302", "type": "Control Valve",      "description": "Butterfly control valve, fail-open",      "confidence": 98.8, "x": 60, "y": 15, "w": 10, "h": 9},
-        {"tag": "TE-115", "type": "Temp. Element",      "description": "RTD temperature sensor on outlet pipe",   "confidence": 93.4, "x": 22, "y": 55, "w": 9,  "h": 7},
-        {"tag": "LT-401", "type": "Level Transmitter",  "description": "Radar level transmitter on V-102 vessel", "confidence": 96.0, "x": 72, "y": 52, "w": 11, "h": 8},
-        {"tag": "PSV-88", "type": "Pressure Safety V.", "description": "Spring-loaded PSV set at 18.5 bar",        "confidence": 99.1, "x": 48, "y": 68, "w": 10, "h": 8},
-        {"tag": "E-201",  "type": "Heat Exchanger",     "description": "Shell & tube HX for feed preheating",     "confidence": 94.7, "x": 28, "y": 40, "w": 14, "h": 10},
-        {"tag": "P-103A", "type": "Pump",               "description": "Centrifugal feed pump, 75 kW motor",      "confidence": 97.9, "x": 62, "y": 72, "w": 10, "h": 9},
-    ]
+    ext = filename.lower().split(".")[-1]
+    mime_map = {"png": "image/png", "jpg": "image/jpeg", "jpeg": "image/jpeg", "pdf": "application/pdf"}
+    mime_type = mime_map.get(ext, "image/png")
 
+    raw_entities = []
+    layout_map = {}
+    model_used = "fallback"
+
+    try:
+        from google import genai as google_genai
+        import os
+        api_key = os.environ.get("GOOGLE_API_KEY", "")
+        if not api_key:
+            raise ValueError("GOOGLE_API_KEY not configured")
+
+        client = google_genai.Client(api_key=api_key)
+        gemini_model = "gemini-1.5-flash"
+
+        print("[PID Parser] Pass 1: identifying entities...")
+        p1_raw = call_gemini_vision(client, gemini_model, contents, mime_type, PASS1_PROMPT)
+        p1_parsed = parse_llm_json_array(p1_raw)
+
+        seen_tags = set()
+        for item in p1_parsed:
+            tag = str(item.get("tag", f"UNK-{len(raw_entities)}")).strip()
+            if tag in seen_tags:
+                tag = f"{tag}-{len(raw_entities)}"
+            seen_tags.add(tag)
+            raw_entities.append({
+                "tag":         tag,
+                "type":        str(item.get("type", "Other")),
+                "description": str(item.get("description", "Industrial component")),
+                "confidence":  float(max(0, min(100, item.get("confidence", 85)))),
+            })
+
+        print(f"[PID Parser] Pass 1 found {len(raw_entities)} entities")
+
+        if raw_entities:
+            tag_list = ", ".join(e["tag"] for e in raw_entities)
+            pass2_prompt = PASS2_PROMPT.format(tag_list=tag_list)
+            print("[PID Parser] Pass 2: determining layout regions...")
+            p2_raw = call_gemini_vision(client, gemini_model, contents, mime_type, pass2_prompt)
+            try:
+                layout_map = parse_llm_json_object(p2_raw)
+                print(f"[PID Parser] Pass 2 layout: {layout_map}")
+            except Exception as layout_err:
+                print(f"[PID Parser] Pass 2 layout parse failed ({layout_err})")
+
+        model_used = gemini_model
+
+    except Exception as e:
+        print(f"[PID Parser] Gemini two-pass failed: {e} - using grid fallback")
+
+    if not raw_entities:
+        import random
+        random.seed(abs(hash(filename)) % (2**31))
+        fallback_pool = [
+            ("PV-101", "Pressure Valve",     "Globe valve on high-pressure steam line",    "top-left"),
+            ("FT-204", "Flow Transmitter",   "Coriolis flow meter on main feed line",      "top-center"),
+            ("CV-302", "Control Valve",      "Butterfly control valve, fail-open mode",    "top-right"),
+            ("TE-115", "Temp. Element",      "RTD temperature sensor on outlet pipe",      "middle-left"),
+            ("LT-401", "Level Transmitter",  "Radar level transmitter on V-102 vessel",    "middle-right"),
+            ("PSV-88", "Pressure Safety V.", "Spring-loaded PSV, set point 18.5 bar",      "bottom-left"),
+            ("E-201",  "Heat Exchanger",     "Shell & tube HX for feed preheating",        "bottom-center"),
+            ("P-103A", "Pump",               "Centrifugal feed pump, 75 kW motor",         "bottom-right"),
+        ]
+        for tag, typ, desc, region in fallback_pool:
+            raw_entities.append({
+                "tag": tag, "type": typ, "description": desc,
+                "confidence": round(random.uniform(88, 97), 1),
+            })
+            layout_map[tag] = region
+        model_used = "fallback-grid"
+
+    entities = assign_positions(raw_entities, layout_map)
+
+    group_map = {
+        "Pump": "Hardware", "Heat Exchanger": "Hardware",
+        "Compressor": "Hardware", "Vessel": "Hardware", "Separator": "Hardware",
+    }
     graph_nodes = [
-        {"id": e["tag"], "group": "Hardware" if e["type"] in ["Pump", "Heat Exchanger"] else "Software", "val": 7, "color": "#334155", "desc": e["description"]}
+        {
+            "id": e["tag"],
+            "group": group_map.get(e["type"], "Instrument"),
+            "val": 7,
+            "color": "#0d9488" if group_map.get(e["type"]) == "Hardware" else "#8b5cf6",
+            "desc": e["description"],
+        }
         for e in entities
     ]
+    doc_id = filename.replace(".", "_")
+    graph_nodes.append({"id": doc_id, "group": "Document", "val": 9, "color": "#10b981", "desc": f"P&ID source document: {filename}"})
 
-    graph_links = [
-        {"source": "PV-101", "target": "FT-204",  "label": "FEEDS"},
-        {"source": "FT-204", "target": "CV-302",  "label": "CONTROLS"},
-        {"source": "TE-115", "target": "E-201",   "label": "MONITORS"},
-        {"source": "E-201",  "target": "LT-401",  "label": "FEEDS"},
-        {"source": "P-103A", "target": "PV-101",  "label": "UPSTREAM_OF"},
-        {"source": "PSV-88", "target": "CV-302",  "label": "PROTECTS"},
-        {"source": filename.replace('.', '_'), "target": "PV-101", "label": "DOCUMENTED_IN"},
-    ]
+    graph_links = []
+    tags = [e["tag"] for e in entities]
+    type_map = {e["tag"]: e["type"] for e in entities}
+    
+    monitors = [t for t in tags if type_map[t] in ("Flow Transmitter", "Temp. Element", "Level Transmitter", "Sensor")]
+    equipment = [t for t in tags if type_map[t] in ("Pump", "Heat Exchanger", "Compressor", "Vessel", "Separator")]
+    valves    = [t for t in tags if "Valve" in type_map[t]]
+
+    for i, m in enumerate(monitors):
+        if equipment:
+            graph_links.append({"source": m, "target": equipment[i % len(equipment)], "label": "MONITORS"})
+    for i, v in enumerate(valves):
+        if monitors:
+            graph_links.append({"source": v, "target": monitors[i % len(monitors)], "label": "FEEDS"})
+    safety = [t for t in tags if type_map[t] == "Pressure Safety V."]
+    control = [t for t in tags if type_map[t] == "Control Valve"]
+    for i, s in enumerate(safety):
+        if control:
+            graph_links.append({"source": s, "target": control[i % len(control)], "label": "PROTECTS"})
+    for e in entities:
+        graph_links.append({"source": doc_id, "target": e["tag"], "label": "DOCUMENTS"})
 
     return PIDAnalyzeResponse(
-        message=f"Successfully analyzed {filename}. Detected {len(entities)} entities.",
+        message=f"[{model_used}] Analyzed '{filename}' - {len(entities)} entities extracted.",
         entities=entities,
         graph_nodes=graph_nodes,
         graph_links=graph_links,
     )
+
 
 class IngestResponse(BaseModel):
     message: str
