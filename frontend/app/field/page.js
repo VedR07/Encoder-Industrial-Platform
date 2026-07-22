@@ -116,9 +116,9 @@ function StatusBar({ zone }) {
     <div className="flex items-center justify-between px-5 py-2 bg-black/60 border-b border-green-900/50 text-green-500 text-[11px] font-mono">
       <div className="flex items-center gap-4">
         <span className="font-bold text-green-400">{time}</span>
-        <div className="flex items-center gap-1.5" title="Simulated zone — no GPS active">
+        <div className="flex items-center gap-1.5" title="Simulated GPS active">
           <MapPin size={10} />
-          <span>{zone} <span className="opacity-50">(DEMO)</span></span>
+          <span className="opacity-50">(DEMO)</span>
         </div>
       </div>
       <div className="flex items-center gap-3">
@@ -156,7 +156,6 @@ export default function FieldModePage() {
   const [interimTranscript, setInterimTranscript] = useState(''); // live speech text
   const [speechSupported, setSpeechSupported] = useState(false);
   const [liveResponse, setLiveResponse] = useState(null); // Real API response
-  const zone = 'ZONE B — COMPRESSION UNIT';
   const timerRef    = useRef(null);
   const recognizerRef = useRef(null);
 
@@ -308,7 +307,7 @@ export default function FieldModePage() {
            }} />
 
       {/* Status bar */}
-      <StatusBar zone={zone} />
+      <StatusBar />
 
       {/* Header */}
       <div className="flex items-center justify-between px-5 pt-4 pb-3 border-b border-green-900/30">
@@ -334,31 +333,10 @@ export default function FieldModePage() {
           <div className="flex-1 flex flex-col items-center justify-center gap-8 w-full max-w-lg">
             <CornerBrackets>
               <div className="text-center px-6 py-4">
-                <div className="flex items-center justify-center gap-2 mb-3">
-                  <MapPin size={16} className="text-green-500" />
-                  <span className="text-green-400 text-sm uppercase tracking-widest">{zone}</span>
-                </div>
                 <p className="text-4xl font-bold text-white mb-2 leading-tight">AWAITING<br />COMMAND</p>
                 <p className="text-green-600 text-xs uppercase tracking-widest">Tap & hold the button to speak</p>
               </div>
             </CornerBrackets>
-
-            {/* Quick access cards */}
-            <div className="w-full grid grid-cols-2 gap-3">
-              {[
-                { label: 'Wiring Diagrams', icon: FileText, color: 'border-blue-700 bg-blue-950/30 text-blue-400' },
-                { label: 'Safety Procedures', icon: AlertTriangle, color: 'border-yellow-700 bg-yellow-950/30 text-yellow-400' },
-                { label: 'Inspection Logs', icon: CheckCircle, color: 'border-green-700 bg-green-950/30 text-green-400' },
-                { label: 'Work Orders', icon: Wrench, color: 'border-red-700 bg-red-950/30 text-red-400' },
-              ].map(({ label, icon: Icon, color }) => (
-                <button key={label}
-                  onClick={() => alert(`Simulated: Opening ${label}`)}
-                  className={`flex items-center gap-3 p-4 border rounded-none text-left ${color} hover:opacity-80 active:scale-95 transition-all`}>
-                  <Icon size={22} />
-                  <span className="text-xs font-bold uppercase leading-tight">{label}</span>
-                </button>
-              ))}
-            </div>
           </div>
         )}
 
@@ -451,12 +429,6 @@ export default function FieldModePage() {
 
             {/* Action buttons */}
             <div className="flex gap-3 flex-shrink-0 mt-1">
-              <button
-                onClick={() => alert('Simulated: Raising Work Order')}
-                className="flex-1 py-4 text-sm font-bold uppercase tracking-widest bg-green-600 hover:bg-green-500 text-black transition-all active:scale-95"
-              >
-                Raise Work Order
-              </button>
               <button
                 onClick={handleReset}
                 className="flex-1 py-4 text-sm font-bold uppercase tracking-widest border border-green-800 hover:bg-green-950/40 text-green-400 transition-all"
